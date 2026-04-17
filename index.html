@@ -1,2242 +1,2476 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zenova | Beauty, Tech & Gaming Store</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
-
+  <title>Zenova Tech Store</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
   <style>
 
-    /* ── Root Variables ──────────────────────────────────────── */
+    /* ═══════════════════════════════════════════
+       DARK THEME (default)
+    ═══════════════════════════════════════════ */
     :root {
-      --bg-deep:      #0d0205;
-      --bg-base:      #130308;
-      --bg-card:      #1e0510;
-      --bg-header:    #0a0103;
-      --accent:       #f5c518;
-      --accent-glow:  rgba(245, 197, 24, 0.55);
-      --maroon:       #6b0f1a;
-      --maroon-mid:   #8b1a28;
-      --maroon-light: #b52a3d;
-      --text-main:    #f5efe6;
-      --text-muted:   #c9a8b0;
-      --border:       rgba(245, 197, 24, 0.18);
+      --bg-page:    #0f1117;
+      --bg-sidebar: #161b26;
+      --bg-card:    #1a2035;
+      --bg-card-h:  #1e2640;
+      --bg-header:  #0a0d14;
+      --bg-topbar:  #050709;
+      --bg-input:   #111624;
+      --border:     #252d45;
+      --border-h:   #3a4a6a;
+      --text-1:     #f0f4ff;
+      --text-2:     #8899bb;
+      --text-3:     #4a5a7a;
+      --accent:     #0071ce;      /* Best Buy / Newegg blue */
+      --accent-h:   #0086f5;
+      --accent-2:   #ffd700;      /* Newegg yellow */
+      --accent-2h:  #ffe030;
+      --red:        #e53935;
+      --green:      #2ecc71;
+      --tag-bg:     #0f2340;
+      --tag-txt:    #4da6ff;
+      --price:      #f0f4ff;
+      --old-price:  #5a6a8a;
+      --badge-sale: #e53935;
+      --badge-new:  #0071ce;
+      --shadow-card: 0 2px 12px rgba(0,0,0,0.5);
+      --shadow-h:    0 8px 28px rgba(0,0,0,0.7);
     }
 
-    /* ── Theme Definitions ───────────────────────────────────── */
+    /* ═══════════════════════════════════════════
+       LIGHT THEME
+    ═══════════════════════════════════════════ */
+    [data-theme="light"] {
+      --bg-page:    #f2f4f7;
+      --bg-sidebar: #ffffff;
+      --bg-card:    #ffffff;
+      --bg-card-h:  #f7f9ff;
+      --bg-header:  #0071ce;
+      --bg-topbar:  #004fa8;
+      --bg-input:   #f0f2f8;
+      --border:     #dde3ef;
+      --border-h:   #0071ce;
+      --text-1:     #0d1117;
+      --text-2:     #4a5a78;
+      --text-3:     #9aa5be;
+      --accent:     #0071ce;
+      --accent-h:   #005bb0;
+      --accent-2:   #ffd700;
+      --accent-2h:  #f0c800;
+      --red:        #d32f2f;
+      --green:      #27ae60;
+      --tag-bg:     #e8f0fe;
+      --tag-txt:    #0050a0;
+      --price:      #0d1117;
+      --old-price:  #9aa5be;
+      --badge-sale: #d32f2f;
+      --badge-new:  #0071ce;
+      --shadow-card: 0 1px 4px rgba(0,0,0,0.1);
+      --shadow-h:    0 4px 20px rgba(0,0,0,0.15);
+    }
 
-    /* Default / Home theme (dark maroon-gold) */
+    /* ═══════════════════════════════════════════
+       RESET
+    ═══════════════════════════════════════════ */
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+
     body {
-      --bg-deep:      #0d0205;
-      --bg-base:      #130308;
-      --bg-card:      #1e0510;
-      --bg-header:    #0a0103;
-      --accent:       #f5c518;
-      --accent-glow:  rgba(245, 197, 24, 0.55);
-      --maroon:       #6b0f1a;
-      --maroon-mid:   #8b1a28;
-      --maroon-light: #b52a3d;
-      --text-main:    #f5efe6;
-      --text-muted:   #c9a8b0;
-      --border:       rgba(245, 197, 24, 0.18);
-      transition: background-color 0.5s ease, color 0.5s ease;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-page);
+      color: var(--text-1);
+      min-height: 100vh;
+      transition: background 0.3s, color 0.3s;
     }
 
-    /* Beauty theme — white & soft pink */
-    body.theme-beauty {
-      --bg-deep:      #fff0f5;
-      --bg-base:      #fff5f8;
-      --bg-card:      #ffffff;
-      --bg-header:    #fce4ec;
-      --accent:       #e91e8c;
-      --accent-glow:  rgba(233, 30, 140, 0.35);
-      --maroon:       #f8bbd0;
-      --maroon-mid:   #f48fb1;
-      --maroon-light: #e91e8c;
-      --text-main:    #3a0020;
-      --text-muted:   #9c4070;
-      --border:       rgba(233, 30, 140, 0.2);
-    }
+    a { text-decoration: none; color: inherit; }
+    button { font-family: 'Inter', sans-serif; cursor: pointer; }
+    img { display: block; }
 
-    /* Tech theme — dark navy & cyan */
-    body.theme-tech {
-      --bg-deep:      #040d1a;
-      --bg-base:      #071222;
-      --bg-card:      #0b1c33;
-      --bg-header:    #020a14;
-      --accent:       #00e5ff;
-      --accent-glow:  rgba(0, 229, 255, 0.45);
-      --maroon:       #0d2b45;
-      --maroon-mid:   #1a4a6e;
-      --maroon-light: #00b4d8;
-      --text-main:    #e0f7ff;
-      --text-muted:   #7ec8e3;
-      --border:       rgba(0, 229, 255, 0.18);
-    }
-
-    /* Gaming theme — deep dark & neon green/purple */
-    body.theme-gaming {
-      --bg-deep:      #050008;
-      --bg-base:      #0a0010;
-      --bg-card:      #120020;
-      --bg-header:    #030005;
-      --accent:       #39ff14;
-      --accent-glow:  rgba(57, 255, 20, 0.45);
-      --maroon:       #1a0030;
-      --maroon-mid:   #3a0060;
-      --maroon-light: #8b00ff;
-      --text-main:    #f0e6ff;
-      --text-muted:   #b388ff;
-      --border:       rgba(57, 255, 20, 0.18);
-    }
-
-    /* ── Theme background animations ─────────────────────────── */
-    body.theme-beauty {
-      background: linear-gradient(135deg, #fff0f5 0%, #fce4ec 50%, #fff5f8 100%);
-    }
-    body.theme-beauty header {
-      background: linear-gradient(90deg, #fce4ec 0%, #fff0f7 100%);
-      border-bottom-color: rgba(233, 30, 140, 0.25);
-    }
-    body.theme-beauty .hero {
-      background:
-        linear-gradient(160deg, rgba(233, 30, 140, 0.55) 0%, rgba(255, 240, 245, 0.92) 60%),
-        url("https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1920");
-      background-size: cover;
-      background-position: center;
-    }
-    body.theme-beauty .hero h1 {
-      background: linear-gradient(135deg, #e91e8c 20%, #ff6eb3 60%, #c2185b 90%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      filter: drop-shadow(0 0 18px rgba(233, 30, 140, 0.45));
-    }
-
-    body.theme-tech {
-      background: linear-gradient(135deg, #040d1a 0%, #071222 50%, #0b1c33 100%);
-    }
-    body.theme-tech header {
-      background: linear-gradient(90deg, #020a14 0%, #071222 100%);
-      border-bottom-color: rgba(0, 229, 255, 0.2);
-    }
-    body.theme-tech .hero {
-      background:
-        linear-gradient(160deg, rgba(0, 50, 80, 0.85) 0%, rgba(4, 13, 26, 0.92) 60%),
-        url("https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1920");
-      background-size: cover;
-      background-position: center;
-    }
-    body.theme-tech .hero h1 {
-      background: linear-gradient(135deg, #00e5ff 20%, #80ffff 60%, #00b4d8 90%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      filter: drop-shadow(0 0 18px rgba(0, 229, 255, 0.5));
-    }
-
-    body.theme-gaming {
-      background: linear-gradient(135deg, #050008 0%, #0a0010 50%, #120020 100%);
-    }
-    body.theme-gaming header {
-      background: linear-gradient(90deg, #030005 0%, #0a0010 100%);
-      border-bottom-color: rgba(57, 255, 20, 0.2);
-    }
-    body.theme-gaming .hero {
-      background:
-        linear-gradient(160deg, rgba(26, 0, 48, 0.88) 0%, rgba(5, 0, 8, 0.92) 60%),
-        url("https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1920");
-      background-size: cover;
-      background-position: center;
-    }
-    body.theme-gaming .hero h1 {
-      background: linear-gradient(135deg, #39ff14 20%, #b0ff80 60%, #00e600 90%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      filter: drop-shadow(0 0 18px rgba(57, 255, 20, 0.5));
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-  body {
-  background: var(--bg-deep);
-  color: var(--text-main);
-  transition: background 0.5s ease, color 0.4s ease;
-}
-
-.product-card {
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
-  padding: 10px;
-  border-radius: 10px;
-}
-
-.product-card p {
-  color: var(--secondary-text);
-}
-
-.button {
-  background: var(--accent-color);
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.button:hover {
-  background: var(--accent-hover);
-}
-  * {
-  transition: background 0.5s ease, background-color 0.5s ease, color 0.4s ease,
-              border-color 0.4s ease, box-shadow 0.4s ease, text-shadow 0.4s ease;
-}  
-    /* ── Header ──────────────────────────────────────────────── */
-    header {
-      padding: 18px 5%;
+    /* ═══════════════════════════════════════════
+       TOP ANNOUNCEMENT BAR
+    ═══════════════════════════════════════════ */
+    .topbar {
+      background: var(--bg-topbar);
+      color: #aac4ee;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 7px 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      letter-spacing: 0.3px;
+    }
+    [data-theme="light"] .topbar { color: #cce0ff; }
+
+    .topbar-left { display: flex; gap: 24px; }
+    .topbar-right { display: flex; gap: 20px; align-items: center; }
+
+    .topbar-item { display: flex; align-items: center; gap: 5px; }
+    .topbar-item span { opacity: 0.7; }
+
+    /* Theme Toggle */
+    .theme-toggle {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 20px;
+      padding: 4px 12px;
+      cursor: pointer;
+      color: #cce0ff;
+      font-size: 12px;
+      font-weight: 600;
+      transition: all 0.2s;
+      letter-spacing: 0.5px;
+    }
+    .theme-toggle:hover { background: rgba(255,255,255,0.14); }
+
+    .toggle-track {
+      width: 32px;
+      height: 18px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 9px;
+      position: relative;
+      transition: background 0.3s;
+    }
+    .toggle-track.on { background: var(--accent-2); }
+
+    .toggle-thumb {
+      width: 12px;
+      height: 12px;
+      background: #fff;
+      border-radius: 50%;
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      transition: left 0.25s;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    }
+    .toggle-track.on .toggle-thumb { left: 17px; }
+
+    /* ═══════════════════════════════════════════
+       HEADER
+    ═══════════════════════════════════════════ */
+    header {
       background: var(--bg-header);
-      border-bottom: 1px solid var(--border);
-      box-shadow: 0 0 30px var(--accent-glow), 0 0 60px var(--accent-glow);
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      height: 64px;
       position: sticky;
       top: 0;
-      z-index: 1000;
-      backdrop-filter: blur(6px);
+      z-index: 900;
+      border-bottom: 3px solid var(--accent-2);
+      box-shadow: 0 2px 16px rgba(0,0,0,0.4);
     }
+    [data-theme="light"] header { box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
 
+    /* Logo */
     .logo {
-      font-family: Orbitron, sans-serif;
-      font-size: 26px;
-      color: var(--accent);
-      letter-spacing: 3px;
-      text-shadow: 0 0 14px var(--accent-glow), 0 0 40px var(--accent-glow);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
     }
-
-    nav a {
-      color: var(--text-muted);
-      text-decoration: none;
-      margin-left: 28px;
-      font-size: 14px;
-      font-weight: 600;
+    .logo-box {
+      background: var(--accent-2);
+      color: #000;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 4px;
       letter-spacing: 1px;
+    }
+    .logo-text {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: 2px;
+    }
+    .logo-sub {
+      font-size: 10px;
+      font-weight: 500;
+      color: var(--accent-2);
+      letter-spacing: 2px;
       text-transform: uppercase;
-      transition: color .25s, text-shadow .25s;
+      margin-top: -2px;
+    }
+
+    /* Search bar */
+    .header-search {
+      flex: 1;
+      max-width: 600px;
+      display: flex;
+      background: var(--bg-input);
+      border: 2px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    [data-theme="light"] .header-search { background: #fff; }
+    .header-search:focus-within { border-color: var(--accent); }
+
+    .header-search input {
+      flex: 1;
+      padding: 10px 16px;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--text-1);
+      font-size: 14px;
+      font-family: 'Inter', sans-serif;
+    }
+    .header-search input::placeholder { color: var(--text-3); }
+    .search-btn {
+      background: var(--accent);
+      border: none;
+      padding: 0 20px;
+      color: #fff;
+      font-size: 16px;
       cursor: pointer;
+      transition: background 0.2s;
+      flex-shrink: 0;
+    }
+    .search-btn:hover { background: var(--accent-h); }
+
+    /* Header right actions */
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+    .h-action-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      padding: 6px 12px;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 6px;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .h-action-btn:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2); }
+    .h-action-icon { font-size: 18px; }
+
+    /* ═══════════════════════════════════════════
+       NAV BAR (below header)
+    ═══════════════════════════════════════════ */
+    .navbar {
+      background: var(--accent);
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      height: 40px;
     }
 
-    nav a:hover {
-      color: var(--accent);
-      text-shadow: 0 0 12px var(--accent-glow);
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0 16px;
+      height: 40px;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      transition: all 0.15s;
+      white-space: nowrap;
+      letter-spacing: 0.3px;
+      background: transparent;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+    }
+    .nav-item:hover, .nav-item.active {
+      background: rgba(255,255,255,0.15);
+      border-bottom-color: var(--accent-2);
     }
 
-    /* ── Hero ────────────────────────────────────────────────── */
+    /* ═══════════════════════════════════════════
+       HERO BANNER
+    ═══════════════════════════════════════════ */
     .hero {
-      text-align: center;
-      padding: 110px 20px 80px;
       background:
-        linear-gradient(160deg, rgba(107, 15, 26, 0.72) 0%, rgba(13, 2, 5, 0.88) 60%),
-        url("https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?q=80&w=1920");
-      background-size: cover;
-      background-position: center;
+        linear-gradient(105deg, #001840 0%, #00306a 40%, #0060c8 100%);
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      min-height: 240px;
+      position: relative;
+      overflow: hidden;
+    }
+    [data-theme="light"] .hero {
+      background: linear-gradient(105deg, #003080 0%, #0050b8 50%, #0071ce 100%);
+    }
+
+    /* Grid lines overlay */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 36px 36px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 540px;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,215,0,0.15);
+      border: 1px solid rgba(255,215,0,0.4);
+      color: var(--accent-2);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 3px;
+      margin-bottom: 16px;
     }
 
     .hero h1 {
-      font-size: 52px;
-      font-family: Orbitron, sans-serif;
-      margin-bottom: 14px;
-      letter-spacing: 4px;
-      background: linear-gradient(135deg, #f5c518 30%, #fff6c0 60%, #e8a000 90%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      filter: drop-shadow(0 0 18px rgba(245, 197, 24, 0.5));
-      transition: filter 0.5s ease;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 56px;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--accent-2);
     }
 
     .hero p {
-      color: var(--text-muted);
-      margin-bottom: 28px;
-      font-size: 16px;
-      letter-spacing: 1px;
+      color: rgba(255,255,255,0.75);
+      font-size: 15px;
+      margin-bottom: 24px;
+      line-height: 1.6;
     }
 
-    .hero button {
-      padding: 14px 36px;
-      border: 2px solid var(--accent);
-      background: transparent;
-      color: var(--accent);
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-2);
+      color: #000;
       font-weight: 700;
-      font-family: Orbitron, sans-serif;
-      font-size: 13px;
-      letter-spacing: 2px;
-      cursor: pointer;
+      font-size: 14px;
+      padding: 12px 28px;
       border-radius: 4px;
-      transition: background .3s, box-shadow .3s, color .3s;
+      border: none;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      transition: all 0.2s;
+    }
+    .hero-cta:hover { background: var(--accent-2h); transform: translateY(-1px); }
+
+    .hero-badges {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+    .hero-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.7);
+      font-weight: 500;
+    }
+    .hero-badge-icon { font-size: 14px; }
+
+    .hero-image-area {
+      position: absolute;
+      right: 80px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      gap: 16px;
+    }
+
+    .hero-stat-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      padding: 20px 24px;
+      text-align: center;
+      backdrop-filter: blur(4px);
+    }
+    .hero-stat-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 38px;
+      font-weight: 800;
+      color: var(--accent-2);
+      line-height: 1;
+    }
+    .hero-stat-lbl {
+      font-size: 11px;
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 1.5px;
       text-transform: uppercase;
+      margin-top: 4px;
     }
 
-    .hero button:hover {
-      background: var(--accent);
-      color: var(--bg-deep);
-      box-shadow: 0 0 28px var(--accent-glow), 0 0 60px var(--accent-glow);
-    }
-
-    /* ── Category Tabs ───────────────────────────────────────── */
-    .tabs {
+    /* ═══════════════════════════════════════════
+       PROMO STRIP
+    ═══════════════════════════════════════════ */
+    .promo-strip {
+      background: var(--bg-card);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
       display: flex;
       justify-content: center;
-      gap: 14px;
-      margin-top: 44px;
+      gap: 0;
+    }
+
+    .promo-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 28px;
+      border-right: 1px solid var(--border);
+      flex: 1;
+      justify-content: center;
+    }
+    .promo-item:last-child { border-right: none; }
+
+    .promo-icon { font-size: 22px; flex-shrink: 0; }
+
+    .promo-text strong {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-1);
+    }
+    .promo-text span {
+      font-size: 11px;
+      color: var(--text-2);
+    }
+
+    /* ═══════════════════════════════════════════
+       CURRENCY BADGE
+    ═══════════════════════════════════════════ */
+    #zn-badge {
+      background: var(--accent-2) !important;
+      color: #000 !important;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 4px;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+
+    /* ═══════════════════════════════════════════
+       MAIN LAYOUT
+    ═══════════════════════════════════════════ */
+    .main-layout {
+      display: flex;
+      gap: 0;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 24px 24px;
+      align-items: flex-start;
+    }
+
+    /* ═══════════════════════════════════════════
+       SIDEBAR FILTERS
+    ═══════════════════════════════════════════ */
+    .sidebar {
+      width: 220px;
+      flex-shrink: 0;
+      margin-right: 24px;
+      position: sticky;
+      top: 108px;
+    }
+
+    .sidebar-block {
+      background: var(--bg-sidebar);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      margin-bottom: 14px;
+      overflow: hidden;
+    }
+
+    .sidebar-title {
+      padding: 12px 14px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-2);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .filter-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 9px 14px;
+      font-size: 13px;
+      color: var(--text-1);
+      cursor: pointer;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.15s;
+      border-radius: 0;
+      background: transparent;
+      border-left: none;
+      border-right: none;
+      border-top: none;
+      text-align: left;
+      width: 100%;
+      font-family: 'Inter', sans-serif;
+    }
+    .filter-item:last-child { border-bottom: none; }
+    .filter-item:hover { background: var(--bg-card-h); }
+    .filter-item.active {
+      background: rgba(0,113,206,0.12);
+      color: var(--accent);
+      font-weight: 600;
+    }
+    [data-theme="light"] .filter-item.active { background: #e8f0fe; }
+
+    .filter-count {
+      background: var(--border);
+      color: var(--text-2);
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 10px;
+      font-family: 'Inter', sans-serif;
+    }
+    .filter-item.active .filter-count {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .price-range {
+      padding: 14px;
+    }
+    .price-range label {
+      font-size: 11px;
+      color: var(--text-2);
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .price-input-row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .price-input {
+      flex: 1;
+      padding: 7px 10px;
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--text-1);
+      font-size: 12px;
+      font-family: 'Inter', sans-serif;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .price-input:focus { border-color: var(--accent); }
+    .price-sep { color: var(--text-3); font-size: 12px; }
+
+    .filter-apply {
+      display: block;
+      width: 100%;
+      margin-top: 10px;
+      padding: 8px;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      transition: background 0.2s;
+      font-family: 'Inter', sans-serif;
+    }
+    .filter-apply:hover { background: var(--accent-h); }
+
+    /* ═══════════════════════════════════════════
+       PRODUCTS AREA
+    ═══════════════════════════════════════════ */
+    .products-area { flex: 1; min-width: 0; }
+
+    /* Sort / results bar */
+    .results-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      gap: 12px;
       flex-wrap: wrap;
     }
 
-    .tabs button {
-      padding: 11px 28px;
-      border: 1.5px solid var(--maroon-mid);
-      background: rgba(107, 15, 26, 0.25);
-      color: var(--text-muted);
-      font-weight: 600;
+    .results-count {
       font-size: 13px;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
+      color: var(--text-2);
+    }
+    .results-count strong { color: var(--text-1); font-weight: 700; }
+
+    .sort-row { display: flex; align-items: center; gap: 10px; }
+
+    .sort-label { font-size: 13px; color: var(--text-2); }
+
+    .sort-select {
+      padding: 7px 12px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
       border-radius: 4px;
+      color: var(--text-1);
+      font-size: 13px;
+      font-family: 'Inter', sans-serif;
+      outline: none;
       cursor: pointer;
-      transition: all .3s;
-      font-family: Orbitron, sans-serif;
     }
 
-    .tabs button.active,
-    .tabs button:hover {
+    .view-btns { display: flex; gap: 4px; }
+    .view-btn {
+      width: 32px; height: 32px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--text-2);
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s;
+    }
+    .view-btn.active, .view-btn:hover {
       background: var(--accent);
       border-color: var(--accent);
-      color: var(--bg-deep);
-      box-shadow: 0 0 18px var(--accent-glow);
+      color: #fff;
     }
 
-    /* ── Page Sections ───────────────────────────────────────── */
-    .section {
-      padding: 70px 5%;
-      display: none;
-      position: relative;
-    }
-
-    .section.active {
-      display: block;
-    }
-
-    .section h2 {
-      text-align: center;
-      margin-bottom: 50px;
-      font-size: 34px;
-      font-family: 'Playfair Display', serif;
-      color: var(--accent);
-      text-shadow: 0 0 22px var(--accent-glow);
-      letter-spacing: 2px;
-    }
-
-    /* ── Search Bar ──────────────────────────────────────────── */
-    .search-bar {
-      width: 100%;
-      max-width: 420px;
-      margin: 0 auto 35px auto;
-      display: block;
-      padding: 12px 18px;
-      border-radius: 6px;
-      border: 1px solid var(--maroon-mid);
-      background: rgba(0, 0, 0, 0.35);
-      color: var(--text-main);
-      font-size: 14px;
-      outline: none;
-    }
-
-    .search-bar:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 12px var(--accent-glow);
-    }
-
-    .search-bar::placeholder {
-      color: var(--text-muted);
-    }
-
-    /* ── Product Grid ────────────────────────────────────────── */
+    /* ═══════════════════════════════════════════
+       PRODUCT GRID
+    ═══════════════════════════════════════════ */
     .products {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 28px;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
     }
 
-    /* ── Product Card ────────────────────────────────────────── */
+    .products.list-view {
+      grid-template-columns: 1fr;
+    }
+
+    /* ═══════════════════════════════════════════
+       PRODUCT CARD — Grid view (Newegg style)
+    ═══════════════════════════════════════════ */
     .card {
       background: var(--bg-card);
-      border-radius: 10px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
       overflow: hidden;
-      border: 1px solid rgba(107, 15, 26, 0.6);
-      transition: transform .3s, box-shadow .3s, border-color .3s;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
       position: relative;
-    }
-
-    .card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--maroon-light), transparent);
-      opacity: 0;
-      transition: opacity .3s;
+      transition: box-shadow 0.2s, border-color 0.2s, transform 0.2s;
+      box-shadow: var(--shadow-card);
     }
 
     .card:hover {
-      transform: translateY(-10px);
-      box-shadow:
-        0 0 30px rgba(245, 197, 24, 0.25),
-        0 0 60px rgba(107, 15, 26, 0.4),
-        0 8px 40px rgba(0, 0, 0, 0.6);
       border-color: var(--accent);
+      box-shadow: var(--shadow-h);
+      transform: translateY(-3px);
     }
 
-    .card:hover::before {
-      opacity: 1;
-    }
-
-    .card > img {
-      width: 100%;
-      height: auto;
-      max-height: 220px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .card-content {
-      padding: 20px;
-    }
-
-    .card-content h3 {
-      margin-bottom: 8px;
-      font-size: 15px;
-      color: var(--text-main);
-      line-height: 1.4;
-    }
-
-    .card-content p {
-      color: var(--text-muted);
-      font-size: 13px;
-      margin-bottom: 8px;
-      line-height: 1.5;
-    }
-
-    .price {
-      color: var(--accent);
+    /* Badge */
+    .card-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 2;
+      font-size: 10px;
       font-weight: 700;
-      font-size: 16px;
-      margin-bottom: 14px;
-      text-shadow: 0 0 10px var(--accent-glow);
       letter-spacing: 0.5px;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 3px;
+    }
+    .badge-new { background: var(--badge-new); color: #fff; }
+    .badge-hot { background: #e53935; color: #fff; }
+    .badge-deal { background: var(--accent-2); color: #000; }
+
+    /* Image container */
+    .card-img-wrap {
+      background: var(--bg-page);
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 190px;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+    [data-theme="light"] .card-img-wrap { background: #f5f7fa; }
+
+    .card-img-wrap img,
+    .card-img-wrap .main-image {
+      max-width: 100%;
+      max-height: 160px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      transition: transform 0.3s ease;
     }
 
-    .btn {
-      display: inline-block;
-      padding: 9px 20px;
-      background: var(--maroon);
+    .card:hover .card-img-wrap img,
+    .card:hover .card-img-wrap .main-image { transform: scale(1.06); }
+
+    /* Thumbnail strip */
+    .thumbnails {
+      display: flex;
+      gap: 4px;
+      padding: 6px 10px;
+      background: var(--bg-page);
+      border-bottom: 1px solid var(--border);
+      justify-content: center;
+    }
+    [data-theme="light"] .thumbnails { background: #f0f2f7; }
+
+    .thumb {
+      width: 38px;
+      height: 38px;
+      object-fit: contain;
+      border-radius: 3px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      background: var(--bg-card);
+      padding: 2px;
+      transition: border-color 0.15s;
+    }
+    .thumb.active, .thumb:hover { border-color: var(--accent); }
+
+    /* Card body */
+    .card-body {
+      padding: 14px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Brand tag */
+    .card-brand {
+      font-size: 11px;
+      font-weight: 600;
       color: var(--accent);
-      text-decoration: none;
-      border-radius: 4px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+
+    .card-body h3 {
       font-size: 13px;
       font-weight: 600;
-      letter-spacing: 1px;
-      border: 1px solid var(--maroon-light);
-      transition: background .3s, box-shadow .3s, border-color .3s;
+      color: var(--text-1);
+      line-height: 1.4;
+      margin-bottom: 8px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
 
-    .btn:hover {
-      background: var(--accent);
-      color: var(--bg-deep);
-      border-color: var(--accent);
-      box-shadow: 0 0 18px var(--accent-glow);
-    }
-
-    .details-btn {
-      display: inline-block;
-      margin-top: 6px;
-      margin-bottom: 10px;
-      padding: 7px 15px;
-      border: 1px solid var(--maroon-light);
-      background: transparent;
-      color: var(--maroon-light);
-      border-radius: 4px;
-      cursor: pointer;
+    .short-desc {
       font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      transition: all .3s;
-    }
-
-    .details-btn:hover {
-      background: var(--maroon);
-      color: var(--accent);
-      border-color: var(--accent);
+      color: var(--text-2);
+      line-height: 1.5;
+      margin-bottom: 8px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
 
     .full-desc {
       display: none;
-      color: var(--text-muted);
-      margin-top: 8px;
-      font-size: 13px;
+      font-size: 12px;
+      color: var(--text-2);
       line-height: 1.6;
-      border-left: 2px solid var(--maroon-mid);
-      padding-left: 10px;
+      margin-bottom: 8px;
+      padding: 8px;
+      background: var(--bg-page);
+      border-left: 2px solid var(--accent);
+      border-radius: 3px;
     }
 
-    /* ── Multi-image Gallery ─────────────────────────────────── */
-    .product-gallery {
-      width: 100%;
+    .details-btn {
+      background: none;
+      border: none;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 0;
+      margin-bottom: 10px;
+      text-align: left;
+      font-family: 'Inter', sans-serif;
+      transition: color 0.15s;
+      text-decoration: underline;
+      text-underline-offset: 2px;
     }
+    .details-btn:hover { color: var(--accent-h); }
 
-    .main-image {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      border-radius: 8px 8px 0 0;
-      transition: transform .4s;
-      display: block;
-    }
-
-    .card:hover .main-image {
-      transform: scale(1.03);
-    }
-
-    .thumbnails {
+    /* Star rating row */
+    .card-rating {
       display: flex;
-      gap: 6px;
-      padding: 8px 10px;
-      background: rgba(0, 0, 0, 0.3);
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 10px;
+    }
+    .stars { color: var(--accent-2); font-size: 12px; letter-spacing: 1px; }
+    .rating-count { font-size: 11px; color: var(--text-2); }
+
+    /* Specs tags */
+    .card-specs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-bottom: 12px;
+    }
+    .spec-tag {
+      background: var(--tag-bg);
+      color: var(--tag-txt);
+      font-size: 10px;
+      font-weight: 600;
+      padding: 3px 7px;
+      border-radius: 3px;
+      letter-spacing: 0.3px;
+    }
+    [data-theme="light"] .spec-tag { background: #e8f0fe; color: #0050a0; }
+
+    /* Pricing */
+    .card-price-row {
+      margin-top: auto;
+      padding-top: 10px;
+      border-top: 1px solid var(--border);
     }
 
-    .thumb {
-      width: 48px;
-      height: 48px;
-      object-fit: cover;
+    .price-main {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--price);
+      font-family: 'Barlow Condensed', sans-serif;
+      letter-spacing: 0.5px;
+    }
+
+    .price-was {
+      font-size: 11px;
+      color: var(--old-price);
+      text-decoration: line-through;
+      margin-top: 1px;
+    }
+
+    .price-save {
+      font-size: 11px;
+      color: var(--red);
+      font-weight: 600;
+    }
+
+    /* Buy button */
+    .card-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .btn-buy {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 10px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      border: none;
       border-radius: 4px;
       cursor: pointer;
-      opacity: 0.55;
-      border: 2px solid transparent;
-      transition: all .25s;
+      transition: background 0.2s;
+      text-decoration: none;
+      letter-spacing: 0.3px;
+    }
+    .btn-buy:hover { background: var(--accent-h); }
+
+    .btn-wishlist {
+      width: 38px;
+      height: 38px;
+      background: var(--bg-page);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--text-2);
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+    .btn-wishlist:hover { border-color: var(--red); color: var(--red); }
+
+    /* ═══════════════════════════════════════════
+       LIST VIEW CARD
+    ═══════════════════════════════════════════ */
+    .products.list-view .card {
+      flex-direction: row;
+    }
+    .products.list-view .card-img-wrap {
+      width: 200px;
+      flex-shrink: 0;
+      height: auto;
+      min-height: 160px;
+      border-bottom: none;
+      border-right: 1px solid var(--border);
+    }
+    .products.list-view .card-body { padding: 18px; }
+    .products.list-view .card-body h3 {
+      font-size: 15px;
+      -webkit-line-clamp: 3;
+    }
+    .products.list-view .thumbnails { display: none; }
+    .products.list-view .card-badge { top: 12px; left: 12px; }
+
+    /* ═══════════════════════════════════════════
+       SECTION HEADINGS
+    ═══════════════════════════════════════════ */
+    .section-heading {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--border);
     }
 
-    .thumb:hover {
-      opacity: 1;
-      transform: scale(1.08);
+    .sh-accent {
+      width: 4px;
+      height: 26px;
+      background: var(--accent);
+      border-radius: 2px;
+      flex-shrink: 0;
     }
 
-    .thumb.active {
-      opacity: 1;
-      border-color: var(--accent);
-      box-shadow: 0 0 10px var(--accent-glow);
+    .section-heading h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: var(--text-1);
     }
 
-    /* ── Loading Spinner ─────────────────────────────────────── */
+    /* ═══════════════════════════════════════════
+       LOADING
+    ═══════════════════════════════════════════ */
     .loading-overlay {
       text-align: center;
-      padding: 40px;
-      color: var(--text-muted);
-      font-size: 14px;
+      padding: 60px;
+      color: var(--text-2);
+      font-size: 13px;
     }
 
     .spinner {
       display: inline-block;
-      width: 32px;
-      height: 32px;
-      border: 3px solid var(--maroon-mid);
+      width: 28px; height: 28px;
+      border: 2px solid var(--border);
       border-top-color: var(--accent);
       border-radius: 50%;
-      animation: spin .7s linear infinite;
+      animation: spin 0.7s linear infinite;
       margin-bottom: 12px;
     }
+    @keyframes spin { to { transform: rotate(360deg); } }
 
-    @keyframes spin {
-      to { transform: rotate(360deg); }
+    /* ═══════════════════════════════════════════
+       ABOUT / FOOTER
+    ═══════════════════════════════════════════ */
+    .about-section {
+      background: var(--bg-card);
+      border-top: 3px solid var(--accent-2);
+      padding: 48px 24px;
+      max-width: 1400px;
+      margin: 0 auto;
     }
 
-    /* ── About Section ───────────────────────────────────────── */
-    .about {
-      text-align: center;
-      padding: 80px 20px;
-      background: linear-gradient(180deg, var(--bg-deep) 0%, #1a040b 100%);
-      border-top: 1px solid var(--border);
-      position: relative;
-      overflow: hidden;
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 48px;
+      align-items: center;
     }
 
-    .about::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 600px;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    .about-text h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 40px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: var(--text-1);
+      margin-bottom: 14px;
+    }
+    .about-text h2 em { font-style: normal; color: var(--accent-2); }
+
+    .about-text p {
+      color: var(--text-2);
+      font-size: 14px;
+      line-height: 1.75;
+      margin-bottom: 24px;
     }
 
-    .about h2 {
-      margin-bottom: 16px;
-      font-family: 'Playfair Display', serif;
-      font-size: 32px;
-      color: var(--accent);
-      text-shadow: 0 0 22px var(--accent-glow);
+    .about-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
     }
 
-    .about p {
-      max-width: 580px;
-      margin: auto;
-      color: var(--text-muted);
-      line-height: 1.8;
-      font-size: 15px;
+    .about-feat {
+      background: var(--bg-page);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 16px;
+      transition: border-color 0.2s;
     }
+    .about-feat:hover { border-color: var(--accent); }
+    .about-feat-icon { font-size: 22px; margin-bottom: 8px; }
+    .about-feat-title { font-size: 13px; font-weight: 700; color: var(--text-1); margin-bottom: 4px; }
+    .about-feat-desc { font-size: 12px; color: var(--text-2); line-height: 1.5; }
 
-    /* ── Footer ──────────────────────────────────────────────── */
     footer {
-      text-align: center;
-      padding: 22px;
-      background: var(--bg-header);
-      color: var(--text-muted);
-      font-size: 13px;
+      background: var(--bg-topbar);
       border-top: 1px solid var(--border);
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
     }
 
-    /* ── Admin Panel ─────────────────────────────────────────── */
+    .footer-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: var(--accent-2);
+    }
+
+    .footer-copy { font-size: 12px; color: #5a7090; }
+    .footer-hint { font-size: 11px; color: #3a4a60; font-family: monospace; }
+
+    /* ═══════════════════════════════════════════
+       ADMIN PANEL
+    ═══════════════════════════════════════════ */
     #admin-panel {
       display: none;
       position: fixed;
       inset: 0;
       z-index: 9999;
-      background: rgba(0, 0, 0, 0.88);
+      background: rgba(0,0,0,0.88);
       backdrop-filter: blur(8px);
       align-items: center;
       justify-content: center;
     }
-
-    #admin-panel.open {
-      display: flex;
-    }
+    #admin-panel.open { display: flex; }
 
     .admin-box {
       background: var(--bg-card);
       border: 1px solid var(--accent);
-      border-radius: 12px;
-      padding: 36px 32px;
+      border-radius: 8px;
+      padding: 36px 28px;
       width: 100%;
-      max-width: 540px;
+      max-width: 500px;
       max-height: 92vh;
       overflow-y: auto;
-      box-shadow: 0 0 60px var(--accent-glow);
+      box-shadow: 0 0 60px rgba(0,113,206,0.3), 0 24px 80px rgba(0,0,0,0.8);
       position: relative;
     }
 
     .admin-close {
       position: absolute;
-      top: 14px;
-      right: 16px;
-      background: rgba(0, 0, 0, 0.4);
-      border: 1px solid var(--maroon-mid);
-      color: var(--text-muted);
-      font-size: 18px;
+      top: 12px; right: 12px;
+      background: var(--bg-page);
+      border: 1px solid var(--border);
+      color: var(--text-2);
+      font-size: 15px;
       cursor: pointer;
       border-radius: 50%;
-      width: 32px;
-      height: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all .2s;
+      width: 28px; height: 28px;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s;
     }
+    .admin-close:hover { color: #e53935; border-color: #e53935; }
 
-    .admin-close:hover {
+    .admin-login-screen h2, .admin-content-screen h2 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: 2px;
       color: var(--accent);
-      border-color: var(--accent);
-    }
-
-    .admin-login-screen {
+      margin-bottom: 22px;
       text-align: center;
     }
 
-    .admin-login-screen h2 {
-      font-family: Orbitron, sans-serif;
-      font-size: 20px;
-      color: var(--accent);
-      margin-bottom: 24px;
-      letter-spacing: 2px;
-    }
+    .admin-login-screen { text-align: center; }
 
     .admin-login-screen input {
       width: 100%;
-      padding: 12px 16px;
-      margin-bottom: 14px;
-      border-radius: 8px;
-      border: 1px solid var(--maroon-mid);
-      background: rgba(0, 0, 0, 0.5);
-      color: var(--text-main);
+      padding: 11px 14px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid var(--border);
+      background: var(--bg-input);
+      color: var(--text-1);
       font-size: 14px;
       outline: none;
-      font-family: Poppins, sans-serif;
-      transition: border-color .25s;
+      font-family: 'Inter', sans-serif;
+      transition: border-color 0.2s;
     }
-
-    .admin-login-screen input:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 10px var(--accent-glow);
-    }
+    .admin-login-screen input:focus { border-color: var(--accent); }
 
     .login-btn {
       width: 100%;
-      padding: 13px;
-      background: linear-gradient(135deg, var(--accent), #e8a000);
-      color: var(--bg-deep);
+      padding: 12px;
+      background: var(--accent);
+      color: #fff;
       border: none;
-      border-radius: 8px;
-      font-family: Orbitron, sans-serif;
-      font-size: 13px;
+      border-radius: 5px;
+      font-size: 14px;
       font-weight: 700;
-      letter-spacing: 1px;
       cursor: pointer;
-      transition: box-shadow .3s, transform .2s;
-      margin-top: 6px;
+      transition: background 0.2s;
+      font-family: 'Inter', sans-serif;
     }
+    .login-btn:hover { background: var(--accent-h); }
 
-    .login-btn:hover {
-      box-shadow: 0 0 24px var(--accent-glow);
-      transform: scale(1.02);
-    }
+    .login-error { color: #e53935; font-size: 12px; margin-top: 8px; display: none; }
+    .admin-content-screen { display: none; }
 
-    .login-error {
-      color: #ff6b6b;
-      font-size: 13px;
-      margin-top: 10px;
-      display: none;
+    .logout-btn {
+      position: absolute; top: 12px; left: 12px;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-3);
+      font-size: 11px;
+      cursor: pointer;
+      border-radius: 4px;
+      padding: 4px 10px;
+      font-family: monospace;
+      transition: all 0.2s;
     }
-
-    .admin-content-screen {
-      display: none;
-    }
-
-    .admin-content-screen h2 {
-      font-family: Orbitron, sans-serif;
-      font-size: 18px;
-      color: var(--accent);
-      margin-bottom: 24px;
-      letter-spacing: 2px;
-    }
+    .logout-btn:hover { border-color: #e53935; color: #e53935; }
 
     .admin-tabs {
       display: flex;
-      margin-bottom: 24px;
-      border-radius: 6px;
+      margin-bottom: 20px;
+      border-radius: 5px;
       overflow: hidden;
-      border: 1px solid var(--maroon-mid);
+      border: 1px solid var(--border);
     }
-
     .admin-tab {
-      flex: 1;
-      padding: 10px;
+      flex: 1; padding: 9px;
       background: transparent;
       border: none;
-      color: var(--text-muted);
-      font-family: Orbitron, sans-serif;
-      font-size: 11px;
-      letter-spacing: 1px;
-      cursor: pointer;
-      transition: all .2s;
+      color: var(--text-2);
+      font-family: 'Inter', sans-serif;
+      font-size: 12px; font-weight: 600;
+      cursor: pointer; transition: all 0.15s;
     }
+    .admin-tab.active { background: var(--accent); color: #fff; }
 
-    .admin-tab.active {
-      background: var(--accent);
-      color: var(--bg-deep);
-      font-weight: 700;
-    }
-
-    .admin-field {
-      margin-bottom: 16px;
-    }
-
+    .admin-field { margin-bottom: 12px; }
     .admin-field label {
       display: block;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 6px;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase;
+      color: var(--text-3); margin-bottom: 5px;
     }
-
-    .admin-field input,
-    .admin-field select,
-    .admin-field textarea {
+    .admin-field input, .admin-field select, .admin-field textarea {
       width: 100%;
-      padding: 10px 14px;
-      background: rgba(0, 0, 0, 0.4);
-      border: 1px solid var(--maroon-mid);
-      border-radius: 6px;
-      color: var(--text-main);
+      padding: 9px 12px;
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      color: var(--text-1);
       font-size: 13px;
-      font-family: Poppins, sans-serif;
+      font-family: 'Inter', sans-serif;
       outline: none;
-      transition: border-color .25s;
+      transition: border-color 0.2s;
     }
-
-    .admin-field input:focus,
-    .admin-field select:focus,
-    .admin-field textarea:focus {
-      border-color: var(--accent);
-    }
-
-    .admin-field textarea {
-      resize: vertical;
-      min-height: 70px;
-    }
-
-    .admin-field select option {
-      background: var(--bg-card);
-    }
+    .admin-field input:focus, .admin-field select:focus, .admin-field textarea:focus { border-color: var(--accent); }
+    .admin-field textarea { min-height: 72px; resize: vertical; }
 
     .add-thumb-btn {
-      margin-top: 6px;
-      padding: 6px 14px;
-      background: transparent;
-      border: 1px solid var(--maroon-light);
-      color: var(--maroon-light);
-      border-radius: 4px;
-      font-size: 12px;
-      cursor: pointer;
-      transition: all .25s;
+      margin-top: 6px; padding: 6px 12px;
+      background: transparent; border: 1px dashed var(--border);
+      border-radius: 4px; color: var(--text-3);
+      font-size: 12px; cursor: pointer;
+      transition: all 0.2s; font-family: 'Inter', sans-serif;
     }
-
-    .add-thumb-btn:hover {
-      background: var(--maroon);
-      color: var(--accent);
-      border-color: var(--accent);
-    }
+    .add-thumb-btn:hover { border-color: var(--accent); color: var(--accent); }
 
     .admin-submit {
-      width: 100%;
-      padding: 12px;
-      background: var(--accent);
-      color: var(--bg-deep);
-      border: none;
-      border-radius: 6px;
-      font-family: Orbitron, sans-serif;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      cursor: pointer;
-      margin-top: 8px;
-      transition: box-shadow .3s;
+      width: 100%; margin-top: 6px; padding: 12px;
+      background: var(--accent); color: #fff;
+      border: none; border-radius: 5px;
+      font-size: 14px; font-weight: 700;
+      cursor: pointer; font-family: 'Inter', sans-serif;
+      transition: background 0.2s;
     }
-
-    .admin-submit:hover {
-      box-shadow: 0 0 24px var(--accent-glow);
-    }
+    .admin-submit:hover { background: var(--accent-h); }
 
     .admin-msg {
-      text-align: center;
-      margin-top: 12px;
-      font-size: 13px;
-      color: var(--accent);
-      display: none;
-    }
-
-    .logout-btn {
-      padding: 7px 16px;
-      background: transparent;
-      border: 1px solid var(--maroon-light);
-      color: var(--maroon-light);
-      border-radius: 4px;
-      font-size: 12px;
-      cursor: pointer;
-      transition: all .2s;
-      margin-bottom: 20px;
-      float: right;
-    }
-
-    .logout-btn:hover {
-      background: var(--maroon);
-      color: var(--accent);
-      border-color: var(--accent);
-    }
-
-    #edit-list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      max-height: 400px;
-      overflow-y: auto;
+      display: none; padding: 9px 12px;
+      background: rgba(0,113,206,0.12);
+      border: 1px solid rgba(0,113,206,0.3);
+      border-radius: 4px; color: var(--accent);
+      font-size: 12px; margin-top: 8px; text-align: center;
     }
 
     .edit-item {
-      background: rgba(0, 0, 0, 0.3);
-      border: 1px solid var(--maroon-mid);
-      border-radius: 8px;
-      padding: 12px 14px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px; background: var(--bg-page);
+      border-radius: 5px; margin-bottom: 8px;
+      border: 1px solid var(--border);
     }
-
     .edit-item img {
-      width: 54px;
-      height: 54px;
-      object-fit: cover;
-      border-radius: 6px;
-      flex-shrink: 0;
-      border: 1px solid var(--maroon-mid);
-    }
-
-    .edit-item-info {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .edit-item-info strong {
-      display: block;
-      color: var(--text-main);
-      font-size: 13px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .edit-item-info span {
-      color: var(--text-muted);
-      font-size: 11px;
-    }
-
-    .edit-item-btns {
-      display: flex;
-      gap: 6px;
+      width: 48px; height: 48px;
+      object-fit: contain; border-radius: 4px;
+      background: var(--bg-card); padding: 2px;
       flex-shrink: 0;
     }
-
+    .edit-item-info { flex: 1; min-width: 0; }
+    .edit-item-info strong { display: block; color: var(--text-1); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .edit-item-info span { color: var(--text-2); font-size: 11px; }
+    .edit-item-btns { display: flex; gap: 5px; flex-shrink: 0; }
     .edit-btn {
-      padding: 6px 12px;
-      border-radius: 4px;
-      font-size: 11px;
-      font-weight: 700;
-      cursor: pointer;
-      letter-spacing: 1px;
-      border: 1px solid;
-      transition: all .2s;
+      padding: 4px 9px; border-radius: 3px;
+      font-size: 11px; font-weight: 700;
+      cursor: pointer; border: 1px solid; transition: all 0.15s;
+      font-family: 'Inter', sans-serif;
     }
+    .edit-btn.edit { background: transparent; color: var(--accent); border-color: var(--accent); }
+    .edit-btn.edit:hover { background: var(--accent); color: #fff; }
+    .edit-btn.del { background: transparent; color: #e53935; border-color: #e53935; }
+    .edit-btn.del:hover { background: #e53935; color: #fff; }
+    #edit-empty { text-align: center; color: var(--text-3); font-size: 13px; padding: 28px 0; }
 
-    .edit-btn.edit {
-      background: transparent;
-      color: var(--accent);
-      border-color: var(--accent);
+    /* ═══════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════ */
+    @media (max-width: 960px) {
+      .hero-image-area { display: none; }
+      .sidebar { display: none; }
+      .main-layout { padding: 16px; }
     }
-
-    .edit-btn.edit:hover {
-      background: var(--accent);
-      color: var(--bg-deep);
-    }
-
-    .edit-btn.del {
-      background: transparent;
-      color: var(--maroon-light);
-      border-color: var(--maroon-light);
-    }
-
-    .edit-btn.del:hover {
-      background: var(--maroon-light);
-      color: #fff;
-    }
-
-    #edit-empty {
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 13px;
-      padding: 30px 0;
-    }
-
-    /* ── Mobile ──────────────────────────────────────────────── */
     @media (max-width: 768px) {
-
-      header {
-        flex-direction: column;
-        gap: 14px;
-        padding: 14px;
-        text-align: center;
-      }
-
-      nav {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 12px;
-      }
-
-      nav a {
-        margin-left: 0;
-      }
-
-      .hero {
-        padding: 60px 15px 50px;
-      }
-
-      .hero h1 {
-        font-size: 28px;
-      }
-
-      .section {
-        padding: 40px 15px;
-      }
-
-      .products {
-        grid-template-columns: 1fr;
-      }
-
+      header { height: 56px; gap: 12px; padding: 0 12px; }
+      .logo-box { font-size: 18px; padding: 3px 8px; }
+      .logo-text { font-size: 20px; }
+      .header-search { max-width: none; }
+      .h-action-btn span:not(.h-action-icon) { display: none; }
+      .topbar { display: none; }
+      .hero { padding: 0 16px; min-height: 200px; }
+      .hero h1 { font-size: 40px; }
+      .products { grid-template-columns: 1fr 1fr; }
+      .about-grid { grid-template-columns: 1fr; gap: 24px; }
+      .about-features { grid-template-columns: 1fr 1fr; }
     }
-
-    html { scroll-behavior: smooth; }
-    button, a { -webkit-tap-highlight-color: transparent; }
+    @media (max-width: 480px) {
+      .products { grid-template-columns: 1fr; }
+      .about-features { grid-template-columns: 1fr; }
+    }
 
   </style>
 </head>
 <body>
 
-  <!-- ── Header ────────────────────────────────────────────── -->
+  <!-- ── Top Bar ──────────────────────────────────────────────── -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <div class="topbar-item">📦 <span>Fast Delivery on All Orders</span></div>
+      <div class="topbar-item">🌍 <span>17 Currencies Auto-Detected</span></div>
+      <div class="topbar-item">✅ <span>Trusted Affiliate Partners</span></div>
+    </div>
+    <div class="topbar-right">
+      <span id="zn-badge" style="display:none"></span>
+      <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn">
+        <div class="toggle-track" id="toggle-track">
+          <div class="toggle-thumb"></div>
+        </div>
+        <span id="theme-label">☀ Light</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ── Header ──────────────────────────────────────────────── -->
   <header>
-    <div class="logo">Zenova</div>
-    <nav>
-      <a onclick="openSection('home')">Home</a>
-      <a onclick="openSection('beauty')">Beauty</a>
-      <a onclick="openSection('tech')">Tech</a>
-      <a onclick="openSection('gaming')">Gaming</a>
-      <a href="#about">About</a>
-    </nav>
-    <!-- Currency badge is injected here automatically by JS -->
+    <div class="logo">
+      <div class="logo-box">Z</div>
+      <div>
+        <div class="logo-text">ZENOVA</div>
+        <div class="logo-sub">Tech Store</div>
+      </div>
+    </div>
+
+    <div class="header-search">
+      <input type="text" placeholder="Search laptops, headsets, mice, keyboards..." id="global-search" oninput="globalSearch(this)">
+      <button class="search-btn">🔍</button>
+    </div>
+
+    <div class="header-actions">
+      <span id="header-badge"></span>
+      <button class="h-action-btn" onclick="document.getElementById('admin-panel').classList.add('open')">
+        <span class="h-action-icon">⚙</span>
+        <span>Admin</span>
+      </button>
+    </div>
   </header>
 
-  <!-- ── Hero ──────────────────────────────────────────────── -->
+  <!-- ── Nav Bar ─────────────────────────────────────────────── -->
+  <nav class="navbar">
+    <button class="nav-item active" onclick="filterCat('all', this)">🗂 All Products</button>
+    <button class="nav-item" onclick="filterCat('peripherals', this)">⌨ Peripherals</button>
+    <button class="nav-item" onclick="filterCat('audio', this)">🎧 Audio</button>
+    <button class="nav-item" onclick="filterCat('computers', this)">💻 Computers</button>
+    <button class="nav-item" onclick="filterCat('accessories', this)">🖱 Accessories</button>
+    <button class="nav-item" onclick="filterCat('gaming', this)">🎮 Gaming</button>
+    <button class="nav-item" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">ℹ About</button>
+  </nav>
+
+  <!-- ── Hero ────────────────────────────────────────────────── -->
   <section class="hero">
-    <h1>Welcome to Zenova</h1>
-    <p>Beauty, Tech & Gaming — All in One Place</p>
-    <button onclick="openSection('home')">Shop Now</button>
-    <div class="tabs">
-      <button class="tab-btn" onclick="openSection('beauty')">Beauty</button>
-      <button class="tab-btn" onclick="openSection('tech')">Tech</button>
-      <button class="tab-btn" onclick="openSection('gaming')">Gaming</button>
+    <div class="hero-content">
+      <div class="hero-eyebrow">⚡ Zenova Tech Store — 2026</div>
+      <h1>GEAR UP.<br><em>LEVEL UP.</em></h1>
+      <p>Top-tier tech at competitive prices. Laptops, gaming peripherals, headsets, accessories — all in your local currency.</p>
+      <button class="hero-cta" onclick="document.getElementById('products-section').scrollIntoView({behavior:'smooth'})">
+        🛒 Shop Now
+      </button>
+      <div class="hero-badges">
+        <div class="hero-badge"><span class="hero-badge-icon">🔒</span> Secure Links</div>
+        <div class="hero-badge"><span class="hero-badge-icon">💱</span> Auto Currency</div>
+        <div class="hero-badge"><span class="hero-badge-icon">⭐</span> Verified Products</div>
+      </div>
+    </div>
+    <div class="hero-image-area">
+      <div class="hero-stat-card">
+        <div class="hero-stat-num">15+</div>
+        <div class="hero-stat-lbl">Products</div>
+      </div>
+      <div class="hero-stat-card">
+        <div class="hero-stat-num">17</div>
+        <div class="hero-stat-lbl">Currencies</div>
+      </div>
+      <div class="hero-stat-card">
+        <div class="hero-stat-num">24/7</div>
+        <div class="hero-stat-lbl">Online</div>
+      </div>
     </div>
   </section>
 
-  <!-- ── Home — All Products ───────────────────────────────── -->
-  <section class="section active" id="home">
-    <h2>All Products</h2>
-    <input type="text" class="search-bar" placeholder="Search products..." oninput="searchProducts(this)">
-    <div class="loading-overlay" id="home-loading">
-      <div class="spinner"></div><br>Loading products...
+  <!-- ── Promo Strip ─────────────────────────────────────────── -->
+  <div class="promo-strip">
+    <div class="promo-item">
+      <div class="promo-icon">🚚</div>
+      <div class="promo-text">
+        <strong>Fast Affiliate Links</strong>
+        <span>Direct to Temu · Alibaba · More</span>
+      </div>
     </div>
-    <div class="products" id="home-products"></div>
-  </section>
-
-  <!-- ── Beauty ────────────────────────────────────────────── -->
-  <section class="section" id="beauty">
-    <h2>Beauty Products</h2>
-    <input type="text" class="search-bar" placeholder="Search beauty products..." oninput="searchProducts(this)">
-    <div class="products" id="beauty-products">
-
-      <div class="card">
-        <img crossorigin="anonymous" src="https://img.kwcdn.com/product/fancy/c6c11aec-30ce-4a25-b5e2-18d8b9fb6d12.jpg?imageView2/2/w/1300/q/90/format/avif">
-        <div class="card-content">
-          <h3>NAILS FOR EASTER</h3>
-          <p class="short-desc">24pcs Easter Theme Fake Nail Set, Macaron Bunny Design</p>
-          <p class="full-desc">Glossy Finish, 12 Sizes with Jelly Glue and Nail File, Artistic False Nails for Girls and Women</p>
-          <button class="details-btn" onclick="toggleDetails(this)">Details</button>
-          <div class="price">Rs.531</div>
-          <a href="https://share.temu.com/p4VuXYgXsEB" class="btn" target="_blank">Buy Now</a>
-        </div>
+    <div class="promo-item">
+      <div class="promo-icon">💱</div>
+      <div class="promo-text">
+        <strong>Auto Currency</strong>
+        <span>17 countries detected automatically</span>
       </div>
-
-      <div class="card">
-        <img crossorigin="anonymous" src="https://img.kwcdn.com/product/fancy/41f85bba-b3b3-4533-9f33-b0ed6a1cbbe1.jpg?imageView2/2/w/800/q/70/format/avif">
-        <div class="card-content">
-          <h3>King Love Beauty</h3>
-          <p class="short-desc">Vitamin C Sunscreen with SPF60, waterproof and moisturizing</p>
-          <p class="full-desc">150g Vitamin C Sunscreen, Broad Spectrum SPF60PA+++, Suitable for Dry and Oily Skin, Moisturizing Formula, Waterproof Protection</p>
-          <button class="details-btn" onclick="toggleDetails(this)">Details</button>
-          <div class="price">Rs.2755</div>
-          <a href="https://share.temu.com/mDNnjKj9S7B" class="btn" target="_blank">Buy Now</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <img crossorigin="anonymous" src="https://img.kwcdn.com/product/fancy/5cf28654-2751-4f28-a410-f6567430330b.jpg?imageView2/2/w/800/q/70/format/avif">
-        <div class="card-content">
-          <h3>Clarity Isolation Protection Cream</h3>
-          <p class="short-desc">Clear And Non-Irritating Isolation Protection</p>
-          <p class="full-desc">Essential for Going Out, Moisturizing And Clear Facial Sunscreen</p>
-          <button class="details-btn" onclick="toggleDetails(this)">Details</button>
-          <div class="price">Rs.983</div>
-          <a href="https://share.temu.com/JiaAMDViAPB" class="btn" target="_blank">Buy Now</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <img crossorigin="anonymous" src="https://img.kwcdn.com/product/fancy/ba46f935-de74-4468-bba6-7cfaa9affe27.jpg?imageView2/2/w/800/q/70/format/avif">
-        <div class="card-content">
-          <h3>Red Cat Eye Fake Nails</h3>
-          <p class="short-desc">10pcs of Red Cat-Eye Short Square Fake Nails</p>
-          <p class="full-desc">Glossy Acrylic Nails, Reusable Acrylic Home Nails Suitable for Autumn And Winter Nail Decoration</p>
-          <button class="details-btn" onclick="toggleDetails(this)">Details</button>
-          <div class="price">Rs.331</div>
-          <a href="https://share.temu.com/d64lMod7mtB" class="btn" target="_blank">Buy Now</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <img crossorigin="anonymous" src="https://img.kwcdn.com/product/fancy/f6ff69c8-8eb4-4dae-9d89-1beac4470597.jpg?imageView2/2/w/800/q/70/format/avif">
-        <div class="card-content">
-          <h3>Easter Bunny False Nails</h3>
-          <p class="short-desc">24pcs Easter Pastel Bunny False Nails</p>
-          <p class="full-desc">Polka Dot Stripe Cute Artificial Nails, Suitable for Women's Spring and Summer Decorative Styling</p>
-          <button class="details-btn" onclick="toggleDetails(this)">Details</button>
-          <div class="price">Rs.682</div>
-          <a href="https://share.temu.com/zi8og73hl8B" class="btn" target="_blank">Buy Now</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <img crossorigin="anonymous" src="https://img.kwcdn.com/product/fancy/f5707130-079b-4ab2-aa98-03a60dff3abb.jpg?imageView2/2/w/800/q/70/format/avif">
-        <div class="card-content">
-          <h3>Tanning Oil</h3>
-          <p class="short-desc">100Ml Coconut Tanning Oil, Waterproof And Long-Lasting Tan</p>
-          <p class="full-desc">Suitable for Indoor Use, with Moisturizing And Hydrating Properties. Free from Oxybenzone</p>
-          <button class="details-btn" onclick="toggleDetails(this)">Details</button>
-          <div class="price">Rs.2837</div>
-          <a href="https://share.temu.com/ymgAKWDK8FB" class="btn" target="_blank">Buy Now</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <img crossorigin="anonymous" src="https://s.alicdn.com/@sc04/kf/H1d2213e1d17e42d3b64cde39adbeaf76b.jpg?avif=close&webp=close">
-        <div class="card-content">
-          <h3>Natural Keratin Hair Treatment</h3>
-          <p class="short-desc">Brazilian Natural Keratin Hair Treatment</p>
-          <p class="full-desc">Wholesale by Carton 800ml Hair Smoothing Cream Product</p>
-          <button class="details-btn" onclick="toggleDetails(this)">Details</button>
-          <div class="price">Rs.20241</div>
-          <a href="https://offer.alibaba.com/cps/0ciah0q6?bm=cps&src=saf&productId=1601418772610" class="btn" target="_blank">Buy Now</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <img crossorigin="anonymous" src="https://s.alicdn.com/@sc04/kf/H23f7a5c36f1b4c58a6648e771ecd1dc65.jpg?avif=close&webp=close">
-        <div class="card-content">
-          <h3>OEM Waterproof Root Touch Up Hair</h3>
-          <p class="short-desc">OEM Waterproof Root Touch up Hair Dye Stick</p>
-          <p class="full-desc">2 in 1 Comb & Color Quick Gray Hair Cover Up, Ammonia Free Portable</p>
-          <button class="details-btn" onclick="toggleDetails(this)">Details</button>
-          <div class="price">Rs.258</div>
-          <a href="https://offer.alibaba.com/cps/0ciah0q6?bm=cps&src=saf&productId=1601594093666" class="btn" target="_blank">Buy Now</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <img crossorigin="anonymous" src="https://s.alicdn.com/@sc04/kf/H6c4a7006354d487890e4a19212aa92b4S.jpg?avif=close&webp=close">
-        <div class="card-content">
-          <h3>OEM Shampoo</h3>
-          <p class="short-desc">OEM Shampoo Manufacturers</p>
-          <p class="full-desc">Rosemary Extract Peppermint Oil Refreshing Oil-Control Rosemary Shampoo</p>
-          <button class="details-btn" onclick="toggleDetails(this)">Details</button>
-          <div class="price">Rs.703</div>
-          <a href="https://offer.alibaba.com/cps/0ciah0q6?bm=cps&src=saf&productId=1601661844082" class="btn" target="_blank">Buy Now</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <img crossorigin="anonymous" src="https://s.alicdn.com/@sc04/kf/H8f83b699c6c644b99904a3d298e4f452a.jpg?avif=close&webp=close">
-        <div class="card-content">
-          <h3>Hair Dye Permanent Hair Color</h3>
-          <p class="short-desc">Organic Professional Salon Hair Dye</p>
-          <p class="full-desc">Professional Hair Dye Permanent Hair Color</p>
-          <button class="details-btn" onclick="toggleDetails(this)">Details</button>
-          <div class="price">Rs.314</div>
-          <a href="https://offer.alibaba.com/cps/0ciah0q6?bm=cps&src=saf&productId=1601252719587" class="btn" target="_blank">Buy Now</a>
-        </div>
-      </div>
-
     </div>
-  </section>
+    <div class="promo-item">
+      <div class="promo-icon">🔐</div>
+      <div class="promo-text">
+        <strong>Secure Shopping</strong>
+        <span>Trusted partner stores only</span>
+      </div>
+    </div>
+    <div class="promo-item">
+      <div class="promo-icon">📱</div>
+      <div class="promo-text">
+        <strong>Mobile Friendly</strong>
+        <span>Shop on any device</span>
+      </div>
+    </div>
+  </div>
 
-  <!-- ── Tech ──────────────────────────────────────────────── -->
-  <section class="section" id="tech">
-    <h2>Tech Products</h2>
-    <input type="text" class="search-bar" placeholder="Search tech products..." oninput="searchProducts(this)">
-    <div class="products" id="tech-products">
+  <!-- ── Main Layout ─────────────────────────────────────────── -->
+  <div class="main-layout" id="products-section">
 
-      <div class="card">
-        <img crossorigin="anonymous" src="https://img.kwcdn.com/product/fancy/061a9ef9-e1da-4160-8867-381e592eeb14.jpg?imageView2/2/w/800/q/70/format/avif">
-        <div class="card-content">
-          <h3>Luxurious Wrist Watch</h3>
-          <p class="short-desc">Premium design wrist watch</p>
-          <p class="full-desc">Elegant luxurious wrist watch with premium build quality</p>
-          <button class="details-btn" onclick="toggleDetails(this)">Details</button>
-          <div class="price">Rs.1078</div>
-          <a href="https://temu.to/k/e4qg5ggirqh" class="btn" target="_blank">Buy Now</a>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+      <div class="sidebar-block">
+        <div class="sidebar-title">Category</div>
+        <button class="filter-item active" onclick="filterCat('all', this)">All Products <span class="filter-count" id="cnt-all">15</span></button>
+        <button class="filter-item" onclick="filterCat('peripherals', this)">⌨ Peripherals <span class="filter-count" id="cnt-peripherals">4</span></button>
+        <button class="filter-item" onclick="filterCat('audio', this)">🎧 Audio <span class="filter-count" id="cnt-audio">3</span></button>
+        <button class="filter-item" onclick="filterCat('computers', this)">💻 Computers <span class="filter-count" id="cnt-computers">2</span></button>
+        <button class="filter-item" onclick="filterCat('accessories', this)">🖱 Accessories <span class="filter-count" id="cnt-accessories">3</span></button>
+        <button class="filter-item" onclick="filterCat('gaming', this)">🎮 Gaming <span class="filter-count" id="cnt-gaming">3</span></button>
+      </div>
+
+      <div class="sidebar-block">
+        <div class="sidebar-title">Price Range (Rs.)</div>
+        <div class="price-range">
+          <div class="price-input-row">
+            <input class="price-input" type="number" placeholder="Min" id="price-min">
+            <span class="price-sep">–</span>
+            <input class="price-input" type="number" placeholder="Max" id="price-max">
+          </div>
+          <button class="filter-apply" onclick="applyPriceFilter()">Apply Filter</button>
         </div>
       </div>
 
-      <div class="card">
-        <img crossorigin="anonymous" src="https://img.kwcdn.com/product/fancy/23ee47f1-48b3-40af-aa4a-655c2520a05c.jpg?imageView2/2/w/800/q/70/format/avif">
-        <div class="card-content">
-          <h3>OTG Extension Hub</h3>
-          <p class="short-desc">High-Speed USB 2.0 Hub - Expand Your Device</p>
-          <p class="full-desc">Connectivity with 4/7 Ports, LED Indicator Switches, Compact and Lightweight Design for PCs and Laptops</p>
-          <button class="details-btn" onclick="toggleDetails(this)">Details</button>
-          <div class="price">Rs.836</div>
-          <a href="https://share.temu.com/AFdBYqAWRVB" class="btn" target="_blank">Buy Now</a>
+      <div class="sidebar-block">
+        <div class="sidebar-title">Quick Filters</div>
+        <button class="filter-item" onclick="sortProducts('low')">Price: Low to High</button>
+        <button class="filter-item" onclick="sortProducts('high')">Price: High to Low</button>
+        <button class="filter-item" onclick="sortProducts('name')">Name: A–Z</button>
+      </div>
+
+    </aside>
+
+    <!-- Products Area -->
+    <div class="products-area">
+
+      <div class="section-heading">
+        <div class="sh-accent"></div>
+        <h2 id="section-title">All Tech Products</h2>
+      </div>
+
+      <div class="results-bar">
+        <div class="results-count">Showing <strong id="result-count">15</strong> products</div>
+        <div class="sort-row">
+          <span class="sort-label">Sort:</span>
+          <select class="sort-select" onchange="sortProducts(this.value)">
+            <option value="default">Featured</option>
+            <option value="low">Price: Low to High</option>
+            <option value="high">Price: High to Low</option>
+            <option value="name">Name: A–Z</option>
+          </select>
+          <div class="view-btns">
+            <button class="view-btn active" id="grid-btn" onclick="setView('grid')" title="Grid View">⊞</button>
+            <button class="view-btn" id="list-btn" onclick="setView('list')" title="List View">≡</button>
+          </div>
         </div>
       </div>
 
-      <div class="card">
-        <img crossorigin="anonymous" src="https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/f03bbd6536163de93d0273b8ffcf1eb3.jpg?imageView2/2/w/800/q/70/format/avif">
-        <div class="card-content">
-          <h3>RGB Gaming Mouse</h3>
-          <p class="short-desc">Silver Carved Mechanical Gaming Mouse</p>
-          <p class="full-desc">Wired, Suitable for Desktop And Laptop Use, Silent for Office And Esports</p>
-          <button class="details-btn" onclick="toggleDetails(this)">Details</button>
-          <div class="price">Rs.2570</div>
-          <a href="https://share.temu.com/GnNHeaUevAB" class="btn" target="_blank">Buy Now</a>
-        </div>
+      <div class="loading-overlay" id="home-loading">
+        <div class="spinner"></div><br>Loading products...
       </div>
 
-      <div class="card">
-        <img crossorigin="anonymous" src="https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/785405df6369d7bf47e59a2d173b23fe.jpg?imageView2/2/w/800/q/70/format/avif">
-        <div class="card-content">
-          <h3>Light Weight Gaming Wired Headphones</h3>
-          <p class="short-desc">7260 Wired Over-Ear Headset with Microphone</p>
-          <p class="full-desc">Compatible: PS4/PS5/Xbox One/SWITCH / Mobile Phones & PC Tablets, Lightweight, Noise Isolation</p>
-          <button class="details-btn" onclick="toggleDetails(this)">Details</button>
-          <div class="price">Rs.4131</div>
-          <a href="https://share.temu.com/nZQDkrPiHRB" class="btn" target="_blank">Buy Now</a>
-        </div>
-      </div>
+      <div class="products" id="home-products">
 
-      <div class="card">
-        <img crossorigin="anonymous" src="https://img.kwcdn.com/product/fancy/56097efe-6454-4ba5-958f-3c2a3ff12be2.jpg?imageView2/2/w/800/q/70/format/avif">
-        <div class="card-content">
-          <h3>USB Keyboard & Mouse Combo with Rainbow LED</h3>
-          <p class="short-desc">USB Wired Keyboard And Mouse Combo with Rainbow LED Backlighting</p>
-          <p class="full-desc">Suitable for PCs, Laptops, Gaming, Office Work, Mac, PS4, And Xbox</p>
-          <button class="details-btn" onclick="toggleDetails(this)">Details</button>
-          <div class="price">Rs.6885</div>
-          <a href="https://share.temu.com/dkZhvwqDeCB" class="btn" target="_blank">Buy Now</a>
-        </div>
-      </div>
+        <!-- PRODUCT CARDS -->
 
-      <div class="card">
-        <img crossorigin="anonymous" src="https://img.kwcdn.com/product/open/9e097c0b3a5647aa99d831a36e05a44c-goods.jpeg?imageView2/2/w/1300/q/90/format/avif">
-        <div class="card-content">
-          <h3>LED-Backlit Keyboard/Headset/Mouse Bundle</h3>
-          <p class="short-desc">Keyboard and Mouse Set Vibrant LED-Backlit</p>
-          <p class="full-desc">Keyboard/Headset/Mouse/Large Mouse Pad Gaming Peripherals Bundle for Gaming, Esports, Home and Office</p>
-          <button class="details-btn" onclick="toggleDetails(this)">Details</button>
-          <div class="price">Rs.12762</div>
-          <a href="https://share.temu.com/9yUjE3GyTiB" class="btn" target="_blank">Buy Now</a>
+        <div class="card" data-cat="peripherals" data-price-pkr="2570">
+          <span class="card-badge badge-hot">HOT</span>
+          <div class="card-img-wrap">
+            <img src="https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/f03bbd6536163de93d0273b8ffcf1eb3.jpg?imageView2/2/w/800/q/70/format/avif" alt="RGB Gaming Mouse" loading="lazy">
+          </div>
+          <div class="card-body">
+            <div class="card-brand">Gaming</div>
+            <h3>RGB Gaming Mouse — Silver Carved</h3>
+            <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-count">(84)</span></div>
+            <p class="short-desc">Wired mechanical mouse, silent for office & esports</p>
+            <p class="full-desc">Silver Carved Mechanical Gaming Mouse. Wired, Suitable for Desktop And Laptop Use, Silent for Office And Esports gaming sessions.</p>
+            <button class="details-btn" onclick="toggleDetails(this)">+ More Details</button>
+            <div class="card-specs">
+              <span class="spec-tag">Wired</span>
+              <span class="spec-tag">RGB</span>
+              <span class="spec-tag">Silent</span>
+            </div>
+            <div class="card-price-row">
+              <div class="price price-main">Rs.2,570</div>
+            </div>
+            <div class="card-actions">
+              <a href="https://share.temu.com/GnNHeaUevAB" class="btn-buy" target="_blank">🛒 Buy Now</a>
+              <button class="btn-wishlist">♡</button>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div class="card">
-        <img crossorigin="anonymous" src="https://img.kwcdn.com/product/fancy/0c806d17-6a96-4ed2-b501-dd7f9e09fb85.jpg?imageView2/2/w/800/q/70/format/avif">
-        <div class="card-content">
-          <h3>Black Luxurious Watch</h3>
-          <p class="short-desc">Women's Sparkling Rhinestone Quartz Watch</p>
-          <p class="full-desc">A 5pcs Set Featuring a Women's Sparkling Rhinestone Quartz Watch</p>
-          <button class="details-btn" onclick="toggleDetails(this)">Details</button>
-          <div class="price">Rs.398</div>
-          <a href="https://temu.to/k/eqtmqtnoyoy" class="btn" target="_blank">Buy Now</a>
+        <div class="card" data-cat="audio" data-price-pkr="4131">
+          <span class="card-badge badge-new">NEW</span>
+          <div class="card-img-wrap">
+            <img src="https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/785405df6369d7bf47e59a2d173b23fe.jpg?imageView2/2/w/800/q/70/format/avif" alt="Gaming Headset" loading="lazy">
+          </div>
+          <div class="card-body">
+            <div class="card-brand">Audio</div>
+            <h3>7.1 Surround Gaming Headset w/ Mic</h3>
+            <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-count">(120)</span></div>
+            <p class="short-desc">Lightweight over-ear wired headset with noise isolation</p>
+            <p class="full-desc">7260 Wired Over-Ear Headset with Microphone. Compatible: PS4/PS5/Xbox One/SWITCH/Mobile/PC. Lightweight, Noise Isolation for immersive gaming.</p>
+            <button class="details-btn" onclick="toggleDetails(this)">+ More Details</button>
+            <div class="card-specs">
+              <span class="spec-tag">PS4/PS5</span>
+              <span class="spec-tag">Xbox</span>
+              <span class="spec-tag">PC</span>
+            </div>
+            <div class="card-price-row">
+              <div class="price price-main">Rs.4,131</div>
+            </div>
+            <div class="card-actions">
+              <a href="https://share.temu.com/nZQDkrPiHRB" class="btn-buy" target="_blank">🛒 Buy Now</a>
+              <button class="btn-wishlist">♡</button>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div class="card">
-        <img crossorigin="anonymous" src="https://s.alicdn.com/@sc04/kf/He3348378f7b240c58cfedf4d87491b9fq.jpg?avif=close&webp=close">
-        <div class="card-content">
-          <h3>Gaming Wired Headphone</h3>
-          <p class="short-desc">K2 Gaming Wired Headphone</p>
-          <p class="full-desc">Top Selling Headphone Products K2 Gaming Wired Headphone</p>
-          <button class="details-btn" onclick="toggleDetails(this)">Details</button>
-          <div class="price">Rs.3764</div>
-          <a href="https://offer.alibaba.com/cps/0ciah0q6?bm=cps&src=saf&productId=60702763866" class="btn" target="_blank">Buy Now</a>
+        <div class="card" data-cat="peripherals" data-price-pkr="6885">
+          <div class="card-img-wrap">
+            <img src="https://img.kwcdn.com/product/fancy/56097efe-6454-4ba5-958f-3c2a3ff12be2.jpg?imageView2/2/w/800/q/70/format/avif" alt="Keyboard Mouse Combo" loading="lazy">
+          </div>
+          <div class="card-body">
+            <div class="card-brand">Peripherals</div>
+            <h3>USB Keyboard & Mouse Combo — Rainbow LED</h3>
+            <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-count">(217)</span></div>
+            <p class="short-desc">USB wired combo with rainbow LED backlighting</p>
+            <p class="full-desc">Suitable for PCs, Laptops, Gaming, Office Work, Mac, PS4, and Xbox. Full-size keyboard with responsive keys and a precision optical mouse.</p>
+            <button class="details-btn" onclick="toggleDetails(this)">+ More Details</button>
+            <div class="card-specs">
+              <span class="spec-tag">Rainbow LED</span>
+              <span class="spec-tag">USB</span>
+              <span class="spec-tag">Wired</span>
+            </div>
+            <div class="card-price-row">
+              <div class="price price-main">Rs.6,885</div>
+            </div>
+            <div class="card-actions">
+              <a href="https://share.temu.com/dkZhvwqDeCB" class="btn-buy" target="_blank">🛒 Buy Now</a>
+              <button class="btn-wishlist">♡</button>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div class="card">
-        <div class="product-gallery">
-          <img crossorigin="anonymous" src="https://s.alicdn.com/@sc04/kf/H0c37a98adf97413792d7d437de270456G.png?avif=close&webp=close" class="main-image">
+        <div class="card" data-cat="peripherals" data-price-pkr="12762">
+          <span class="card-badge badge-deal">DEAL</span>
+          <div class="card-img-wrap">
+            <img src="https://img.kwcdn.com/product/open/9e097c0b3a5647aa99d831a36e05a44c-goods.jpeg?imageView2/2/w/1300/q/90/format/avif" alt="Gaming Bundle" loading="lazy">
+          </div>
+          <div class="card-body">
+            <div class="card-brand">Bundle</div>
+            <h3>LED Keyboard + Headset + Mouse + Pad Bundle</h3>
+            <div class="card-rating"><span class="stars">★★★★★</span><span class="rating-count">(56)</span></div>
+            <p class="short-desc">Complete gaming peripherals set — everything included</p>
+            <p class="full-desc">Vibrant LED-Backlit Keyboard, Gaming Headset, Mouse, and Large Mouse Pad Bundle. Perfect for Gaming, Esports, Home and Office setups.</p>
+            <button class="details-btn" onclick="toggleDetails(this)">+ More Details</button>
+            <div class="card-specs">
+              <span class="spec-tag">4-in-1</span>
+              <span class="spec-tag">LED</span>
+              <span class="spec-tag">Bundle</span>
+            </div>
+            <div class="card-price-row">
+              <div class="price price-main">Rs.12,762</div>
+              <div class="price-was">Rs.15,000</div>
+              <div class="price-save">Save Rs.2,238</div>
+            </div>
+            <div class="card-actions">
+              <a href="https://share.temu.com/9yUjE3GyTiB" class="btn-buy" target="_blank">🛒 Buy Now</a>
+              <button class="btn-wishlist">♡</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-cat="accessories" data-price-pkr="836">
+          <div class="card-img-wrap">
+            <img src="https://img.kwcdn.com/product/fancy/23ee47f1-48b3-40af-aa4a-655c2520a05c.jpg?imageView2/2/w/800/q/70/format/avif" alt="OTG USB Hub" loading="lazy">
+          </div>
+          <div class="card-body">
+            <div class="card-brand">Accessories</div>
+            <h3>OTG USB 2.0 Extension Hub — 4/7 Port</h3>
+            <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-count">(143)</span></div>
+            <p class="short-desc">High-speed USB hub with LED indicators, compact design</p>
+            <p class="full-desc">High-Speed USB 2.0 Hub with 4/7 Ports, LED Indicator Switches, Compact and Lightweight Design for PCs and Laptops.</p>
+            <button class="details-btn" onclick="toggleDetails(this)">+ More Details</button>
+            <div class="card-specs">
+              <span class="spec-tag">USB 2.0</span>
+              <span class="spec-tag">4-7 Port</span>
+              <span class="spec-tag">OTG</span>
+            </div>
+            <div class="card-price-row">
+              <div class="price price-main">Rs.836</div>
+            </div>
+            <div class="card-actions">
+              <a href="https://share.temu.com/AFdBYqAWRVB" class="btn-buy" target="_blank">🛒 Buy Now</a>
+              <button class="btn-wishlist">♡</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-cat="accessories" data-price-pkr="1078">
+          <div class="card-img-wrap">
+            <img src="https://img.kwcdn.com/product/fancy/061a9ef9-e1da-4160-8867-381e592eeb14.jpg?imageView2/2/w/800/q/70/format/avif" alt="Wrist Watch" loading="lazy">
+          </div>
+          <div class="card-body">
+            <div class="card-brand">Accessories</div>
+            <h3>Luxurious Premium Wrist Watch</h3>
+            <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-count">(67)</span></div>
+            <p class="short-desc">Premium design wrist watch with elegant build quality</p>
+            <p class="full-desc">Elegant luxurious wrist watch with premium build quality and stylish design suitable for all occasions.</p>
+            <button class="details-btn" onclick="toggleDetails(this)">+ More Details</button>
+            <div class="card-specs">
+              <span class="spec-tag">Analog</span>
+              <span class="spec-tag">Premium</span>
+            </div>
+            <div class="card-price-row">
+              <div class="price price-main">Rs.1,078</div>
+            </div>
+            <div class="card-actions">
+              <a href="https://temu.to/k/e4qg5ggirqh" class="btn-buy" target="_blank">🛒 Buy Now</a>
+              <button class="btn-wishlist">♡</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-cat="accessories" data-price-pkr="398">
+          <div class="card-img-wrap">
+            <img src="https://img.kwcdn.com/product/fancy/0c806d17-6a96-4ed2-b501-dd7f9e09fb85.jpg?imageView2/2/w/800/q/70/format/avif" alt="Rhinestone Watch Set" loading="lazy">
+          </div>
+          <div class="card-body">
+            <div class="card-brand">Accessories</div>
+            <h3>Sparkling Rhinestone Quartz Watch Set (5pcs)</h3>
+            <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-count">(38)</span></div>
+            <p class="short-desc">5-piece women's rhinestone quartz watch set</p>
+            <p class="full-desc">A 5pcs Set Featuring a Women's Sparkling Rhinestone Quartz Watch with elegant design for everyday wear.</p>
+            <button class="details-btn" onclick="toggleDetails(this)">+ More Details</button>
+            <div class="card-specs">
+              <span class="spec-tag">5-piece</span>
+              <span class="spec-tag">Quartz</span>
+            </div>
+            <div class="card-price-row">
+              <div class="price price-main">Rs.398</div>
+            </div>
+            <div class="card-actions">
+              <a href="https://temu.to/k/eqtmqtnoyoy" class="btn-buy" target="_blank">🛒 Buy Now</a>
+              <button class="btn-wishlist">♡</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-cat="audio" data-price-pkr="3764">
+          <div class="card-img-wrap">
+            <img src="https://s.alicdn.com/@sc04/kf/He3348378f7b240c58cfedf4d87491b9fq.jpg?avif=close&webp=close" alt="K2 Gaming Headphone" loading="lazy">
+          </div>
+          <div class="card-body">
+            <div class="card-brand">Audio</div>
+            <h3>K2 Gaming Wired Headphone</h3>
+            <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-count">(92)</span></div>
+            <p class="short-desc">Top-selling K2 gaming wired headphone</p>
+            <p class="full-desc">Top Selling Headphone Products K2 Gaming Wired Headphone with deep bass and clear vocals for immersive sound.</p>
+            <button class="details-btn" onclick="toggleDetails(this)">+ More Details</button>
+            <div class="card-specs">
+              <span class="spec-tag">Wired</span>
+              <span class="spec-tag">Gaming</span>
+              <span class="spec-tag">Deep Bass</span>
+            </div>
+            <div class="card-price-row">
+              <div class="price price-main">Rs.3,764</div>
+            </div>
+            <div class="card-actions">
+              <a href="https://offer.alibaba.com/cps/0ciah0q6?bm=cps&src=saf&productId=60702763866" class="btn-buy" target="_blank">🛒 Buy Now</a>
+              <button class="btn-wishlist">♡</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-cat="computers" data-price-pkr="80040">
+          <span class="card-badge badge-deal">DEAL</span>
+          <div class="card-img-wrap">
+            <div class="product-gallery" style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+              <img src="https://s.alicdn.com/@sc04/kf/H0c37a98adf97413792d7d437de270456G.png?avif=close&webp=close" class="main-image" style="max-height:140px;object-fit:contain;" loading="lazy">
+            </div>
+          </div>
           <div class="thumbnails">
             <img src="https://s.alicdn.com/@sc04/kf/H0ff9d75a7f8d42818e576fa5fbd2b02dQ.png?avif=close&webp=close" class="thumb active" onclick="changeImage(this)">
             <img src="https://s.alicdn.com/@sc04/kf/H6b8e9ab9b4494a4aa1222c3dfde83d5bw.png?avif=close&webp=close" class="thumb" onclick="changeImage(this)">
             <img src="https://s.alicdn.com/@sc04/kf/H5bf84163d0ed4083bc7365f556a605a5r.png?avif=close&webp=close" class="thumb" onclick="changeImage(this)">
           </div>
+          <div class="card-body">
+            <div class="card-brand">Computers</div>
+            <h3>Intel i7 10th/12th Gen Quad Core Laptop 15.6"</h3>
+            <div class="card-rating"><span class="stars">★★★★★</span><span class="rating-count">(29)</span></div>
+            <p class="short-desc">OEM SSD laptop for gaming and business</p>
+            <p class="full-desc">OEM 15.6 Inch Intel i7 Quad Core SSD Laptop for Gaming and Business. Low Price with New Products Available in 10th and 12th Gen variants.</p>
+            <button class="details-btn" onclick="toggleDetails(this)">+ More Details</button>
+            <div class="card-specs">
+              <span class="spec-tag">Intel i7</span>
+              <span class="spec-tag">SSD</span>
+              <span class="spec-tag">15.6"</span>
+              <span class="spec-tag">Quad Core</span>
+            </div>
+            <div class="card-price-row">
+              <div class="price price-main">Rs.80,040</div>
+            </div>
+            <div class="card-actions">
+              <a href="https://offer.alibaba.com/cps/0ciah0q6?bm=cps&src=saf&productId=1601224210243" class="btn-buy" target="_blank">🛒 Buy Now</a>
+              <button class="btn-wishlist">♡</button>
+            </div>
+          </div>
         </div>
-        <div class="card-content">
-          <h3>Intel I7 10th/12th Gen Quad Core Laptop</h3>
-          <p class="short-desc">OEM 15.6 Inch Intel I7 Quad Core SSD Laptop</p>
-          <p class="full-desc">Quad Core SSD Laptop for Gaming and Business, Low Price, New Products Available</p>
-          <button class="details-btn" onclick="toggleDetails(this)">Details</button>
-          <div class="price">Rs.80040</div>
-          <a href="https://offer.alibaba.com/cps/0ciah0q6?bm=cps&src=saf&productId=1601224210243" class="btn" target="_blank">Buy Now</a>
-        </div>
-      </div>
 
-      <div class="card">
-        <div class="product-gallery">
-          <img crossorigin="anonymous" src="https://s.alicdn.com/@sc04/kf/H76cc954420b8467083fbc290cfd4a76fo.jpg?avif=close&webp=close" class="main-image">
+        <div class="card" data-cat="computers" data-price-pkr="17016">
+          <div class="card-img-wrap">
+            <div class="product-gallery" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
+              <img src="https://s.alicdn.com/@sc04/kf/H76cc954420b8467083fbc290cfd4a76fo.jpg?avif=close&webp=close" class="main-image" style="max-height:150px;object-fit:contain;" loading="lazy">
+            </div>
+          </div>
           <div class="thumbnails">
             <img src="https://s.alicdn.com/@sc04/kf/H76cc954420b8467083fbc290cfd4a76fo.jpg?avif=close&webp=close" class="thumb active" onclick="changeImage(this)">
             <img src="https://s.alicdn.com/@sc04/kf/Hcd577ccd35534a33885765be00569fd50.jpg?avif=close&webp=close" class="thumb" onclick="changeImage(this)">
             <img src="https://s.alicdn.com/@sc04/kf/H677966b829b049e5877b8b44158d0845E.jpg?avif=close&webp=close" class="thumb" onclick="changeImage(this)">
           </div>
+          <div class="card-body">
+            <div class="card-brand">Gaming Furniture</div>
+            <h3>RGB Gaming Chair with Massage Function</h3>
+            <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-count">(44)</span></div>
+            <p class="short-desc">Adjustable racing chair with RGB lighting & massage</p>
+            <p class="full-desc">Fast Shipping Computer Adjustable Racing Gaming Chair with RGB Lighting and Massage function for long gaming sessions.</p>
+            <button class="details-btn" onclick="toggleDetails(this)">+ More Details</button>
+            <div class="card-specs">
+              <span class="spec-tag">RGB</span>
+              <span class="spec-tag">Massage</span>
+              <span class="spec-tag">Adjustable</span>
+            </div>
+            <div class="card-price-row">
+              <div class="price price-main">Rs.17,016</div>
+            </div>
+            <div class="card-actions">
+              <a href="https://offer.alibaba.com/cps/0ciah0q6?bm=cps&src=saf&productId=1601590820795" class="btn-buy" target="_blank">🛒 Buy Now</a>
+              <button class="btn-wishlist">♡</button>
+            </div>
+          </div>
         </div>
-        <div class="card-content">
-          <h3>RGB Gaming Chair with Massage</h3>
-          <p class="short-desc">Computer Adjustable Racing Gaming Chair</p>
-          <p class="full-desc">Fast Shipping Computer Adjustable Racing Gaming Chair with RGB Lighting and Massage</p>
-          <button class="details-btn" onclick="toggleDetails(this)">Details</button>
-          <div class="price">Rs.17016</div>
-          <a href="https://offer.alibaba.com/cps/0ciah0q6?bm=cps&src=saf&productId=1601590820795" class="btn" target="_blank">Buy Now</a>
+
+        <div class="card" data-cat="gaming" data-price-pkr="6972">
+          <span class="card-badge badge-new">DIGITAL</span>
+          <div class="card-img-wrap">
+            <img src="https://www.nintendo.com/eu/media/images/10_share_images/games_15/nintendo_switch_4/2x1_NSwitch_Sifu.jpg" alt="Sifu Game" loading="lazy" style="max-height:155px;object-fit:contain;">
+          </div>
+          <div class="card-body">
+            <div class="card-brand">Digital Game</div>
+            <h3>Sifu — Epic Games Account</h3>
+            <div class="card-rating"><span class="stars">★★★★★</span><span class="rating-count">(18)</span></div>
+            <p class="short-desc">Full Epic Games account pre-loaded with Sifu</p>
+            <p class="full-desc">Full Epic Games Account pre-loaded with Sifu. DM on Instagram to purchase. Instant digital delivery.</p>
+            <button class="details-btn" onclick="toggleDetails(this)">+ More Details</button>
+            <div class="card-specs">
+              <span class="spec-tag">Digital</span>
+              <span class="spec-tag">Epic Games</span>
+            </div>
+            <div class="card-price-row">
+              <div class="price price-main">Rs.6,972</div>
+            </div>
+            <div class="card-actions">
+              <a href="https://www.instagram.com/zoro_affiliates?igsh=MXd4ODg3eTlmbW80bw==" class="btn-buy" target="_blank">🛒 Buy Now</a>
+              <button class="btn-wishlist">♡</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-cat="gaming" data-price-pkr="3199">
+          <div class="card-img-wrap">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxFQotaUdDW3F-qGFAqX9UVbMLH4kfhgvneg&s" alt="Dead Island 2" loading="lazy" style="max-height:155px;object-fit:contain;">
+          </div>
+          <div class="card-body">
+            <div class="card-brand">Digital Game</div>
+            <h3>Dead Island 2 — PC Digital</h3>
+            <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-count">(11)</span></div>
+            <p class="short-desc">Brutal first-person action RPG in zombie LA</p>
+            <p class="full-desc">Dead Island 2 is a brutal first-person action RPG set in a quarantined Los Angeles overrun by zombies. DM on Instagram to buy.</p>
+            <button class="details-btn" onclick="toggleDetails(this)">+ More Details</button>
+            <div class="card-specs">
+              <span class="spec-tag">Action RPG</span>
+              <span class="spec-tag">Digital</span>
+            </div>
+            <div class="card-price-row">
+              <div class="price price-main">Rs.3,199</div>
+            </div>
+            <div class="card-actions">
+              <a href="https://www.instagram.com/zoro_affiliates?igsh=MXd4ODg3eTlmbW80bw==" class="btn-buy" target="_blank">🛒 Buy Now</a>
+              <button class="btn-wishlist">♡</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-cat="gaming" data-price-pkr="2999">
+          <div class="card-img-wrap">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjUfqbq1eYXHk_LKa2ThJ7kB-e4WymqNBmdA&s" alt="Lego Star Wars" loading="lazy" style="max-height:155px;object-fit:contain;">
+          </div>
+          <div class="card-body">
+            <div class="card-brand">Digital Game</div>
+            <h3>Lego Star Wars: The Skywalker Saga</h3>
+            <div class="card-rating"><span class="stars">★★★★★</span><span class="rating-count">(22)</span></div>
+            <p class="short-desc">All nine Star Wars films in one LEGO adventure</p>
+            <p class="full-desc">Relive all nine main Star Wars films in one epic LEGO experience with hundreds of characters and planets to explore.</p>
+            <button class="details-btn" onclick="toggleDetails(this)">+ More Details</button>
+            <div class="card-specs">
+              <span class="spec-tag">Adventure</span>
+              <span class="spec-tag">Digital</span>
+            </div>
+            <div class="card-price-row">
+              <div class="price price-main">Rs.2,999</div>
+            </div>
+            <div class="card-actions">
+              <a href="https://www.instagram.com/zoro_affiliates?igsh=MXd4ODg3eTlmbW80bw==" class="btn-buy" target="_blank">🛒 Buy Now</a>
+              <button class="btn-wishlist">♡</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-cat="peripherals" data-price-pkr="2570">
+          <div class="card-img-wrap">
+            <img src="https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/f03bbd6536163de93d0273b8ffcf1eb3.jpg?imageView2/2/w/800/q/70/format/avif" alt="Gaming Mouse 2" loading="lazy">
+          </div>
+          <div class="card-body">
+            <div class="card-brand">Peripherals</div>
+            <h3>RGB Wired Gaming Mouse — Esports Edition</h3>
+            <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-count">(51)</span></div>
+            <p class="short-desc">High precision wired gaming mouse for esports use</p>
+            <p class="full-desc">High-precision optical gaming mouse with adjustable DPI settings and silent click technology. Perfect for both office and esports gaming.</p>
+            <button class="details-btn" onclick="toggleDetails(this)">+ More Details</button>
+            <div class="card-specs">
+              <span class="spec-tag">High DPI</span>
+              <span class="spec-tag">Optical</span>
+            </div>
+            <div class="card-price-row">
+              <div class="price price-main">Rs.2,570</div>
+            </div>
+            <div class="card-actions">
+              <a href="https://share.temu.com/GnNHeaUevAB" class="btn-buy" target="_blank">🛒 Buy Now</a>
+              <button class="btn-wishlist">♡</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" data-cat="audio" data-price-pkr="3764">
+          <div class="card-img-wrap">
+            <img src="https://s.alicdn.com/@sc04/kf/He3348378f7b240c58cfedf4d87491b9fq.jpg?avif=close&webp=close" alt="Wired Headphone 2" loading="lazy">
+          </div>
+          <div class="card-body">
+            <div class="card-brand">Audio</div>
+            <h3>Over-Ear Studio Wired Headphones</h3>
+            <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-count">(76)</span></div>
+            <p class="short-desc">Studio-quality over-ear wired headphones</p>
+            <p class="full-desc">Premium over-ear wired headphones with deep bass drivers and cushioned ear cups for extended comfort. Great for gaming and music.</p>
+            <button class="details-btn" onclick="toggleDetails(this)">+ More Details</button>
+            <div class="card-specs">
+              <span class="spec-tag">Over-Ear</span>
+              <span class="spec-tag">Studio</span>
+            </div>
+            <div class="card-price-row">
+              <div class="price price-main">Rs.3,764</div>
+            </div>
+            <div class="card-actions">
+              <a href="https://offer.alibaba.com/cps/0ciah0q6?bm=cps&src=saf&productId=60702763866" class="btn-buy" target="_blank">🛒 Buy Now</a>
+              <button class="btn-wishlist">♡</button>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /products -->
+    </div><!-- /products-area -->
+  </div><!-- /main-layout -->
+
+  <!-- ── About ─────────────────────────────────────────────────── -->
+  <div class="about-section" id="about">
+    <div class="about-grid">
+      <div class="about-text">
+        <h2>ABOUT <em>ZENOVA</em></h2>
+        <p>Zenova is your one-stop tech store bringing you the best peripherals, computers, audio gear, and digital games — all through trusted affiliate partners like Temu and Alibaba. Prices auto-convert to your local currency.</p>
+        <button class="hero-cta" onclick="window.scrollTo({top:0,behavior:'smooth'})">🛒 Back to Store</button>
+      </div>
+      <div class="about-features">
+        <div class="about-feat">
+          <div class="about-feat-icon">🌍</div>
+          <div class="about-feat-title">17 Currencies</div>
+          <div class="about-feat-desc">Auto-detected pricing for global shoppers.</div>
+        </div>
+        <div class="about-feat">
+          <div class="about-feat-icon">⚡</div>
+          <div class="about-feat-title">Fast Links</div>
+          <div class="about-feat-desc">Direct to Temu, Alibaba & more.</div>
+        </div>
+        <div class="about-feat">
+          <div class="about-feat-icon">🎮</div>
+          <div class="about-feat-title">Digital Games</div>
+          <div class="about-feat-desc">Buy Epic Games accounts with ease.</div>
+        </div>
+        <div class="about-feat">
+          <div class="about-feat-icon">🔐</div>
+          <div class="about-feat-title">Admin Panel</div>
+          <div class="about-feat-desc">Add products live via Ctrl+Shift+A.</div>
         </div>
       </div>
-
     </div>
-  </section>
+  </div>
 
-  <!-- ── Gaming ─────────────────────────────────────────────── -->
-  <section class="section" id="gaming">
-    <h2>Gaming Products</h2>
-    <input type="text" class="search-bar" placeholder="Search gaming products..." oninput="searchProducts(this)">
-    <div class="products" id="gaming-products">
+  <footer>
+    <div class="footer-logo">ZENOVA TECH</div>
+    <div class="footer-copy">© 2026 Zenova Store · All rights reserved</div>
+    <div class="footer-hint">Ctrl+Shift+A → Admin Panel</div>
+  </footer>
 
-      <div class="card">
-        <img crossorigin="anonymous" src="https://www.nintendo.com/eu/media/images/10_share_images/games_15/nintendo_switch_4/2x1_NSwitch_Sifu.jpg">
-        <div class="card-content">
-          <h3>Sifu Epic Games Account</h3>
-          <p class="short-desc">Epic Games Account with Sifu</p>
-          <p class="full-desc">Full Epic Games Account pre-loaded with Sifu. DM on Instagram to purchase.</p>
-          <button class="details-btn" onclick="toggleDetails(this)">Details</button>
-          <div class="price">Rs.6972</div>
-          <a href="https://www.instagram.com/zoro_affiliates?igsh=MXd4ODg3eTlmbW80bw==" class="btn" target="_blank">Buy Now</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <img crossorigin="anonymous" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxFQotaUdDW3F-qGFAqX9UVbMLH4kfhgvneg&s">
-        <div class="card-content">
-          <h3>Dead Island 2</h3>
-          <p class="short-desc">Brutal first-person action RPG set in Los Angeles</p>
-          <p class="full-desc">Dead Island 2 is a brutal first-person action RPG set in a quarantined Los Angeles overrun by terrifying zombies. DM on Instagram to buy.</p>
-          <button class="details-btn" onclick="toggleDetails(this)">Details</button>
-          <div class="price">Rs.3199</div>
-          <a href="https://www.instagram.com/zoro_affiliates?igsh=MXd4ODg3eTlmbW80bw==" class="btn" target="_blank">Buy Now</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <img crossorigin="anonymous" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjUfqbq1eYXHk_LKa2ThJ7kB-e4WymqNBmdA&s">
-        <div class="card-content">
-          <h3>Lego Star Wars: Skywalker Saga</h3>
-          <p class="short-desc">All nine Star Wars films in one LEGO experience</p>
-          <p class="full-desc">Lego Star Wars: The Skywalker Saga lets you relive all nine main Star Wars films in one epic LEGO experience.</p>
-          <button class="details-btn" onclick="toggleDetails(this)">Details</button>
-          <div class="price">Rs.2999</div>
-          <a href="https://www.instagram.com/zoro_affiliates?igsh=MXd4ODg3eTlmbW80bw==" class="btn" target="_blank">Buy Now</a>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ── About ──────────────────────────────────────────────── -->
-  <section class="about" id="about">
-    <h2>About Zenova</h2>
-    <p>Zenova is your premium destination for beauty, tech, and gaming products. We partner with trusted brands to bring you the best products through affiliate deals.</p>
-  </section>
-
-  <footer>© 2026 Zenova Store. All rights reserved.</footer>
-
-  <!-- ── Admin Panel ────────────────────────────────────────── -->
+  <!-- ── Admin Panel ──────────────────────────────────────────── -->
   <div id="admin-panel">
     <div class="admin-box">
-
-      <button class="admin-close" onclick="closeAdmin()">&#x2715;</button>
-
-      <!-- Login Screen -->
+      <button class="admin-close" onclick="closeAdmin()">✕</button>
       <div class="admin-login-screen" id="admin-login-screen">
-        <h2>🔐 Admin Login</h2>
+        <h2>🔐 ADMIN LOGIN</h2>
         <input type="email" id="admin-email" placeholder="Email address">
         <input type="password" id="admin-password" placeholder="Password">
         <button class="login-btn" onclick="adminLogin()">Login</button>
         <div class="login-error" id="login-error"></div>
       </div>
-
-      <!-- Admin Content (visible after login) -->
       <div class="admin-content-screen" id="admin-content-screen">
-
         <button class="logout-btn" onclick="adminLogout()">Logout</button>
-        <h2>⚡ Admin Panel</h2>
-
+        <h2>⚡ ADMIN PANEL</h2>
         <div class="admin-tabs">
           <button class="admin-tab active" onclick="switchAdminTab('add')">➕ Add Product</button>
           <button class="admin-tab" onclick="switchAdminTab('edit')">✏️ Edit / Delete</button>
         </div>
-
-        <!-- Add Product Tab -->
         <div id="tab-add">
-
-          <div class="admin-field">
-            <label>Product Name *</label>
-            <input type="text" id="ap-name" placeholder="e.g. Rose Face Serum">
-          </div>
-
+          <div class="admin-field"><label>Product Name *</label><input type="text" id="ap-name" placeholder="e.g. Gaming Mouse RGB"></div>
           <div class="admin-field">
             <label>Category *</label>
             <select id="ap-section">
-              <option value="beauty">Beauty</option>
-              <option value="tech">Tech</option>
+              <option value="peripherals">Peripherals</option>
+              <option value="audio">Audio</option>
+              <option value="computers">Computers</option>
+              <option value="accessories">Accessories</option>
               <option value="gaming">Gaming</option>
             </select>
           </div>
-
-          <!-- FIX 1: ID is now ap-price-pkr (matches Firebase script) -->
-          <div class="admin-field">
-            <label>Price in PKR (Rs.) *</label>
-            <input type="number" id="ap-price-pkr" placeholder="e.g. 999">
-          </div>
-
-          <div class="admin-field">
-            <label>Buy Now Link</label>
-            <input type="url" id="ap-link" placeholder="https://...">
-          </div>
-
-          <div class="admin-field">
-            <label>Short Description</label>
-            <input type="text" id="ap-short" placeholder="One-line summary shown on card">
-          </div>
-
-          <div class="admin-field">
-            <label>Full Description</label>
-            <textarea id="ap-full" placeholder="Detailed product info..."></textarea>
-          </div>
-
+          <div class="admin-field"><label>Price in PKR (Rs.) *</label><input type="number" id="ap-price-pkr" placeholder="e.g. 2500"></div>
+          <div class="admin-field"><label>Buy Now Link</label><input type="url" id="ap-link" placeholder="https://..."></div>
+          <div class="admin-field"><label>Short Description</label><input type="text" id="ap-short" placeholder="One-line shown on card"></div>
+          <div class="admin-field"><label>Full Description</label><textarea id="ap-full" placeholder="Detailed product info..."></textarea></div>
           <div class="admin-field">
             <label>Main Image URL *</label>
             <input type="url" id="ap-img" placeholder="https://...">
             <div id="thumb-fields"></div>
             <button class="add-thumb-btn" onclick="addThumbField()">+ Add another image</button>
           </div>
-
           <input type="hidden" id="ap-edit-id" value="">
           <button class="admin-submit" id="ap-submit-btn" onclick="submitProduct()">Add Product to Store</button>
           <div id="admin-msg" class="admin-msg"></div>
-
         </div>
-
-        <!-- Edit / Delete Tab -->
-        <div id="tab-edit" style="display: none;">
+        <div id="tab-edit" style="display:none;">
           <div id="edit-list"></div>
-          <div id="edit-empty">No saved products yet. Add some first!</div>
+          <div id="edit-empty">No saved products yet.</div>
         </div>
-
       </div>
     </div>
   </div>
 
+  <!-- ═══════════════════════════════════════════
+       THEME TOGGLE JS
+  ═══════════════════════════════════════════ -->
+  <script>
+    let isDark = true;
+    function toggleTheme() {
+      isDark = !isDark;
+      document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+      const track = document.getElementById('toggle-track');
+      const label = document.getElementById('theme-label');
+      if (isDark) { track.classList.remove('on'); label.textContent = '☀ Light'; }
+      else        { track.classList.add('on');    label.textContent = '🌙 Dark'; }
+      localStorage.setItem('zn-theme', isDark ? 'dark' : 'light');
+    }
+    // Load saved theme
+    (function() {
+      const saved = localStorage.getItem('zn-theme');
+      if (saved === 'light') { isDark = false; document.documentElement.setAttribute('data-theme','light'); document.getElementById('toggle-track')?.classList.add('on'); }
+    })();
+  </script>
 
-  <!-- =====================================================
-       CURRENCY SYSTEM (pure JS — no HTML changes needed)
-
-       Flow:
-       1. Detect user country via ip-api.com (free, no key)
-       2. Pick matching currency from config table
-       3. Read Rs. prices from all .price elements
-       4. Convert and update price text
-       5. MutationObserver auto-converts Firebase cards too
-       ===================================================== -->
+  <!-- ═══════════════════════════════════════════
+       CURRENCY SYSTEM
+  ═══════════════════════════════════════════ -->
   <script>
     (function () {
-
-      // Currency config — rate = value of 1 PKR in that currency
       const CURRENCIES = {
-        PK: { code: 'PKR', symbol: 'Rs.', flag: '🇵🇰', rate: 1       },
-        US: { code: 'USD', symbol: '$',   flag: '🇺🇸', rate: 0.0036  },
-        GB: { code: 'GBP', symbol: '£',   flag: '🇬🇧', rate: 0.0028  },
-        DE: { code: 'EUR', symbol: '€',   flag: '🇩🇪', rate: 0.0033  },
-        FR: { code: 'EUR', symbol: '€',   flag: '🇫🇷', rate: 0.0033  },
-        IT: { code: 'EUR', symbol: '€',   flag: '🇮🇹', rate: 0.0033  },
-        ES: { code: 'EUR', symbol: '€',   flag: '🇪🇸', rate: 0.0033  },
-        NL: { code: 'EUR', symbol: '€',   flag: '🇳🇱', rate: 0.0033  },
-        AE: { code: 'AED', symbol: 'AED ',flag: '🇦🇪', rate: 0.013   },
-        SA: { code: 'SAR', symbol: 'SAR ',flag: '🇸🇦', rate: 0.0135  },
-        IN: { code: 'INR', symbol: '₹',   flag: '🇮🇳', rate: 0.30    },
-        CA: { code: 'CAD', symbol: 'CA$', flag: '🇨🇦', rate: 0.0049  },
-        AU: { code: 'AUD', symbol: 'A$',  flag: '🇦🇺', rate: 0.0055  },
-        CN: { code: 'CNY', symbol: '¥',   flag: '🇨🇳', rate: 0.026   },
-        TR: { code: 'TRY', symbol: '₺',   flag: '🇹🇷', rate: 0.12    },
-        BD: { code: 'BDT', symbol: '৳',   flag: '🇧🇩', rate: 0.43    },
-        QA: { code: 'QAR', symbol: 'QAR ',flag: '🇶🇦', rate: 0.013   },
-        KW: { code: 'KWD', symbol: 'KD ', flag: '🇰🇼', rate: 0.0011  },
+        PK:{code:'PKR',symbol:'Rs.',flag:'🇵🇰',rate:1},
+        US:{code:'USD',symbol:'$',flag:'🇺🇸',rate:0.0036},
+        GB:{code:'GBP',symbol:'£',flag:'🇬🇧',rate:0.0028},
+        DE:{code:'EUR',symbol:'€',flag:'🇩🇪',rate:0.0033},
+        FR:{code:'EUR',symbol:'€',flag:'🇫🇷',rate:0.0033},
+        IT:{code:'EUR',symbol:'€',flag:'🇮🇹',rate:0.0033},
+        ES:{code:'EUR',symbol:'€',flag:'🇪🇸',rate:0.0033},
+        NL:{code:'EUR',symbol:'€',flag:'🇳🇱',rate:0.0033},
+        AE:{code:'AED',symbol:'AED ',flag:'🇦🇪',rate:0.013},
+        SA:{code:'SAR',symbol:'SAR ',flag:'🇸🇦',rate:0.0135},
+        IN:{code:'INR',symbol:'₹',flag:'🇮🇳',rate:0.30},
+        CA:{code:'CAD',symbol:'CA$',flag:'🇨🇦',rate:0.0049},
+        AU:{code:'AUD',symbol:'A$',flag:'🇦🇺',rate:0.0055},
+        CN:{code:'CNY',symbol:'¥',flag:'🇨🇳',rate:0.026},
+        TR:{code:'TRY',symbol:'₺',flag:'🇹🇷',rate:0.12},
+        BD:{code:'BDT',symbol:'৳',flag:'🇧🇩',rate:0.43},
+        QA:{code:'QAR',symbol:'QAR ',flag:'🇶🇦',rate:0.013},
+        KW:{code:'KWD',symbol:'KD ',flag:'🇰🇼',rate:0.0011},
       };
-
       const DEFAULT = CURRENCIES['PK'];
 
-      // Strip non-numeric chars from price text and return the number
-      function extractPkr(text) {
-        const num = parseFloat(text.replace(/[^\d.]/g, ''));
-        return isNaN(num) ? null : num;
-      }
-
-      // Convert PKR amount to display string in user's currency
-      function formatPrice(pkr, currency) {
+      window.convertPrice = function(pkr, currency) {
         const val = pkr * currency.rate;
         if (val < 1)  return currency.symbol + val.toFixed(3);
         if (val < 10) return currency.symbol + val.toFixed(2);
         return currency.symbol + Math.round(val).toLocaleString();
+      };
+
+      function extractPkr(text) {
+        const n = parseFloat(text.replace(/[^\d.]/g,''));
+        return isNaN(n) ? null : n;
       }
 
-      // Convert a single .price element, skip if already done or non-PKR
       function convertEl(el, currency) {
         if (el.dataset.converted) return;
-
-        const text  = el.textContent.trim();
-        const isPkr = /Rs|₨|\brs\b/i.test(text);
-
-        if (!isPkr) {
-          el.dataset.converted = 'skip';
-          return;
-        }
-
+        const text = el.textContent.trim();
+        if (!/Rs|₨|\brs\b/i.test(text)) { el.dataset.converted='skip'; return; }
         const pkr = extractPkr(text);
         if (!pkr) return;
-
-        el.dataset.pkr       = pkr;
+        el.dataset.pkr = pkr;
         el.dataset.converted = 'yes';
-        el.textContent       = formatPrice(pkr, currency);
+        el.textContent = window.convertPrice(pkr, currency);
       }
 
-      // Convert all .price elements on the page right now
       function convertAll(currency) {
-        document.querySelectorAll('.price').forEach(el => convertEl(el, currency));
+        document.querySelectorAll('.price-main, .price').forEach(el => convertEl(el, currency));
       }
 
-      // Inject currency flag badge next to logo in header
       function showBadge(currency) {
-        if (document.getElementById('zn-badge')) return;
-
-        const badge = document.createElement('span');
-        badge.id    = 'zn-badge';
-        badge.textContent = currency.flag + ' ' + currency.code;
-        badge.style.cssText = [
-          'font-size:11px',
-          'font-weight:700',
-          'letter-spacing:1px',
-          'color:var(--bg-deep,#0d0205)',
-          'background:var(--accent,#f5c518)',
-          'padding:3px 10px',
-          'border-radius:20px',
-          'margin-left:12px',
-          'vertical-align:middle',
-          'font-family:Orbitron,monospace',
-          'white-space:nowrap',
-        ].join(';');
-
-        const logo   = document.querySelector('.logo');
-        const header = document.querySelector('header');
-
-        if (logo && logo.parentNode) {
-          logo.parentNode.insertBefore(badge, logo.nextSibling);
-        } else if (header) {
-          header.appendChild(badge);
-        }
+        const b = document.getElementById('zn-badge');
+        if (!b) return;
+        b.textContent = currency.flag + ' ' + currency.code;
+        b.style.display = 'inline-block';
       }
 
-      // Watch for new cards added dynamically by Firebase and convert them
       function watchNewCards(currency) {
-        const observer = new MutationObserver(mutations => {
-          mutations.forEach(mutation => {
-            mutation.addedNodes.forEach(node => {
-              if (node.nodeType !== 1) return;
-
-              if (node.classList && node.classList.contains('price')) {
-                convertEl(node, currency);
-              }
-
-              node.querySelectorAll && node.querySelectorAll('.price').forEach(el => {
-                convertEl(el, currency);
-              });
-            });
-          });
-        });
-
-        observer.observe(document.body, { childList: true, subtree: true });
+        new MutationObserver(muts => {
+          muts.forEach(m => m.addedNodes.forEach(n => {
+            if (n.nodeType !== 1) return;
+            if (n.classList?.contains('price-main')) convertEl(n, currency);
+            n.querySelectorAll?.('.price-main,.price').forEach(el => convertEl(el, currency));
+          }));
+        }).observe(document.body, {childList:true, subtree:true});
       }
 
-      // Entry point: detect country then run everything
-      // Tries 3 different free APIs in order — if one fails, tries next
       async function detectCountry() {
-        // API 1: ipapi.co — HTTPS, free, no key needed
-        try {
-          const res  = await fetch('https://ipapi.co/json/', { signal: AbortSignal.timeout(4000) });
-          const data = await res.json();
-          if (data.country_code) return data.country_code;
-        } catch (e) {}
-
-        // API 2: freeipapi.com — HTTPS, free backup
-        try {
-          const res  = await fetch('https://freeipapi.com/api/json', { signal: AbortSignal.timeout(4000) });
-          const data = await res.json();
-          if (data.countryCode) return data.countryCode;
-        } catch (e) {}
-
-        // API 3: ip-api.com — HTTP fallback (works on HTTP sites)
-        try {
-          const res  = await fetch('http://ip-api.com/json/?fields=countryCode', { signal: AbortSignal.timeout(4000) });
-          const data = await res.json();
-          if (data.countryCode) return data.countryCode;
-        } catch (e) {}
-
-        return null; // All APIs failed — will use default PKR
+        try { const r=await fetch('https://ipapi.co/json/',{signal:AbortSignal.timeout(4000)}); const d=await r.json(); if(d.country_code) return d.country_code; } catch(e) {}
+        try { const r=await fetch('https://freeipapi.com/api/json',{signal:AbortSignal.timeout(4000)}); const d=await r.json(); if(d.countryCode) return d.countryCode; } catch(e) {}
+        return null;
       }
 
       async function init() {
         let currency = DEFAULT;
-
-        try {
-          const countryCode = await detectCountry();
-          if (countryCode) {
-            currency = CURRENCIES[countryCode] || DEFAULT;
-          } else {
-            console.warn('[Zenova] All currency APIs failed, using PKR.');
-          }
-        } catch (e) {
-          console.warn('[Zenova] Currency detection error:', e);
-        }
-
-        // Store globally so Firebase buildCard and formatPrice can use it
+        try { const cc=await detectCountry(); if(cc) currency=CURRENCIES[cc]||DEFAULT; } catch(e) {}
         window.userCurrency = currency;
-
         showBadge(currency);
         convertAll(currency);
         watchNewCards(currency);
       }
 
-      // Wait for DOM if still loading, otherwise run immediately
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
-      } else {
-        init();
-      }
-
+      if (document.readyState==='loading') document.addEventListener('DOMContentLoaded',init);
+      else init();
     })();
   </script>
+
+  <!-- ═══════════════════════════════════════════
+       FIREBASE DISPATCHER
+  ═══════════════════════════════════════════ -->
   <script>
-  const themes = {
- .beauty: {
-  "--bg-color": "#fff7fb",
-  "--card-bg": "#ffffff",
-  "--text-color": "#2b2b2b",
-  "--secondary-text": "#6b6b6b",
-  "--accent-color": "#ff4d8d",
-  "--accent-hover": "#e63e7c",
-  "--border-color": "#f1d6e0"
- }
- tech: {
-  "--bg-color": "#0f172a",
-  "--card-bg": "#111827",
-  "--text-color": "#e5e7eb",
-  "--secondary-text": "#9ca3af",
-  "--accent-color": "#3b82f6",
-  "--accent-hover": "#2563eb",
-  "--border-color": "#1f2937"
-}
-  gaming: {
-  "--bg-color": "#050505",
-  "--card-bg": "#0d0d0d",
-  "--text-color": "#ffffff",
-  "--secondary-text": "#a1a1aa",
-  "--accent-color": "#00ff88",
-  "--accent-hover": "#00cc6a",
-  "--border-color": "#1a1a1a"
-}  
-  };
-  function applyTheme(themeName) {
-  const theme = themes[themeName];
-
-  for (let key in theme) {
-    document.documentElement.style.setProperty(key, theme[key]);
-  }
-}
-  document.getElementById("beauty-btn").addEventListener("click", () => {
-  applyTheme("beauty");
-});
-
-document.getElementById("tech-btn").addEventListener("click", () => {
-  applyTheme("tech");
-});
-
-document.getElementById("gaming-btn").addEventListener("click", () => {
-  applyTheme("gaming");
-});
-  
-  function applyTheme(themeName) {
-  const theme = themes[themeName];
-
-  for (let key in theme) {
-    document.documentElement.style.setProperty(key, theme[key]);
-  }
-
-  localStorage.setItem("theme", themeName);
-}
-
-// Load on startup
-const savedTheme = localStorage.getItem("theme");
-if (savedTheme) applyTheme(savedTheme);
-  const themes = { beauty, tech, gaming };
-
-function applyTheme(themeName) {
-  const theme = themes[themeName];
-
-  for (let key in theme) {
-    document.documentElement.style.setProperty(key, theme[key]);
-  }
-
-  localStorage.setItem("theme", themeName);
-}
-  
-  </script>
-
-  <!-- =====================================================
-       FIREBASE — Real-time Firestore sync
-       ===================================================== -->
-    <!-- =====================================================
-       GLOBAL DISPATCHER
-       Buttons call these functions which wait for Firebase to load
-       This fixes the type="module" async timing issue
-       ===================================================== -->
-  <script>
-    // Queue that holds the real Firebase functions once module loads
     window._fb = {};
-
-    // Safe wrappers — these are called by onclick buttons immediately
-    // They wait for Firebase module to set window._fb functions
-    function submitProduct()  { window._fb.submitProduct  ? window._fb.submitProduct()  : alert('Store abhi load ho raha hai, 2 second mein try karein.'); }
-    function adminLogin()     { window._fb.adminLogin     ? window._fb.adminLogin()     : alert('Store abhi load ho raha hai.'); }
-    function adminLogout()    { window._fb.adminLogout    ? window._fb.adminLogout()    : null; }
-    function editProduct(id)  { window._fb.editProduct    ? window._fb.editProduct(id)  : null; }
-    function deleteProduct(id){ window._fb.deleteProduct  ? window._fb.deleteProduct(id): null; }
+    function submitProduct()   { window._fb.submitProduct  ? window._fb.submitProduct()   : alert('Store loading...'); }
+    function adminLogin()      { window._fb.adminLogin     ? window._fb.adminLogin()      : alert('Store loading...'); }
+    function adminLogout()     { window._fb.adminLogout    ? window._fb.adminLogout()     : null; }
+    function editProduct(id)   { window._fb.editProduct    ? window._fb.editProduct(id)   : null; }
+    function deleteProduct(id) { window._fb.deleteProduct  ? window._fb.deleteProduct(id) : null; }
   </script>
 
-<script type="module">
-
-    import { initializeApp }
-      from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-
-    import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged }
-      from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-
-    import { getFirestore, collection, addDoc, doc, updateDoc, deleteDoc, onSnapshot }
-      from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    import { getFirestore, collection, addDoc, doc, updateDoc, deleteDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
     const firebaseConfig = {
-      apiKey:            "AIzaSyD1H6TClrILVXaPX-7FidvVZmpJLsvumPk",
-      authDomain:        "zenova-store.firebaseapp.com",
-      projectId:         "zenova-store",
-      storageBucket:     "zenova-store.firebasestorage.app",
-      messagingSenderId: "1086423258032",
-      appId:             "1:1086423258032:web:5e39a8196fc3763188fc75"
+      apiKey:"AIzaSyD1H6TClrILVXaPX-7FidvVZmpJLsvumPk",
+      authDomain:"zenova-store.firebaseapp.com",
+      projectId:"zenova-store",
+      storageBucket:"zenova-store.firebasestorage.app",
+      messagingSenderId:"1086423258032",
+      appId:"1:1086423258032:web:5e39a8196fc3763188fc75"
     };
 
-    const app  = initializeApp(firebaseConfig);
+    const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
-    const db   = getFirestore(app);
-    const col  = collection(db, 'products');
-
-    // Shared products array — accessible from vanilla JS functions
+    const db = getFirestore(app);
+    const col = collection(db,'products');
     window.firestoreProducts = [];
 
-    // Show/hide admin panel based on login state
-    onAuthStateChanged(auth, (user) => {
-      document.getElementById('admin-login-screen').style.display   = user ? 'none'  : 'block';
-      document.getElementById('admin-content-screen').style.display = user ? 'block' : 'none';
+    onAuthStateChanged(auth, user => {
+      document.getElementById('admin-login-screen').style.display   = user?'none':'block';
+      document.getElementById('admin-content-screen').style.display = user?'block':'none';
     });
 
-    // Real-time listener — fires on every Firestore add/edit/delete
-    onSnapshot(col, (snapshot) => {
+    onSnapshot(col, snapshot => {
       window.firestoreProducts = [];
-      snapshot.forEach(d => window.firestoreProducts.push({ id: d.id, ...d.data() }));
-
-      renderHomeGrid();
-      renderCategoryCards();
-
-      const loader = document.getElementById('home-loading');
-      if (loader) loader.style.display = 'none';
+      snapshot.forEach(d => window.firestoreProducts.push({id:d.id,...d.data()}));
+      renderFirestoreCards();
+      document.getElementById('home-loading').style.display = 'none';
+      updateCount();
     });
 
-    // Home grid: static cards + Firestore cards shuffled randomly
-    function renderHomeGrid() {
+    function renderFirestoreCards() {
       const grid = document.getElementById('home-products');
-      if (!grid) return;
-
-      grid.querySelectorAll('.card[data-firestore]').forEach(c => c.remove());
-
-      const fsCards = window.firestoreProducts.map(p => {
+      grid.querySelectorAll('.card[data-firestore]').forEach(c=>c.remove());
+      window.firestoreProducts.forEach(p => {
         const card = window.buildCard(p, p.id);
-        card.setAttribute('data-firestore', '1');
-        return card;
-      });
-
-      const staticCards = Array.from(grid.querySelectorAll('.card:not([data-firestore])'));
-
-      // Fisher-Yates shuffle to randomize card order
-      const all = [...staticCards, ...fsCards];
-      for (let i = all.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [all[i], all[j]] = [all[j], all[i]];
-      }
-
-      grid.innerHTML = '';
-      all.forEach(card => grid.appendChild(card));
-    }
-
-    // Category grids: append Firestore cards for each section
-    function renderCategoryCards() {
-      ['beauty', 'tech', 'gaming'].forEach(section => {
-        const grid = document.getElementById(section + '-products');
-        if (!grid) return;
-
-        grid.querySelectorAll('.card[data-firestore]').forEach(c => c.remove());
-
-        window.firestoreProducts
-          .filter(p => p.section === section)
-          .forEach(p => {
-            const card = window.buildCard(p, p.id);
-            card.setAttribute('data-firestore', '1');
-            grid.appendChild(card);
-          });
+        card.setAttribute('data-firestore','1');
+        grid.appendChild(card);
       });
     }
 
-    // Admin: Login with email and password
-    window._fb.adminLogin = function () {
-      const email = document.getElementById('admin-email').value.trim();
-      const pass  = document.getElementById('admin-password').value;
-      const errEl = document.getElementById('login-error');
-      errEl.style.display = 'none';
-
-      signInWithEmailAndPassword(auth, email, pass)
-        .then(() => {
-          document.getElementById('admin-email').value    = '';
-          document.getElementById('admin-password').value = '';
-        })
-        .catch(err => {
-          const msgs = {
-            'auth/invalid-email':      'Invalid email address.',
-            'auth/user-not-found':     'No account found.',
-            'auth/wrong-password':     'Incorrect password.',
-            'auth/invalid-credential': 'Invalid email or password.',
-            'auth/too-many-requests':  'Too many attempts. Try later.',
-          };
-          errEl.textContent   = msgs[err.code] || 'Login failed.';
-          errEl.style.display = 'block';
+    window._fb.adminLogin = function() {
+      const email=document.getElementById('admin-email').value.trim();
+      const pass=document.getElementById('admin-password').value;
+      const errEl=document.getElementById('login-error');
+      errEl.style.display='none';
+      signInWithEmailAndPassword(auth,email,pass)
+        .then(()=>{ document.getElementById('admin-email').value=''; document.getElementById('admin-password').value=''; })
+        .catch(err=>{
+          const msgs={'auth/invalid-email':'Invalid email.','auth/user-not-found':'No account found.','auth/wrong-password':'Wrong password.','auth/invalid-credential':'Invalid email or password.','auth/too-many-requests':'Too many attempts.'};
+          errEl.textContent=msgs[err.code]||'Login failed.';
+          errEl.style.display='block';
         });
     };
 
-    // Admin: Logout
-    window._fb.adminLogout = function () {
-      signOut(auth).then(() => { closeAdmin(); showMsg('Logged out.'); });
-    };
+    window._fb.adminLogout = function() { signOut(auth).then(()=>{closeAdmin();showMsg('Logged out.');}); };
 
-    // Admin: Add new product or save edits to existing one
-    window._fb.submitProduct = async function () {
-      const name      = document.getElementById('ap-name').value.trim();
-      const pricePkr  = parseFloat(document.getElementById('ap-price-pkr').value);
-      const section   = document.getElementById('ap-section').value;
-      const link      = document.getElementById('ap-link').value.trim();
-      const shortDesc = document.getElementById('ap-short').value.trim();
-      const fullDesc  = document.getElementById('ap-full').value.trim();
-      const mainImg   = document.getElementById('ap-img').value.trim();
-      const editId    = document.getElementById('ap-edit-id').value;
-
-      if (!name || !mainImg || !pricePkr) {
-        alert('Name, Image URL, and Price (PKR) are required.');
-        return;
-      }
-
-      const extraImgs = Array.from(document.querySelectorAll('.admin-thumb-input'))
-        .map(i => i.value.trim()).filter(Boolean);
-
-      const product = {
-        name, pricePkr, section, link,
-        shortDesc, fullDesc, mainImg, extraImgs,
-        createdAt: Date.now()
-      };
-
+    window._fb.submitProduct = async function() {
+      const name=document.getElementById('ap-name').value.trim();
+      const pricePkr=parseFloat(document.getElementById('ap-price-pkr').value);
+      const section=document.getElementById('ap-section').value;
+      const link=document.getElementById('ap-link').value.trim();
+      const shortDesc=document.getElementById('ap-short').value.trim();
+      const fullDesc=document.getElementById('ap-full').value.trim();
+      const mainImg=document.getElementById('ap-img').value.trim();
+      const editId=document.getElementById('ap-edit-id').value;
+      if(!name||!mainImg||!pricePkr){alert('Name, Image URL, and Price are required.');return;}
+      const extraImgs=Array.from(document.querySelectorAll('.admin-thumb-input')).map(i=>i.value.trim()).filter(Boolean);
+      const product={name,pricePkr,section,link,shortDesc,fullDesc,mainImg,extraImgs,createdAt:Date.now()};
       try {
-        if (editId) {
-          await updateDoc(doc(db, 'products', editId), product);
-          showMsg('✓ "' + name + '" updated!');
-        } else {
-          await addDoc(col, product);
-          openSection(section);
-          showMsg('✓ "' + name + '" added to store!');
-        }
+        if(editId){ await updateDoc(doc(db,'products',editId),product); showMsg('✓ Updated!'); }
+        else { await addDoc(col,product); showMsg('✓ Added!'); }
         clearAdminForm();
-      } catch (e) {
-        console.error('Save error:', e);
-        alert('Could not save product. Check console.');
-      }
+      } catch(e){console.error(e);alert('Could not save.');}
     };
 
-    // Admin: Fill form with existing product data for editing
-    window._fb.editProduct = function (docId) {
-      const p = window.firestoreProducts.find(x => x.id === docId);
-      if (!p) return;
-
+    window._fb.editProduct = function(docId) {
+      const p=window.firestoreProducts.find(x=>x.id===docId);
+      if(!p)return;
       switchAdminTab('add');
-      document.getElementById('ap-name').value      = p.name      || '';
-      document.getElementById('ap-price-pkr').value = p.pricePkr  || '';
-      document.getElementById('ap-section').value   = p.section   || 'beauty';
-      document.getElementById('ap-link').value      = p.link      || '';
-      document.getElementById('ap-short').value     = p.shortDesc || '';
-      document.getElementById('ap-full').value      = p.fullDesc  || '';
-      document.getElementById('ap-img').value       = p.mainImg   || '';
-      document.getElementById('ap-edit-id').value   = docId;
-      document.getElementById('ap-submit-btn').textContent = 'Save Changes';
-
-      const thumbContainer = document.getElementById('thumb-fields');
-      thumbContainer.innerHTML = '';
-
-      (p.extraImgs || []).forEach(src => {
-        const wrap  = document.createElement('div');
-        wrap.style.marginTop = '8px';
-        const input = document.createElement('input');
-        input.type        = 'url';
-        input.className   = 'admin-thumb-input';
-        input.value       = src;
-        input.style.cssText = 'width:100%;padding:10px 14px;background:rgba(0,0,0,0.4);border:1px solid var(--maroon-mid);border-radius:6px;color:var(--text-main);font-size:13px;outline:none;';
-        wrap.appendChild(input);
-        thumbContainer.appendChild(wrap);
+      document.getElementById('ap-name').value=p.name||'';
+      document.getElementById('ap-price-pkr').value=p.pricePkr||'';
+      document.getElementById('ap-section').value=p.section||'peripherals';
+      document.getElementById('ap-link').value=p.link||'';
+      document.getElementById('ap-short').value=p.shortDesc||'';
+      document.getElementById('ap-full').value=p.fullDesc||'';
+      document.getElementById('ap-img').value=p.mainImg||'';
+      document.getElementById('ap-edit-id').value=docId;
+      document.getElementById('ap-submit-btn').textContent='Save Changes';
+      const tc=document.getElementById('thumb-fields'); tc.innerHTML='';
+      (p.extraImgs||[]).forEach(src=>{
+        const w=document.createElement('div'); w.style.marginTop='6px';
+        const i=document.createElement('input'); i.type='url'; i.className='admin-thumb-input'; i.value=src;
+        i.style.cssText='width:100%;padding:9px 12px;background:var(--bg-input);border:1px solid var(--border);border-radius:5px;color:var(--text-1);font-size:13px;outline:none;';
+        w.appendChild(i); tc.appendChild(w);
       });
     };
 
-    // Admin: Delete product from Firestore
-    window._fb.deleteProduct = async function (docId) {
-      if (!confirm('Delete this product permanently?')) return;
-      try {
-        await deleteDoc(doc(db, 'products', docId));
-        if (window._fb.renderEditList) window._fb.renderEditList();
-        showMsg('Product deleted.');
-      } catch (e) {
-        console.error(e);
-        alert('Delete failed.');
-      }
+    window._fb.deleteProduct = async function(docId) {
+      if(!confirm('Delete permanently?'))return;
+      try { await deleteDoc(doc(db,'products',docId)); if(window._fb.renderEditList)window._fb.renderEditList(); showMsg('Deleted.'); }
+      catch(e){alert('Delete failed.');}
     };
 
-    // Admin: Render the edit/delete product list
-    window._fb.renderEditList = function () {
-      const list  = document.getElementById('edit-list');
-      const empty = document.getElementById('edit-empty');
-      list.innerHTML = '';
-
-      if (!window.firestoreProducts.length) {
-        empty.style.display = 'block';
-        return;
-      }
-      empty.style.display = 'none';
-
-      window.firestoreProducts.forEach(p => {
-        const currency     = window.userCurrency || { symbol: 'Rs.', rate: 1 };
-        const displayPrice = p.pricePkr ? window.convertPrice(p.pricePkr, currency) : 'N/A';
-
-        const item = document.createElement('div');
-        item.className = 'edit-item';
-        item.innerHTML = `
-          <img src="${p.mainImg}" onerror="this.src='https://placehold.co/54x54/1e0510/f5c518?text=?'">
-          <div class="edit-item-info">
-            <strong>${p.name}</strong>
-            <span>${capitalize(p.section)} · ${displayPrice}</span>
-          </div>
-          <div class="edit-item-btns">
-            <button class="edit-btn edit" onclick="editProduct('${p.id}')">Edit</button>
-            <button class="edit-btn del"  onclick="deleteProduct('${p.id}')">Delete</button>
-          </div>
-        `;
+    window._fb.renderEditList = function() {
+      const list=document.getElementById('edit-list');
+      const empty=document.getElementById('edit-empty');
+      list.innerHTML='';
+      if(!window.firestoreProducts.length){empty.style.display='block';return;}
+      empty.style.display='none';
+      window.firestoreProducts.forEach(p=>{
+        const currency=window.userCurrency||{symbol:'Rs.',rate:1};
+        const displayPrice=p.pricePkr?window.convertPrice(p.pricePkr,currency):'N/A';
+        const item=document.createElement('div'); item.className='edit-item';
+        item.innerHTML=`<img src="${p.mainImg}" onerror="this.src='https://placehold.co/48x48'"><div class="edit-item-info"><strong>${p.name}</strong><span>${p.section}·${displayPrice}</span></div><div class="edit-item-btns"><button class="edit-btn edit" onclick="editProduct('${p.id}')">Edit</button><button class="edit-btn del" onclick="deleteProduct('${p.id}')">Del</button></div>`;
         list.appendChild(item);
       });
     };
-
-    // On page load: clone static cards from category grids into home grid
-    window.addEventListener('load', () => {
-      const homeGrid = document.getElementById('home-products');
-      ['beauty-products', 'tech-products', 'gaming-products'].forEach(gridId => {
-        document.querySelectorAll('#' + gridId + ' .card').forEach(card => {
-          homeGrid.appendChild(card.cloneNode(true));
-        });
-      });
-    });
-
   </script>
 
-
-  <!-- =====================================================
+  <!-- ═══════════════════════════════════════════
        VANILLA JS HELPERS
-       ===================================================== -->
+  ═══════════════════════════════════════════ -->
   <script>
+    // --- Category filter ---
+    let currentCat = 'all';
 
-    // Switch between page sections (home, beauty, tech, gaming)
-    function openSection(id) {
-      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-      document.querySelectorAll('.tab-btn').forEach(b => {
-        if (b.textContent.trim().toLowerCase() === id) b.classList.add('active');
+    function filterCat(cat, btn) {
+      currentCat = cat;
+      // Update nav active
+      document.querySelectorAll('.nav-item').forEach(b=>b.classList.remove('active'));
+      document.querySelectorAll('.filter-item').forEach(b=>b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+
+      // Sync sidebar
+      document.querySelectorAll('.filter-item').forEach(b=>{
+        if (b.getAttribute('onclick')?.includes(`'${cat}'`)) b.classList.add('active');
       });
-      const el = document.getElementById(id);
-      window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
+      // Sync navbar
+      document.querySelectorAll('.nav-item').forEach(b=>{
+        if (b.getAttribute('onclick')?.includes(`'${cat}'`)) b.classList.add('active');
+      });
 
-      // Apply section theme
-      document.body.classList.remove('theme-beauty', 'theme-tech', 'theme-gaming');
-      const logo = document.querySelector('.logo');
-      if (id === 'beauty') {
-        document.body.classList.add('theme-beauty');
-        logo.style.textShadow = '0 0 14px rgba(233,30,140,0.6), 0 0 40px rgba(233,30,140,0.3)';
-        logo.style.color = '#e91e8c';
-      } else if (id === 'tech') {
-        document.body.classList.add('theme-tech');
-        logo.style.textShadow = '0 0 14px rgba(0,229,255,0.6), 0 0 40px rgba(0,229,255,0.3)';
-        logo.style.color = '#00e5ff';
-      } else if (id === 'gaming') {
-        document.body.classList.add('theme-gaming');
-        logo.style.textShadow = '0 0 14px rgba(57,255,20,0.6), 0 0 40px rgba(57,255,20,0.3)';
-        logo.style.color = '#39ff14';
-      } else {
-        logo.style.textShadow = '';
-        logo.style.color = '';
-      }
+      const cards = document.querySelectorAll('#home-products .card');
+      cards.forEach(c=>{
+        if (cat==='all') { c.style.display=''; }
+        else { c.style.display = (c.dataset.cat===cat) ? '' : 'none'; }
+      });
+
+      // Update section title
+      const titles = {all:'All Tech Products',peripherals:'Peripherals',audio:'Audio',computers:'Computers',accessories:'Accessories',gaming:'Gaming'};
+      document.getElementById('section-title').textContent = titles[cat]||'Products';
+      updateCount();
     }
 
-    // Toggle show/hide of full product description
+    function updateCount() {
+      const visible = document.querySelectorAll('#home-products .card:not([style*="display: none"]):not([style*="display:none"])').length;
+      document.getElementById('result-count').textContent = visible;
+    }
+
+    // --- Global search ---
+    function globalSearch(inp) {
+      const q = inp.value.trim().toLowerCase();
+      document.querySelectorAll('#home-products .card').forEach(card=>{
+        const name = (card.querySelector('h3')?.textContent||'').toLowerCase();
+        const desc = (card.querySelector('.short-desc')?.textContent||'').toLowerCase();
+        const catOk = currentCat==='all' || card.dataset.cat===currentCat;
+        const match = !q || name.includes(q) || desc.includes(q);
+        card.style.display = (catOk && match) ? '' : 'none';
+      });
+      updateCount();
+    }
+
+    // --- Price filter ---
+    function applyPriceFilter() {
+      const min = parseFloat(document.getElementById('price-min').value)||0;
+      const max = parseFloat(document.getElementById('price-max').value)||Infinity;
+      document.querySelectorAll('#home-products .card').forEach(card=>{
+        const pkr = parseFloat(card.dataset.pricePkr||'0');
+        const catOk = currentCat==='all'||card.dataset.cat===currentCat;
+        card.style.display = (catOk && pkr>=min && pkr<=max) ? '' : 'none';
+      });
+      updateCount();
+    }
+
+    // --- Sort ---
+    function sortProducts(method) {
+      const grid = document.getElementById('home-products');
+      const cards = Array.from(grid.querySelectorAll('.card'));
+      cards.sort((a,b)=>{
+        if (method==='low')  return parseFloat(a.dataset.pricePkr||0)-parseFloat(b.dataset.pricePkr||0);
+        if (method==='high') return parseFloat(b.dataset.pricePkr||0)-parseFloat(a.dataset.pricePkr||0);
+        if (method==='name') return (a.querySelector('h3')?.textContent||'').localeCompare(b.querySelector('h3')?.textContent||'');
+        return 0;
+      });
+      cards.forEach(c=>grid.appendChild(c));
+    }
+
+    // --- View toggle ---
+    function setView(type) {
+      const grid = document.getElementById('home-products');
+      const gb   = document.getElementById('grid-btn');
+      const lb   = document.getElementById('list-btn');
+      if (type==='list') { grid.classList.add('list-view'); gb.classList.remove('active'); lb.classList.add('active'); }
+      else               { grid.classList.remove('list-view'); lb.classList.remove('active'); gb.classList.add('active'); }
+    }
+
+    // --- Details toggle ---
     function toggleDetails(btn) {
-      const fd = btn.closest('.card-content').querySelector('.full-desc');
-      if (fd.style.display === 'block') {
-        fd.style.display = 'none';
-        btn.textContent  = 'Details';
-      } else {
-        fd.style.display = 'block';
-        btn.textContent  = 'Hide';
-      }
+      const fd = btn.closest('.card-body').querySelector('.full-desc');
+      if (fd.style.display==='block') { fd.style.display='none'; btn.textContent='+ More Details'; }
+      else { fd.style.display='block'; btn.textContent='− Less Details'; }
     }
 
-    // Swap main image when a thumbnail is clicked
+    // --- Image gallery ---
     function changeImage(thumb) {
-      const gallery = thumb.closest('.product-gallery');
-      gallery.querySelector('.main-image').src = thumb.src;
-      gallery.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+      const card = thumb.closest('.card');
+      const main = card.querySelector('.main-image');
+      if (main) main.src = thumb.src;
+      card.querySelectorAll('.thumb').forEach(t=>t.classList.remove('active'));
       thumb.classList.add('active');
     }
 
-    // Filter cards in current section by search term
-    function searchProducts(input) {
-      const filter = input.value.trim().toLowerCase();
-      input.closest('.section').querySelectorAll('.card').forEach(card => {
-        const title = (card.querySelector('h3')?.textContent || '').toLowerCase();
-        const desc  = (card.querySelector('.short-desc')?.textContent || '').toLowerCase();
-        card.style.display = (!filter || title.includes(filter) || desc.includes(filter)) ? '' : 'none';
-      });
+    // --- Admin helpers ---
+    function showMsg(text) {
+      const msg=document.getElementById('admin-msg');
+      if(!msg)return;
+      msg.style.display='block'; msg.textContent=text;
+      setTimeout(()=>msg.style.display='none',3000);
     }
 
-    // Build a product card element from Firestore product data
-    // Price is automatically converted to user's local currency
-    // Convert any image URL to JPG using Canvas API
-    // Returns a Promise that resolves to a JPG data URL
-    // If conversion fails (CORS block), returns the original URL as fallback
-    window.convertToJpg = function (imageUrl) {
-      return new Promise((resolve) => {
-        const img    = new Image();
-        img.crossOrigin = 'anonymous'; // Required for Canvas to read cross-origin images
+    function closeAdmin() { document.getElementById('admin-panel').classList.remove('open'); }
 
-        img.onload = function () {
-          try {
-            // Draw image onto an invisible canvas, then export as JPG
-            const canvas    = document.createElement('canvas');
-            canvas.width    = img.naturalWidth;
-            canvas.height   = img.naturalHeight;
-            const ctx       = canvas.getContext('2d');
-            ctx.drawImage(img, 0, 0);
-            const jpgDataUrl = canvas.toDataURL('image/jpeg', 0.92); // 92% quality JPG
-            resolve(jpgDataUrl);
-          } catch (e) {
-            // Canvas tainted by CORS — fall back to original URL
-            console.warn('[Zenova] Canvas conversion blocked (CORS), using original:', imageUrl);
-            resolve(imageUrl);
-          }
-        };
+    function addThumbField() {
+      const c=document.getElementById('thumb-fields');
+      if(c.children.length>=3)return;
+      const w=document.createElement('div'); w.style.marginTop='6px';
+      const i=document.createElement('input'); i.type='url'; i.className='admin-thumb-input';
+      i.placeholder='Extra image URL '+(c.children.length+2);
+      i.style.cssText='width:100%;padding:9px 12px;background:var(--bg-input);border:1px solid var(--border);border-radius:5px;color:var(--text-1);font-size:13px;outline:none;';
+      w.appendChild(i); c.appendChild(w);
+    }
 
-        img.onerror = function () {
-          // Image failed to load — return original URL
-          resolve(imageUrl);
-        };
+    function clearAdminForm() {
+      ['ap-name','ap-price-pkr','ap-link','ap-short','ap-full','ap-img'].forEach(id=>{ const el=document.getElementById(id); if(el)el.value=''; });
+      document.getElementById('thumb-fields').innerHTML='';
+      document.getElementById('ap-edit-id').value='';
+      document.getElementById('ap-submit-btn').textContent='Add Product to Store';
+    }
 
-        img.src = imageUrl;
-      });
-    };
+    function switchAdminTab(tab) {
+      const tabs=document.querySelectorAll('.admin-tab');
+      if(tab==='add'){
+        document.getElementById('tab-add').style.display=''; document.getElementById('tab-edit').style.display='none';
+        tabs[0].classList.add('active'); tabs[1].classList.remove('active'); clearAdminForm();
+      } else {
+        document.getElementById('tab-add').style.display='none'; document.getElementById('tab-edit').style.display='';
+        tabs[1].classList.add('active'); tabs[0].classList.remove('active');
+        if(window._fb.renderEditList)window._fb.renderEditList();
+      }
+    }
 
-    // After all images on page load, convert them to JPG in the background
-    // This makes right-click save also give JPG
-    window.convertPageImagesToJpg = async function () {
-      const allCardImgs = document.querySelectorAll('.card img.main-image, .card > img');
-      allCardImgs.forEach(async (img) => {
-        if (img.dataset.jpgConverted) return; // Skip already converted
-        const jpgUrl = await window.convertToJpg(img.src);
-        if (jpgUrl !== img.src && jpgUrl.startsWith('data:image/jpeg')) {
-          img.src = jpgUrl; // Replace src with JPG data URL
-        }
-        img.dataset.jpgConverted = 'yes';
-      });
-    };
+    // --- Build card (Firebase) ---
+    window.buildCard = function(p, docId) {
+      const currency = window.userCurrency||{symbol:'Rs.',rate:1};
+      const priceText = p.pricePkr ? window.convertPrice(p.pricePkr,currency) : 'N/A';
+      const allImgs = [p.mainImg,...(p.extraImgs||[])].filter(Boolean);
+      const hasMultiple = allImgs.length>1;
 
-    // Build a product card element from Firestore product data
-    // Price is automatically converted to user's local currency
-    window.buildCard = function (p, docId) {
-      const allImgs     = [p.mainImg, ...(p.extraImgs || [])].filter(Boolean);
-      const hasMultiple = allImgs.length > 1;
-      const currency    = window.userCurrency || { symbol: 'Rs.', rate: 1 };
-      const priceText   = p.pricePkr ? window.convertPrice(p.pricePkr, currency) : 'N/A';
-
-      let inner = hasMultiple
-        ? `<div class="product-gallery">
-             <img src="${p.mainImg}" class="main-image" crossorigin="anonymous">
-             <div class="thumbnails">
-               ${allImgs.map((src, i) => `<img src="${src}" class="thumb ${i === 0 ? 'active' : ''}" crossorigin="anonymous" onclick="changeImage(this)">`).join('')}
-             </div>
-           </div>`
-        : `<img src="${p.mainImg}" crossorigin="anonymous" style="width:100%;max-height:220px;object-fit:cover;display:block;">`;
-
-      inner += `
-        <div class="card-content">
-          <h3>${p.name}</h3>
-          <p class="short-desc">${p.shortDesc || ''}</p>
-          <p class="full-desc">${p.fullDesc || ''}</p>
-          <button class="details-btn" onclick="toggleDetails(this)">Details</button>
-          <div class="price">${priceText}</div>
-          <a href="${p.link || '#'}" class="btn" target="_blank">Buy Now</a>
-        </div>
-      `;
+      let imgHtml = hasMultiple
+        ? `<div class="card-img-wrap"><div class="product-gallery" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;"><img src="${p.mainImg}" class="main-image" style="max-height:150px;object-fit:contain;"></div></div>
+           <div class="thumbnails">${allImgs.map((s,i)=>`<img src="${s}" class="thumb ${i===0?'active':''}" onclick="changeImage(this)">`).join('')}</div>`
+        : `<div class="card-img-wrap"><img src="${p.mainImg}" style="max-height:160px;object-fit:contain;"></div>`;
 
       const card = document.createElement('div');
       card.className = 'card';
-      if (p.pricePkr) card.setAttribute('data-price-pkr', p.pricePkr);
-      if (docId)      card.setAttribute('data-id', docId);
-      card.innerHTML  = inner;
+      card.setAttribute('data-cat', p.section||'accessories');
+      if(p.pricePkr) card.setAttribute('data-price-pkr',p.pricePkr);
+      if(docId) card.setAttribute('data-id',docId);
+
+      card.innerHTML = `
+        ${imgHtml}
+        <div class="card-body">
+          <div class="card-brand">${p.section||''}</div>
+          <h3>${p.name}</h3>
+          <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-count">(New)</span></div>
+          <p class="short-desc">${p.shortDesc||''}</p>
+          <p class="full-desc">${p.fullDesc||''}</p>
+          <button class="details-btn" onclick="toggleDetails(this)">+ More Details</button>
+          <div class="card-price-row">
+            <div class="price price-main">${priceText}</div>
+          </div>
+          <div class="card-actions">
+            <a href="${p.link||'#'}" class="btn-buy" target="_blank">🛒 Buy Now</a>
+            <button class="btn-wishlist">♡</button>
+          </div>
+        </div>
+      `;
       return card;
     };
 
-    // window.convertPrice is defined in the currency system above — used everywhere
+   // Ctrl + Shift + A → Admin panel (desktop)
+document.addEventListener('keydown', e => {
+  if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'a') {
+    e.preventDefault();
+    document.getElementById('admin-panel').classList.add('open');
+  }
+});
 
-    // Show a temporary message in admin panel
-    function showMsg(text) {
-      const msg = document.getElementById('admin-msg');
-      if (!msg) return;
-      msg.style.display = 'block';
-      msg.textContent   = text;
-      setTimeout(() => msg.style.display = 'none', 3000);
+// Triple-tap on logo → Admin panel (mobile)
+(function () {
+  let tapCount = 0;
+  let tapTimer = null;
+  const logo = document.querySelector('.logo-wrap');
+  if (!logo) return;
+  logo.addEventListener('click', () => {
+    tapCount++;
+    clearTimeout(tapTimer);
+    tapTimer = setTimeout(() => { tapCount = 0; }, 600);
+    if (tapCount >= 3) {
+      tapCount = 0;
+      clearTimeout(tapTimer);
+      document.getElementById('admin-panel').classList.add('open');
     }
-
-    // Close admin panel overlay
-    function closeAdmin() {
-      document.getElementById('admin-panel').classList.remove('open');
-    }
-
-    // Add an extra image URL input field in admin form
-    function addThumbField() {
-      const container = document.getElementById('thumb-fields');
-      if (container.children.length >= 3) return;
-
-      const wrap  = document.createElement('div');
-      wrap.style.marginTop = '8px';
-
-      const input = document.createElement('input');
-      input.type        = 'url';
-      input.className   = 'admin-thumb-input';
-      input.placeholder = 'Extra image URL ' + (container.children.length + 2);
-      input.style.cssText = 'width:100%;padding:10px 14px;background:rgba(0,0,0,0.4);border:1px solid var(--maroon-mid);border-radius:6px;color:var(--text-main);font-size:13px;outline:none;';
-
-      wrap.appendChild(input);
-      container.appendChild(wrap);
-    }
-
-    // Clear all fields in the admin add/edit form
-    function clearAdminForm() {
-      ['ap-name', 'ap-price-pkr', 'ap-link', 'ap-short', 'ap-full', 'ap-img'].forEach(id => {
-        const el = document.getElementById(id);
-        if (el) el.value = '';
-      });
-      document.getElementById('thumb-fields').innerHTML    = '';
-      document.getElementById('ap-edit-id').value          = '';
-      document.getElementById('ap-submit-btn').textContent = 'Add Product to Store';
-    }
-
-    // Switch between Add and Edit/Delete tabs in admin panel
-    function switchAdminTab(tab) {
-      const tabs = document.querySelectorAll('.admin-tab');
-      if (tab === 'add') {
-        document.getElementById('tab-add').style.display  = '';
-        document.getElementById('tab-edit').style.display = 'none';
-        tabs[0].classList.add('active');
-        tabs[1].classList.remove('active');
-        clearAdminForm();
-      } else {
-        document.getElementById('tab-add').style.display  = 'none';
-        document.getElementById('tab-edit').style.display = '';
-        tabs[1].classList.add('active');
-        tabs[0].classList.remove('active');
-        if (window._fb.renderEditList) window._fb.renderEditList();
-      }
-    }
-
-    // Helper to capitalize first letter of a string
-    function capitalize(str) {
-      return str ? str.charAt(0).toUpperCase() + str.slice(1) : '';
-    }
-
-    // Keyboard shortcut: Ctrl + Shift + A opens admin panel
-    document.addEventListener('keydown', e => {
-      if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'a') {
-        e.preventDefault();
-        document.getElementById('admin-panel').classList.add('open');
-      }
+  });
+})();
+    // Hide loading on start
+    window.addEventListener('load', ()=>{
+      setTimeout(()=>{ document.getElementById('home-loading').style.display='none'; updateCount(); }, 1000);
     });
-
-    // Auto-convert all card images to JPG in the background after page loads
-    // Customer sees no visual change, but right-click save gives JPG format
-    window.addEventListener('load', () => {
-      setTimeout(() => window.convertPageImagesToJpg(), 1500);
-    });
-
-    // Watch for new Firebase cards and convert their images to JPG too
-    // Debounced so it doesn't fire too often during rapid DOM updates
-    (function watchForNewImages() {
-      const observer = new MutationObserver(() => {
-        clearTimeout(window._jpgTimer);
-        window._jpgTimer = setTimeout(() => window.convertPageImagesToJpg(), 800);
-      });
-      observer.observe(document.body, { childList: true, subtree: true });
-    })();
-
   </script>
 
 </body>
