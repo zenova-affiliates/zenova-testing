@@ -1,730 +1,542 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-    <meta name="description" content="Discover premium tech deals and affiliate products. Find the best laptops, smartphones, audio, gaming gear, and accessories at unbeatable prices." />
-    <meta name="theme-color" content="#00d9ff" />
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%2300d9ff' width='100' height='100'/><text x='50' y='65' font-size='60' font-weight='bold' text-anchor='middle' fill='%23ffffff' font-family='Arial'>T</text></svg>" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
-    <title>Tech Affiliate Hub - Premium Tech Deals & Products</title>
-    <style>
-        :root{--bg-base:#ffffff;--bg-surface:#f9f9f9;--bg-card:#ffffff;--bg-nav:#ffffff;--bg-input:#ffffff;--border:#e5e7eb;--border-dark:#d1d5db;--text-primary:#111827;--text-secondary:#4b5563;--text-muted:#9ca3af;--scroll-track:#f3f4f6;--scroll-thumb:#9ca3af;--scroll-hover:#6b7280;--footer-bg:#111827;--footer-border:#1f2937;}
-        html.dark{--bg-base:#0f1419;--bg-surface:#1a1f2e;--bg-card:#1a1f2e;--bg-nav:#1a1f2e;--bg-input:#1a1f2e;--border:#2d3748;--border-dark:#374151;--text-primary:#f1f5f9;--text-secondary:#cbd5e1;--text-muted:#94a3b8;--scroll-track:#1a1f2e;--scroll-thumb:#4b5563;--scroll-hover:#6b7280;--footer-bg:#000000;--footer-border:#1f2937;}
-        *{margin:0;padding:0;box-sizing:border-box;transition:color .3s ease,background-color .3s ease,border-color .3s ease;}
-        html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;}
-        body{background-color:var(--bg-base);color:var(--text-primary);font-family:'Inter',sans-serif;line-height:1.6;}
-        h1,h2,h3,h4,h5,h6{font-family:'Poppins',sans-serif;font-weight:bold;color:var(--text-primary);}
-        ::-webkit-scrollbar{width:8px;height:8px;}
-        ::-webkit-scrollbar-track{background-color:var(--scroll-track);}
-        ::-webkit-scrollbar-thumb{background-color:var(--scroll-thumb);border-radius:4px;}
-        ::-webkit-scrollbar-thumb:hover{background-color:var(--scroll-hover);}
-        ::selection{background-color:#00d9ff;color:#ffffff;}
-        :focus-visible{outline:2px solid #00d9ff;outline-offset:2px;}
-        @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
-        @keyframes slideInUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
-        @keyframes spin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
-        @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;}}
-        .container-custom{max-width:80rem;margin-left:auto;margin-right:auto;padding-left:1rem;padding-right:1rem;}
-        @media(min-width:640px){.container-custom{padding-left:1.5rem;padding-right:1.5rem;}}
-        @media(min-width:1024px){.container-custom{padding-left:2rem;padding-right:2rem;}}
-        .btn{padding:.5rem 1rem;border-radius:.5rem;font-weight:600;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;font-size:1rem;transition:all .3s ease;}
-        .btn:disabled{opacity:.5;cursor:not-allowed;}
-        .btn-sm{padding:.375rem .75rem;font-size:.875rem;}
-        .btn-md{padding:.5rem 1rem;font-size:1rem;}
-        .btn-lg{padding:.75rem 1.5rem;font-size:1.125rem;}
-        .btn-primary{background-color:#00d9ff;color:#ffffff;box-shadow:0 10px 15px -3px rgba(0,217,255,.15);}
-        .btn-primary:hover{opacity:.9;box-shadow:0 20px 25px -5px rgba(0,217,255,.25);}
-        .btn-primary:active{transform:scale(.95);}
-        .btn-ghost{background:none;color:var(--text-primary);}
-        .btn-ghost:hover{background-color:var(--border);}
-        .btn-outline{background:none;border:2px solid #00d9ff;color:#00d9ff;}
-        .btn-outline:hover{background-color:#00d9ff;color:#ffffff;}
-        .btn-icon{width:1.25rem;height:1.25rem;}
-        nav{position:sticky;top:0;z-index:50;background-color:var(--bg-nav);border-bottom:1px solid var(--border);box-shadow:0 1px 2px rgba(0,0,0,.08);}
-        nav .nav-content{display:flex;align-items:center;justify-content:space-between;height:4rem;gap:1rem;}
-        .nav-logo{display:flex;align-items:center;gap:.5rem;flex-shrink:0;}
-        .nav-logo-icon{width:2rem;height:2rem;background:linear-gradient(135deg,#00d9ff,#ffa500);border-radius:.5rem;display:flex;align-items:center;justify-content:center;color:white;font-weight:bold;font-size:1.125rem;}
-        .nav-logo-text{font-weight:bold;font-size:1.125rem;color:var(--text-primary);display:none;}
-        @media(min-width:640px){.nav-logo-text{display:inline;}}
-        .nav-search{flex:1;max-width:20rem;margin:0 1rem;display:none;}
-        @media(min-width:768px){.nav-search{display:block;}}
-        .search-wrapper{position:relative;}
-        .search-input{width:100%;padding:.5rem 1rem .5rem 2.5rem;border:2px solid var(--border);border-radius:.5rem;background-color:var(--bg-input);color:var(--text-primary);font-size:1rem;transition:border-color .3s ease;}
-        .search-input::placeholder{color:var(--text-muted);}
-        .search-input:focus{outline:none;border-color:#00d9ff;}
-        .search-icon{position:absolute;left:.75rem;top:50%;transform:translateY(-50%);width:1rem;height:1rem;color:var(--text-muted);pointer-events:none;}
-        .nav-right{display:flex;align-items:center;gap:.5rem;}
-        @media(min-width:768px){.nav-right{gap:1rem;}}
-        .nav-links{display:none;align-items:center;gap:1rem;}
-        @media(min-width:768px){.nav-links{display:flex;}}
-        .nav-link{font-size:.875rem;font-weight:500;background:none;border:none;cursor:pointer;color:var(--text-secondary);transition:color .3s ease;}
-        .nav-link:hover{color:#00d9ff;}
-        .mobile-search-btn{display:flex;}
-        @media(min-width:768px){.mobile-search-btn{display:none;}}
-        .mobile-menu-btn{display:flex;}
-        @media(min-width:768px){.mobile-menu-btn{display:none;}}
-        .shop-now-btn{display:none;}
-        @media(min-width:640px){.shop-now-btn{display:inline-flex;}}
-        .mobile-search-bar{display:none;padding:0 1rem .75rem;}
-        .mobile-search-bar.active{display:block;}
-        .mobile-menu{display:none;padding-bottom:1rem;border-top:1px solid var(--border);}
-        .mobile-menu.active{display:block;}
-        .mobile-menu-item{display:block;width:100%;text-align:left;padding:.5rem 1rem;font-size:.875rem;font-weight:500;background:none;border:none;cursor:pointer;color:var(--text-secondary);border-radius:.375rem;transition:background-color .3s ease;}
-        .mobile-menu-item:hover{background-color:var(--border);}
-        .hero{position:relative;overflow:hidden;background:linear-gradient(to bottom,var(--bg-base),var(--bg-surface));padding:4rem 0;}
-        @media(min-width:768px){.hero{padding:6rem 0;}}
-        .hero-grid{display:grid;grid-template-columns:1fr;gap:2rem;align-items:center;}
-        @media(min-width:768px){.hero-grid{grid-template-columns:1fr 1fr;gap:3rem;}}
-        .hero-content{opacity:0;transform:translateX(-3rem);transition:opacity .7s ease,transform .7s ease;}
-        .hero-content.visible{opacity:1;transform:translateX(0);}
-        .hero-image{opacity:0;transform:translateX(3rem);transition:opacity .7s ease,transform .7s ease;}
-        .hero-image.visible{opacity:1;transform:translateX(0);}
-        .hero-badge{display:inline-block;margin-bottom:1rem;padding:.25rem .75rem;background-color:rgba(0,217,255,.1);border:1px solid rgba(0,217,255,.25);border-radius:9999px;}
-        .hero-badge span{font-size:.875rem;font-weight:500;color:#00d9ff;display:flex;align-items:center;gap:.5rem;}
-        .hero-title{font-size:2.25rem;line-height:1.2;margin-bottom:1rem;color:var(--text-primary);}
-        @media(min-width:768px){.hero-title{font-size:3rem;}}
-        @media(min-width:1024px){.hero-title{font-size:3.75rem;}}
-        .hero-title .primary{color:#00d9ff;}
-        .hero-description{font-size:1.125rem;color:var(--text-secondary);margin-bottom:2rem;line-height:1.8;}
-        .hero-cta{display:flex;flex-direction:column;gap:1rem;margin-bottom:2rem;}
-        @media(min-width:640px){.hero-cta{flex-direction:row;}}
-        .hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;font-size:.875rem;}
-        .hero-stat-value{font-weight:bold;font-size:1.5rem;color:var(--text-primary);}
-        .hero-stat-label{color:var(--text-secondary);}
-        .hero-image-container{position:relative;}
-        .hero-image-glow{position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,217,255,.2),rgba(255,165,0,.2));border-radius:1rem;filter:blur(3rem);}
-        .hero-image-box{position:relative;border-radius:1rem;box-shadow:0 20px 25px -5px rgba(0,0,0,.25);overflow:hidden;background:linear-gradient(135deg,var(--bg-surface),var(--border));height:24rem;display:flex;align-items:center;justify-content:center;cursor:pointer;}
-        
-        /* Premium Carousel in Hero */
-        .premium-carousel-hero{position:relative;width:100%;height:100%;overflow:hidden;}
-        .premium-carousel-hero-slide{position:absolute;width:100%;height:100%;top:0;left:0;opacity:0;transition:opacity .6s ease;display:flex;align-items:center;justify-content:center;}
-        .premium-carousel-hero-slide.active{opacity:1;}
-        .premium-carousel-hero-slide img{width:100%;height:100%;object-fit:cover;display:block;}
-        .premium-carousel-hero-slide-emoji{font-size:4rem;}
-        .carousel-hero-nav-btn{position:absolute;top:50%;transform:translateY(-50%);background-color:rgba(0,0,0,.3);color:white;border:none;width:2.5rem;height:2.5rem;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background-color .3s ease;z-index:10;}
-        .carousel-hero-nav-btn:hover{background-color:rgba(0,0,0,.5);}
-        .carousel-hero-nav-btn.prev{left:1rem;}
-        .carousel-hero-nav-btn.next{right:1rem;}
-        .carousel-hero-dots{position:absolute;bottom:1rem;left:50%;transform:translateX(-50%);display:flex;gap:.5rem;z-index:10;}
-        .carousel-hero-dot{width:.75rem;height:.75rem;border-radius:50%;background-color:rgba(255,255,255,.4);cursor:pointer;transition:background-color .3s ease;}
-        .carousel-hero-dot.active{background-color:#00d9ff;}
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tech Hub — Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg-base:     #0f1419;
+      --bg-surface:  #1a1f2e;
+      --bg-card:     #1a1f2e;
+      --bg-input:    #1a1f2e;
+      --border:      #2d3748;
+      --border-dark: #374151;
+      --text-primary:  #f1f5f9;
+      --text-secondary:#cbd5e1;
+      --text-muted:    #94a3b8;
+      --accent:      #00d9ff;
+      --accent-hover:#00b8d9;
+      --danger:      #ef4444;
+      --success:     #22c55e;
+      --warning:     #f59e0b;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;}
+    body{background:var(--bg-base);color:var(--text-primary);font-family:'Inter',sans-serif;min-height:100vh;}
+    ::-webkit-scrollbar{width:6px;}
+    ::-webkit-scrollbar-track{background:var(--bg-surface);}
+    ::-webkit-scrollbar-thumb{background:var(--border-dark);border-radius:3px;}
 
-        /* Premium Modal */
-        .modal-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background-color:rgba(0,0,0,.7);z-index:100;animation:fadeIn .3s ease;}
-        .modal-overlay.active{display:flex;align-items:center;justify-content:center;}
-        .modal-content{background-color:var(--bg-card);border-radius:1rem;box-shadow:0 20px 25px -5px rgba(0,0,0,.25);max-width:90%;max-height:90vh;overflow-y:auto;animation:slideInUp .3s ease;position:relative;}
-        @media(min-width:768px){.modal-content{max-width:70%;}}
-        .modal-header{display:flex;align-items:center;justify-content:space-between;padding:2rem;border-bottom:1px solid var(--border);position:sticky;top:0;background-color:var(--bg-card);z-index:10;}
-        .modal-title{font-size:1.5rem;font-weight:bold;color:var(--text-primary);}
-        .modal-close-btn{background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--text-secondary);transition:color .3s ease;}
-        .modal-close-btn:hover{color:var(--text-primary);}
-        .modal-body{padding:2rem;}
-        .premium-products-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;}
-        @media(min-width:640px){.premium-products-grid{grid-template-columns:repeat(2,1fr);}}
-        @media(min-width:1024px){.premium-products-grid{grid-template-columns:repeat(3,1fr);}}
-        .premium-product-card{background-color:var(--bg-surface);border:1px solid var(--border);border-radius:.75rem;overflow:hidden;display:flex;flex-direction:column;height:100%;box-shadow:0 4px 12px rgba(0,0,0,.08);opacity:0;transform:translateY(2rem) scale(.97);transition:opacity .5s ease,transform .3s ease,box-shadow .3s ease;}
-        .premium-product-card.visible{opacity:1;transform:translateY(0) scale(1);}
-        .premium-product-card:hover{transform:scale(1.03);box-shadow:0 20px 32px rgba(0,0,0,.18);}
-        .premium-product-image{position:relative;background:linear-gradient(135deg,var(--bg-card),var(--border));height:12rem;display:flex;align-items:center;justify-content:center;overflow:hidden;}
-        .premium-product-image img{width:100%;height:100%;object-fit:cover;display:block;}
-        .premium-product-emoji{font-size:3.75rem;}
-        .premium-product-content{padding:1.5rem;flex:1;display:flex;flex-direction:column;}
-        .premium-product-name{font-size:1.125rem;font-weight:bold;color:var(--text-primary);margin-bottom:.75rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
-        .premium-product-desc{font-size:.875rem;color:var(--text-secondary);margin-bottom:.75rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
-        .premium-product-price{font-size:1.5rem;font-weight:bold;color:#00d9ff;margin-bottom:1rem;}
-        .premium-product-footer{margin-top:auto;padding-top:1rem;border-top:1px solid var(--border);display:flex;gap:.5rem;}
-        .premium-product-footer .btn{flex:1;}
+    /* ── Gate ── */
+    #gate{
+      min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;
+      background:radial-gradient(ellipse at 60% 40%, rgba(0,217,255,0.07) 0%, transparent 60%);
+    }
+    .gate-box{
+      width:100%;max-width:420px;
+      background:var(--bg-surface);border:1px solid var(--border);border-radius:16px;
+      padding:40px 36px;box-shadow:0 32px 64px rgba(0,0,0,0.4);
+    }
+    .gate-logo{display:flex;align-items:center;gap:12px;margin-bottom:32px;justify-content:center;}
+    .gate-logo-icon{
+      width:44px;height:44px;
+      background:linear-gradient(135deg,#00d9ff,#ffa500);
+      border-radius:10px;display:flex;align-items:center;justify-content:center;
+      color:#fff;font-weight:800;font-size:20px;font-family:'Poppins',sans-serif;
+    }
+    .gate-logo-text{font-family:'Poppins',sans-serif;font-size:18px;font-weight:700;color:var(--text-primary);}
+    .gate-title{font-family:'Poppins',sans-serif;font-size:22px;font-weight:700;text-align:center;margin-bottom:8px;}
+    .gate-sub{font-size:13px;color:var(--text-muted);text-align:center;margin-bottom:28px;}
+    .field{margin-bottom:18px;}
+    .field label{display:block;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;}
+    .field input{
+      width:100%;padding:12px 16px;
+      background:var(--bg-base);border:1px solid var(--border);border-radius:8px;
+      color:var(--text-primary);font-size:14px;font-family:'Inter',sans-serif;
+      outline:none;transition:border-color .2s;
+    }
+    .field input:focus{border-color:var(--accent);}
+    .field input::placeholder{color:var(--text-muted);}
+    .btn-login{
+      width:100%;padding:13px;border:none;border-radius:8px;
+      background:var(--accent);color:#000;font-family:'Inter',sans-serif;
+      font-size:14px;font-weight:700;letter-spacing:.5px;cursor:pointer;
+      transition:background .2s,transform .1s;margin-top:4px;
+    }
+    .btn-login:hover{background:var(--accent-hover);}
+    .btn-login:active{transform:scale(0.98);}
+    .login-err{color:var(--danger);font-size:12px;margin-top:12px;text-align:center;display:none;}
 
-        .categories{padding:4rem 0;background-color:var(--bg-base);}
-        @media(min-width:768px){.categories{padding:5rem 0;}}
-        .categories-header{margin-bottom:3rem;text-align:center;opacity:0;transform:scale(.95);transition:opacity .7s ease,transform .7s ease;}
-        .categories-header.visible{opacity:1;transform:scale(1);}
-        .categories-title{font-size:1.875rem;margin-bottom:1rem;color:var(--text-primary);}
-        @media(min-width:768px){.categories-title{font-size:2.25rem;}}
-        .categories-subtitle{color:var(--text-secondary);font-size:1.125rem;}
-        .categories-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;}
-        @media(min-width:768px){.categories-grid{grid-template-columns:repeat(3,1fr);}}
-        @media(min-width:1024px){.categories-grid{grid-template-columns:repeat(6,1fr);}}
-        .category-card{background-color:var(--bg-card);border:1px solid var(--border);border-radius:.75rem;padding:1.5rem;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,.08);cursor:pointer;opacity:0;transform:translateY(2rem);transition:opacity .5s ease,transform .5s ease,box-shadow .3s ease,border-color .3s ease;}
-        .category-card.visible{opacity:1;transform:translateY(0);}
-        .category-card:hover{box-shadow:0 12px 24px rgba(0,0,0,.15);border-color:rgba(0,217,255,.5);}
-        .category-icon{font-size:2.25rem;margin-bottom:.75rem;transition:transform .3s ease;}
-        .category-card:hover .category-icon{transform:scale(1.1);}
-        .category-name{font-weight:600;color:var(--text-primary);margin-bottom:.25rem;}
-        .category-count{font-size:.75rem;color:var(--text-muted);}
-        .products{padding:4rem 0;background:linear-gradient(to bottom,var(--bg-surface),var(--bg-base));}
-        @media(min-width:768px){.products{padding:5rem 0;}}
-        .products-header{margin-bottom:3rem;display:flex;align-items:center;justify-content:space-between;opacity:0;transform:translateY(2rem);transition:opacity .7s ease,transform .7s ease;}
-        .products-header.visible{opacity:1;transform:translateY(0);}
-        .products-title{font-size:1.875rem;margin-bottom:.5rem;color:var(--text-primary);}
-        @media(min-width:768px){.products-title{font-size:2.25rem;}}
-        .products-subtitle{color:var(--text-secondary);}
-        .view-all-desktop{display:none;}
-        @media(min-width:768px){.view-all-desktop{display:flex;}}
-        .products-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;}
-        @media(min-width:768px){.products-grid{grid-template-columns:repeat(2,1fr);}}
-        @media(min-width:1024px){.products-grid{grid-template-columns:repeat(3,1fr);}}
-        .product-card{background-color:var(--bg-card);border:1px solid var(--border);border-radius:.75rem;overflow:hidden;display:flex;flex-direction:column;height:100%;box-shadow:0 4px 12px rgba(0,0,0,.08);opacity:0;transform:translateY(2rem) scale(.97);transition:opacity .5s ease,transform .3s ease,box-shadow .3s ease;}
-        .product-card.visible{opacity:1;transform:translateY(0) scale(1);}
-        .product-card:hover{transform:scale(1.03);box-shadow:0 20px 32px rgba(0,0,0,.18);}
-        .product-image{position:relative;background:linear-gradient(135deg,var(--bg-surface),var(--border));height:12rem;display:flex;align-items:center;justify-content:center;overflow:hidden;}
-        .product-image img{width:100%;height:100%;object-fit:cover;display:block;}
-        .product-badge{position:absolute;top:.75rem;right:.75rem;background-color:#00d9ff;color:#ffffff;padding:.25rem .75rem;border-radius:9999px;font-size:.75rem;font-weight:600;z-index:10;}
-        .product-emoji{font-size:3.75rem;}
-        .product-content{padding:1.5rem;flex:1;display:flex;flex-direction:column;}
-        .product-category{font-size:.75rem;font-weight:600;color:#00d9ff;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.5rem;}
-        .product-name{font-size:1.125rem;font-weight:bold;color:var(--text-primary);margin-bottom:.75rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
-        .product-desc{font-size:.875rem;color:var(--text-secondary);margin-bottom:.75rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
-        .product-rating{display:flex;align-items:center;gap:.25rem;margin-bottom:1rem;}
-        .star{width:1rem;height:1rem;}
-        .star.filled{color:#ffa500;}
-        .star.empty{color:var(--border-dark);}
-        .rating-text{font-size:.875rem;color:var(--text-muted);margin-left:.5rem;}
-        .product-footer{margin-top:auto;padding-top:1rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
-        .product-price{font-size:1.5rem;font-weight:bold;color:#00d9ff;}
-        .view-all-mobile{display:flex;justify-content:center;margin-top:3rem;}
-        @media(min-width:768px){.view-all-mobile{display:none;}}
-        .newsletter{padding:4rem 0;background:linear-gradient(90deg,rgba(0,217,255,.07),rgba(255,165,0,.07));}
-        html.dark .newsletter{background:linear-gradient(90deg,var(--bg-surface),var(--bg-base));}
-        @media(min-width:768px){.newsletter{padding:5rem 0;}}
-        .newsletter-content{max-width:42rem;margin:0 auto;text-align:center;opacity:0;transform:scale(.95);transition:opacity .7s ease,transform .7s ease;}
-        .newsletter-content.visible{opacity:1;transform:scale(1);}
-        .newsletter-title{font-size:1.875rem;margin-bottom:1rem;color:var(--text-primary);}
-        @media(min-width:768px){.newsletter-title{font-size:2.25rem;}}
-        .newsletter-description{color:var(--text-secondary);margin-bottom:2rem;font-size:1.125rem;}
-        .newsletter-form{display:flex;flex-direction:column;gap:.75rem;}
-        @media(min-width:640px){.newsletter-form{flex-direction:row;}}
-        .newsletter-input{flex:1;padding:.5rem 1rem;border:2px solid var(--border);border-radius:.5rem;background-color:var(--bg-input);color:var(--text-primary);font-size:1rem;transition:border-color .3s ease;}
-        .newsletter-input::placeholder{color:var(--text-muted);}
-        .newsletter-input:focus{outline:none;border-color:#00d9ff;}
-        .newsletter-success{margin-top:1rem;padding:1rem;background-color:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.35);border-radius:.5rem;color:#4ade80;font-size:.875rem;font-weight:500;display:flex;align-items:center;gap:.5rem;justify-content:center;animation:fadeIn .5s ease;}
-        html:not(.dark) .newsletter-success{background-color:#dcfce7;border-color:#86efac;color:#166534;}
-        .newsletter-success.hidden{display:none;}
-        .newsletter-privacy{font-size:.75rem;color:var(--text-muted);margin-top:1rem;}
-        footer{background-color:var(--footer-bg);color:#f1f5f9;margin-top:5rem;}
-        .footer-content{padding:4rem 0;}
-        .footer-grid{display:grid;grid-template-columns:1fr;gap:2rem;margin-bottom:2rem;}
-        @media(min-width:768px){.footer-grid{grid-template-columns:repeat(4,1fr);}}
-        .footer-section h3{font-size:1.125rem;margin-bottom:1rem;color:#f1f5f9;}
-        .footer-section h4{font-weight:600;margin-bottom:1rem;color:#f1f5f9;}
-        .footer-text{color:#94a3b8;font-size:.875rem;}
-        .footer-list{list-style:none;}
-        .footer-list li{margin-bottom:.5rem;}
-        .footer-list a{color:#94a3b8;text-decoration:none;font-size:.875rem;transition:color .3s ease;}
-        .footer-list a:hover{color:#00d9ff;}
-        .footer-divider{border-top:1px solid var(--footer-border);padding:2rem 0;}
-        .footer-bottom{display:grid;grid-template-columns:1fr;gap:2rem;align-items:center;}
-        @media(min-width:768px){.footer-bottom{grid-template-columns:1fr 1fr;}}
-        .footer-social{display:flex;align-items:center;gap:1rem;}
-        .footer-social-label{font-size:.875rem;color:#94a3b8;}
-        .footer-social-links{display:flex;gap:.75rem;}
-        .footer-social-link{color:#94a3b8;text-decoration:none;display:flex;align-items:center;justify-content:center;transition:color .3s ease;}
-        .footer-social-link:hover{color:#00d9ff;}
-        .footer-legal{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:1rem;font-size:.875rem;}
-        .footer-legal a{color:#94a3b8;text-decoration:none;transition:color .3s ease;}
-        .footer-legal a:hover{color:#00d9ff;}
-        .footer-copyright{border-top:1px solid var(--footer-border);padding-top:2rem;text-align:center;font-size:.875rem;color:#64748b;}
-        /* Loading */
-        .loading-wrap{text-align:center;padding:60px 0;color:var(--text-muted);}
-        .spinner-ring{display:inline-block;width:32px;height:32px;border:3px solid var(--border);border-top-color:#00d9ff;border-radius:50%;animation:spin .8s linear infinite;margin-bottom:16px;}
-    </style>
+    /* ── Dashboard ── */
+    #dashboard{display:none;}
+
+    /* Topbar */
+    .topbar{
+      background:var(--bg-surface);border-bottom:1px solid var(--border);
+      padding:0 24px;height:60px;display:flex;align-items:center;
+      justify-content:space-between;position:sticky;top:0;z-index:50;
+    }
+    .topbar-left{display:flex;align-items:center;gap:12px;}
+    .topbar-logo-icon{width:32px;height:32px;background:linear-gradient(135deg,#00d9ff,#ffa500);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:14px;font-family:'Poppins',sans-serif;}
+    .topbar-title{font-family:'Poppins',sans-serif;font-size:15px;font-weight:700;}
+    .topbar-badge{background:rgba(0,217,255,.15);color:var(--accent);font-size:10px;font-weight:600;padding:3px 10px;border-radius:20px;letter-spacing:.5px;}
+    .btn-logout{
+      padding:7px 16px;border:1px solid var(--border);border-radius:8px;
+      background:transparent;color:var(--text-muted);font-size:12px;font-weight:600;
+      cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif;
+    }
+    .btn-logout:hover{border-color:var(--danger);color:var(--danger);}
+
+    /* Main layout */
+    .dash-body{max-width:900px;margin:0 auto;padding:32px 20px;}
+
+    /* Tabs */
+    .tabs{display:flex;gap:4px;background:var(--bg-surface);border:1px solid var(--border);border-radius:10px;padding:4px;margin-bottom:28px;}
+    .tab{
+      flex:1;padding:10px;border:none;border-radius:8px;
+      background:transparent;color:var(--text-muted);
+      font-family:'Inter',sans-serif;font-size:13px;font-weight:600;
+      cursor:pointer;transition:all .2s;
+    }
+    .tab.active{background:var(--accent);color:#000;}
+    .tab:not(.active):hover{background:var(--border);color:var(--text-primary);}
+
+    /* Form card */
+    .form-card{background:var(--bg-surface);border:1px solid var(--border);border-radius:12px;padding:28px;}
+    .form-title{font-family:'Poppins',sans-serif;font-size:16px;font-weight:700;margin-bottom:24px;color:var(--text-primary);}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+    @media(max-width:600px){.form-grid{grid-template-columns:1fr;}}
+    .form-field{margin-bottom:0;}
+    .form-field.full{grid-column:1/-1;}
+    .form-field label{display:block;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted);margin-bottom:7px;}
+    .form-field input,
+    .form-field select,
+    .form-field textarea{
+      width:100%;padding:11px 14px;
+      background:var(--bg-base);border:1px solid var(--border);border-radius:8px;
+      color:var(--text-primary);font-family:'Inter',sans-serif;font-size:13px;
+      outline:none;transition:border-color .2s;
+    }
+    .form-field input:focus,
+    .form-field select:focus,
+    .form-field textarea:focus{border-color:var(--accent);}
+    .form-field input::placeholder,
+    .form-field textarea::placeholder{color:var(--text-muted);}
+    .form-field select option{background:var(--bg-surface);}
+    .form-field textarea{resize:vertical;min-height:80px;}
+    .checkbox-wrapper{display:flex;align-items:center;gap:10px;padding:11px 14px;background:var(--bg-base);border:1px solid var(--border);border-radius:8px;cursor:pointer;}
+    .checkbox-wrapper input[type="checkbox"]{width:18px;height:18px;cursor:pointer;accent-color:var(--accent);}
+    .checkbox-wrapper label{margin:0;text-transform:none;letter-spacing:normal;color:var(--text-secondary);font-size:13px;cursor:pointer;}
+    .thumb-fields{margin-top:10px;display:flex;flex-direction:column;gap:8px;}
+    .btn-add-thumb{
+      margin-top:8px;padding:8px 16px;border:1px dashed var(--border-dark);border-radius:6px;
+      background:transparent;color:var(--text-muted);font-size:12px;font-weight:600;
+      cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif;width:100%;text-align:center;
+    }
+    .btn-add-thumb:hover{border-color:var(--accent);color:var(--accent);}
+    .form-actions{display:flex;gap:12px;margin-top:24px;}
+    .btn-submit{
+      flex:1;padding:13px;border:none;border-radius:8px;
+      background:var(--accent);color:#000;font-family:'Inter',sans-serif;
+      font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;
+    }
+    .btn-submit:hover{background:var(--accent-hover);}
+    .btn-cancel{
+      padding:13px 20px;border:1px solid var(--border);border-radius:8px;
+      background:transparent;color:var(--text-muted);font-size:13px;font-weight:600;
+      cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif;display:none;
+    }
+    .btn-cancel:hover{border-color:var(--text-muted);color:var(--text-primary);}
+    .form-msg{
+      text-align:center;margin-top:14px;font-size:12px;font-weight:600;
+      color:var(--accent);display:none;padding:10px;border-radius:8px;
+      background:rgba(0,217,255,.08);border:1px solid rgba(0,217,255,.2);
+    }
+
+    /* Product list */
+    .list-card{background:var(--bg-surface);border:1px solid var(--border);border-radius:12px;padding:28px;}
+    .list-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;}
+    .list-title{font-family:'Poppins',sans-serif;font-size:16px;font-weight:700;}
+    .list-count{background:rgba(0,217,255,.12);color:var(--accent);font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;}
+    .product-list{display:flex;flex-direction:column;gap:10px;max-height:520px;overflow-y:auto;padding-right:4px;}
+    .product-item{
+      background:var(--bg-base);border:1px solid var(--border);border-radius:10px;
+      padding:14px 16px;display:flex;align-items:center;gap:14px;
+      transition:border-color .2s;
+    }
+    .product-item:hover{border-color:rgba(0,217,255,.3);}
+    .product-item-img{width:56px;height:56px;object-fit:cover;border-radius:8px;border:1px solid var(--border);flex-shrink:0;background:var(--bg-surface);}
+    .product-item-info{flex:1;min-width:0;}
+    .product-item-name{font-size:14px;font-weight:600;color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    .product-item-meta{display:flex;gap:10px;margin-top:4px;flex-wrap:wrap;align-items:center;}
+    .product-item-cat{font-size:11px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.5px;}
+    .product-item-price{font-size:11px;color:var(--text-muted);}
+    .product-item-premium{font-size:11px;color:var(--success);font-weight:600;}
+    .product-item-btns{display:flex;gap:8px;flex-shrink:0;}
+    .btn-edit{
+      padding:7px 14px;border:1px solid var(--border);border-radius:6px;
+      background:transparent;color:var(--text-secondary);font-size:11px;font-weight:600;
+      cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif;
+    }
+    .btn-edit:hover{border-color:var(--accent);color:var(--accent);}
+    .btn-del{
+      padding:7px 14px;border:1px solid var(--border);border-radius:6px;
+      background:transparent;color:var(--text-muted);font-size:11px;font-weight:600;
+      cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif;
+    }
+    .btn-del:hover{border-color:var(--danger);color:var(--danger);background:rgba(239,68,68,.07);}
+    .list-empty{text-align:center;padding:48px 0;color:var(--text-muted);font-size:14px;}
+    .list-empty span{font-size:36px;display:block;margin-bottom:12px;}
+  </style>
 </head>
 <body>
-<div id="app">
 
-  <nav>
-    <div class="container-custom">
-      <div class="nav-content">
-        <div class="nav-logo">
-          <div class="nav-logo-icon">T</div>
-          <span class="nav-logo-text">Tech Hub</span>
-        </div>
-        <div class="nav-search" id="desktopSearch">
-          <div class="search-wrapper">
-            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>
-            <input type="text" class="search-input" placeholder="Search products..." id="desktopSearchInput" oninput="filterProducts(this.value)">
-          </div>
-        </div>
-        <div class="nav-right">
-          <button class="btn btn-sm btn-ghost mobile-search-btn" id="mobileSearchBtn" title="Search">
-            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>
-          </button>
-          <div class="nav-links">
-            <button class="nav-link" onclick="document.querySelector('.categories').scrollIntoView({behavior:'smooth'})">Categories</button>
-            <button class="nav-link" onclick="document.querySelector('.products').scrollIntoView({behavior:'smooth'})">Products</button>
-          </div>
-          <button class="btn btn-sm btn-ghost" id="themeToggle" title="Toggle theme">
-            <svg class="btn-icon" id="moonIcon" viewBox="0 0 24 24" fill="currentColor" style="display:none;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-            <svg class="btn-icon" id="sunIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:block;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-          </button>
-          <button class="btn btn-sm btn-primary shop-now-btn" onclick="document.querySelector('.products').scrollIntoView({behavior:'smooth'})">Shop Now</button>
-          <button class="btn btn-sm btn-ghost mobile-menu-btn" id="mobileMenuBtn" title="Menu">
-            <svg class="btn-icon" id="menuIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-            <svg class="btn-icon" id="closeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-          </button>
-        </div>
-      </div>
-      <div class="mobile-search-bar" id="mobileSearchBar">
-        <div class="search-wrapper">
-          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>
-          <input type="text" class="search-input" placeholder="Search products..." id="mobileSearchInput" oninput="filterProducts(this.value)">
-        </div>
-      </div>
-      <div class="mobile-menu" id="mobileMenu">
-        <button class="mobile-menu-item" onclick="document.querySelector('.categories').scrollIntoView({behavior:'smooth'})">Categories</button>
-        <button class="mobile-menu-item" onclick="document.querySelector('.products').scrollIntoView({behavior:'smooth'})">Products</button>
-        <button class="btn btn-md btn-primary" style="width:100%;margin-top:.5rem;" onclick="document.querySelector('.products').scrollIntoView({behavior:'smooth'})">Shop Now</button>
-      </div>
+<!-- ── Gate ── -->
+<div id="gate">
+  <div class="gate-box">
+    <div class="gate-logo">
+      <div class="gate-logo-icon">T</div>
+      <span class="gate-logo-text">Tech Hub</span>
     </div>
-  </nav>
-
-  <main>
-    <!-- Hero -->
-    <section class="hero">
-      <div class="container-custom">
-        <div class="hero-grid">
-          <div class="hero-content" id="heroContent" data-scroll-animate>
-            <div class="hero-badge"><span><svg style="width:1rem;height:1rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>Latest Tech Products</span></div>
-            <h1 class="hero-title">Discover Premium <span class="primary">Tech Deals</span></h1>
-            <p class="hero-description">Explore our curated collection of cutting-edge technology products. Find the best deals on laptops, smartphones, audio, gaming gear, and more.</p>
-            <div class="hero-cta">
-              <button class="btn btn-lg btn-primary" onclick="document.querySelector('.products').scrollIntoView({behavior:'smooth'})">Explore Products <svg style="width:1rem;height:1rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></button>
-              <button class="btn btn-lg btn-outline" onclick="document.querySelector('.categories').scrollIntoView({behavior:'smooth'})">Browse Categories</button>
-            </div>
-            <div class="hero-stats">
-              <div><div class="hero-stat-value" id="stat-products">...</div><div class="hero-stat-label">Products</div></div>
-              <div><div class="hero-stat-value">10K+</div><div class="hero-stat-label">Happy Customers</div></div>
-              <div><div class="hero-stat-value">24/7</div><div class="hero-stat-label">Support</div></div>
-            </div>
-          </div>
-          <div class="hero-image" id="heroImage" data-scroll-animate>
-            <div class="hero-image-container">
-              <div class="hero-image-glow"></div>
-              <div class="hero-image-box" onclick="openPremiumModal()">
-                <div class="premium-carousel-hero" id="premiumCarouselHero">
-                  <!-- Premium carousel slides will be generated here -->
-                </div>
-                <div class="carousel-hero-nav-btn prev" onclick="premiumCarouselPrevHero(event)">
-                  <svg style="width:1.5rem;height:1.5rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
-                </div>
-                <div class="carousel-hero-nav-btn next" onclick="premiumCarouselNextHero(event)">
-                  <svg style="width:1.5rem;height:1.5rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                </div>
-                <div class="carousel-hero-dots" id="carouselHeroDots">
-                  <!-- Dots will be generated here -->
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Premium Products Modal -->
-    <div class="modal-overlay" id="premiumModal">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h2 class="modal-title">Premium Products Collection</h2>
-          <button class="modal-close-btn" onclick="closePremiumModal()">&times;</button>
-        </div>
-        <div class="modal-body">
-          <div class="loading-wrap" id="modal-loading"><div class="spinner-ring"></div><br>Loading premium products...</div>
-          <div class="premium-products-grid" id="premiumProductsGrid"></div>
-        </div>
-      </div>
+    <h2 class="gate-title">Admin Access</h2>
+    <p class="gate-sub">Sign in to manage your products</p>
+    <div class="field">
+      <label>Email</label>
+      <input type="email" id="admin-email" placeholder="admin@email.com">
     </div>
-
-    <!-- Categories -->
-    <section class="categories">
-      <div class="container-custom">
-        <div class="categories-header" id="categoriesHeader" data-scroll-animate>
-          <h2 class="categories-title">Browse by Category</h2>
-          <p class="categories-subtitle">Find exactly what you're looking for</p>
-        </div>
-        <div class="categories-grid" id="categoriesGrid"></div>
-      </div>
-    </section>
-
-    <!-- Products -->
-    <section class="products">
-      <div class="container-custom">
-        <div class="products-header" id="productsHeader" data-scroll-animate>
-          <div>
-            <h2 class="products-title">Featured Products</h2>
-            <p class="products-subtitle" id="products-subtitle">Handpicked tech essentials for you</p>
-          </div>
-          <button class="btn btn-outline view-all-desktop">View All <svg style="width:1rem;height:1rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></button>
-        </div>
-        <div class="loading-wrap" id="products-loading"><div class="spinner-ring"></div><br>Loading products...</div>
-        <div class="products-grid" id="productsGrid"></div>
-        <div class="view-all-mobile"><button class="btn btn-lg btn-primary">View All Products</button></div>
-      </div>
-    </section>
-
-    <!-- Newsletter -->
-    <section class="newsletter">
-      <div class="container-custom">
-        <div class="newsletter-content" id="newsletterContent" data-scroll-animate>
-          <h2 class="newsletter-title">Stay Updated</h2>
-          <p class="newsletter-description">Get the latest tech deals, product launches, and exclusive offers delivered to your inbox.</p>
-          <form class="newsletter-form" id="newsletterForm">
-            <input type="email" class="newsletter-input" placeholder="Enter your email" id="newsletterEmail" required>
-            <button type="submit" class="btn btn-md btn-primary" style="white-space:nowrap;"><svg style="width:1rem;height:1rem;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>Subscribe</button>
-          </form>
-          <div class="newsletter-success hidden" id="newsletterSuccess"><svg style="width:1.25rem;height:1.25rem;" viewBox="0 0 24 24" fill="currentColor"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>Thanks for subscribing!</div>
-          <p class="newsletter-privacy">We respect your privacy. Unsubscribe at any time.</p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container-custom">
-      <div class="footer-content">
-        <div class="footer-grid">
-          <div class="footer-section"><h3>Tech Affiliate Hub</h3><p class="footer-text">Your trusted source for premium tech deals and affiliate products.</p></div>
-          <div class="footer-section"><h4>Quick Links</h4><ul class="footer-list"><li><a href="#">Home</a></li><li><a href="#">Products</a></li><li><a href="#">Categories</a></li></ul></div>
-          <div class="footer-section"><h4>Resources</h4><ul class="footer-list"><li><a href="#">Blog</a></li><li><a href="#">Guides</a></li><li><a href="#">FAQ</a></li></ul></div>
-          <div class="footer-section"><h4>Contact</h4><p class="footer-text" style="font-size:.875rem;">info@techaffiliatehub.com</p></div>
-        </div>
-        <div class="footer-divider">
-          <div class="footer-bottom">
-            <div class="footer-social"><span class="footer-social-label">Follow us:</span><div class="footer-social-links"><a href="#" class="footer-social-link"><svg style="width:1.25rem;height:1.25rem;" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a></div></div>
-            <div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
-          </div>
-        </div>
-        <div class="footer-copyright"><p>&copy; <span id="currentYear"></span> Tech Affiliate Hub. All rights reserved. | Affiliate Disclosure: We may earn a commission from purchases made through our links.</p></div>
-      </div>
+    <div class="field">
+      <label>Password</label>
+      <input type="password" id="admin-password" placeholder="Password">
     </div>
-  </footer>
+    <button class="btn-login" onclick="doLogin()">Sign In</button>
+    <div class="login-err" id="login-err"></div>
+  </div>
 </div>
 
-<!-- Firebase — READ ONLY -->
+<!-- ── Dashboard ── -->
+<div id="dashboard">
+  <div class="topbar">
+    <div class="topbar-left">
+      <div class="topbar-logo-icon">T</div>
+      <span class="topbar-title">Tech Hub</span>
+      <span class="topbar-badge">ADMIN</span>
+    </div>
+    <button class="btn-logout" onclick="doLogout()">Logout</button>
+  </div>
+
+  <div class="dash-body">
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab('add')">+ Add Product</button>
+      <button class="tab" onclick="switchTab('list')">Manage Products</button>
+    </div>
+
+    <!-- Add / Edit Tab -->
+    <div id="tab-add">
+      <div class="form-card">
+        <div class="form-title" id="form-title">Add New Product</div>
+        <div class="form-grid">
+          <div class="form-field">
+            <label>Product Name *</label>
+            <input type="text" id="ap-name" placeholder="e.g. Sony WH-1000XM5">
+          </div>
+          <div class="form-field">
+            <label>Category *</label>
+            <select id="ap-category">
+              <option value="Laptops">💻 Laptops</option>
+              <option value="Smartphones">📱 Smartphones</option>
+              <option value="Audio">🎧 Audio</option>
+              <option value="Gaming">🎮 Gaming</option>
+              <option value="Wearables">⌚ Wearables</option>
+              <option value="Accessories">🔌 Accessories</option>
+              <option value="Displays">🖥️ Displays</option>
+              <option value="Cameras">📷 Cameras</option>
+              <option value="Storage">💾 Storage</option>
+              <option value="Peripherals">⌨️ Peripherals</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label>Price (USD) *</label>
+            <input type="number" id="ap-price" placeholder="e.g. 199.99" step="0.01">
+          </div>
+          <div class="form-field">
+            <label>Badge Label</label>
+            <select id="ap-badge">
+              <option value="">No Badge</option>
+              <option value="Best Seller">🏆 Best Seller</option>
+              <option value="New">✨ New</option>
+              <option value="Premium">💎 Premium</option>
+              <option value="Hot Deal">🔥 Hot Deal</option>
+              <option value="Limited">⚡ Limited</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label>Rating (1–5)</label>
+            <input type="number" id="ap-rating" placeholder="e.g. 4.8" min="1" max="5" step="0.1">
+          </div>
+          <div class="form-field">
+            <label>Reviews Count</label>
+            <input type="number" id="ap-reviews" placeholder="e.g. 245">
+          </div>
+          <div class="form-field full">
+            <label>Buy Link</label>
+            <input type="url" id="ap-link" placeholder="https://...">
+          </div>
+          <div class="form-field full">
+            <label>Short Description</label>
+            <input type="text" id="ap-short" placeholder="One-line product summary">
+          </div>
+          <div class="form-field full">
+            <label>Full Description</label>
+            <textarea id="ap-full" placeholder="Detailed product description..."></textarea>
+          </div>
+          <div class="form-field full">
+            <label>Main Image URL *</label>
+            <input type="url" id="ap-img" placeholder="https://...">
+            <div class="thumb-fields" id="thumb-fields"></div>
+            <button class="btn-add-thumb" onclick="addThumb()">+ Add extra image</button>
+          </div>
+          <div class="form-field full">
+            <div class="checkbox-wrapper">
+              <input type="checkbox" id="ap-premium">
+              <label for="ap-premium">✨ Show in Premium Products Carousel (Hero Section)</label>
+            </div>
+          </div>
+        </div>
+        <input type="hidden" id="ap-edit-id">
+        <div class="form-actions">
+          <button class="btn-cancel" id="btn-cancel" onclick="cancelEdit()">Cancel</button>
+          <button class="btn-submit" id="btn-submit" onclick="submitProduct()">Add Product</button>
+        </div>
+        <div class="form-msg" id="form-msg"></div>
+      </div>
+    </div>
+
+    <!-- List Tab -->
+    <div id="tab-list" style="display:none;">
+      <div class="list-card">
+        <div class="list-header">
+          <span class="list-title">All Products</span>
+          <span class="list-count" id="list-count">0 items</span>
+        </div>
+        <div class="product-list" id="product-list"></div>
+        <div class="list-empty" id="list-empty">
+          <span>📦</span>No products yet. Add your first one!
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Firebase -->
 <script type="module">
-  import { initializeApp }                   from "https://www.gstatic.com/firebasejs/12.12.0/firebase-app.js";
-  import { getFirestore, collection,
-           onSnapshot, query, orderBy, where }      from "https://www.gstatic.com/firebasejs/12.12.0/firebase-firestore.js";
+  import { initializeApp }                         from "https://www.gstatic.com/firebasejs/12.12.0/firebase-app.js";
+  import { getAuth, onAuthStateChanged,
+           signInWithEmailAndPassword, signOut }   from "https://www.gstatic.com/firebasejs/12.12.0/firebase-auth.js";
+  import { getFirestore, collection, onSnapshot,
+           addDoc, updateDoc, deleteDoc, doc,
+           query, orderBy }                       from "https://www.gstatic.com/firebasejs/12.12.0/firebase-firestore.js";
 
   // ── PASTE YOUR FIREBASE CONFIG HERE ──
   const firebaseConfig = {
-    apiKey:            "AIzaSyD1H6TClrILVXaPX-7FidvVZmpJLsvumPk",
-    authDomain:        "zenova-store.firebaseapp.com",
-    projectId:         "zenova-store",
-    storageBucket:     "zenova-store.firebasestorage.app",
+    apiKey: "AIzaSyD1H6TClrILVXaPX-7FidvVZmpJLsvumPk",
+    authDomain: "zenova-store.firebaseapp.com",
+    projectId: "zenova-store",
+    storageBucket: "zenova-store.firebasestorage.app",
     messagingSenderId: "1086423258032",
-    appId:             "G-WEFZJJLVWJ"
+    appId: "1:1086423258032:web:5e39a8196fc3763188fc75",
   };
 
-  const app = initializeApp(firebaseConfig);
-  const db  = getFirestore(app);
-  const col = collection(db, 'products');
+  const app  = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db   = getFirestore(app);
+  const col  = collection(db, 'products');
 
-  window._allProducts = [];
-  window._premiumProducts = [];
+  window._products = [];
+  let _unsubscribe = null;
 
-  const q = query(col, orderBy('createdAt','desc'));
-  onSnapshot(q, snap => {
-    window._allProducts = [];
-    snap.forEach(d => window._allProducts.push({ id:d.id, ...d.data() }));
-    document.getElementById('products-loading').style.display = 'none';
-    renderProducts(window._allProducts);
-    renderCategories(window._allProducts);
-    document.getElementById('stat-products').textContent = window._allProducts.length + '+';
-    observeCards();
-  }, err => {
-    console.warn('Firestore error:', err.code);
-    document.getElementById('products-loading').style.display = 'none';
+  onAuthStateChanged(auth, user => {
+    document.getElementById('gate').style.display      = user ? 'none'  : 'flex';
+    document.getElementById('dashboard').style.display = user ? 'block' : 'none';
+    if (user) {
+      if (_unsubscribe) _unsubscribe();
+      const q = query(col, orderBy('createdAt','desc'));
+      _unsubscribe = onSnapshot(q, snap => {
+        window._products = [];
+        snap.forEach(d => window._products.push({ id:d.id, ...d.data() }));
+        renderList();
+        updateCount();
+      });
+    }
   });
 
-  // Load premium products
-  const premiumQuery = query(col, where('isPremium', '==', true), orderBy('createdAt','desc'));
-  onSnapshot(premiumQuery, snap => {
-    window._premiumProducts = [];
-    snap.forEach(d => window._premiumProducts.push({ id:d.id, ...d.data() }));
-    initPremiumCarouselHero();
-  }, err => {
-    console.warn('Premium products error:', err.code);
-    initPremiumCarouselHero();
-  });
+  window.doLogin = function() {
+    const email = document.getElementById('admin-email').value.trim();
+    const pass  = document.getElementById('admin-password').value;
+    const err   = document.getElementById('login-err');
+    err.style.display = 'none';
+    signInWithEmailAndPassword(auth, email, pass)
+      .then(() => {
+        document.getElementById('admin-email').value    = '';
+        document.getElementById('admin-password').value = '';
+      })
+      .catch(e => {
+        const msgs = {
+          'auth/invalid-email':'Invalid email.','auth/user-not-found':'No account found.',
+          'auth/wrong-password':'Incorrect password.','auth/invalid-credential':'Invalid email or password.',
+          'auth/too-many-requests':'Too many attempts. Try later.'
+        };
+        err.textContent = msgs[e.code] || 'Login failed.';
+        err.style.display = 'block';
+      });
+  };
+
+  window.doLogout = () => signOut(auth);
+
+  window.submitProduct = async function() {
+    const name     = document.getElementById('ap-name').value.trim();
+    const price    = parseFloat(document.getElementById('ap-price').value);
+    const category = document.getElementById('ap-category').value;
+    const badge    = document.getElementById('ap-badge').value;
+    const rating   = parseFloat(document.getElementById('ap-rating').value) || 0;
+    const reviews  = parseInt(document.getElementById('ap-reviews').value)  || 0;
+    const link     = document.getElementById('ap-link').value.trim();
+    const shortDesc= document.getElementById('ap-short').value.trim();
+    const fullDesc = document.getElementById('ap-full').value.trim();
+    const mainImg  = document.getElementById('ap-img').value.trim();
+    const isPremium= document.getElementById('ap-premium').checked;
+    const editId   = document.getElementById('ap-edit-id').value;
+    if (!name || !mainImg || !price) { alert('Name, Image URL, and Price are required.'); return; }
+    const extraImgs = Array.from(document.querySelectorAll('.thumb-input')).map(i=>i.value.trim()).filter(Boolean);
+    const data = { name, price, category, badge, rating, reviews, link, shortDesc, fullDesc, mainImg, extraImgs, isPremium, createdAt:Date.now() };
+    try {
+      if (editId) {
+        await updateDoc(doc(db,'products',editId), data);
+        showMsg('✓ Product updated!');
+      } else {
+        await addDoc(col, data);
+        showMsg('✓ Product added!');
+      }
+      clearForm();
+    } catch(e) { console.error(e); alert('Could not save.'); }
+  };
+
+  window.editProduct = function(id) {
+    const p = window._products.find(x => x.id===id);
+    if (!p) return;
+    switchTab('add');
+    document.getElementById('ap-name').value     = p.name      || '';
+    document.getElementById('ap-price').value    = p.price     || '';
+    document.getElementById('ap-category').value = p.category  || 'Audio';
+    document.getElementById('ap-badge').value    = p.badge     || '';
+    document.getElementById('ap-rating').value   = p.rating    || '';
+    document.getElementById('ap-reviews').value  = p.reviews   || '';
+    document.getElementById('ap-link').value     = p.link      || '';
+    document.getElementById('ap-short').value    = p.shortDesc || '';
+    document.getElementById('ap-full').value     = p.fullDesc  || '';
+    document.getElementById('ap-img').value      = p.mainImg   || '';
+    document.getElementById('ap-premium').checked= p.isPremium  || false;
+    document.getElementById('ap-edit-id').value  = id;
+    document.getElementById('form-title').textContent = 'Edit Product';
+    document.getElementById('btn-submit').textContent = 'Save Changes';
+    document.getElementById('btn-cancel').style.display = 'block';
+    const tc = document.getElementById('thumb-fields'); tc.innerHTML = '';
+    (p.extraImgs||[]).forEach(src => { addThumb(src); });
+  };
+
+  window.deleteProduct = async function(id) {
+    if (!confirm('Delete this product permanently?')) return;
+    try { await deleteDoc(doc(db,'products',id)); showMsg('Product deleted.'); }
+    catch(e) { alert('Delete failed.'); }
+  };
+
+  function renderList() {
+    const list  = document.getElementById('product-list');
+    const empty = document.getElementById('list-empty');
+    list.innerHTML = '';
+    if (!window._products.length) { empty.style.display='block'; return; }
+    empty.style.display = 'none';
+    window._products.forEach(p => {
+      const item = document.createElement('div');
+      item.className = 'product-item';
+      item.innerHTML = `
+        <img class="product-item-img" src="${p.mainImg}" onerror="this.style.background='var(--bg-surface)';this.src='';">
+        <div class="product-item-info">
+          <div class="product-item-name">${p.name}</div>
+          <div class="product-item-meta">
+            <span class="product-item-cat">${p.category}</span>
+            <span class="product-item-price">$${Number(p.price||0).toFixed(2)}</span>
+            ${p.badge ? `<span style="font-size:11px;color:var(--warning);">${p.badge}</span>` : ''}
+            ${p.isPremium ? `<span class="product-item-premium">✨ Premium</span>` : ''}
+          </div>
+        </div>
+        <div class="product-item-btns">
+          <button class="btn-edit" onclick="editProduct('${p.id}')">Edit</button>
+          <button class="btn-del"  onclick="deleteProduct('${p.id}')">Delete</button>
+        </div>`;
+      list.appendChild(item);
+    });
+  }
+
+  function updateCount() {
+    document.getElementById('list-count').textContent = window._products.length + ' items';
+  }
 </script>
 
 <script>
-  // ── Premium Carousel in Hero ──
-  let currentPremiumSlideHero = 0;
-  let premiumCarouselIntervalHero;
-
-  function initPremiumCarouselHero() {
-    const carousel = document.getElementById('premiumCarouselHero');
-    const dots = document.getElementById('carouselHeroDots');
-    
-    if (window._premiumProducts.length === 0) {
-      carousel.innerHTML = '<div class="premium-carousel-hero-slide active"><div style="text-align:center;"><div class="premium-carousel-hero-slide-emoji">📦</div><p style="color:var(--text-secondary);margin-top:1rem;">No premium products yet</p></div></div>';
-      return;
-    }
-
-    carousel.innerHTML = window._premiumProducts.map((p, idx) => {
-      const imgHtml = p.mainImg
-        ? `<img src="${p.mainImg}" alt="${p.name}" onerror="this.parentElement.innerHTML='<div class=\\'premium-carousel-hero-slide-emoji\\'>📦</div>'">`
-        : `<div class="premium-carousel-hero-slide-emoji">📦</div>`;
-      return `<div class="premium-carousel-hero-slide ${idx === 0 ? 'active' : ''}">${imgHtml}</div>`;
-    }).join('');
-
-    dots.innerHTML = window._premiumProducts.map((_, idx) => 
-      `<div class="carousel-hero-dot ${idx === 0 ? 'active' : ''}" onclick="goToPremiumSlideHero(${idx})"></div>`
-    ).join('');
-
-    startPremiumCarouselAutoPlayHero();
+  function switchTab(tab) {
+    const tabs = document.querySelectorAll('.tab');
+    document.getElementById('tab-add').style.display  = tab==='add'  ? 'block' : 'none';
+    document.getElementById('tab-list').style.display = tab==='list' ? 'block' : 'none';
+    tabs[0].classList.toggle('active', tab==='add');
+    tabs[1].classList.toggle('active', tab==='list');
+    if (tab==='add') clearForm();
   }
 
-  function goToPremiumSlideHero(idx) {
-    currentPremiumSlideHero = idx;
-    updatePremiumCarouselHero();
-    clearInterval(premiumCarouselIntervalHero);
-    startPremiumCarouselAutoPlayHero();
-  }
-
-  function premiumCarouselNextHero(e) {
-    e.stopPropagation();
-    currentPremiumSlideHero = (currentPremiumSlideHero + 1) % window._premiumProducts.length;
-    updatePremiumCarouselHero();
-    clearInterval(premiumCarouselIntervalHero);
-    startPremiumCarouselAutoPlayHero();
-  }
-
-  function premiumCarouselPrevHero(e) {
-    e.stopPropagation();
-    currentPremiumSlideHero = (currentPremiumSlideHero - 1 + window._premiumProducts.length) % window._premiumProducts.length;
-    updatePremiumCarouselHero();
-    clearInterval(premiumCarouselIntervalHero);
-    startPremiumCarouselAutoPlayHero();
-  }
-
-  function updatePremiumCarouselHero() {
-    const slides = document.querySelectorAll('.premium-carousel-hero-slide');
-    const dots = document.querySelectorAll('.carousel-hero-dot');
-    
-    slides.forEach((slide, idx) => {
-      slide.classList.toggle('active', idx === currentPremiumSlideHero);
+  function clearForm() {
+    ['ap-name','ap-price','ap-link','ap-short','ap-full','ap-img','ap-rating','ap-reviews'].forEach(id => {
+      const el = document.getElementById(id); if(el) el.value='';
     });
-    
-    dots.forEach((dot, idx) => {
-      dot.classList.toggle('active', idx === currentPremiumSlideHero);
-    });
+    document.getElementById('ap-badge').value    = '';
+    document.getElementById('ap-category').value = 'Laptops';
+    document.getElementById('ap-premium').checked= false;
+    document.getElementById('ap-edit-id').value  = '';
+    document.getElementById('thumb-fields').innerHTML = '';
+    document.getElementById('form-title').textContent = 'Add New Product';
+    document.getElementById('btn-submit').textContent = 'Add Product';
+    document.getElementById('btn-cancel').style.display = 'none';
+    document.getElementById('form-msg').style.display   = 'none';
   }
 
-  function startPremiumCarouselAutoPlayHero() {
-    premiumCarouselIntervalHero = setInterval(() => {
-      currentPremiumSlideHero = (currentPremiumSlideHero + 1) % window._premiumProducts.length;
-      updatePremiumCarouselHero();
-    }, 4000);
+  function cancelEdit() { clearForm(); }
+
+  function addThumb(val) {
+    const c = document.getElementById('thumb-fields');
+    if (c.children.length >= 3) return;
+    const inp = document.createElement('input');
+    inp.type = 'url'; inp.className = 'thumb-input';
+    inp.placeholder = 'Extra image URL ' + (c.children.length+2);
+    inp.value = val || '';
+    inp.style.cssText = 'width:100%;padding:11px 14px;background:var(--bg-base);border:1px solid var(--border);border-radius:8px;color:var(--text-primary);font-size:13px;outline:none;margin-top:0;';
+    inp.addEventListener('focus', () => inp.style.borderColor='var(--accent)');
+    inp.addEventListener('blur',  () => inp.style.borderColor='var(--border)');
+    c.appendChild(inp);
   }
 
-  // ── Premium Products Modal ──
-  function openPremiumModal() {
-    const modal = document.getElementById('premiumModal');
-    const grid = document.getElementById('premiumProductsGrid');
-    const loading = document.getElementById('modal-loading');
-    
-    modal.classList.add('active');
-    
-    if (window._premiumProducts.length === 0) {
-      loading.style.display = 'block';
-      grid.innerHTML = '';
-      return;
-    }
-
-    loading.style.display = 'none';
-    grid.innerHTML = window._premiumProducts.map((p, idx) => {
-      const stars = Array.from({length:5},(_,i)=>`<svg class="star ${i<Math.floor(p.rating||0)?'filled':'empty'}" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 10.26 24 10.35 17.77 16.01 19.85 24.29 12 18.54 4.15 24.29 6.23 16.01 0 10.35 8.91 10.26 12 2"></polygon></svg>`).join('');
-      const imgHtml = p.mainImg
-        ? `<img src="${p.mainImg}" alt="${p.name}" onerror="this.parentElement.innerHTML='<div class=\\'premium-product-emoji\\'>📦</div>'">`
-        : `<div class="premium-product-emoji">📦</div>`;
-      const price = p.price ? `$${p.price}` : 'Contact for price';
-      return `
-        <div class="premium-product-card visible" style="animation-delay:${idx*50}ms">
-          <div class="premium-product-image">${imgHtml}</div>
-          <div class="premium-product-content">
-            <h3 class="premium-product-name">${p.name || 'Premium Product'}</h3>
-            <p class="premium-product-desc">${p.shortDesc || p.fullDesc || 'Exclusive premium product'}</p>
-            <div class="product-rating">${stars}<span class="rating-text">${p.rating || 0} stars</span></div>
-            <div class="premium-product-price">${price}</div>
-          </div>
-          <div class="premium-product-footer">
-            <button class="btn btn-sm btn-primary" onclick="window.open('${p.link || '#'}', '_blank')">View Deal</button>
-            <button class="btn btn-sm btn-outline">Save</button>
-          </div>
-        </div>
-      `;
-    }).join('');
-
-    setTimeout(() => {
-      document.querySelectorAll('.premium-product-card').forEach(card => {
-        card.classList.add('visible');
-      });
-    }, 50);
+  function showMsg(text) {
+    const m = document.getElementById('form-msg');
+    m.textContent = text; m.style.display='block';
+    setTimeout(()=>m.style.display='none', 3000);
   }
 
-  function closePremiumModal() {
-    document.getElementById('premiumModal').classList.remove('active');
-  }
-
-  // Close modal on overlay click
-  document.getElementById('premiumModal').addEventListener('click', (e) => {
-    if (e.target.id === 'premiumModal') {
-      closePremiumModal();
+  // Enter key on login
+  document.addEventListener('keydown', e => {
+    if (e.key==='Enter') {
+      const gate = document.getElementById('gate');
+      if (gate.style.display !== 'none') doLogin();
     }
   });
-
-  // ── Render Products ──
-  function renderProducts(list) {
-    const grid = document.getElementById('productsGrid');
-    if (!list.length) {
-      grid.innerHTML = '<p style="color:var(--text-muted);text-align:center;padding:40px 0;grid-column:1/-1;">No products found.</p>';
-      return;
-    }
-    grid.innerHTML = list.map((p, idx) => {
-      const stars = Array.from({length:5},(_,i)=>`<svg class="star ${i<Math.floor(p.rating||0)?'filled':'empty'}" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 10.26 24 10.35 17.77 16.01 19.85 24.29 12 18.54 4.15 24.29 6.23 16.01 0 10.35 8.91 10.26 12 2"></polygon></svg>`).join('');
-      const imgHtml = p.mainImg
-        ? `<img src="${p.mainImg}" alt="${p.name}" onerror="this.parentElement.innerHTML='<div class=\\'product-emoji\\'>📦</div>'">`
-        : `<div class="product-emoji">📦</div>`;
-      const price = p.price ? `$${p.price}` : 'Contact for price';
-      return `
-        <div class="product-card" style="animation-delay:${idx*50}ms">
-          <div class="product-image">${imgHtml}</div>
-          ${p.badge ? `<div class="product-badge">${p.badge}</div>` : ''}
-          <div class="product-content">
-            <p class="product-category">${p.category || 'Tech'}</p>
-            <h3 class="product-name">${p.name || 'Product'}</h3>
-            <p class="product-desc">${p.shortDesc || p.fullDesc || 'Amazing tech product'}</p>
-            <div class="product-rating">${stars}<span class="rating-text">${p.rating || 0} stars</span></div>
-          </div>
-          <div class="product-footer">
-            <div class="product-price">${price}</div>
-            <button class="btn btn-sm btn-primary" onclick="window.open('${p.link || '#'}', '_blank')">View Deal</button>
-          </div>
-        </div>
-      `;
-    }).join('');
-  }
-
-  // ── Render Categories ──
-  function renderCategories(list) {
-    const categories = {};
-    list.forEach(p => {
-      const cat = p.category || 'Other';
-      categories[cat] = (categories[cat] || 0) + 1;
-    });
-
-    const grid = document.getElementById('categoriesGrid');
-    const icons = {
-      'Laptops': '💻',
-      'Smartphones': '📱',
-      'Audio': '🎧',
-      'Gaming': '🎮',
-      'Accessories': '⌨️',
-      'Tablets': '📱',
-      'Wearables': '⌚',
-      'Cameras': '📷',
-      'Monitors': '🖥️',
-      'Tech': '⚙️',
-      'Other': '📦'
-    };
-
-    grid.innerHTML = Object.entries(categories).map(([cat, count], idx) => `
-      <div class="category-card" style="animation-delay:${idx*50}ms">
-        <div class="category-icon">${icons[cat] || '📦'}</div>
-        <div class="category-name">${cat}</div>
-        <div class="category-count">${count} products</div>
-      </div>
-    `).join('');
-  }
-
-  // ── Filter Products ──
-  function filterProducts(query) {
-    const filtered = window._allProducts.filter(p =>
-      p.name.toLowerCase().includes(query.toLowerCase()) ||
-      (p.shortDesc && p.shortDesc.toLowerCase().includes(query.toLowerCase())) ||
-      (p.fullDesc && p.fullDesc.toLowerCase().includes(query.toLowerCase())) ||
-      (p.category && p.category.toLowerCase().includes(query.toLowerCase()))
-    );
-    renderProducts(filtered);
-  }
-
-  // ── Scroll Animation ──
-  function observeCards() {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('[data-scroll-animate]').forEach(el => observer.observe(el));
-    document.querySelectorAll('.product-card').forEach(el => observer.observe(el));
-    document.querySelectorAll('.category-card').forEach(el => observer.observe(el));
-  }
-
-  // ── Theme Toggle ──
-  document.getElementById('themeToggle').addEventListener('click', () => {
-    document.documentElement.classList.toggle('dark');
-    localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
-  });
-
-  // Load theme preference
-  if (localStorage.getItem('theme') === 'light' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: light)').matches)) {
-    document.documentElement.classList.remove('dark');
-  }
-
-  // Update theme icons
-  function updateThemeIcons() {
-    const isDark = document.documentElement.classList.contains('dark');
-    document.getElementById('sunIcon').style.display = isDark ? 'block' : 'none';
-    document.getElementById('moonIcon').style.display = isDark ? 'none' : 'block';
-  }
-  updateThemeIcons();
-  document.getElementById('themeToggle').addEventListener('click', updateThemeIcons);
-
-  // ── Mobile Menu ──
-  document.getElementById('mobileMenuBtn').addEventListener('click', () => {
-    const menu = document.getElementById('mobileMenu');
-    const searchBar = document.getElementById('mobileSearchBar');
-    const menuIcon = document.getElementById('menuIcon');
-    const closeIcon = document.getElementById('closeIcon');
-    
-    menu.classList.toggle('active');
-    searchBar.classList.remove('active');
-    menuIcon.style.display = menu.classList.contains('active') ? 'none' : 'block';
-    closeIcon.style.display = menu.classList.contains('active') ? 'block' : 'none';
-  });
-
-  document.getElementById('mobileSearchBtn').addEventListener('click', () => {
-    const searchBar = document.getElementById('mobileSearchBar');
-    const menu = document.getElementById('mobileMenu');
-    searchBar.classList.toggle('active');
-    menu.classList.remove('active');
-    if (searchBar.classList.contains('active')) {
-      document.getElementById('mobileSearchInput').focus();
-    }
-  });
-
-  // ── Newsletter ──
-  document.getElementById('newsletterForm').addEventListener('submit', (e) => {
-    e.preventDefault();
-    const email = document.getElementById('newsletterEmail').value;
-    const success = document.getElementById('newsletterSuccess');
-    success.classList.remove('hidden');
-    document.getElementById('newsletterForm').reset();
-    setTimeout(() => success.classList.add('hidden'), 3000);
-  });
-
-  // ── Footer Year ──
-  document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-  // Initialize
-  observeCards();
 </script>
 </body>
 </html>
