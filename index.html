@@ -1,1248 +1,638 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Alex Rivera · Creative Developer</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=DM+Sans:wght@400;500&family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap">
-<style>
-:root {
-  --bg: #eceaf6;
-  --fg: #14122b;
-  --muted: #5d5a7a;
-  --line: rgba(20, 18, 43, .16);
-  --card: #f8f7fd;
-  --accent: #3d4dff;
-  --accent2: #ff8a5c;
-  --neon: #39FF14;
-  --display: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
-  --body: "DM Sans", "Helvetica Neue", Arial, sans-serif;
-  box-sizing: border-box;
-  padding-top: env(safe-area-inset-top, 0px);
-  padding-bottom: env(safe-area-inset-bottom, 0px);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #070a1c;
-    --fg: #eeedf8;
-    --muted: #9a98b8;
-    --line: rgba(238, 237, 248, .16);
-    --card: #0f1330;
-    --accent: #6f7dff;
-    --accent2: #ff9a70;
-  }
-}
-
-:root[data-theme="dark"] {
-  --bg: #070a1c;
-  --fg: #eeedf8;
-  --muted: #9a98b8;
-  --line: rgba(238, 237, 248, .16);
-  --card: #0f1330;
-  --accent: #6f7dff;
-  --accent2: #ff9a70;
-}
-
-*, *::before, *::after {
-  box-sizing: inherit;
-}
-
-html {
-  scroll-padding-top: env(safe-area-inset-top, 0px);
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--fg);
-  font: 400 1.0625rem/1.6 var(--body);
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0 0 auto;
-  height: env(safe-area-inset-top, 0px);
-  background: var(--bg);
-  z-index: 30;
-}
-
-a {
-  color: inherit;
-}
-
-:focus-visible {
-  outline: 2px solid var(--accent2);
-  outline-offset: 4px;
-}
-
-#bg {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  pointer-events: none;
-  transition: opacity 0.5s ease;
-}
-
-main, header {
-  position: relative;
-  z-index: 1;
-}
-
-.bar {
-  position: fixed;
-  top: env(safe-area-inset-top, 0px);
-  left: 0;
-  height: 3px;
-  width: 100%;
-  background: linear-gradient(90deg, var(--accent), var(--accent2));
-  transform: scaleX(0);
-  transform-origin: 0 50%;
-  z-index: 40;
-}
-
-nav {
-  position: fixed;
-  top: env(safe-area-inset-top, 0px);
-  left: 0;
-  right: 0;
-  z-index: 35;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px clamp(20px, 5vw, 56px);
-  font-family: var(--display);
-  font-weight: 500;
-  background: color-mix(in srgb, var(--bg) 60%, transparent);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid color-mix(in srgb, var(--line) 40%, transparent);
-}
-
-nav a {
-  text-decoration: none;
-}
-
-nav ul {
-  display: flex;
-  gap: clamp(14px, 3vw, 34px);
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  font-size: .95rem;
-}
-
-nav ul a {
-  opacity: .75;
-  transition: opacity .2s;
-}
-
-nav ul a:hover {
-  opacity: 1;
-}
-
-.wrap {
-  padding: 0 clamp(20px, 5vw, 56px);
-  max-width: 1280px;
-  margin: 0 auto;
-}
-
-h1, h2, h3 {
-  font-family: var(--display);
-  margin: 0;
-  letter-spacing: -.035em;
-  line-height: .95;
-}
-
-.hero {
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding-bottom: 9vh;
-}
-
-.hero h1 {
-  font-weight: 800;
-  font-size: clamp(3.4rem, 13.5vw, 11.5rem);
-}
-
-.ln {
-  display: block;
-  overflow: hidden;
-  padding-bottom: .08em;
-}
-
-.ln span {
-  display: block;
-}
-
-.hero p {
-  max-width: 34ch;
-  font-size: clamp(1.05rem, 2vw, 1.35rem);
-  color: var(--muted);
-  margin: 28px 0 0;
-}
-
-.hint {
-  position: absolute;
-  right: clamp(20px, 5vw, 56px);
-  bottom: 9vh;
-  font-size: .9rem;
-  color: var(--muted);
-  writing-mode: vertical-rl;
-}
-
-.marq {
-  overflow: hidden;
-  border-block: 1px solid var(--line);
-  background: color-mix(in srgb, var(--bg) 70%, transparent);
-  backdrop-filter: blur(8px);
-  padding: 18px 0;
-  white-space: nowrap;
-}
-
-.marq div {
-  display: inline-block;
-  animation: mq 32s linear infinite;
-  font: 800 clamp(1.4rem, 3.2vw, 2.4rem)/1 var(--display);
-  letter-spacing: -.02em;
-}
-
-.marq span {
-  margin: 0 1.6rem;
-  color: var(--muted);
-}
-
-@keyframes mq {
-  to { transform: translateX(-50%); }
-}
-
-.about {
-  min-height: 100svh;
-  display: flex;
-  align-items: center;
-  padding: 16vh 0;
-}
-
-.about p {
-  font: 500 clamp(1.7rem, 4.6vw, 3.7rem)/1.12 var(--display);
-  letter-spacing: -.025em;
-  margin: 0;
-  max-width: 22em;
-}
-
-.about .w {
-  opacity: .14;
-  transition: opacity 0.2s ease;
-}
-
-#work {
-  height: 100svh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  overflow: hidden;
-}
-
-#work h2 {
-  font-size: clamp(2.2rem, 6vw, 4.5rem);
-  margin-bottom: 4vh;
-}
-
-.track {
-  display: flex;
-  gap: clamp(18px, 3vw, 40px);
-  padding: 0 clamp(20px, 5vw, 56px);
-  width: max-content;
-  will-change: transform;
-}
-
-.card {
-  width: clamp(280px, 64vw, 560px);
-  height: min(58svh, 480px);
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: 22px;
-  padding: clamp(18px, 2.4vw, 30px);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transform-style: preserve-3d;
-  overflow: hidden;
-  position: relative;
-  box-shadow: 0 30px 60px -30px rgba(40, 30, 120, .45);
-  transition: border-color 0.3s ease;
-}
-
-.card:hover {
-  border-color: var(--accent);
-}
-
-.card h3 {
-  font-size: clamp(1.6rem, 3vw, 2.4rem);
-  transform: translateZ(40px);
-}
-
-.card p {
-  margin: 8px 0 0;
-  color: var(--muted);
-  max-width: 36ch;
-  font-size: 1rem;
-  transform: translateZ(25px);
-}
-
-.tags {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-top: 14px;
-  font-size: .85rem;
-  transform: translateZ(20px);
-}
-
-.tags i {
-  font-style: normal;
-  border: 1px solid var(--line);
-  border-radius: 99px;
-  padding: 3px 12px;
-}
-
-.stage {
-  position: absolute;
-  right: 8%;
-  top: 14%;
-  width: 110px;
-  height: 110px;
-  perspective: 600px;
-  transform: translateZ(60px);
-}
-
-.cube {
-  position: absolute;
-  inset: 0;
-  transform-style: preserve-3d;
-  animation: spin 14s linear infinite;
-}
-
-.cube b {
-  position: absolute;
-  inset: 0;
-  border: 1.5px solid var(--c, var(--accent));
-  background: color-mix(in srgb, var(--c, var(--accent)) 14%, transparent);
-}
-
-.cube b:nth-child(1) { transform: translateZ(55px); }
-.cube b:nth-child(2) { transform: rotateY(180deg) translateZ(55px); }
-.cube b:nth-child(3) { transform: rotateY(90deg) translateZ(55px); }
-.cube b:nth-child(4) { transform: rotateY(-90deg) translateZ(55px); }
-.cube b:nth-child(5) { transform: rotateX(90deg) translateZ(55px); }
-.cube b:nth-child(6) { transform: rotateX(-90deg) translateZ(55px); }
-
-@keyframes spin {
-  to { transform: rotateX(360deg) rotateY(720deg); }
-}
-
-.skills {
-  padding: 18vh 0 10vh;
-}
-
-.skills h2 {
-  font-size: clamp(2.2rem, 6vw, 4.5rem);
-  margin-bottom: 6vh;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1px;
-  background: var(--line);
-  border: 1px solid var(--line);
-  border-radius: 22px;
-  overflow: hidden;
-}
-
-.grid div {
-  background: color-mix(in srgb, var(--bg) 82%, transparent);
-  backdrop-filter: blur(10px);
-  padding: 34px 28px;
-}
-
-.grid strong {
-  display: block;
-  font: 800 clamp(2.6rem, 5vw, 4rem)/1 var(--display);
-  letter-spacing: -.04em;
-}
-
-.grid span {
-  color: var(--muted);
-}
-
-.skl {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 5vh;
-}
-
-.skl span {
-  border: 1px solid var(--line);
-  border-radius: 99px;
-  padding: 8px 18px;
-  background: color-mix(in srgb, var(--bg) 82%, transparent);
-  backdrop-filter: blur(10px);
-}
-
-/* ==========================================================================
-   LOOPSTACK EXACT ANIMATION & FOOTER HERO
-   ========================================================================== */
-
-.loopstack-section {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  min-height: 720px;
-  background-color: #000000;
-  color: #ffffff;
-  overflow: hidden;
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-/* 1. Top gradient overlay */
-#top-gradient {
-  position: absolute;
-  top: -30vh;
-  left: 0;
-  width: 100vw;
-  height: auto;
-  display: block;
-  z-index: 1;
-  pointer-events: none;
-}
-
-/* 2. Hero content */
-.loopstack-section .hero-content {
-  position: relative;
-  z-index: 3;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding-top: 6vh;
-  width: 95%;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.loopstack-section .hero-title {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 2.8rem;
-  font-weight: 400;
-  color: #ffffff;
-  line-height: 1.15;
-  margin-bottom: 2.2rem;
-  letter-spacing: -0.015em;
-  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-}
-
-.loopstack-section .hero-title .word-wrapper {
-  display: inline-block;
-  overflow: hidden;
-  vertical-align: bottom;
-  padding-bottom: 0.15em;
-  margin-bottom: -0.15em;
-}
-
-.loopstack-section .hero-title .word-inner {
-  display: inline-block;
-  opacity: 0;
-  transform: translateY(105%);
-  filter: blur(20px);
-}
-
-.loopstack-section.is-visible .hero-title .word-inner {
-  animation: word-reveal-mask 1.3s cubic-bezier(0.05, 0.9, 0.1, 1) forwards;
-}
-
-@keyframes word-reveal-mask {
-  0%   { opacity: 0; transform: translateY(105%); filter: blur(20px); }
-  30%  { opacity: 1; }
-  100% { opacity: 1; transform: translateY(0); filter: blur(0); }
-}
-
-.hero-btn {
-  font-family: 'Outfit', sans-serif;
-  font-size: 1.1rem;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  color: #ffffff;
-  background-color: #000000;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  padding: 1.3rem 2.5rem;
-  border-radius: 9999px;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.9rem;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
-  outline: none;
-  text-decoration: none;
-}
-
-.hero-btn:hover {
-  background-color: #ffffff;
-  color: #000000;
-  border-color: #ffffff;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.3);
-}
-
-.hero-btn:active {
-  transform: translateY(0);
-}
-
-.blinking-dot {
-  width: 10px;
-  height: 10px;
-  background-color: #39FF14;
-  border-radius: 50%;
-  position: relative;
-  display: inline-block;
-  animation: pulse-glow 2s infinite ease-in-out;
-}
-
-.blinking-dot::after {
-  content: '';
-  position: absolute;
-  top: -5px; left: -5px; right: -5px; bottom: -5px;
-  background-color: rgba(57, 255, 20, 0.45);
-  border-radius: 50%;
-  animation: wave-expand 2s infinite ease-in-out;
-}
-
-@keyframes pulse-glow {
-  0%, 100% {
-    opacity: 0.5;
-    transform: scale(0.85);
-    box-shadow: 0 0 4px rgba(57, 255, 20, 0.3);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.1);
-    box-shadow: 0 0 12px rgba(57, 255, 20, 0.9);
-  }
-}
-
-@keyframes wave-expand {
-  0%   { transform: scale(0.6); opacity: 0.9; }
-  100% { transform: scale(2.3); opacity: 0; }
-}
-
-/* 3. Footer block (vertically centered inside section) */
-.loopstack-section .footer-container {
-  position: absolute;
-  top: 50%;
-  left: 20px;
-  right: 20px;
-  width: calc(100vw - 40px);
-  transform: translateY(-50%);
-  z-index: 4;
-  display: flex;
-  flex-direction: column;
-}
-
-.loopstack-section .footer-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  width: 100%;
-  padding: 0 5px;
-}
-
-.loopstack-section .footer-title {
-  font-family: 'General Sans', -apple-system, sans-serif;
-  font-size: 1.4rem;
-  font-weight: 400;
-  color: #ffffff;
-  letter-spacing: -0.015em;
-  margin: 0;
-}
-
-.loopstack-section .footer-title.quote {
-  text-transform: none;
-}
-
-.loopstack-section .footer-divider {
-  border: none;
-  height: 1px;
-  background-color: rgba(255, 255, 255, 0.2);
-  margin: 1.6rem 0;
-  width: 100%;
-}
-
-.loopstack-section .footer-bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 0 5px;
-}
-
-.loopstack-section .footer-socials {
-  display: flex;
-  gap: 1.25rem;
-  align-items: center;
-  flex: 1;
-}
-
-.loopstack-section .social-icon {
-  color: rgba(255, 255, 255, 0.55);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-}
-
-.loopstack-section .social-icon:hover {
-  color: #ffffff;
-  transform: translateY(-2px);
-}
-
-.loopstack-section .footer-links {
-  display: flex;
-  gap: 2.8rem;
-  justify-content: center;
-  align-items: center;
-  flex: 2;
-}
-
-.loopstack-section .footer-link {
-  font-family: 'Outfit', sans-serif;
-  font-size: 0.95rem;
-  font-weight: 400;
-  color: #ffffff;
-  text-decoration: none;
-  letter-spacing: 0.03em;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.loopstack-section .footer-link:hover {
-  opacity: 0.75;
-  transform: translateY(-1px);
-}
-
-.loopstack-section .footer-copyright {
-  font-family: 'Outfit', sans-serif;
-  font-size: 0.95rem;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.45);
-  text-align: right;
-  flex: 1;
-  letter-spacing: 0.02em;
-}
-
-/* 4. Giant "Loopstack" wordmark */
-.loopstack-section .footer-logo-wrap {
-  position: absolute;
-  bottom: 20px;
-  left: 0;
-  right: 0;
-  width: 100%;
-  padding: 0 20px;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 4;
-  margin: 0;
-}
-
-.loopstack-section .footer-logo-text {
-  font-family: 'General Sans', -apple-system, sans-serif;
-  font-size: 21.9vw;
-  font-weight: 400;
-  color: #ffffff;
-  letter-spacing: -0.03em;
-  margin-right: -0.03em;
-  transform: translateX(-20px);
-  line-height: 0.8;
-  margin-top: 0;
-  margin-bottom: 0;
-  margin-left: 0;
-  text-align: center;
-  width: 100%;
-  pointer-events: none;
-  opacity: 0.95;
-  text-shadow: none;
-  white-space: nowrap;
-}
-
-.loopstack-section .footer-logo-text .letter-wrapper {
-  display: inline-block;
-  overflow: hidden;
-  vertical-align: bottom;
-  line-height: 0.8;
-}
-
-.loopstack-section .footer-logo-text .letter-inner {
-  display: inline-block;
-  opacity: 0;
-  transform: translateX(-105%);
-  filter: blur(20px);
-}
-
-.loopstack-section.is-visible .footer-logo-text .letter-inner {
-  animation: letter-reveal-mask 1.2s cubic-bezier(0.05, 0.9, 0.1, 1) forwards;
-}
-
-@keyframes letter-reveal-mask {
-  0%   { opacity: 0; transform: translateX(-105%); filter: blur(20px); }
-  25%  { opacity: 1; }
-  100% { opacity: 0.95; transform: translateX(0); filter: blur(0); }
-}
-
-/* 5. Background flower video */
-.loopstack-section .video-container {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100vw;
-  height: 90vh;
-  overflow: hidden;
-  z-index: 0;
-}
-
-.loopstack-section #bg-video {
-  width: 100%;
-  height: 110%;
-  object-fit: cover;
-  display: block;
-  transform: translateY(0%);
-}
-
-/* 6. Custom cursor elements */
-.glass-cursor-card {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 99999;
-  pointer-events: none;
-  padding: 0.75rem 1.5rem;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 9999px;
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
-  transform: translate(-50%, -50%) scale(0);
-  opacity: 0;
-  will-change: transform, opacity;
-  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              background 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.glass-cursor-card.active {
-  opacity: 1;
-}
-
-.cursor-card-text {
-  font-family: 'General Sans', -apple-system, sans-serif;
-  font-size: 0.85rem;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  color: #39FF14;
-  text-transform: uppercase;
-  white-space: nowrap;
-  text-shadow: 0 0 8px rgba(57, 255, 20, 0.45);
-}
-
-.cursor-card-text .text-white {
-  color: #ffffff;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
-}
-
-.cursor-ring-outline {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 48px;
-  height: 48px;
-  border: 1.5px solid rgba(255, 255, 255, 0.45);
-  border-radius: 50%;
-  z-index: 99998;
-  pointer-events: none;
-  transform: translate(-50%, -50%) scale(0);
-  opacity: 0;
-  will-change: transform, opacity;
-  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.4s ease;
-}
-
-.cursor-ring-outline.active {
-  opacity: 1;
-}
-
-.cursor-ring-outline.expanded {
-  border-color: rgba(255, 255, 255, 0.2);
-}
-
-@media (max-width: 768px) {
-  .loopstack-section .hero-title {
-    font-size: 2rem;
-  }
-  .loopstack-section .footer-container {
-    top: 55%;
-  }
-  .loopstack-section .footer-title {
-    font-size: 1.1rem;
-  }
-  .loopstack-section .footer-links {
-    display: none;
-  }
-  .loopstack-section .footer-logo-text {
-    font-size: 21vw;
-  }
-  .glass-cursor-card, .cursor-ring-outline {
-    display: none !important;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .marq div, .cube, .blinking-dot, .blinking-dot::after {
-    animation: none;
-  }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loopstack</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+        @import url('https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000000;
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* 1. Top gradient overlay */
+        #top-gradient {
+            position: fixed;
+            top: -30vh;            /* pushed well above the top edge */
+            left: 0;
+            width: 100vw;
+            height: auto;
+            display: block;
+            z-index: 0;            /* above the video container (z-index: -1) */
+            pointer-events: none;  /* clicks pass through */
+        }
+
+        /* 2. Hero content */
+        .hero-content {
+            position: relative;
+            z-index: 2;            /* above video and top gradient */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding-top: 6vh;
+            width: 95%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2.8rem;
+            font-weight: 400;
+            color: #ffffff;
+            line-height: 1.15;
+            margin-bottom: 2.2rem;
+            letter-spacing: -0.015em;
+            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-title .word-wrapper {
+            display: inline-block;
+            overflow: hidden;
+            vertical-align: bottom;
+            padding-bottom: 0.15em;   /* room so descenders (y, p, g) aren't clipped */
+            margin-bottom: -0.15em;
+        }
+
+        .hero-title .word-inner {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(105%);
+            filter: blur(20px);
+            animation: word-reveal-mask 1.3s cubic-bezier(0.05, 0.9, 0.1, 1) forwards;
+        }
+
+        @keyframes word-reveal-mask {
+            0%   { opacity: 0; transform: translateY(105%); filter: blur(20px); }
+            30%  { opacity: 1; }
+            100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+
+        .hero-btn {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            color: #ffffff;
+            background-color: #000000;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            padding: 1.3rem 2.5rem;
+            border-radius: 9999px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
+            outline: none;
+        }
+
+        .hero-btn:hover {
+            background-color: #ffffff;
+            color: #000000;
+            border-color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-btn:active {
+            transform: translateY(0);
+        }
+
+        .blinking-dot {
+            width: 10px;
+            height: 10px;
+            background-color: #39FF14;
+            border-radius: 50%;
+            position: relative;
+            display: inline-block;
+            animation: pulse-glow 2s infinite ease-in-out;
+        }
+
+        .blinking-dot::after {
+            content: '';
+            position: absolute;
+            top: -5px; left: -5px; right: -5px; bottom: -5px;
+            background-color: rgba(57, 255, 20, 0.45);
+            border-radius: 50%;
+            animation: wave-expand 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% {
+                opacity: 0.5;
+                transform: scale(0.85);
+                box-shadow: 0 0 4px rgba(57, 255, 20, 0.3);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.1);
+                box-shadow: 0 0 12px rgba(57, 255, 20, 0.9);
+            }
+        }
+
+        @keyframes wave-expand {
+            0%   { transform: scale(0.6); opacity: 0.9; }
+            100% { transform: scale(2.3); opacity: 0; }
+        }
+
+        /* 3. Footer block */
+        .footer-container {
+            position: fixed;
+            top: 50vh;
+            left: 20px;
+            right: 20px;
+            width: calc(100vw - 40px);
+            transform: translateY(-50%);   /* exactly screen-centered vertically */
+            z-index: 3;                    /* above every other layer */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            width: 100%;
+            padding: 0 5px;
+        }
+
+        .footer-title {
+            font-family: 'General Sans', -apple-system, sans-serif;
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: #ffffff;
+            letter-spacing: -0.015em;
+            margin: 0;
+        }
+
+        .footer-title.quote {
+            text-transform: none;
+        }
+
+        .footer-divider {
+            border: none;
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.2);
+            margin: 1.6rem 0;
+            width: 100%;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 0 5px;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 1.25rem;
+            align-items: center;
+            flex: 1;
+        }
+
+        .social-icon {
+            color: rgba(255, 255, 255, 0.55);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2.8rem;
+            justify-content: center;
+            align-items: center;
+            flex: 2;
+        }
+
+        .footer-link {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 400;
+            color: #ffffff;
+            text-decoration: none;
+            letter-spacing: 0.03em;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .footer-link:hover {
+            opacity: 0.75;
+            transform: translateY(-1px);
+        }
+
+        .footer-copyright {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.45);
+            text-align: right;
+            flex: 1;
+            letter-spacing: 0.02em;
+        }
+
+        /* 4. Giant "Loopstack" wordmark */
+        .footer-logo-wrap {
+            position: fixed;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            width: 100%;
+            padding: 0 20px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 3;
+            margin: 0;
+        }
+
+        .footer-logo-text {
+            font-family: 'General Sans', -apple-system, sans-serif;
+            font-size: 21.9vw;             /* enormous, fills the width */
+            font-weight: 400;
+            color: #ffffff;
+            letter-spacing: -0.03em;
+            margin-right: -0.03em;
+            transform: translateX(-20px);
+            line-height: 0.8;
+            margin-top: 0;
+            margin-bottom: 0;
+            margin-left: 0;
+            text-align: center;
+            width: 100%;
+            pointer-events: none;
+            opacity: 0.95;
+            text-shadow: none;
+            white-space: nowrap;
+        }
+
+        .footer-logo-text .letter-wrapper {
+            display: inline-block;
+            overflow: hidden;
+            vertical-align: bottom;
+            line-height: 0.8;
+        }
+
+        .footer-logo-text .letter-inner {
+            display: inline-block;
+            opacity: 0;
+            transform: translateX(-105%);
+            filter: blur(20px);
+            animation: letter-reveal-mask 1.2s cubic-bezier(0.05, 0.9, 0.1, 1) forwards;
+        }
+
+        @keyframes letter-reveal-mask {
+            0%   { opacity: 0; transform: translateX(-105%); filter: blur(20px); }
+            25%  { opacity: 1; }
+            100% { opacity: 0.95; transform: translateX(0); filter: blur(0); }
+        }
+
+        /* 5. Background flower video */
+        .video-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100vw;
+            height: 90vh;          /* occupies bottom 90% of viewport */
+            overflow: hidden;
+            z-index: -1;           /* sits behind everything */
+        }
+
+        #bg-video {
+            width: 100%;
+            height: 110%;
+            object-fit: cover;
+            display: block;
+            transform: translateY(0%);
+        }
+
+        /* 6. Custom cursor elements */
+        .glass-cursor-card {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 99999;
+            pointer-events: none;
+            padding: 0.75rem 1.5rem;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 9999px;
+            box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 0;
+            will-change: transform, opacity;
+            transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                        background 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                        border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                        box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-cursor-card.active {
+            opacity: 1;
+        }
+
+        .glass-cursor-card.dark-mode {
+            background: rgba(0, 0, 0, 0.82);
+            border-color: rgba(255, 255, 255, 0.08);
+            box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .cursor-card-text {
+            font-family: 'General Sans', -apple-system, sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            color: #39FF14;
+            text-transform: uppercase;
+            white-space: nowrap;
+            text-shadow: 0 0 8px rgba(57, 255, 20, 0.45);
+        }
+
+        .cursor-card-text .text-white {
+            color: #ffffff;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+        }
+
+        .cursor-ring-outline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 48px;
+            height: 48px;
+            border: 1.5px solid rgba(255, 255, 255, 0.45);
+            border-radius: 50%;
+            z-index: 99998;
+            pointer-events: none;
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 0;
+            will-change: transform, opacity;
+            transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                        border-color 0.4s ease;
+        }
+
+        .cursor-ring-outline.active {
+            opacity: 1;
+        }
+
+        .cursor-ring-outline.expanded {
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+    </style>
 </head>
 <body>
-<canvas id="bg" aria-hidden="true"></canvas>
-<div class="bar" aria-hidden="true"></div>
+    <!-- 1. Top gradient overlay -->
+    <img src="https://api.getlayers.ai/storage/v1/object/public/public/assets/loopstack-f8c64439bf/black_gradient.svg" alt="Top Gradient" id="top-gradient">
 
-<nav>
-  <a href="#top">Alex Rivera</a>
-  <ul>
-    <li><a href="#about">About</a></li>
-    <li><a href="#work">Work</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
+    <!-- 2. Hero content (headline + button) -->
+    <main class="hero-content">
+        <h1 class="hero-title">Apply Now to be part <br> of the closed beta</h1>
+        <button class="hero-btn">
+            <span class="btn-text">Book a demo</span>
+            <span class="blinking-dot"></span>
+        </button>
+    </main>
 
-<header id="top" class="hero wrap">
-  <h1 aria-label="Alex Rivera"><span class="ln"><span>Alex</span></span><span class="ln"><span>Rivera</span></span></h1>
-  <p class="intro">Creative developer building fast, tactile websites with 3D, motion and a lot of care.</p>
-  <span class="hint" aria-hidden="true">Scroll to explore</span>
-</header>
+    <!-- 3. Footer block (fixed, vertically centered) -->
+    <footer class="footer-container">
+        <div class="footer-top">
+            <h2 class="footer-title">Stay in Touch</h2>
+            <h2 class="footer-title quote">Think. Build. Repeat.</h2>
+        </div>
 
-<div class="marq" aria-hidden="true">
-  <div><span>Interactive sites</span>WebGL<span>Motion design</span>Design systems<span>Product launches</span>Creative coding<span>Interactive sites</span>WebGL<span>Motion design</span>Design systems<span>Product launches</span>Creative coding</div>
-</div>
+        <hr class="footer-divider">
 
-<main>
-<section id="about" class="about wrap">
-  <p id="split">I turn ideas into websites people want to touch. Eight years of design engineering have taught me that smooth motion, clear structure and fast load times matter more than any single effect.</p>
-</section>
+        <div class="footer-bottom">
+            <div class="footer-socials">
+                <a href="#" aria-label="LinkedIn" class="social-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
+                <a href="#" aria-label="X" class="social-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg>
+                </a>
+                <a href="#" aria-label="Instagram" class="social-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+            </div>
 
-<section id="work" aria-label="Selected work">
-  <div class="wrap" style="width:100%"><h2>Selected work</h2></div>
-  <div class="track">
-    <article class="card">
-      <div class="stage"><div class="cube"><b></b><b></b><b></b><b></b><b></b><b></b></div></div>
-      <div></div>
-      <div>
-        <h3>Orbit Studio</h3>
-        <p>A 3D product configurator that lets shoppers rotate, recolor and preview sneakers in real time.</p>
-        <div class="tags"><i>Three.js</i><i>React</i><i>2025</i></div>
-      </div>
-    </article>
+            <nav class="footer-links">
+                <a href="#about" class="footer-link">About</a>
+                <a href="#features" class="footer-link">Features</a>
+                <a href="#pricing" class="footer-link">Pricing</a>
+                <a href="#contact" class="footer-link">Contact</a>
+            </nav>
 
-    <article class="card" style="--c:var(--accent2)">
-      <div class="stage"><div class="cube"><b></b><b></b><b></b><b></b><b></b><b></b></div></div>
-      <div></div>
-      <div>
-        <h3>Northwind Air</h3>
-        <p>Booking flow redesign that cut checkout time by a third, with scroll-driven route maps.</p>
-        <div class="tags"><i>GSAP</i><i>Next.js</i><i>2025</i></div>
-      </div>
-    </article>
+            <div class="footer-copyright">
+                © 2026 Loopstack
+            </div>
+        </div>
+    </footer>
 
-    <article class="card" style="--c:#39FF14">
-      <div class="stage"><div class="cube"><b></b><b></b><b></b><b></b><b></b><b></b></div></div>
-      <div></div>
-      <div>
-        <h3>Loopstack Hero</h3>
-        <p>A full-viewport footer hero moment with WebGL flower video, masked typography reveals, and trailing glass cursor physics.</p>
-        <div class="tags"><i>Creative Motion</i><i>WebGL</i><i>2026</i></div>
-      </div>
-    </article>
-
-    <article class="card">
-      <div class="stage"><div class="cube"><b></b><b></b><b></b><b></b><b></b><b></b></div></div>
-      <div></div>
-      <div>
-        <h3>Pulse Dashboard</h3>
-        <p>Live analytics for a music platform, with 60 fps charts and a calm, readable interface.</p>
-        <div class="tags"><i>D3</i><i>TypeScript</i><i>2024</i></div>
-      </div>
-    </article>
-
-    <article class="card" style="--c:var(--accent2)">
-      <div class="stage"><div class="cube"><b></b><b></b><b></b><b></b><b></b><b></b></div></div>
-      <div></div>
-      <div>
-        <h3>Fieldnotes</h3>
-        <p>A writing app for researchers: offline first, keyboard driven and quick to open.</p>
-        <div class="tags"><i>PWA</i><i>Svelte</i><i>2024</i></div>
-      </div>
-    </article>
-  </div>
-</section>
-
-<section id="skills" class="skills wrap">
-  <h2>What I bring</h2>
-  <div class="grid">
-    <div><strong data-n="8">0</strong><span>years building for the web</span></div>
-    <div><strong data-n="60">0</strong><span>projects shipped</span></div>
-    <div><strong data-n="95">0</strong><span>average Lighthouse score</span></div>
-    <div><strong data-n="12">0</strong><span>design awards</span></div>
-  </div>
-  <div class="skl"><span>JavaScript</span><span>TypeScript</span><span>Three.js</span><span>GSAP</span><span>React</span><span>WebGL shaders</span><span>Figma</span><span>Accessibility</span></div>
-</section>
-
-<!-- ========================================================================
-     LOOPSTACK FOOTER HERO MOMENT (THE EXACT ANIMATION)
-     ======================================================================== -->
-<section id="contact" class="loopstack-section">
-  <!-- 1. Top gradient overlay -->
-  <img src="https://api.getlayers.ai/storage/v1/object/public/public/assets/loopstack-f8c64439bf/black_gradient.svg" alt="Top Gradient" id="top-gradient">
-
-  <!-- 2. Hero content (headline + button) -->
-  <main class="hero-content">
-    <h1 class="hero-title">Apply Now to be part <br> of the closed beta</h1>
-    <a href="mailto:hello@example.com" class="hero-btn">
-      <span class="btn-text">Book a demo</span>
-      <span class="blinking-dot"></span>
-    </a>
-  </main>
-
-  <!-- 3. Footer block (fixed, vertically centered) -->
-  <footer class="footer-container">
-    <div class="footer-top">
-      <h2 class="footer-title">Stay in Touch</h2>
-      <h2 class="footer-title quote">Think. Build. Repeat.</h2>
+    <!-- 4. Giant "Loopstack" wordmark (pinned to bottom) -->
+    <div class="footer-logo-wrap">
+        <h2 class="footer-logo-text">Loopstack</h2>
     </div>
 
-    <hr class="footer-divider">
-
-    <div class="footer-bottom">
-      <div class="footer-socials">
-        <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-        </a>
-        <a href="https://x.com" target="_blank" rel="noopener" aria-label="X" class="social-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg>
-        </a>
-        <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram" class="social-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-        </a>
-        <a href="https://github.com" target="_blank" rel="noopener" aria-label="GitHub" class="social-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-        </a>
-      </div>
-
-      <nav class="footer-links">
-        <a href="#about" class="footer-link">About</a>
-        <a href="#work" class="footer-link">Work</a>
-        <a href="#skills" class="footer-link">Skills</a>
-        <a href="#contact" class="footer-link">Contact</a>
-      </nav>
-
-      <div class="footer-copyright">
-        © 2026 Alex Rivera · Loopstack
-      </div>
+    <!-- 5. Background flower video -->
+    <div class="video-container">
+        <video autoplay muted playsinline loop id="bg-video">
+            <source src="https://api.getlayers.ai/storage/v1/object/public/public/assets/loopstack-f8c64439bf/flower.mp4" type="video/mp4">
+            Ваш браузер не поддерживает видео.
+        </video>
     </div>
-  </footer>
 
-  <!-- 4. Giant "Loopstack" wordmark (pinned to bottom) -->
-  <div class="footer-logo-wrap">
-    <h2 class="footer-logo-text">Loopstack</h2>
-  </div>
+    <!-- 6. Custom cursor elements -->
+    <div id="cursor-ring" class="cursor-ring-outline"></div>
 
-  <!-- 5. Background flower video -->
-  <div class="video-container">
-    <video autoplay muted playsinline loop id="bg-video">
-      <source src="https://api.getlayers.ai/storage/v1/object/public/public/assets/loopstack-f8c64439bf/flower.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-  </div>
-</section>
-</main>
+    <div id="glass-card" class="glass-cursor-card">
+        <span class="cursor-card-text"><span class="text-white">Say</span> Hello!</span>
+    </div>
 
-<!-- 6. Custom cursor elements (tracks pointer across page) -->
-<div id="cursor-ring" class="cursor-ring-outline"></div>
-<div id="glass-card" class="glass-cursor-card">
-  <span class="cursor-card-text"><span class="text-white">Say</span> Hello!</span>
-</div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const logoText = document.querySelector('.footer-logo-text');
 
-<!-- Libraries -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+            if (logoText) {
+                const text = logoText.textContent.trim();
+                logoText.innerHTML = ''; // Очищаем контейнер
 
-<script>
-(function(){
-const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-const small = innerWidth < 700;
-const state = {p:0};
+                // Разделяем слово на отдельные буквы и оборачиваем каждую в двойной span для маски
+                [...text].forEach((char, index) => {
+                    // Внешний span выступает в роли маски (overflow: hidden)
+                    const wrapper = document.createElement('span');
+                    wrapper.className = 'letter-wrapper';
 
-/* ---------- 3D scene (Alex Rivera Portfolio) ---------- */
-const canvas = document.getElementById('bg');
-let renderer;
-try { renderer = new THREE.WebGLRenderer({canvas, alpha:true, antialias:true}); } catch(e) {}
-if (renderer && window.THREE) {
-  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(50, 1, .1, 100);
-  camera.position.z = 6;
-  const cA = new THREE.Color('#5b6bff'), cB = new THREE.Color('#ff8a5c');
-  const group = new THREE.Group(); scene.add(group);
-  const knot = new THREE.Mesh(new THREE.TorusKnotGeometry(1.4,.42,small?90:160,18),
-    new THREE.MeshBasicMaterial({color:cA, wireframe:true, transparent:true, opacity:.5}));
-  const core = new THREE.Mesh(new THREE.IcosahedronGeometry(.7,1),
-    new THREE.MeshBasicMaterial({color:cB, wireframe:true, transparent:true, opacity:.8}));
-  group.add(knot, core);
-  const N = small ? 700 : 1600, pos = new Float32Array(N*3);
-  for (let i=0;i<N;i++){ const r = 4+Math.random()*9, t = Math.random()*6.283, u = Math.acos(2*Math.random()-1);
-    pos[i*3]=r*Math.sin(u)*Math.cos(t); pos[i*3+1]=r*Math.sin(u)*Math.sin(t); pos[i*3+2]=r*Math.cos(u); }
-  const pg = new THREE.BufferGeometry(); pg.setAttribute('position', new THREE.BufferAttribute(pos,3));
-  const pts = new THREE.Points(pg, new THREE.PointsMaterial({color:0x8a8fff, size:.035, transparent:true, opacity:.75}));
-  scene.add(pts);
+                    // Внутренний span содержит букву и анимируется слева направо
+                    const inner = document.createElement('span');
+                    inner.textContent = char === ' ' ? ' ' : char; // Обрабатываем пробелы
+                    inner.className = 'letter-inner';
 
-  function resize(){ renderer.setSize(innerWidth, innerHeight, false); camera.aspect = innerWidth/innerHeight; camera.updateProjectionMatrix(); }
-  addEventListener('resize', resize); resize();
-  const mouse = {x:0,y:0};
-  addEventListener('pointermove', e => { mouse.x = e.clientX/innerWidth - .5; mouse.y = e.clientY/innerHeight - .5; });
+                    // Задаем задержку анимации для каждой буквы:
+                    // 9 букв, задержка шага 0.09с, длительность анимации 1.2с.
+                    // Последняя буква закончит выдвигаться ровно на отметке: 0.72с (задержка) + 1.2с (анимация) = 1.92 секунды!
+                    inner.style.animationDelay = `${index * 0.09}s`;
 
-  let sp = 0, time = 0;
-  function frame(){
-    requestAnimationFrame(frame);
-    time += .01; sp += (state.p - sp) * .06;
-    const amp = innerWidth < 700 ? .5 : 1.9;
-    group.rotation.y = time*.5 + sp*Math.PI*3;
-    group.rotation.x = sp*Math.PI*2;
-    group.position.x = Math.sin(sp*Math.PI*3)*amp;
-    group.position.y = innerWidth < 700 ? 1.1 - sp*1.5 : 0;
-    const s = 1 + Math.sin(sp*Math.PI)*.35; group.scale.set(s,s,s);
-    core.rotation.y = -time*1.4; core.rotation.z = time;
-    pts.rotation.y = time*.08 + sp*1.5;
-    knot.material.color.lerpColors(cA, cB, Math.min(1, Math.abs(Math.sin(sp*Math.PI*1.5))));
-    camera.position.x += (mouse.x*1.2 - camera.position.x)*.05;
-    camera.position.y += (-mouse.y*.8 - camera.position.y)*.05;
-    camera.lookAt(0,0,0);
-    renderer.render(scene, camera);
-  }
-  frame();
-}
+                    wrapper.appendChild(inner);
+                    logoText.appendChild(wrapper);
+                });
+            }
 
-/* ---------- Scroll animations ---------- */
-gsap.registerPlugin(ScrollTrigger);
-ScrollTrigger.create({start:0, end:'max', onUpdate:s => { state.p = s.progress; }});
-if (!reduce) gsap.to('.bar', {scaleX:1, ease:'none', scrollTrigger:{start:0, end:'max', scrub:true}});
+            // Разделение верхнего заголовка на слова для анимации появления снизу вверх из маски с блюром
+            const heroTitle = document.querySelector('.hero-title');
+            if (heroTitle) {
+                const text = heroTitle.innerHTML;
+                // Разделяем по пробелам, сохраняя теги <br>
+                const parts = text.split(/(\s+|<br\s*\/?>)/i);
+                heroTitle.innerHTML = '';
 
-// split the about paragraph into words
-const split = document.getElementById('split');
-if (split) {
-  split.innerHTML = split.textContent.trim().split(/\s+/).map(w => '<span class="w">'+w+'</span>').join(' ');
-}
+                let wordIndex = 0;
+                parts.forEach(part => {
+                    if (part.trim() === '') {
+                        // Обычный пробел между словами
+                        heroTitle.appendChild(document.createTextNode(' '));
+                    } else if (part.toLowerCase().startsWith('<br')) {
+                        // Сохраняем перенос строки
+                        heroTitle.appendChild(document.createElement('br'));
+                    } else {
+                        // Обертка-маска (overflow: hidden)
+                        const wrapper = document.createElement('span');
+                        wrapper.className = 'word-wrapper';
 
-if (!reduce) {
-  // hero: one orchestrated entrance
-  gsap.from('.ln span', {yPercent:110, duration:1.3, ease:'power4.out', stagger:.12, delay:.2});
-  gsap.from('.intro, .hint', {opacity:0, y:20, duration:1, delay:1, stagger:.15});
-  gsap.to('.hero h1', {yPercent:-14, ease:'none', scrollTrigger:{trigger:'.hero', start:'top top', end:'bottom top', scrub:true}});
+                        // Внутреннее слово, сдвинутое вниз и заблюренное
+                        const inner = document.createElement('span');
+                        inner.className = 'word-inner';
+                        inner.textContent = part;
 
-  // about: words light up as you scroll
-  gsap.to('.about .w', {opacity:1, stagger:.1, ease:'none',
-    scrollTrigger:{trigger:'.about', start:'top 70%', end:'bottom 70%', scrub:true}});
+                        // Задержка анимации: шаг 0.1с для размеренного, солидного появления
+                        inner.style.animationDelay = `${wordIndex * 0.1}s`;
+                        wordIndex++;
 
-  // work: pinned horizontal scroll
-  const track = document.querySelector('.track');
-  if (track) {
-    const dist = () => Math.max(0, track.scrollWidth - innerWidth);
-    gsap.to(track, {x: () => -dist(), ease:'none',
-      scrollTrigger:{trigger:'#work', start:'top top', end:() => '+='+dist(), pin:true, scrub:1, invalidateOnRefresh:true}});
-  }
-} else {
-  document.querySelectorAll('.about .w').forEach(w => w.style.opacity = 1);
-}
+                        wrapper.appendChild(inner);
+                        heroTitle.appendChild(wrapper);
+                    }
+                });
+            }
 
-// 3D tilt on cards (responds to pointer)
-if (!reduce) document.querySelectorAll('.card').forEach(card => {
-  const rx = gsap.quickTo(card, 'rotationX', {duration:.5, ease:'power3'});
-  const ry = gsap.quickTo(card, 'rotationY', {duration:.5, ease:'power3'});
-  gsap.set(card, {transformPerspective:900});
-  card.addEventListener('pointermove', e => {
-    const r = card.getBoundingClientRect();
-    ry(((e.clientX - r.left)/r.width - .5) * 16); rx(-((e.clientY - r.top)/r.height - .5) * 16);
-  });
-  card.addEventListener('pointerleave', () => { rx(0); ry(0); });
-});
+            // Летающий оутлайновый белый кружок и стеклянная плашка за курсором (LERP-физика)
+            const glassCard = document.getElementById('glass-card');
+            const cursorRing = document.getElementById('cursor-ring');
 
-// counters
-document.querySelectorAll('[data-n]').forEach(el => {
-  const n = +el.dataset.n;
-  if (reduce) { el.textContent = n; return; }
-  const o = {v:0};
-  gsap.to(o, {v:n, duration:1.8, ease:'power2.out', onUpdate:() => el.textContent = Math.round(o.v),
-    scrollTrigger:{trigger:el, start:'top 85%', once:true}});
-});
+            if (glassCard && cursorRing) {
+                let mouseX = window.innerWidth / 2;
+                let mouseY = window.innerHeight / 2;
 
-gsap.utils.toArray('.skl span').forEach((s,i) => !reduce && gsap.from(s, {opacity:0, y:24, duration:.6, delay:i*.05,
-  scrollTrigger:{trigger:'.skl', start:'top 90%', once:true}}));
+                // Координаты для плашки (медленное движение)
+                let cardX = mouseX;
+                let cardY = mouseY;
 
-/* ---------- LOOPSTACK EXACT ANIMATION INITIALIZATION & SPLITTING ---------- */
-const logoText = document.querySelector('.loopstack-section .footer-logo-text');
-if (logoText) {
-  const text = logoText.textContent.trim();
-  logoText.innerHTML = '';
-  [...text].forEach((char, index) => {
-    const wrapper = document.createElement('span');
-    wrapper.className = 'letter-wrapper';
-    const inner = document.createElement('span');
-    inner.textContent = char === ' ' ? '\u00A0' : char;
-    inner.className = 'letter-inner';
-    inner.style.animationDelay = `${index * 0.09}s`;
-    wrapper.appendChild(inner);
-    logoText.appendChild(wrapper);
-  });
-}
+                // Координаты для кружка (более быстрое движение)
+                let ringX = mouseX;
+                let ringY = mouseY;
 
-const heroTitle = document.querySelector('.loopstack-section .hero-title');
-if (heroTitle) {
-  const text = heroTitle.innerHTML;
-  const parts = text.split(/(\s+|<br\s*\/?>)/i);
-  heroTitle.innerHTML = '';
-  let wordIndex = 0;
-  parts.forEach(part => {
-    if (part.trim() === '') {
-      heroTitle.appendChild(document.createTextNode(' '));
-    } else if (part.toLowerCase().startsWith('<br')) {
-      heroTitle.appendChild(document.createElement('br'));
-    } else {
-      const wrapper = document.createElement('span');
-      wrapper.className = 'word-wrapper';
-      const inner = document.createElement('span');
-      inner.className = 'word-inner';
-      inner.textContent = part;
-      inner.style.animationDelay = `${wordIndex * 0.1}s`;
-      wordIndex++;
-      wrapper.appendChild(inner);
-      heroTitle.appendChild(wrapper);
-    }
-  });
-}
+                let isFirstMove = true;
+                let scale = 0;
+                let targetScale = 0;
+                let isHoveringBtn = false; // Флаг наведения на кнопку Book a Demo
 
-// Trigger Loopstack Entrance Animations when scrolled into view
-const loopstackSec = document.querySelector('.loopstack-section');
-if (loopstackSec) {
-  ScrollTrigger.create({
-    trigger: loopstackSec,
-    start: 'top 75%',
-    onEnter: () => loopstackSec.classList.add('is-visible'),
-    once: true
-  });
-}
+                // Отслеживаем координаты курсора
+                document.addEventListener('mousemove', (e) => {
+                    mouseX = e.clientX;
+                    mouseY = e.clientY;
 
-/* ---------- CUSTOM CURSOR WITH LERP PHYSICS ---------- */
-const glassCard = document.getElementById('glass-card');
-const cursorRing = document.getElementById('cursor-ring');
+                    if (isFirstMove) {
+                        // Мгновенно позиционируем при первом движении, чтобы избежать "прыжка"
+                        cardX = mouseX;
+                        cardY = mouseY;
+                        ringX = mouseX;
+                        ringY = mouseY;
+                        isFirstMove = false;
+                        glassCard.classList.add('active');
+                        cursorRing.classList.add('active');
+                    }
 
-if (glassCard && cursorRing) {
-  let mouseX = window.innerWidth / 2;
-  let mouseY = window.innerHeight / 2;
-  let cardX = mouseX, cardY = mouseY;
-  let ringX = mouseX, ringY = mouseY;
-  let isFirstMove = true;
-  let scale = 0, targetScale = 0;
-  let isHoveringBtn = false;
+                    // Показываем элементы только если курсор не находится на кнопке Book a demo
+                    if (!isHoveringBtn) {
+                        targetScale = 1;
+                    }
+                });
 
-  document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
+                // Плавное скрытие при выходе курсора за пределы экрана
+                document.addEventListener('mouseleave', () => {
+                    targetScale = 0;
+                });
 
-    if (isFirstMove) {
-      cardX = mouseX; cardY = mouseY;
-      ringX = mouseX; ringY = mouseY;
-      isFirstMove = false;
-      glassCard.classList.add('active');
-      cursorRing.classList.add('active');
-    }
+                // Плавное появление при возвращении курсора в окно
+                document.addEventListener('mouseenter', () => {
+                    if (!isHoveringBtn) {
+                        targetScale = 1;
+                    }
+                });
 
-    if (!isHoveringBtn) {
-      targetScale = 1;
-    }
-  });
+                // Слушатели наведения на кнопку "Book a demo" для переключения режимов
+                const heroBtn = document.querySelector('.hero-btn');
+                if (heroBtn) {
+                    heroBtn.addEventListener('mouseenter', () => {
+                        isHoveringBtn = true;
+                        targetScale = 0; // Плавное скрытие плашки (scale 0)
+                        cursorRing.classList.add('expanded'); // Добавляем класс расширения кружка в CSS
+                    });
+                    heroBtn.addEventListener('mouseleave', () => {
+                        isHoveringBtn = false;
+                        targetScale = 1; // Плавное возвращение плашки
+                        cursorRing.classList.remove('expanded'); // Сброс расширения кружка
+                    });
+                }
 
-  document.addEventListener('mouseleave', () => {
-    targetScale = 0;
-  });
+                // Системный цикл анимации (60-120 кадров/сек) для сглаживания
+                const updatePhysics = () => {
+                    // Мягкое отставание плашки: коэффициент LERP 0.08
+                    cardX += (mouseX - cardX) * 0.08;
+                    cardY += (mouseY - cardY) * 0.08;
 
-  document.addEventListener('mouseenter', () => {
-    if (!isHoveringBtn) {
-      targetScale = 1;
-    }
-  });
+                    // Кружок следует за курсором мгновенно и без задержки
+                    ringX = mouseX;
+                    ringY = mouseY;
 
-  // Listeners for button / interactive elements hover expansion
-  const interactiveElements = document.querySelectorAll('.hero-btn, a.big');
-  interactiveElements.forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      isHoveringBtn = true;
-      targetScale = 0;
-      cursorRing.classList.add('expanded');
-    });
-    el.addEventListener('mouseleave', () => {
-      isHoveringBtn = false;
-      targetScale = 1;
-      cursorRing.classList.remove('expanded');
-    });
-  });
+                    // Интерполируем масштаб для плавного появления/исчезновения
+                    scale += (targetScale - scale) * 0.15;
 
-  // System animation loop (60-120 fps) for smooth physics
-  const updatePhysics = () => {
-    cardX += (mouseX - cardX) * 0.08;
-    cardY += (mouseY - cardY) * 0.08;
-    ringX = mouseX;
-    ringY = mouseY;
-    scale += (targetScale - scale) * 0.15;
+                    // Масштаб кружка (если навели на кнопку, он увеличивается до 1.6 через класс expanded)
+                    // Но мы всё еще перемножаем его на общий scale, чтобы кружок сжался в 0 при выходе с экрана
+                    const currentRingScale = cursorRing.classList.contains('expanded') ? 1.6 * scale : scale;
 
-    const currentRingScale = cursorRing.classList.contains('expanded') ? 1.6 * scale : scale;
+                    // Применяем аппаратную 3D-трансформацию
+                    glassCard.style.transform = `translate3d(${cardX}px, ${cardY}px, 0) translate(-50%, -50%) scale(${scale})`;
+                    cursorRing.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%) scale(${currentRingScale})`;
 
-    glassCard.style.transform = `translate3d(${cardX}px, ${cardY}px, 0) translate(-50%, -50%) scale(${scale})`;
-    cursorRing.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%) scale(${currentRingScale})`;
+                    requestAnimationFrame(updatePhysics);
+                };
 
-    requestAnimationFrame(updatePhysics);
-  };
-
-  updatePhysics();
-}
-})();
-</script>
+                updatePhysics();
+            }
+        });
+    </script>
 </body>
 </html>
