@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Loopstack</title>
+<title>DigiFront Door</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 @import url('https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap');
@@ -201,7 +201,7 @@ body {
 }
 .footer-logo-text {
     font-family: 'General Sans', -apple-system, sans-serif;
-    font-size: 21.9vw;
+    font-size: 14vw;
     font-weight: 400;
     color: #ffffff;
     letter-spacing: -0.03em;
@@ -333,6 +333,101 @@ body {
     25% { opacity: 1; }
     100% { opacity: 0.95; transform: translateX(0); filter: blur(0); }
 }
+
+.pricing-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 9vh 20px 8vh;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.5s;
+}
+.pricing-overlay.open { opacity: 1; visibility: visible; }
+.pricing-inner { width: 100%; max-width: 1200px; margin: 0 auto; }
+.pricing-close {
+    position: fixed; top: 24px; right: 24px; width: 44px; height: 44px;
+    border-radius: 50%; border: 1px solid rgba(255,255,255,0.18);
+    background: #000; color: #fff; font-size: 1.4rem; line-height: 1;
+    cursor: pointer; z-index: 2;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.pricing-close:hover, .pricing-close:focus-visible { background: #fff; color: #000; }
+.pricing-title {
+    font-family: 'Playfair Display', Georgia, serif; font-size: 2.8rem; font-weight: 400;
+    color: #fff; letter-spacing: -0.015em; line-height: 1.15; text-align: center; margin-bottom: 0.8rem;
+}
+.pricing-sub {
+    font-family: 'Outfit', sans-serif; font-size: 1.05rem; color: rgba(255,255,255,0.55);
+    text-align: center; margin: 0 auto 3rem; max-width: 640px;
+}
+.pricing-group { margin-bottom: 4.5rem; }
+.group-title {
+    font-family: 'General Sans', -apple-system, sans-serif; font-size: 1.4rem; font-weight: 400;
+    color: #fff; letter-spacing: -0.015em; margin-bottom: 0.4rem;
+}
+.group-note { font-family: 'Outfit', sans-serif; font-size: 0.95rem; color: rgba(255,255,255,0.45); margin-bottom: 1.4rem; }
+.group-rule { border: none; height: 1px; background: rgba(255,255,255,0.2); margin: 0 0 1.6rem; }
+.pricing-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem; }
+.plan {
+    position: relative; border: 1px solid rgba(255,255,255,0.18); border-radius: 24px;
+    padding: 1.8rem; display: flex; flex-direction: column; gap: 1rem; min-width: 0;
+    background: rgba(255,255,255,0.03);
+    transition: border-color 0.3s cubic-bezier(0.16,1,0.3,1), transform 0.3s cubic-bezier(0.16,1,0.3,1);
+}
+.plan:hover { border-color: rgba(255,255,255,0.45); transform: translateY(-3px); }
+.plan.featured { border-color: #39FF14; box-shadow: 0 0 30px rgba(57,255,20,0.15); }
+.plan-badge {
+    position: absolute; top: -12px; left: 1.8rem; background: #39FF14; color: #000;
+    font-family: 'Outfit', sans-serif; font-size: 0.8rem; font-weight: 600;
+    padding: 0.25rem 0.8rem; border-radius: 9999px;
+}
+.plan-level { font-family: 'Outfit', sans-serif; font-size: 0.85rem; color: rgba(255,255,255,0.45); letter-spacing: 0.02em; }
+.plan-name { font-family: 'General Sans', sans-serif; font-size: 1.3rem; font-weight: 400; color: #fff; letter-spacing: -0.015em; }
+.plan-price { font-family: 'Playfair Display', Georgia, serif; font-size: 1.9rem; color: #fff; line-height: 1.15; overflow-wrap: anywhere; }
+.plan-price small { font-family: 'Outfit', sans-serif; font-size: 0.95rem; color: rgba(255,255,255,0.45); }
+.plan ul { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; padding-top: 0.4rem; border-top: 1px solid rgba(255,255,255,0.12); }
+.plan li { font-family: 'Outfit', sans-serif; font-size: 0.95rem; line-height: 1.4; color: rgba(255,255,255,0.8); padding-left: 1.1rem; position: relative; }
+.plan li::before { content: ''; position: absolute; left: 0; top: 0.55em; width: 6px; height: 6px; border-radius: 50%; background: #39FF14; }
+.addons { list-style: none; border-top: 1px solid rgba(255,255,255,0.12); }
+.addons li {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 1.5rem; flex-wrap: wrap;
+    padding: 1rem 0.3rem; border-bottom: 1px solid rgba(255,255,255,0.12);
+    font-family: 'Outfit', sans-serif; font-size: 1rem; color: #fff;
+    transition: padding 0.3s cubic-bezier(0.16,1,0.3,1);
+}
+.addons li:hover { padding-left: 0.8rem; }
+.addons li span:last-child { color: #39FF14; font-weight: 500; white-space: nowrap; }
+.pricing-notes { border: 1px solid rgba(255,255,255,0.18); border-radius: 24px; padding: 2rem; background: rgba(255,255,255,0.03); }
+.pricing-notes ul { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; margin: 1rem 0 1.8rem; }
+.pricing-notes li { font-family: 'Outfit', sans-serif; font-size: 0.95rem; line-height: 1.5; color: rgba(255,255,255,0.7); padding-left: 1.1rem; position: relative; }
+.pricing-notes li::before { content: ''; position: absolute; left: 0; top: 0.6em; width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.45); }
+.pricing-cta {
+    font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 500; letter-spacing: 0.02em;
+    color: #fff; background: #000; border: 1px solid rgba(255,255,255,0.18);
+    padding: 1.3rem 2.5rem; border-radius: 9999px; display: inline-flex; align-items: center; gap: 0.9rem;
+    text-decoration: none; transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
+}
+.pricing-cta:hover, .pricing-cta:focus-visible { background: #fff; color: #000; border-color: #fff; transform: translateY(-2px); }
+.pricing-cta .blinking-dot { flex: none; }
+.pricing-overlay a:focus-visible, .pricing-overlay button:focus-visible { outline: 2px solid #39FF14; outline-offset: 3px; }
+@media (max-width: 1100px) { .pricing-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) {
+    .pricing-grid { grid-template-columns: 1fr; }
+    .pricing-title { font-size: 2.1rem; }
+    .pricing-notes { padding: 1.5rem; }
+    .pricing-cta { width: 100%; justify-content: center; padding: 1.2rem 1.5rem; }
+    .pricing-close { top: 14px; right: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .pricing-overlay, .plan, .addons li, .pricing-cta, .pricing-close { transition: none; }
+    .plan:hover, .addons li:hover, .pricing-cta:hover { transform: none; }
+}
 </style>
 </head>
 <body>
@@ -376,13 +471,13 @@ body {
         </nav>
 
         <div class="footer-copyright">
-            © 2026 Loopstack
+            © 2026 DigiFront Door
         </div>
     </div>
 </footer>
 
 <div class="footer-logo-wrap">
-    <h2 class="footer-logo-text">Loopstack</h2>
+    <h2 class="footer-logo-text">DigiFront Door</h2>
 </div>
 
 <div class="video-container">
@@ -390,6 +485,46 @@ body {
         <source src="https://api.getlayers.ai/storage/v1/object/public/public/assets/loopstack-f8c64439bf/flower.mp4" type="video/mp4">
         Ваш браузер не поддерживает видео.
     </video>
+</div>
+
+<div class="pricing-overlay" id="pricing" role="dialog" aria-label="Pricing" aria-hidden="true">
+    <button class="pricing-close" id="pricing-close" aria-label="Close pricing">&times;</button>
+    <div class="pricing-inner">
+        <h2 class="pricing-title">Pricing</h2>
+        <p class="pricing-sub">Website packages priced by animation complexity, with optional monthly care. All prices are in USD.</p>
+
+        <section class="pricing-group" aria-labelledby="dev-title">
+            <h3 class="group-title" id="dev-title">Website Development</h3>
+            <p class="group-note">Choose the level of animation and interaction your project needs.</p>
+            <hr class="group-rule">
+            <div class="pricing-grid" id="dev-grid"></div>
+        </section>
+
+        <section class="pricing-group" aria-labelledby="care-title">
+            <h3 class="group-title" id="care-title">Website Maintenance Plans</h3>
+            <p class="group-note">Monthly coverage depends on the agreed service scope.</p>
+            <hr class="group-rule">
+            <div class="pricing-grid" id="care-grid"></div>
+        </section>
+
+        <section class="pricing-group" aria-labelledby="addon-title">
+            <h3 class="group-title" id="addon-title">Optional Add-ons</h3>
+            <p class="group-note">Extras that can be added to any development package.</p>
+            <hr class="group-rule">
+            <ul class="addons" id="addon-list"></ul>
+        </section>
+
+        <section class="pricing-notes" aria-labelledby="notes-title">
+            <h3 class="group-title" id="notes-title">Important Pricing Notes</h3>
+            <ul>
+                <li>Final quotes depend on project complexity, functionality, page count, and requirements.</li>
+                <li>Domain registration, hosting, premium plugins, paid APIs, and third-party subscriptions are billed separately unless explicitly included.</li>
+                <li>Major redesigns, additional features, and work outside the agreed maintenance scope may require additional charges.</li>
+                <li>Contact me for a custom quote.</li>
+            </ul>
+            <a href="#contact" class="pricing-cta" id="pricing-cta"><span>Get a Custom Quote</span><span class="blinking-dot"></span></a>
+        </section>
+    </div>
 </div>
 
 <div id="cursor-ring" class="cursor-ring-outline"></div>
@@ -426,7 +561,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Внутренний span содержит букву и анимируется слева направо
             const inner = document.createElement('span');
-            inner.textContent = char === ' ' ? ' ' : char; // Обрабатываем пробелы
+            inner.textContent = char === ' ' ? '\u00A0' : char; // Обрабатываем пробелы
             inner.className = 'letter-inner';
 
             // Задаем задержку анимации для каждой буквы:
@@ -572,6 +707,71 @@ document.addEventListener('DOMContentLoaded', () => {
         updatePhysics();
     }
 });
+(function () {
+    const overlay = document.getElementById('pricing');
+    const closeBtn = document.getElementById('pricing-close');
+    if (!overlay) return;
+    const open = () => { overlay.classList.add('open'); overlay.setAttribute('aria-hidden', 'false'); };
+    const close = () => {
+        overlay.classList.remove('open');
+        overlay.setAttribute('aria-hidden', 'true');
+        if (location.hash === '#pricing') history.replaceState(null, '', location.pathname + location.search);
+    };
+    document.querySelectorAll('a[href="#pricing"]').forEach(a => {
+        a.addEventListener('click', e => { e.preventDefault(); open(); });
+    });
+    closeBtn.addEventListener('click', close);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+    if (location.hash === '#pricing') open();
+})();
+(function () {
+    const dev = [
+        { level: 'Basic animation', name: 'Starter Website', price: '$149–$299', items: ['3–5 pages', 'Smooth scrolling and hover effects', 'Basic fade-in animations', 'Responsive mobile-friendly design', 'Contact form and WhatsApp button', 'Basic SEO setup'] },
+        { level: 'Moderate animation', name: 'Professional Website', price: '$350–$799', featured: true, items: ['5–8 pages', 'Scroll-triggered reveal animations', 'Animated text, counters, and cards', 'Custom branding', 'Responsive layouts', 'Basic SEO optimization'] },
+        { level: 'Advanced animation', name: 'Premium Website', price: '$800–$1,799', items: ['6–10 pages', 'Cinematic transitions and parallax effects', 'Interactive galleries and menus', 'Custom animation sequences', 'Advanced visual effects', 'Performance optimization'] },
+        { level: 'Cinematic / 3D animation', name: 'Elite Website', price: '$2,000–$5,000+', items: ['Custom 3D and WebGL experiences', 'Immersive scrolling interactions', 'Complex animations and transitions', 'Interactive storytelling', 'Advanced visual effects', 'Performance optimization for demanding visuals'] }
+    ];
+    const care = [
+        { name: 'Basic Care', price: '$19', items: ['Website uptime checks', 'Backups where supported', 'Minor technical fixes', 'Basic website health checks'] },
+        { name: 'Standard Care', price: '$49', items: ['Everything in Basic Care', 'Small content updates', 'Broken-link checks', 'Monthly performance review', 'Minor layout fixes'] },
+        { name: 'Premium Care', price: '$99', items: ['Everything in Standard Care', 'More frequent updates', 'Animation and browser compatibility checks', 'Priority technical support', 'Regular performance optimization'] },
+        { name: 'Elite Care', price: '$199+', items: ['Advanced troubleshooting', 'Custom technical support', 'Complex animation diagnostics', 'Priority assistance', 'Scheduled optimization'] }
+    ];
+    const addons = [
+        ['Additional standard page', '$30–$75'],
+        ['Additional animated page', '$75–$150'],
+        ['Advanced hero animation', '$100–$250'],
+        ['Custom 3D section', '$250–$800+'],
+        ['Booking system integration', '$150–$500'],
+        ['WhatsApp / Instagram automation setup', '$100–$400'],
+        ['E-commerce functionality', '$400–$1,500+']
+    ];
+    const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text) n.textContent = text; return n; };
+    const card = (plan, monthly) => {
+        const c = el('article', 'plan' + (plan.featured ? ' featured' : ''));
+        if (plan.featured) c.appendChild(el('span', 'plan-badge', 'Recommended'));
+        if (plan.level) c.appendChild(el('div', 'plan-level', plan.level));
+        c.appendChild(el('h4', 'plan-name', plan.name));
+        const pr = el('div', 'plan-price', plan.price);
+        if (monthly) pr.appendChild(el('small', '', ' / month'));
+        c.appendChild(pr);
+        const ul = el('ul');
+        plan.items.forEach(t => ul.appendChild(el('li', '', t)));
+        c.appendChild(ul);
+        return c;
+    };
+    const devGrid = document.getElementById('dev-grid');
+    const careGrid = document.getElementById('care-grid');
+    const addonList = document.getElementById('addon-list');
+    if (devGrid) dev.forEach(p => devGrid.appendChild(card(p, false)));
+    if (careGrid) care.forEach(p => careGrid.appendChild(card(p, true)));
+    if (addonList) addons.forEach(a => {
+        const li = el('li');
+        li.appendChild(el('span', '', a[0]));
+        li.appendChild(el('span', '', a[1]));
+        addonList.appendChild(li);
+    });
+})();
 </script>
 </body>
 </html>
