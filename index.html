@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DigiFront Door</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 @import url('https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap');
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -14,6 +14,8 @@ body {
     min-height: 100vh;
     overflow: hidden;
     position: relative;
+    color: #ffffff;
+    font-family: 'Outfit', sans-serif;
 }
 
 #top-gradient {
@@ -66,6 +68,7 @@ body {
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
     outline: none;
+    text-decoration: none;
 }
 .hero-btn:hover {
     background-color: #ffffff;
@@ -173,6 +176,10 @@ body {
     text-decoration: none;
     letter-spacing: 0.03em;
     transition: opacity 0.3s ease, transform 0.3s ease;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
 }
 .footer-link:hover { opacity: 0.75; transform: translateY(-1px); }
 .footer-copyright {
@@ -227,6 +234,7 @@ body {
     height: 90vh;
     overflow: hidden;
     z-index: -1;
+    background: radial-gradient(circle at 50% 80%, rgba(20, 35, 25, 0.4) 0%, rgba(0, 0, 0, 1) 75%);
 }
 #bg-video {
     width: 100%;
@@ -234,6 +242,7 @@ body {
     object-fit: cover;
     display: block;
     transform: translateY(0%);
+    transition: opacity 0.6s ease;
 }
 
 .glass-cursor-card {
@@ -295,6 +304,12 @@ body {
 .cursor-ring-outline.active { opacity: 1; }
 .cursor-ring-outline.expanded { border-color: rgba(255, 255, 255, 0.15); }
 
+@media (pointer: coarse), (hover: none) {
+    .glass-cursor-card, .cursor-ring-outline {
+        display: none !important;
+    }
+}
+
 .hero-title .word-wrapper {
     display: inline-block;
     overflow: hidden;
@@ -334,6 +349,7 @@ body {
     100% { opacity: 0.95; transform: translateX(0); filter: blur(0); }
 }
 
+/* OVERLAYS & MODALS (Pricing, About, Features, Contact, Email Draft) */
 .pricing-overlay {
     position: fixed;
     inset: 0;
@@ -347,6 +363,7 @@ body {
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.5s;
+    scroll-behavior: smooth;
 }
 .pricing-overlay.open { opacity: 1; visibility: visible; }
 .pricing-inner { width: 100%; max-width: 1200px; margin: 0 auto; }
@@ -354,8 +371,11 @@ body {
     position: fixed; top: 24px; right: 24px; width: 44px; height: 44px;
     border-radius: 50%; border: 1px solid rgba(255,255,255,0.18);
     background: #000; color: #fff; font-size: 1.4rem; line-height: 1;
-    cursor: pointer; z-index: 2;
+    cursor: pointer; z-index: 55;
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .pricing-close:hover, .pricing-close:focus-visible { background: #fff; color: #000; }
 .pricing-title {
@@ -364,14 +384,14 @@ body {
 }
 .pricing-sub {
     font-family: 'Outfit', sans-serif; font-size: 1.05rem; color: rgba(255,255,255,0.55);
-    text-align: center; margin: 0 auto 3rem; max-width: 640px;
+    text-align: center; margin: 0 auto 3rem; max-width: 680px; line-height: 1.5;
 }
 .pricing-group { margin-bottom: 4.5rem; }
 .group-title {
     font-family: 'General Sans', -apple-system, sans-serif; font-size: 1.4rem; font-weight: 400;
     color: #fff; letter-spacing: -0.015em; margin-bottom: 0.4rem;
 }
-.group-note { font-family: 'Outfit', sans-serif; font-size: 0.95rem; color: rgba(255,255,255,0.45); margin-bottom: 1.4rem; }
+.group-note { font-family: 'Outfit', sans-serif; font-size: 0.95rem; color: rgba(255,255,255,0.45); margin-bottom: 1.4rem; line-height: 1.4; }
 .group-rule { border: none; height: 1px; background: rgba(255,255,255,0.2); margin: 0 0 1.6rem; }
 .pricing-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem; }
 .plan {
@@ -394,16 +414,94 @@ body {
 .plan ul { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; padding-top: 0.4rem; border-top: 1px solid rgba(255,255,255,0.12); }
 .plan li { font-family: 'Outfit', sans-serif; font-size: 0.95rem; line-height: 1.4; color: rgba(255,255,255,0.8); padding-left: 1.1rem; position: relative; }
 .plan li::before { content: ''; position: absolute; left: 0; top: 0.55em; width: 6px; height: 6px; border-radius: 50%; background: #39FF14; }
+
+.plan-btn-group {
+    margin-top: auto;
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.plan-btn {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.75rem 1.25rem;
+    border-radius: 9999px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+.plan-btn:hover {
+    background: #ffffff;
+    color: #000000;
+    border-color: #ffffff;
+    transform: translateY(-2px);
+}
+.plan.featured .plan-btn.primary {
+    background: #39FF14;
+    color: #000000;
+    border-color: #39FF14;
+    font-weight: 600;
+}
+.plan.featured .plan-btn.primary:hover {
+    background: #ffffff;
+    color: #000000;
+    border-color: #ffffff;
+}
+.plan-btn.secondary {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 0.82rem;
+    padding: 0.5rem 1rem;
+}
+.plan-btn.secondary:hover {
+    border-color: rgba(255, 255, 255, 0.4);
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
+}
+
 .addons { list-style: none; border-top: 1px solid rgba(255,255,255,0.12); }
 .addons li {
-    display: flex; justify-content: space-between; align-items: baseline; gap: 1.5rem; flex-wrap: wrap;
-    padding: 1rem 0.3rem; border-bottom: 1px solid rgba(255,255,255,0.12);
+    display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; flex-wrap: wrap;
+    padding: 1rem 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.12);
     font-family: 'Outfit', sans-serif; font-size: 1rem; color: #fff;
-    transition: padding 0.3s cubic-bezier(0.16,1,0.3,1);
+    transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
 }
-.addons li:hover { padding-left: 0.8rem; }
-.addons li span:last-child { color: #39FF14; font-weight: 500; white-space: nowrap; }
-.pricing-notes { border: 1px solid rgba(255,255,255,0.18); border-radius: 24px; padding: 2rem; background: rgba(255,255,255,0.03); }
+.addons li:hover { padding-left: 0.8rem; background: rgba(255, 255, 255, 0.015); }
+.addon-info { display: flex; align-items: center; gap: 0.85rem; }
+.addon-price-group { display: flex; align-items: center; gap: 1rem; }
+.addons li span.addon-price { color: #39FF14; font-weight: 500; white-space: nowrap; }
+.addon-toggle-btn {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.82rem;
+    padding: 0.35rem 0.85rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.04);
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+.addon-toggle-btn:hover { border-color: #39FF14; color: #39FF14; }
+.addon-toggle-btn.added {
+    background: rgba(57, 255, 20, 0.15);
+    border-color: #39FF14;
+    color: #39FF14;
+}
+
+.pricing-notes { border: 1px solid rgba(255,255,255,0.18); border-radius: 24px; padding: 2rem; background: rgba(255,255,255,0.03); margin-bottom: 4.5rem; }
 .pricing-notes ul { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; margin: 1rem 0 1.8rem; }
 .pricing-notes li { font-family: 'Outfit', sans-serif; font-size: 0.95rem; line-height: 1.5; color: rgba(255,255,255,0.7); padding-left: 1.1rem; position: relative; }
 .pricing-notes li::before { content: ''; position: absolute; left: 0; top: 0.6em; width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.45); }
@@ -411,22 +509,553 @@ body {
     font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 500; letter-spacing: 0.02em;
     color: #fff; background: #000; border: 1px solid rgba(255,255,255,0.18);
     padding: 1.3rem 2.5rem; border-radius: 9999px; display: inline-flex; align-items: center; gap: 0.9rem;
-    text-decoration: none; transition: all 0.3s cubic-bezier(0.16,1,0.3,1);
+    text-decoration: none; cursor: pointer; transition: all 0.3s cubic-bezier(0.16,1,0.3,1); outline: none;
 }
 .pricing-cta:hover, .pricing-cta:focus-visible { background: #fff; color: #000; border-color: #fff; transform: translateY(-2px); }
 .pricing-cta .blinking-dot { flex: none; }
 .pricing-overlay a:focus-visible, .pricing-overlay button:focus-visible { outline: 2px solid #39FF14; outline-offset: 3px; }
-@media (max-width: 1100px) { .pricing-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* CUSTOM PLAN BUILDER */
+.custom-builder-container {
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 24px;
+    padding: 2.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+.builder-header {
+    margin-bottom: 2.5rem;
+}
+.builder-step {
+    margin-bottom: 3rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.builder-step:last-of-type {
+    border-bottom: none;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0;
+}
+.step-heading {
+    display: flex;
+    align-items: baseline;
+    gap: 0.8rem;
+    margin-bottom: 0.5rem;
+}
+.step-number {
+    font-family: 'General Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #39FF14;
+    background: rgba(57, 255, 20, 0.12);
+    border: 1px solid rgba(57, 255, 20, 0.3);
+    padding: 0.2rem 0.6rem;
+    border-radius: 9999px;
+    letter-spacing: 0.05em;
+}
+.step-title {
+    font-family: 'General Sans', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #ffffff;
+    letter-spacing: -0.015em;
+}
+.step-description {
+    font-size: 0.92rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+}
+
+/* Form inputs & grids */
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 1.25rem;
+}
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    margin-bottom: 1.25rem;
+}
+.form-label {
+    font-family: 'General Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+.form-label .req {
+    color: #39FF14;
+    font-size: 0.95rem;
+}
+.form-input, .form-select, .form-textarea {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.95rem;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 14px;
+    padding: 0.9rem 1.15rem;
+    outline: none;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    width: 100%;
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+    border-color: #39FF14;
+    background: rgba(255, 255, 255, 0.07);
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.2);
+}
+.form-input::placeholder, .form-textarea::placeholder {
+    color: rgba(255, 255, 255, 0.25);
+}
+.form-input.input-error {
+    border-color: #ff4757;
+    box-shadow: 0 0 15px rgba(255, 71, 87, 0.25);
+}
+.error-msg {
+    color: #ff4757;
+    font-size: 0.8rem;
+    margin-top: 0.2rem;
+    display: none;
+}
+.error-msg.visible { display: block; }
+
+.form-select option {
+    background-color: #111111;
+    color: #ffffff;
+}
+
+/* Choice Chips (Single Select) */
+.chips-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+.chip-item {
+    cursor: pointer;
+    position: relative;
+}
+.chip-item input[type="radio"],
+.chip-item input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+.chip-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.75rem 1.35rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.03);
+    color: rgba(255, 255, 255, 0.85);
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 400;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.chip-item:hover .chip-label {
+    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.06);
+    transform: translateY(-1px);
+}
+.chip-item input:checked + .chip-label {
+    border-color: #39FF14;
+    background: rgba(57, 255, 20, 0.12);
+    color: #ffffff;
+    font-weight: 500;
+    box-shadow: 0 0 16px rgba(57, 255, 20, 0.2);
+}
+.chip-item input:checked + .chip-label::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #39FF14;
+    box-shadow: 0 0 6px #39FF14;
+}
+
+/* Feature & Service Cards (Multi-Select) */
+.interactive-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 0.9rem;
+}
+.feature-card {
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 16px;
+    padding: 1.1rem;
+    background: rgba(255, 255, 255, 0.02);
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.feature-card:hover {
+    border-color: rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-2px);
+}
+.feature-card.selected {
+    border-color: #39FF14;
+    background: rgba(57, 255, 20, 0.08);
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.15);
+}
+.feature-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 0.4rem;
+}
+.feature-name {
+    font-family: 'General Sans', sans-serif;
+    font-size: 0.98rem;
+    font-weight: 500;
+    color: #ffffff;
+}
+.custom-checkbox {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+    transition: all 0.2s ease;
+}
+.feature-card.selected .custom-checkbox {
+    background: #39FF14;
+    border-color: #39FF14;
+}
+.feature-card.selected .custom-checkbox::after {
+    content: '✓';
+    color: #000000;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+.feature-desc {
+    font-size: 0.84rem;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.35;
+}
+.infra-tag {
+    display: inline-block;
+    margin-top: 0.6rem;
+    font-size: 0.72rem;
+    font-family: 'Outfit', sans-serif;
+    color: #39FF14;
+    background: rgba(57, 255, 20, 0.12);
+    border: 1px solid rgba(57, 255, 20, 0.25);
+    padding: 0.18rem 0.55rem;
+    border-radius: 9999px;
+    letter-spacing: 0.02em;
+}
+
+/* LIVE SUMMARY CARD */
+.summary-container {
+    border: 1px solid rgba(57, 255, 20, 0.45);
+    border-radius: 24px;
+    padding: 2.2rem;
+    background: rgba(57, 255, 20, 0.03);
+    box-shadow: 0 0 35px rgba(57, 255, 20, 0.08);
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.summary-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    padding-bottom: 1.2rem;
+}
+.summary-title {
+    font-family: 'General Sans', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+.summary-actions {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+}
+.btn-text-action {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.88rem;
+    cursor: pointer;
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+.btn-text-action:hover {
+    color: #39FF14;
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+}
+.summary-item {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 1rem;
+}
+.summary-item-label {
+    font-family: 'General Sans', sans-serif;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: rgba(255, 255, 255, 0.45);
+    margin-bottom: 0.35rem;
+}
+.summary-item-value {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.98rem;
+    color: #ffffff;
+    font-weight: 500;
+    line-height: 1.4;
+    word-break: break-word;
+}
+.summary-item-value.accent {
+    color: #39FF14;
+}
+
+.summary-estimate-box {
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    padding-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+.estimate-label-wrap h4 {
+    font-family: 'General Sans', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #ffffff;
+}
+.estimate-label-wrap p {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.45);
+    max-width: 500px;
+    margin-top: 0.3rem;
+    line-height: 1.4;
+}
+.estimate-price-display {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2.2rem;
+    color: #39FF14;
+    text-shadow: 0 0 15px rgba(57, 255, 20, 0.3);
+    text-align: right;
+    white-space: nowrap;
+}
+.estimate-price-display small {
+    display: block;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 0.02em;
+}
+
+.summary-cta-wrap {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+}
+
+/* EMAIL DRAFT / FALLBACK MODAL */
+.email-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100000;
+    background: rgba(0, 0, 0, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s;
+}
+.email-modal-overlay.open { opacity: 1; visibility: visible; }
+.email-modal-card {
+    background: #090909;
+    border: 1px solid rgba(57, 255, 20, 0.4);
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(57, 255, 20, 0.15);
+    border-radius: 24px;
+    max-width: 680px;
+    width: 100%;
+    padding: 2.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.3rem;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+.email-modal-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2rem;
+    color: #ffffff;
+    line-height: 1.2;
+}
+.email-modal-notice {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.5;
+}
+.email-modal-notice strong {
+    color: #39FF14;
+}
+.email-draft-preview {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 14px;
+    padding: 1rem 1.2rem;
+    font-family: monospace;
+    font-size: 0.86rem;
+    color: rgba(255, 255, 255, 0.85);
+    white-space: pre-wrap;
+    max-height: 220px;
+    overflow-y: auto;
+    line-height: 1.45;
+}
+.email-modal-buttons {
+    display: flex;
+    gap: 0.85rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.btn-primary-action {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #000000;
+    background: #39FF14;
+    border: 1px solid #39FF14;
+    padding: 0.85rem 1.6rem;
+    border-radius: 9999px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.25s ease;
+}
+.btn-primary-action:hover {
+    background: #ffffff;
+    border-color: #ffffff;
+    transform: translateY(-2px);
+}
+.btn-secondary-action {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.85rem 1.6rem;
+    border-radius: 9999px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.25s ease;
+}
+.btn-secondary-action:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+/* ABOUT & FEATURES CONTENT STYLES */
+.info-section {
+    margin-bottom: 3.5rem;
+}
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+.info-card {
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 20px;
+    padding: 1.8rem;
+    background: rgba(255, 255, 255, 0.02);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+.info-card h4 {
+    font-family: 'General Sans', sans-serif;
+    font-size: 1.15rem;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+}
+.info-card p {
+    font-size: 0.92rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.5;
+}
+
+@media (max-width: 1100px) {
+    .pricing-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .info-grid { grid-template-columns: repeat(2, 1fr); }
+    .form-row { grid-template-columns: 1fr; }
+    .summary-grid { grid-template-columns: 1fr; }
+}
 @media (max-width: 640px) {
     .pricing-grid { grid-template-columns: 1fr; }
+    .info-grid { grid-template-columns: 1fr; }
     .pricing-title { font-size: 2.1rem; }
-    .pricing-notes { padding: 1.5rem; }
+    .pricing-notes, .custom-builder-container, .summary-container { padding: 1.5rem; }
     .pricing-cta { width: 100%; justify-content: center; padding: 1.2rem 1.5rem; }
     .pricing-close { top: 14px; right: 14px; }
+    .footer-links { gap: 1.4rem; flex-wrap: wrap; }
+    .estimate-price-display { text-align: left; }
+    .summary-estimate-box { flex-direction: column; align-items: flex-start; }
 }
 @media (prefers-reduced-motion: reduce) {
-    .pricing-overlay, .plan, .addons li, .pricing-cta, .pricing-close { transition: none; }
-    .plan:hover, .addons li:hover, .pricing-cta:hover { transform: none; }
+    .pricing-overlay, .plan, .addons li, .pricing-cta, .pricing-close, .feature-card, .chip-label { transition: none; }
+    .plan:hover, .addons li:hover, .pricing-cta:hover, .feature-card:hover { transform: none; }
+    .hero-title .word-inner, .footer-logo-text .letter-inner { animation: none; opacity: 1; transform: none; filter: none; }
 }
 </style>
 </head>
@@ -436,7 +1065,7 @@ body {
 
 <main class="hero-content">
     <h1 class="hero-title">Apply Now to be part <br> of the closed beta</h1>
-    <button class="hero-btn">
+    <button class="hero-btn" id="hero-demo-btn" aria-label="Book a demo inquiry via Gmail">
         <span class="btn-text">Book a demo</span>
         <span class="blinking-dot"></span>
     </button>
@@ -452,13 +1081,13 @@ body {
 
     <div class="footer-bottom">
         <div class="footer-socials">
-            <a href="#" aria-label="LinkedIn" class="social-icon">
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=localwebstarter%40gmail.com&su=LinkedIn%20Connect%20Inquiry" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="social-icon">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
             </a>
-            <a href="#" aria-label="X" class="social-icon">
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=localwebstarter%40gmail.com&su=X%20Twitter%20Connect%20Inquiry" target="_blank" rel="noopener noreferrer" aria-label="X" class="social-icon">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg>
             </a>
-            <a href="#" aria-label="Instagram" class="social-icon">
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=localwebstarter%40gmail.com&su=Instagram%20Connect%20Inquiry" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-icon">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
             </a>
         </div>
@@ -487,46 +1116,528 @@ body {
     </video>
 </div>
 
-<div class="pricing-overlay" id="pricing" role="dialog" aria-label="Pricing" aria-hidden="true">
+<!-- PRICING & CUSTOM PLAN OVERLAY -->
+<div class="pricing-overlay" id="pricing" role="dialog" aria-modal="true" aria-label="Pricing and Custom Plan Builder" aria-hidden="true">
     <button class="pricing-close" id="pricing-close" aria-label="Close pricing">&times;</button>
     <div class="pricing-inner">
-        <h2 class="pricing-title">Pricing</h2>
-        <p class="pricing-sub">Website packages priced by animation complexity, with optional monthly care. All prices are in USD.</p>
+        <h2 class="pricing-title">Pricing & Custom Packages</h2>
+        <p class="pricing-sub">Transparent website packages priced by animation complexity, optional monthly maintenance plans, or build your completely bespoke website project below. All prices in USD.</p>
 
+        <!-- Development Packages -->
         <section class="pricing-group" aria-labelledby="dev-title">
             <h3 class="group-title" id="dev-title">Website Development</h3>
-            <p class="group-note">Choose the level of animation and interaction your project needs.</p>
+            <p class="group-note">Choose the level of animation and interaction your project needs. Click "Customize Plan" to adapt any tier to your exact requirements.</p>
             <hr class="group-rule">
             <div class="pricing-grid" id="dev-grid"></div>
         </section>
 
+        <!-- Maintenance Plans -->
         <section class="pricing-group" aria-labelledby="care-title">
             <h3 class="group-title" id="care-title">Website Maintenance Plans</h3>
-            <p class="group-note">Monthly coverage depends on the agreed service scope.</p>
+            <p class="group-note">Monthly coverage depends on agreed service scope. Billed separately from one-time development packages.</p>
             <hr class="group-rule">
             <div class="pricing-grid" id="care-grid"></div>
         </section>
 
+        <!-- Optional Add-ons -->
         <section class="pricing-group" aria-labelledby="addon-title">
             <h3 class="group-title" id="addon-title">Optional Add-ons</h3>
-            <p class="group-note">Extras that can be added to any development package.</p>
+            <p class="group-note">Click "+ Add to Quote" to seamlessly integrate any extra feature into your custom project estimate below.</p>
             <hr class="group-rule">
             <ul class="addons" id="addon-list"></ul>
         </section>
 
+        <!-- Important Notes -->
         <section class="pricing-notes" aria-labelledby="notes-title">
             <h3 class="group-title" id="notes-title">Important Pricing Notes</h3>
             <ul>
-                <li>Final quotes depend on project complexity, functionality, page count, and requirements.</li>
+                <li>Final quotes depend on project complexity, functionality, page count, and technical specifications.</li>
                 <li>Domain registration, hosting, premium plugins, paid APIs, and third-party subscriptions are billed separately unless explicitly included.</li>
                 <li>Major redesigns, additional features, and work outside the agreed maintenance scope may require additional charges.</li>
-                <li>Contact me for a custom quote.</li>
+                <li>Contact me at <strong>localwebstarter@gmail.com</strong> or configure your project below for a personalized quote.</li>
             </ul>
-            <a href="#contact" class="pricing-cta" id="pricing-cta"><span>Get a Custom Quote</span><span class="blinking-dot"></span></a>
+            <a href="#custom-builder" class="pricing-cta" id="pricing-cta"><span>Configure Custom Website</span><span class="blinking-dot"></span></a>
+        </section>
+
+        <!-- CUSTOM WEBSITE ORDERING PLAN BUILDER -->
+        <section class="pricing-group" id="custom-builder" aria-labelledby="custom-title">
+            <h3 class="group-title" id="custom-title">Custom Website Project Builder</h3>
+            <p class="group-note">Build a tailored scope for your exact requirements. We will prepare your detailed brief and open a pre-filled draft in Gmail.</p>
+            <hr class="group-rule">
+
+            <div class="custom-builder-container">
+                <form id="custom-project-form" novalidate>
+                    <!-- STEP A: Project Details -->
+                    <div class="builder-step" id="step-details">
+                        <div class="step-heading">
+                            <span class="step-number">STEP 1</span>
+                            <h4 class="step-title">Project & Client Details</h4>
+                        </div>
+                        <p class="step-description">Tell us who you are and the general purpose of this project.</p>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="client-name">Your Full Name <span class="req">*</span></label>
+                                <input type="text" id="client-name" class="form-input" placeholder="e.g. Alex Morgan" required autocomplete="name">
+                                <span class="error-msg" id="name-error">Please enter your name.</span>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="client-email">Email Address <span class="req">*</span></label>
+                                <input type="email" id="client-email" class="form-input" placeholder="e.g. alex@company.com" required autocomplete="email">
+                                <span class="error-msg" id="email-error">Please provide a valid email address.</span>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="brand-name">Business / Brand Name</label>
+                                <input type="text" id="brand-name" class="form-input" placeholder="e.g. Studio Vertex">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="business-industry">Business Industry</label>
+                                <input type="text" id="business-industry" class="form-input" placeholder="e.g. Fashion, Tech, Architecture, Hospitality">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="website-purpose">Primary Website Purpose</label>
+                            <select id="website-purpose" class="form-select">
+                                <option value="Business website">Business website (Company presentation & credibility)</option>
+                                <option value="Portfolio">Portfolio (Creative showcase for agencies & freelancers)</option>
+                                <option value="Landing page">Landing page (High-conversion single product / event campaign)</option>
+                                <option value="Ecommerce store">Ecommerce store (Product sales & checkout)</option>
+                                <option value="Blog or magazine">Blog or magazine (Content publishing & articles)</option>
+                                <option value="Restaurant website">Restaurant website (Menu, ambiance & reservation)</option>
+                                <option value="SaaS or web application">SaaS or web application (Software landing & product demo)</option>
+                                <option value="Personal website">Personal website (Personal brand & bio)</option>
+                                <option value="Other">Other / Custom concept</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="project-description">Project Description & Core Objectives</label>
+                            <textarea id="project-description" class="form-textarea" rows="3" placeholder="Briefly describe what your business does and what you want this website to achieve..."></textarea>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="target-audience">Target Audience</label>
+                                <input type="text" id="target-audience" class="form-input" placeholder="e.g. High-net-worth clients, B2B executives, Gen Z shoppers">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="target-country">Target Country / Market</label>
+                                <input type="text" id="target-country" class="form-input" placeholder="e.g. United States, Global, United Kingdom">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="desired-delivery">Desired Delivery Date</label>
+                                <input type="text" id="desired-delivery" class="form-input" placeholder="e.g. End of next month, or specific date">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="existing-site">Existing Website URL (if redesign)</label>
+                                <input type="url" id="existing-site" class="form-input" placeholder="https://example.com">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP B: Website Size -->
+                    <div class="builder-step" id="step-size">
+                        <div class="step-heading">
+                            <span class="step-number">STEP 2</span>
+                            <h4 class="step-title">Website Scale & Page Count</h4>
+                        </div>
+                        <p class="step-description">Select the estimated scope and number of pages your project requires.</p>
+
+                        <div class="chips-grid" id="website-size-chips">
+                            <label class="chip-item">
+                                <input type="radio" name="website-size" value="One-page website" data-base="199">
+                                <span class="chip-label">One-page website</span>
+                            </label>
+                            <label class="chip-item">
+                                <input type="radio" name="website-size" value="2–5 pages" data-base="499" checked>
+                                <span class="chip-label">2–5 pages (Recommended)</span>
+                            </label>
+                            <label class="chip-item">
+                                <input type="radio" name="website-size" value="6–10 pages" data-base="1199">
+                                <span class="chip-label">6–10 pages</span>
+                            </label>
+                            <label class="chip-item">
+                                <input type="radio" name="website-size" value="10+ pages" data-base="2400">
+                                <span class="chip-label">10+ pages (Enterprise)</span>
+                            </label>
+                            <label class="chip-item">
+                                <input type="radio" name="website-size" value="Not sure — recommend an option" data-base="499">
+                                <span class="chip-label">Not sure — recommend an option</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- STEP C: Design Preferences -->
+                    <div class="builder-step" id="step-design">
+                        <div class="step-heading">
+                            <span class="step-number">STEP 3</span>
+                            <h4 class="step-title">Design Style & Visual Direction</h4>
+                        </div>
+                        <p class="step-description">Choose the aesthetic direction that fits your brand identity.</p>
+
+                        <div class="chips-grid" id="design-style-chips" style="margin-bottom: 1.5rem;">
+                            <label class="chip-item">
+                                <input type="radio" name="design-style" value="Dark and cinematic" checked>
+                                <span class="chip-label">Dark and cinematic</span>
+                            </label>
+                            <label class="chip-item">
+                                <input type="radio" name="design-style" value="Minimal and clean">
+                                <span class="chip-label">Minimal and clean</span>
+                            </label>
+                            <label class="chip-item">
+                                <input type="radio" name="design-style" value="Premium and luxurious">
+                                <span class="chip-label">Premium and luxurious</span>
+                            </label>
+                            <label class="chip-item">
+                                <input type="radio" name="design-style" value="Corporate and professional">
+                                <span class="chip-label">Corporate and professional</span>
+                            </label>
+                            <label class="chip-item">
+                                <input type="radio" name="design-style" value="Creative and experimental">
+                                <span class="chip-label">Creative and experimental</span>
+                            </label>
+                            <label class="chip-item">
+                                <input type="radio" name="design-style" value="Futuristic and interactive">
+                                <span class="chip-label">Futuristic and interactive</span>
+                            </label>
+                            <label class="chip-item">
+                                <input type="radio" name="design-style" value="Custom reference">
+                                <span class="chip-label">Custom reference</span>
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="reference-urls">Reference Website URLs (Inspirations you like)</label>
+                            <input type="text" id="reference-urls" class="form-input" placeholder="e.g. apple.com, stripe.com, awwwards winners...">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="design-notes">Design Notes & Brand Guidelines</label>
+                            <textarea id="design-notes" class="form-textarea" rows="2" placeholder="Mention any preferred color palettes, typography preferences, or existing logo/brand assets..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- STEP D: Animation Complexity -->
+                    <div class="builder-step" id="step-animation">
+                        <div class="step-heading">
+                            <span class="step-number">STEP 4</span>
+                            <h4 class="step-title">Animation Complexity</h4>
+                        </div>
+                        <p class="step-description">From subtle polish to award-winning WebGL storytelling.</p>
+
+                        <div class="chips-grid" id="animation-chips" style="margin-bottom: 1.25rem;">
+                            <label class="chip-item">
+                                <input type="radio" name="animation-tier" value="Basic: hover effects and simple transitions" data-tier="basic">
+                                <span class="chip-label">Basic (Smooth hovers & fade-ins)</span>
+                            </label>
+                            <label class="chip-item">
+                                <input type="radio" name="animation-tier" value="Standard: scroll animations and interactive elements" data-tier="standard" checked>
+                                <span class="chip-label">Standard (Scroll reveals, cards & counters)</span>
+                            </label>
+                            <label class="chip-item">
+                                <input type="radio" name="animation-tier" value="Advanced: parallax, complex motion, and cinematic transitions" data-tier="advanced">
+                                <span class="chip-label">Advanced (Cinematic parallax & LERP physics)</span>
+                            </label>
+                            <label class="chip-item">
+                                <input type="radio" name="animation-tier" value="Custom: describe the desired effects" data-tier="custom">
+                                <span class="chip-label">Custom / 3D WebGL experience</span>
+                            </label>
+                        </div>
+
+                        <div class="form-group" id="custom-animation-group" style="display: none;">
+                            <label class="form-label" for="custom-animation-text">Describe Your Desired Animation Effects</label>
+                            <textarea id="custom-animation-text" class="form-textarea" rows="2" placeholder="Describe the interactive 3D, physics, or specific kinetic effects you envision..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- STEP E: Required Features -->
+                    <div class="builder-step" id="step-features">
+                        <div class="step-heading">
+                            <span class="step-number">STEP 5</span>
+                            <h4 class="step-title">Required Website Features</h4>
+                        </div>
+                        <p class="step-description">Select all functional components you need. Items requiring dedicated backend or third-party paid subscriptions are clearly badged.</p>
+
+                        <div class="interactive-cards-grid" id="features-cards">
+                            <!-- Populated dynamically via JS for clean management -->
+                        </div>
+
+                        <div class="form-group" style="margin-top: 1.25rem;">
+                            <label class="form-label" for="custom-features-text">Other Custom Features / Technical Integrations</label>
+                            <input type="text" id="custom-features-text" class="form-input" placeholder="Specify any unique APIs, proprietary systems, or custom calculators...">
+                        </div>
+                    </div>
+
+                    <!-- STEP F: Additional Services -->
+                    <div class="builder-step" id="step-services">
+                        <div class="step-heading">
+                            <span class="step-number">STEP 6</span>
+                            <h4 class="step-title">Additional Services</h4>
+                        </div>
+                        <p class="step-description">Optional services to take your launch from concept to production.</p>
+
+                        <div class="interactive-cards-grid" id="services-cards">
+                            <!-- Populated dynamically via JS -->
+                        </div>
+                    </div>
+
+                    <!-- STEP G: Budget & Timeline -->
+                    <div class="builder-step" id="step-budget">
+                        <div class="step-heading">
+                            <span class="step-number">STEP 7</span>
+                            <h4 class="step-title">Budget Preference & Target Timeline</h4>
+                        </div>
+                        <p class="step-description">Budget preferences help us recommend the best balance between scope and investment (not a binding quote).</p>
+
+                        <div class="form-group">
+                            <label class="form-label">Budget Preference (USD)</label>
+                            <div class="chips-grid" id="budget-chips">
+                                <label class="chip-item">
+                                    <input type="radio" name="budget-pref" value="Under $150">
+                                    <span class="chip-label">Under $150</span>
+                                </label>
+                                <label class="chip-item">
+                                    <input type="radio" name="budget-pref" value="$150–$300">
+                                    <span class="chip-label">$150–$300</span>
+                                </label>
+                                <label class="chip-item">
+                                    <input type="radio" name="budget-pref" value="$300–$700" checked>
+                                    <span class="chip-label">$300–$700</span>
+                                </label>
+                                <label class="chip-item">
+                                    <input type="radio" name="budget-pref" value="$700–$1,500">
+                                    <span class="chip-label">$700–$1,500</span>
+                                </label>
+                                <label class="chip-item">
+                                    <input type="radio" name="budget-pref" value="$1,500+">
+                                    <span class="chip-label">$1,500+</span>
+                                </label>
+                                <label class="chip-item">
+                                    <input type="radio" name="budget-pref" value="Custom quote required">
+                                    <span class="chip-label">Custom quote required</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="margin-top: 1.5rem;">
+                            <label class="form-label">Target Timeline</label>
+                            <div class="chips-grid" id="timeline-chips">
+                                <label class="chip-item">
+                                    <input type="radio" name="timeline-pref" value="As soon as possible">
+                                    <span class="chip-label">As soon as possible</span>
+                                </label>
+                                <label class="chip-item">
+                                    <input type="radio" name="timeline-pref" value="Within 1–2 weeks">
+                                    <span class="chip-label">Within 1–2 weeks</span>
+                                </label>
+                                <label class="chip-item">
+                                    <input type="radio" name="timeline-pref" value="Within 3–4 weeks" checked>
+                                    <span class="chip-label">Within 3–4 weeks</span>
+                                </label>
+                                <label class="chip-item">
+                                    <input type="radio" name="timeline-pref" value="Flexible">
+                                    <span class="chip-label">Flexible</span>
+                                </label>
+                                <label class="chip-item">
+                                    <input type="radio" name="timeline-pref" value="Discuss with me">
+                                    <span class="chip-label">Discuss with me</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP H: Custom Requirements -->
+                    <div class="builder-step" id="step-custom-notes">
+                        <div class="step-heading">
+                            <span class="step-number">STEP 8</span>
+                            <h4 class="step-title">Special Requirements & Integrations</h4>
+                        </div>
+                        <p class="step-description">Mention any specific third-party tools, CRM integrations, multilingual targets, or unique notes.</p>
+
+                        <div class="form-group">
+                            <textarea id="special-requirements" class="form-textarea" rows="3" placeholder="Write any additional details, questions, or specific expectations here..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- STEP I: Dynamic Project Summary & Submission -->
+                    <div class="summary-container" id="project-summary-card">
+                        <div class="summary-header">
+                            <div class="summary-title">
+                                <span>Live Project Specification</span>
+                                <span class="blinking-dot"></span>
+                            </div>
+                            <div class="summary-actions">
+                                <button type="button" class="btn-text-action" id="btn-edit-form">Edit Choices</button>
+                                <button type="button" class="btn-text-action" id="btn-reset-form">Reset Form</button>
+                            </div>
+                        </div>
+
+                        <div class="summary-grid">
+                            <div class="summary-item">
+                                <div class="summary-item-label">Client & Purpose</div>
+                                <div class="summary-item-value" id="sum-client">Please enter your name & email above</div>
+                            </div>
+                            <div class="summary-item">
+                                <div class="summary-item-label">Scope & Design Style</div>
+                                <div class="summary-item-value" id="sum-scope">2–5 pages · Dark and cinematic</div>
+                            </div>
+                            <div class="summary-item">
+                                <div class="summary-item-label">Animation Level</div>
+                                <div class="summary-item-value accent" id="sum-animation">Standard animations</div>
+                            </div>
+                            <div class="summary-item">
+                                <div class="summary-item-label">Budget & Timeline Preference</div>
+                                <div class="summary-item-value" id="sum-budget">$300–$700 · Within 3–4 weeks</div>
+                            </div>
+                            <div class="summary-item" style="grid-column: 1 / -1;">
+                                <div class="summary-item-label">Selected Features & Additional Services</div>
+                                <div class="summary-item-value" id="sum-features">Responsive design, Contact forms</div>
+                            </div>
+                        </div>
+
+                        <div class="summary-estimate-box">
+                            <div class="estimate-label-wrap">
+                                <h4>Indicative Development Estimate</h4>
+                                <p>Configurable estimate based on standard options. Final quote will be confirmed after reviewing your project brief. Third-party domains, hosting, and paid APIs billed separately.</p>
+                            </div>
+                            <div class="estimate-price-display" id="sum-price-display">
+                                $350 – $799
+                                <small>USD (One-time)</small>
+                            </div>
+                        </div>
+
+                        <div class="summary-cta-wrap">
+                            <button type="submit" class="pricing-cta" id="btn-submit-project">
+                                <span>Send Brief via Gmail</span>
+                                <span class="blinking-dot"></span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </section>
     </div>
 </div>
 
+<!-- ABOUT OVERLAY -->
+<div class="pricing-overlay" id="about" role="dialog" aria-modal="true" aria-label="About DigiFront Door" aria-hidden="true">
+    <button class="pricing-close" id="about-close" aria-label="Close about overlay">&times;</button>
+    <div class="pricing-inner">
+        <h2 class="pricing-title">About DigiFront Door</h2>
+        <p class="pricing-sub">"Think. Build. Repeat." — Crafting digital front doors that turn visitors into devoted clients through bespoke interaction and uncompromising engineering.</p>
+
+        <section class="info-section">
+            <h3 class="group-title">The Philosophy</h3>
+            <p class="group-note">In an era of generic website builders, your digital front door is the first and most defining touchpoint of your brand.</p>
+            <hr class="group-rule">
+            <div class="info-grid">
+                <article class="info-card">
+                    <h4>Bespoke Engineering</h4>
+                    <p>Every website is hand-crafted with clean, semantic markup, zero unnecessary bulk, and tailored micro-interactions designed to highlight your value proposition.</p>
+                </article>
+                <article class="info-card">
+                    <h4>Kinetic Fluidity</h4>
+                    <p>Physics-based cursor effects, smooth LERP easing, scroll-triggered reveals, and WebGL elements that feel alive without slowing down load times.</p>
+                </article>
+                <article class="info-card">
+                    <h4>Transparent Partnership</h4>
+                    <p>No unexpected hidden costs. Clear animation tier pricing, transparent maintenance plans, and direct communication addressed to localwebstarter@gmail.com.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="pricing-notes">
+            <h3 class="group-title">Ready to build your front door?</h3>
+            <p style="margin: 0.8rem 0 1.5rem; color: rgba(255,255,255,0.7); line-height: 1.5;">Whether you need an expressive single-page landing or a full cinematic brand experience, we are ready to bring your vision to life.</p>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <a href="#pricing" class="pricing-cta" id="about-to-pricing"><span>Explore Pricing & Custom Builder</span><span class="blinking-dot"></span></a>
+                <button type="button" class="plan-btn" id="about-contact-btn" style="padding: 1.2rem 2.2rem; font-size: 1rem;">Contact via Gmail</button>
+            </div>
+        </section>
+    </div>
+</div>
+
+<!-- FEATURES OVERLAY -->
+<div class="pricing-overlay" id="features" role="dialog" aria-modal="true" aria-label="Features and Capabilities" aria-hidden="true">
+    <button class="pricing-close" id="features-close" aria-label="Close features overlay">&times;</button>
+    <div class="pricing-inner">
+        <h2 class="pricing-title">Capabilities & Features</h2>
+        <p class="pricing-sub">Where high-performance engineering meets visual distinction. Built from the ground up for modern businesses.</p>
+
+        <section class="info-section">
+            <h3 class="group-title">Core Disciplines</h3>
+            <p class="group-note">Our full-spectrum capability suite covers design, motion, engineering, and continuous care.</p>
+            <hr class="group-rule">
+            <div class="info-grid">
+                <article class="info-card">
+                    <h4>Fluid Motion Architecture</h4>
+                    <p>Subtle hover physics, scroll-linked storytelling, reveal masks with blur transitions, and responsive mobile adaptations.</p>
+                </article>
+                <article class="info-card">
+                    <h4>High-Converting Funnels</h4>
+                    <p>Strategic information architecture, interactive inquiry builders, direct WhatsApp/booking triggers, and clean lead capture.</p>
+                </article>
+                <article class="info-card">
+                    <h4>Modern Tech Stack</h4>
+                    <p>Lightweight JavaScript, hardware-accelerated CSS3 transforms, pristine SVG assets, and ultra-fast static hosting compatibility.</p>
+                </article>
+                <article class="info-card">
+                    <h4>SEO & Technical Health</h4>
+                    <p>Semantic markup, Open Graph social cards, structured data, optimized media delivery, and sub-second initial load speeds.</p>
+                </article>
+                <article class="info-card">
+                    <h4>Seamless Third-Party Ecosystem</h4>
+                    <p>Clear guidance and integration for payment gateways, calendar booking, WhatsApp APIs, AI chatbots, and newsletter platforms.</p>
+                </article>
+                <article class="info-card">
+                    <h4>Reliable Website Maintenance</h4>
+                    <p>Ongoing uptime monitoring, security audits, routine content updates, and animation compatibility testing.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="pricing-notes">
+            <h3 class="group-title">Experience the difference</h3>
+            <p style="margin: 0.8rem 0 1.5rem; color: rgba(255,255,255,0.7); line-height: 1.5;">Check out our transparent packages or create your personalized specification with our custom builder.</p>
+            <a href="#pricing" class="pricing-cta" id="features-to-pricing"><span>View Packages & Custom Builder</span><span class="blinking-dot"></span></a>
+        </section>
+    </div>
+</div>
+
+<!-- EMAIL COMPOSE CONFIRMATION & FALLBACK MODAL -->
+<div class="email-modal-overlay" id="email-fallback-modal" role="dialog" aria-modal="true" aria-label="Email Draft Prepared" aria-hidden="true">
+    <div class="email-modal-card">
+        <button class="pricing-close" id="modal-fallback-close" aria-label="Close modal" style="position: absolute; top: 16px; right: 16px;">&times;</button>
+        <h3 class="email-modal-title">Your Project Brief is Ready</h3>
+        <p class="email-modal-notice">
+            A Gmail compose window addressed to <strong>localwebstarter@gmail.com</strong> has been initiated.<br>
+            <strong>Note:</strong> In accordance with security standards, your email client will open with your pre-filled brief. Please press <strong>Send</strong> inside Gmail to finalize delivery.
+        </p>
+
+        <div class="email-draft-preview" id="email-draft-text" tabindex="0"></div>
+
+        <div class="email-modal-buttons">
+            <a href="#" id="modal-open-gmail-btn" target="_blank" rel="noopener noreferrer" class="btn-primary-action">
+                <span>Open in Gmail</span>
+                <span class="blinking-dot" style="background:#000;"></span>
+            </a>
+            <a href="#" id="modal-open-mailto-btn" class="btn-secondary-action">
+                <span>Default Email App (mailto)</span>
+            </a>
+            <button type="button" id="modal-copy-btn" class="btn-secondary-action">
+                <span id="copy-btn-label">Copy Brief to Clipboard</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Custom Cursor Elements -->
 <div id="cursor-ring" class="cursor-ring-outline"></div>
 
 <div id="glass-card" class="glass-cursor-card">
@@ -534,244 +1645,984 @@ body {
 </div>
 
 <script>
-(function () {
+// CONFIGURATION & CONSTANTS
+const CONTACT_EMAIL = 'localwebstarter@gmail.com';
+
+// 1. VIDEO PLAYBACK & ROBUST FALLBACK
+(function initVideo() {
     const v = document.getElementById('bg-video');
+    const container = document.querySelector('.video-container');
     if (!v) return;
     v.muted = true;
-    const tryPlay = () => { const p = v.play(); if (p && p.catch) p.catch(() => {}); };
+
+    const tryPlay = () => {
+        const p = v.play();
+        if (p && p.catch) {
+            p.catch(() => {
+                // If autoplay blocked, ensure fallback styling remains sleek
+            });
+        }
+    };
     tryPlay();
     v.addEventListener('canplay', tryPlay);
+
+    // Error fallback
+    v.addEventListener('error', () => {
+        v.style.opacity = '0';
+        if (container) {
+            container.style.background = 'radial-gradient(circle at 50% 80%, rgba(20, 45, 30, 0.6) 0%, rgba(0, 0, 0, 1) 80%)';
+        }
+    });
+
     ['click', 'touchstart', 'mousemove', 'keydown'].forEach(ev =>
         document.addEventListener(ev, tryPlay, { once: true, passive: true })
     );
 })();
 
+// 2. HERO & LOGO WORDMARK LETTER-REVEAL ANIMATIONS
 document.addEventListener('DOMContentLoaded', () => {
+    // Footer Wordmark "DigiFront Door"
     const logoText = document.querySelector('.footer-logo-text');
-
     if (logoText) {
         const text = logoText.textContent.trim();
-        logoText.innerHTML = ''; // Очищаем контейнер
-
-        // Разделяем слово на отдельные буквы и оборачиваем каждую в двойной span для маски
+        logoText.innerHTML = '';
         [...text].forEach((char, index) => {
-            // Внешний span выступает в роли маски (overflow: hidden)
             const wrapper = document.createElement('span');
             wrapper.className = 'letter-wrapper';
-
-            // Внутренний span содержит букву и анимируется слева направо
             const inner = document.createElement('span');
-            inner.textContent = char === ' ' ? '\u00A0' : char; // Обрабатываем пробелы
+            inner.textContent = char === ' ' ? '\u00A0' : char;
             inner.className = 'letter-inner';
-
-            // Задаем задержку анимации для каждой буквы:
-            // 9 букв, задержка шага 0.09с, длительность анимации 1.2с.
-            // Последняя буква закончит выдвигаться ровно на отметке: 0.72с (задержка) + 1.2с (анимация) = 1.92 секунды!
-            inner.style.animationDelay = `${index * 0.09}s`;
-
+            inner.style.animationDelay = `${index * 0.08}s`;
             wrapper.appendChild(inner);
             logoText.appendChild(wrapper);
         });
     }
 
-    // Разделение верхнего заголовка на слова для анимации появления снизу вверх из маски с блюром
+    // Hero title word animation
     const heroTitle = document.querySelector('.hero-title');
     if (heroTitle) {
         const text = heroTitle.innerHTML;
-        // Разделяем по пробелам, сохраняя теги <br>
         const parts = text.split(/(\s+|<br\s*\/?>)/i);
         heroTitle.innerHTML = '';
-
         let wordIndex = 0;
         parts.forEach(part => {
             if (part.trim() === '') {
-                // Обычный пробел между словами
                 heroTitle.appendChild(document.createTextNode(' '));
             } else if (part.toLowerCase().startsWith('<br')) {
-                // Сохраняем перенос строки
                 heroTitle.appendChild(document.createElement('br'));
             } else {
-                // Обертка-маска (overflow: hidden)
                 const wrapper = document.createElement('span');
                 wrapper.className = 'word-wrapper';
-
-                // Внутреннее слово, сдвинутое вниз и заблюренное
                 const inner = document.createElement('span');
                 inner.className = 'word-inner';
                 inner.textContent = part;
-
-                // Задержка анимации: шаг 0.1с для размеренного, солидного появления
                 inner.style.animationDelay = `${wordIndex * 0.1}s`;
                 wordIndex++;
-
                 wrapper.appendChild(inner);
                 heroTitle.appendChild(wrapper);
             }
         });
     }
 
-    // Летающий оутлайновый белый кружок и стеклянная плашка за курсором (LERP-физика)
+    // Custom Cursor LERP physics (desktop only)
     const glassCard = document.getElementById('glass-card');
     const cursorRing = document.getElementById('cursor-ring');
+    const isCoarse = window.matchMedia('(pointer: coarse)').matches;
 
-    if (glassCard && cursorRing) {
+    if (glassCard && cursorRing && !isCoarse) {
         let mouseX = window.innerWidth / 2;
         let mouseY = window.innerHeight / 2;
-
-        // Координаты для плашки (медленное движение)
-        let cardX = mouseX;
-        let cardY = mouseY;
-
-        // Координаты для кружка (более быстрое движение)
-        let ringX = mouseX;
-        let ringY = mouseY;
-
+        let cardX = mouseX, cardY = mouseY;
+        let ringX = mouseX, ringY = mouseY;
         let isFirstMove = true;
         let scale = 0;
         let targetScale = 0;
-        let isHoveringBtn = false; // Флаг наведения на кнопку Book a Demo
+        let isHoveringInteractive = false;
 
-        // Отслеживаем координаты курсора
         document.addEventListener('mousemove', (e) => {
             mouseX = e.clientX;
             mouseY = e.clientY;
-
             if (isFirstMove) {
-                // Мгновенно позиционируем при первом движении, чтобы избежать "прыжка"
-                cardX = mouseX;
-                cardY = mouseY;
-                ringX = mouseX;
-                ringY = mouseY;
+                cardX = mouseX; cardY = mouseY;
+                ringX = mouseX; ringY = mouseY;
                 isFirstMove = false;
                 glassCard.classList.add('active');
                 cursorRing.classList.add('active');
             }
-
-            // Показываем элементы только если курсор не находится на кнопке Book a demo
-            if (!isHoveringBtn) {
-                targetScale = 1;
-            }
+            if (!isHoveringInteractive) targetScale = 1;
         });
 
-        // Плавное скрытие при выходе курсора за пределы экрана
-        document.addEventListener('mouseleave', () => {
-            targetScale = 0;
-        });
+        document.addEventListener('mouseleave', () => { targetScale = 0; });
+        document.addEventListener('mouseenter', () => { if (!isHoveringInteractive) targetScale = 1; });
 
-        // Плавное появление при возвращении курсора в окно
-        document.addEventListener('mouseenter', () => {
-            if (!isHoveringBtn) {
-                targetScale = 1;
-            }
-        });
-
-        // Слушатели наведения на кнопку "Book a demo" для переключения режимов
-        const heroBtn = document.querySelector('.hero-btn');
-        if (heroBtn) {
-            heroBtn.addEventListener('mouseenter', () => {
-                isHoveringBtn = true;
-                targetScale = 0; // Плавное скрытие плашки (scale 0)
-                cursorRing.classList.add('expanded'); // Добавляем класс расширения кружка в CSS
+        // Hover effect for hero button and interactive elements
+        const interactiveSelectors = '.hero-btn, .pricing-cta, .plan-btn, .pricing-close';
+        document.querySelectorAll(interactiveSelectors).forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                isHoveringInteractive = true;
+                targetScale = 0;
+                cursorRing.classList.add('expanded');
             });
-            heroBtn.addEventListener('mouseleave', () => {
-                isHoveringBtn = false;
-                targetScale = 1; // Плавное возвращение плашки
-                cursorRing.classList.remove('expanded'); // Сброс расширения кружка
+            el.addEventListener('mouseleave', () => {
+                isHoveringInteractive = false;
+                targetScale = 1;
+                cursorRing.classList.remove('expanded');
             });
-        }
+        });
 
-        // Системный цикл анимации (60-120 кадров/сек) для сглаживания
         const updatePhysics = () => {
-            // Мягкое отставание плашки: коэффициент LERP 0.08
             cardX += (mouseX - cardX) * 0.08;
             cardY += (mouseY - cardY) * 0.08;
-
-            // Кружок следует за курсором мгновенно и без задержки
             ringX = mouseX;
             ringY = mouseY;
-
-            // Интерполируем масштаб для плавного появления/исчезновения
             scale += (targetScale - scale) * 0.15;
-
-            // Масштаб кружка (если навели на кнопку, он увеличивается до 1.6 через класс expanded)
-            // Но мы всё еще перемножаем его на общий scale, чтобы кружок сжался в 0 при выходе с экрана
             const currentRingScale = cursorRing.classList.contains('expanded') ? 1.6 * scale : scale;
 
-            // Применяем аппаратную 3D-трансформацию
             glassCard.style.transform = `translate3d(${cardX}px, ${cardY}px, 0) translate(-50%, -50%) scale(${scale})`;
             cursorRing.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%) scale(${currentRingScale})`;
-
             requestAnimationFrame(updatePhysics);
         };
-
         updatePhysics();
     }
 });
-(function () {
-    const overlay = document.getElementById('pricing');
-    const closeBtn = document.getElementById('pricing-close');
-    if (!overlay) return;
-    const open = () => { overlay.classList.add('open'); overlay.setAttribute('aria-hidden', 'false'); };
-    const close = () => {
-        overlay.classList.remove('open');
-        overlay.setAttribute('aria-hidden', 'true');
-        if (location.hash === '#pricing') history.replaceState(null, '', location.pathname + location.search);
+
+// 3. GMAIL INTEGRATION & FALLBACK SYSTEM
+function buildGmailComposeUrl(to, subject, body) {
+    return `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(to)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
+function buildMailtoUrl(to, subject, body) {
+    return `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
+function openEmailInquiry({ subject, body }) {
+    const gmailUrl = buildGmailComposeUrl(CONTACT_EMAIL, subject, body);
+    const mailtoUrl = buildMailtoUrl(CONTACT_EMAIL, subject, body);
+
+    // Show fallback/confirmation modal
+    const modal = document.getElementById('email-fallback-modal');
+    const previewEl = document.getElementById('email-draft-text');
+    const openGmailBtn = document.getElementById('modal-open-gmail-btn');
+    const openMailtoBtn = document.getElementById('modal-open-mailto-btn');
+    const copyBtn = document.getElementById('modal-copy-btn');
+    const copyLabel = document.getElementById('copy-btn-label');
+
+    if (previewEl) {
+        previewEl.textContent = `To: ${CONTACT_EMAIL}\nSubject: ${subject}\n\n${body}`;
+    }
+    if (openGmailBtn) openGmailBtn.href = gmailUrl;
+    if (openMailtoBtn) openMailtoBtn.href = mailtoUrl;
+
+    if (modal) {
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+    }
+
+    // Try opening Gmail popup
+    try {
+        const win = window.open(gmailUrl, '_blank');
+        if (!win || win.closed || typeof win.closed === 'undefined') {
+            // Popup was blocked, the modal is already visible with open buttons
+        }
+    } catch (e) {
+        // Fallback gracefully displayed
+    }
+
+    if (copyBtn && copyLabel) {
+        copyBtn.onclick = () => {
+            const fullText = `To: ${CONTACT_EMAIL}\nSubject: ${subject}\n\n${body}`;
+            navigator.clipboard.writeText(fullText).then(() => {
+                copyLabel.textContent = 'Copied to Clipboard! ✓';
+                setTimeout(() => { copyLabel.textContent = 'Copy Brief to Clipboard'; }, 3000);
+            }).catch(() => {
+                copyLabel.textContent = 'Selected text below to copy';
+            });
+        };
+    }
+}
+
+// Close fallback modal
+document.getElementById('modal-fallback-close')?.addEventListener('click', () => {
+    const modal = document.getElementById('email-fallback-modal');
+    if (modal) {
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden', 'true');
+    }
+});
+
+// 4. OVERLAYS NAVIGATION (Pricing, About, Features, Contact)
+(function initOverlays() {
+    const pricingOverlay = document.getElementById('pricing');
+    const aboutOverlay = document.getElementById('about');
+    const featuresOverlay = document.getElementById('features');
+
+    const openOverlay = (overlay) => {
+        [pricingOverlay, aboutOverlay, featuresOverlay].forEach(o => {
+            if (o && o !== overlay) {
+                o.classList.remove('open');
+                o.setAttribute('aria-hidden', 'true');
+            }
+        });
+        if (overlay) {
+            overlay.classList.add('open');
+            overlay.setAttribute('aria-hidden', 'false');
+        }
     };
-    document.querySelectorAll('a[href="#pricing"]').forEach(a => {
-        a.addEventListener('click', e => { e.preventDefault(); open(); });
+
+    const closeAllOverlays = () => {
+        [pricingOverlay, aboutOverlay, featuresOverlay].forEach(o => {
+            if (o) {
+                o.classList.remove('open');
+                o.setAttribute('aria-hidden', 'true');
+            }
+        });
+        if (location.hash && location.hash !== '#') {
+            history.replaceState(null, '', location.pathname + location.search);
+        }
+    };
+
+    // Close buttons
+    document.getElementById('pricing-close')?.addEventListener('click', closeAllOverlays);
+    document.getElementById('about-close')?.addEventListener('click', closeAllOverlays);
+    document.getElementById('features-close')?.addEventListener('click', closeAllOverlays);
+
+    // Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            const emailModal = document.getElementById('email-fallback-modal');
+            if (emailModal && emailModal.classList.contains('open')) {
+                emailModal.classList.remove('open');
+                emailModal.setAttribute('aria-hidden', 'true');
+                return;
+            }
+            closeAllOverlays();
+        }
     });
-    closeBtn.addEventListener('click', close);
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
-    if (location.hash === '#pricing') open();
+
+    // Nav Links
+    document.querySelectorAll('a[href="#pricing"]').forEach(a => {
+        a.addEventListener('click', e => { e.preventDefault(); openOverlay(pricingOverlay); });
+    });
+    document.querySelectorAll('a[href="#about"]').forEach(a => {
+        a.addEventListener('click', e => { e.preventDefault(); openOverlay(aboutOverlay); });
+    });
+    document.querySelectorAll('a[href="#features"]').forEach(a => {
+        a.addEventListener('click', e => { e.preventDefault(); openOverlay(featuresOverlay); });
+    });
+    document.querySelectorAll('a[href="#contact"]').forEach(a => {
+        a.addEventListener('click', e => {
+            e.preventDefault();
+            openEmailInquiry({
+                subject: 'Website Development Inquiry - DigiFront Door',
+                body: `Hello DigiFront Door,\n\nI am interested in discussing a website development project.\n\nMy Name:\nCompany / Brand:\nProject Type:\nEstimated Budget:\n\nPlease let me know how we can proceed.\n\nBest regards,`
+            });
+        });
+    });
+
+    // Hero Book Demo Button
+    const heroBtn = document.getElementById('hero-demo-btn');
+    if (heroBtn) {
+        heroBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openEmailInquiry({
+                subject: 'Book a Demo Inquiry - DigiFront Door',
+                body: `Hello DigiFront Door Team,\n\nI would like to book a demo / consultation to review animation and design options for our upcoming website project.\n\nMy Name:\nCompany / Brand:\nProject Goals:\nPreferred Meeting Date/Time:\n\nLooking forward to your reply!\n\nBest regards,`
+            });
+        });
+    }
+
+    // Cross-overlay links
+    document.getElementById('about-to-pricing')?.addEventListener('click', (e) => {
+        e.preventDefault(); openOverlay(pricingOverlay);
+    });
+    document.getElementById('features-to-pricing')?.addEventListener('click', (e) => {
+        e.preventDefault(); openOverlay(pricingOverlay);
+    });
+    document.getElementById('about-contact-btn')?.addEventListener('click', () => {
+        openEmailInquiry({
+            subject: 'Project Inquiry - DigiFront Door',
+            body: `Hi DigiFront Door,\n\nI read about your work and would like to get in touch regarding a website project.\n\nName:\nEmail:\nProject notes:\n\nThank you!`
+        });
+    });
+
+    // Scroll to custom builder CTA
+    document.getElementById('pricing-cta')?.addEventListener('click', (e) => {
+        e.preventDefault();
+        const builder = document.getElementById('custom-builder');
+        if (builder) builder.scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // Hash check on load
+    if (location.hash === '#pricing') openOverlay(pricingOverlay);
+    else if (location.hash === '#about') openOverlay(aboutOverlay);
+    else if (location.hash === '#features') openOverlay(featuresOverlay);
 })();
-(function () {
-    const dev = [
-        { level: 'Basic animation', name: 'Starter Website', price: '$149–$299', items: ['3–5 pages', 'Smooth scrolling and hover effects', 'Basic fade-in animations', 'Responsive mobile-friendly design', 'Contact form and WhatsApp button', 'Basic SEO setup'] },
-        { level: 'Moderate animation', name: 'Professional Website', price: '$350–$799', featured: true, items: ['5–8 pages', 'Scroll-triggered reveal animations', 'Animated text, counters, and cards', 'Custom branding', 'Responsive layouts', 'Basic SEO optimization'] },
-        { level: 'Advanced animation', name: 'Premium Website', price: '$800–$1,799', items: ['6–10 pages', 'Cinematic transitions and parallax effects', 'Interactive galleries and menus', 'Custom animation sequences', 'Advanced visual effects', 'Performance optimization'] },
-        { level: 'Cinematic / 3D animation', name: 'Elite Website', price: '$2,000–$5,000+', items: ['Custom 3D and WebGL experiences', 'Immersive scrolling interactions', 'Complex animations and transitions', 'Interactive storytelling', 'Advanced visual effects', 'Performance optimization for demanding visuals'] }
-    ];
-    const care = [
-        { name: 'Basic Care', price: '$19', items: ['Website uptime checks', 'Backups where supported', 'Minor technical fixes', 'Basic website health checks'] },
-        { name: 'Standard Care', price: '$49', items: ['Everything in Basic Care', 'Small content updates', 'Broken-link checks', 'Monthly performance review', 'Minor layout fixes'] },
-        { name: 'Premium Care', price: '$99', items: ['Everything in Standard Care', 'More frequent updates', 'Animation and browser compatibility checks', 'Priority technical support', 'Regular performance optimization'] },
-        { name: 'Elite Care', price: '$199+', items: ['Advanced troubleshooting', 'Custom technical support', 'Complex animation diagnostics', 'Priority assistance', 'Scheduled optimization'] }
-    ];
-    const addons = [
-        ['Additional standard page', '$30–$75'],
-        ['Additional animated page', '$75–$150'],
-        ['Advanced hero animation', '$100–$250'],
-        ['Custom 3D section', '$250–$800+'],
-        ['Booking system integration', '$150–$500'],
-        ['WhatsApp / Instagram automation setup', '$100–$400'],
-        ['E-commerce functionality', '$400–$1,500+']
-    ];
-    const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text) n.textContent = text; return n; };
-    const card = (plan, monthly) => {
-        const c = el('article', 'plan' + (plan.featured ? ' featured' : ''));
-        if (plan.featured) c.appendChild(el('span', 'plan-badge', 'Recommended'));
-        if (plan.level) c.appendChild(el('div', 'plan-level', plan.level));
-        c.appendChild(el('h4', 'plan-name', plan.name));
-        const pr = el('div', 'plan-price', plan.price);
-        if (monthly) pr.appendChild(el('small', '', ' / month'));
-        c.appendChild(pr);
-        const ul = el('ul');
-        plan.items.forEach(t => ul.appendChild(el('li', '', t)));
-        c.appendChild(ul);
-        return c;
-    };
+
+// 5. PRICING DATA & DYNAMIC RENDERING
+const pricingState = {
+    selectedPlan: 'Professional Website',
+    activeAddons: new Set(),
+    baseMinPrice: 350,
+    baseMaxPrice: 799
+};
+
+const devPackages = [
+    {
+        level: 'Basic animation',
+        name: 'Starter Website',
+        price: '$149–$299',
+        minPrice: 149,
+        maxPrice: 299,
+        pages: '3–5 pages',
+        animTier: 'Basic: hover effects and simple transitions',
+        items: ['3–5 pages', 'Smooth scrolling and hover effects', 'Basic fade-in animations', 'Responsive mobile-friendly design', 'Contact form and WhatsApp button', 'Basic SEO setup']
+    },
+    {
+        level: 'Moderate animation',
+        name: 'Professional Website',
+        price: '$350–$799',
+        minPrice: 350,
+        maxPrice: 799,
+        featured: true,
+        pages: '5–8 pages',
+        animTier: 'Standard: scroll animations and interactive elements',
+        items: ['5–8 pages', 'Scroll-triggered reveal animations', 'Animated text, counters, and cards', 'Custom branding', 'Responsive layouts', 'Basic SEO optimization']
+    },
+    {
+        level: 'Advanced animation',
+        name: 'Premium Website',
+        price: '$800–$1,799',
+        minPrice: 800,
+        maxPrice: 1799,
+        pages: '6–10 pages',
+        animTier: 'Advanced: parallax, complex motion, and cinematic transitions',
+        items: ['6–10 pages', 'Cinematic transitions and parallax effects', 'Interactive galleries and menus', 'Custom animation sequences', 'Advanced visual effects', 'Performance optimization']
+    },
+    {
+        level: 'Cinematic / 3D animation',
+        name: 'Elite Website',
+        price: '$2,000–$5,000+',
+        minPrice: 2000,
+        maxPrice: 5000,
+        pages: '10+ pages',
+        animTier: 'Custom: describe the desired effects',
+        items: ['Custom 3D and WebGL experiences', 'Immersive scrolling interactions', 'Complex animations and transitions', 'Interactive storytelling', 'Advanced visual effects', 'Performance optimization for demanding visuals']
+    }
+];
+
+const carePackages = [
+    { name: 'Basic Care', price: '$19', items: ['Website uptime checks', 'Backups where supported', 'Minor technical fixes', 'Basic website health checks'] },
+    { name: 'Standard Care', price: '$49', items: ['Everything in Basic Care', 'Small content updates', 'Broken-link checks', 'Monthly performance review', 'Minor layout fixes'] },
+    { name: 'Premium Care', price: '$99', items: ['Everything in Standard Care', 'More frequent updates', 'Animation and browser compatibility checks', 'Priority technical support', 'Regular performance optimization'] },
+    { name: 'Elite Care', price: '$199+', items: ['Advanced troubleshooting', 'Custom technical support', 'Complex animation diagnostics', 'Priority assistance', 'Scheduled optimization'] }
+];
+
+const addonsList = [
+    { id: 'addon-std-page', name: 'Additional standard page', price: '$30–$75', min: 30, max: 75 },
+    { id: 'addon-anim-page', name: 'Additional animated page', price: '$75–$150', min: 75, max: 150 },
+    { id: 'addon-hero', name: 'Advanced hero animation', price: '$100–$250', min: 100, max: 250 },
+    { id: 'addon-3d', name: 'Custom 3D section', price: '$250–$800+', min: 250, max: 800 },
+    { id: 'addon-booking', name: 'Booking system integration', price: '$150–$500', min: 150, max: 500 },
+    { id: 'addon-social-auto', name: 'WhatsApp / Instagram automation setup', price: '$100–$400', min: 100, max: 400 },
+    { id: 'addon-ecom', name: 'E-commerce functionality', price: '$400–$1,500+', min: 400, max: 1500 }
+];
+
+const featuresCatalog = [
+    { id: 'feat-responsive', name: 'Responsive design', desc: 'Seamlessly optimized across mobile, tablet, and desktop.', infra: false, checked: true },
+    { id: 'feat-contact-form', name: 'Contact forms', desc: 'Interactive form validation and inquiry routing.', infra: false, checked: true },
+    { id: 'feat-whatsapp-btn', name: 'WhatsApp contact button', desc: 'Direct click-to-chat messaging button.', infra: false, checked: false },
+    { id: 'feat-gallery', name: 'Image gallery / Portfolio', desc: 'Lightbox and interactive media showcases.', infra: false, checked: false },
+    { id: 'feat-blog', name: 'Blog / Editorial articles', desc: 'Article listing and content publishing layout.', infra: false, checked: false },
+    { id: 'feat-search', name: 'Instant search', desc: 'Client-side or indexed search for content.', infra: false, checked: false },
+    { id: 'feat-catalog', name: 'Product catalogue', desc: 'Structured display of items, specs, and photos.', infra: false, checked: false },
+    { id: 'feat-cart', name: 'Shopping cart', desc: 'Cart state management & item selection.', infra: true, infraNote: 'Requires ecommerce engine', checked: false },
+    { id: 'feat-payments', name: 'Online payments', desc: 'Stripe, PayPal, or localized checkout integration.', infra: true, infraNote: 'Requires payment gateway account', checked: false },
+    { id: 'feat-auth', name: 'User authentication', desc: 'Member login, sign-up, and secure sessions.', infra: true, infraNote: 'Requires backend / database service', checked: false },
+    { id: 'feat-booking', name: 'Booking system', desc: 'Appointment scheduling and calendar sync.', infra: true, infraNote: 'Requires booking provider API', checked: false },
+    { id: 'feat-dashboard', name: 'Admin dashboard', desc: 'Backoffice management for orders and content.', infra: true, infraNote: 'Requires CMS / server backend', checked: false },
+    { id: 'feat-db', name: 'Database integration', desc: 'Dynamic data storage and real-time retrieval.', infra: true, infraNote: 'Requires database hosting', checked: false },
+    { id: 'feat-chatbot', name: 'AI chatbot', desc: 'Smart automated assistant answering visitor questions.', infra: true, infraNote: 'Requires OpenAI/AI subscription', checked: false },
+    { id: 'feat-automation', name: 'WhatsApp / Instagram automation', desc: 'Automated CRM lead notification and workflows.', infra: true, infraNote: 'Requires Meta API access', checked: false },
+    { id: 'feat-newsletter', name: 'Newsletter integration', desc: 'Mailchimp, Klaviyo, or Substack signup form.', infra: true, infraNote: 'Requires email provider account', checked: false },
+    { id: 'feat-seo', name: 'SEO setup & metadata', desc: 'Meta tags, sitemap, Open Graph, and search indexing.', infra: false, checked: true },
+    { id: 'feat-perf', name: 'Performance optimization', desc: 'Asset minification, caching, and 90+ PageSpeed focus.', infra: false, checked: false },
+    { id: 'feat-analytics', name: 'Analytics integration', desc: 'Google Analytics 4, Plausible, or Meta Pixel.', infra: false, checked: false },
+    { id: 'feat-multilingual', name: 'Multilingual support', desc: 'Dual or multi-language switcher and structure.', infra: false, checked: false }
+];
+
+const servicesCatalog = [
+    { id: 'srv-copywriting', name: 'Copywriting & Content', desc: 'Persuasive headlines and high-converting copy.', priceMin: 80, priceMax: 250 },
+    { id: 'srv-branding', name: 'Logo or branding assistance', desc: 'Typography pairing, color palettes, and logo refinement.', priceMin: 120, priceMax: 350 },
+    { id: 'srv-uploads', name: 'Product uploads & data entry', desc: 'Formatting and uploading your initial catalog.', priceMin: 50, priceMax: 150 },
+    { id: 'srv-sourcing', name: 'Image & asset sourcing', desc: 'High-res commercial photography and curated graphics.', priceMin: 40, priceMax: 120 },
+    { id: 'srv-domain', name: 'Domain setup & DNS routing', desc: 'Nameserver configuration and domain connecting.', priceMin: 25, priceMax: 50 },
+    { id: 'srv-hosting', name: 'Hosting setup & SSL security', desc: 'Setting up production hosting with free HTTPS.', priceMin: 35, priceMax: 90 },
+    { id: 'srv-migration', name: 'Website migration', desc: 'Transferring content from WordPress, Wix, or old host.', priceMin: 90, priceMax: 250 },
+    { id: 'srv-care', name: 'Ongoing maintenance plan', desc: 'Monthly uptime, updates, and support coverage.', priceMin: 19, priceMax: 99 }
+];
+
+// RENDER PRICING CARDS
+function renderPricingSection() {
     const devGrid = document.getElementById('dev-grid');
     const careGrid = document.getElementById('care-grid');
     const addonList = document.getElementById('addon-list');
-    if (devGrid) dev.forEach(p => devGrid.appendChild(card(p, false)));
-    if (careGrid) care.forEach(p => careGrid.appendChild(card(p, true)));
-    if (addonList) addons.forEach(a => {
-        const li = el('li');
-        li.appendChild(el('span', '', a[0]));
-        li.appendChild(el('span', '', a[1]));
-        addonList.appendChild(li);
+
+    // Dev cards
+    if (devGrid) {
+        devGrid.innerHTML = '';
+        devPackages.forEach(pkg => {
+            const card = document.createElement('article');
+            card.className = `plan ${pkg.featured ? 'featured' : ''}`;
+            if (pkg.featured) {
+                card.innerHTML += `<span class="plan-badge">Recommended</span>`;
+            }
+            card.innerHTML += `
+                <div class="plan-level">${pkg.level}</div>
+                <h4 class="plan-name">${pkg.name}</h4>
+                <div class="plan-price">${pkg.price}</div>
+                <ul>${pkg.items.map(item => `<li>${item}</li>`).join('')}</ul>
+                <div class="plan-btn-group">
+                    <button type="button" class="plan-btn ${pkg.featured ? 'primary' : ''}" data-select-plan="${pkg.name}">
+                        <span>Customize This Plan</span>
+                    </button>
+                    <button type="button" class="plan-btn secondary" data-inquire-plan="${pkg.name}">
+                        <span>Direct Gmail Inquiry</span>
+                    </button>
+                </div>
+            `;
+            devGrid.appendChild(card);
+        });
+    }
+
+    // Care cards
+    if (careGrid) {
+        careGrid.innerHTML = '';
+        carePackages.forEach(pkg => {
+            const card = document.createElement('article');
+            card.className = 'plan';
+            card.innerHTML = `
+                <h4 class="plan-name">${pkg.name}</h4>
+                <div class="plan-price">${pkg.price}<small> / month</small></div>
+                <ul>${pkg.items.map(item => `<li>${item}</li>`).join('')}</ul>
+                <div class="plan-btn-group">
+                    <button type="button" class="plan-btn" data-inquire-care="${pkg.name}">
+                        <span>Inquire About Care</span>
+                    </button>
+                </div>
+            `;
+            careGrid.appendChild(card);
+        });
+    }
+
+    // Add-on items with interactive toggle
+    if (addonList) {
+        addonList.innerHTML = '';
+        addonsList.forEach(addon => {
+            const li = document.createElement('li');
+            li.innerHTML = `
+                <div class="addon-info">
+                    <span>${addon.name}</span>
+                </div>
+                <div class="addon-price-group">
+                    <span class="addon-price">${addon.price}</span>
+                    <button type="button" class="addon-toggle-btn" data-addon-id="${addon.id}">+ Add to Quote</button>
+                </div>
+            `;
+            addonList.appendChild(li);
+        });
+    }
+
+    // Render Features in Custom Builder
+    const featuresCardsContainer = document.getElementById('features-cards');
+    if (featuresCardsContainer) {
+        featuresCardsContainer.innerHTML = '';
+        featuresCatalog.forEach(feat => {
+            const card = document.createElement('div');
+            card.className = `feature-card ${feat.checked ? 'selected' : ''}`;
+            card.setAttribute('data-feature-id', feat.id);
+            card.setAttribute('role', 'checkbox');
+            card.setAttribute('aria-checked', feat.checked ? 'true' : 'false');
+            card.setAttribute('tabindex', '0');
+
+            let infraBadge = '';
+            if (feat.infra) {
+                infraBadge = `<span class="infra-tag">⚡ ${feat.infraNote}</span>`;
+            }
+
+            card.innerHTML = `
+                <div>
+                    <div class="feature-header">
+                        <span class="feature-name">${feat.name}</span>
+                        <div class="custom-checkbox"></div>
+                    </div>
+                    <div class="feature-desc">${feat.desc}</div>
+                </div>
+                ${infraBadge}
+            `;
+            featuresCardsContainer.appendChild(card);
+        });
+    }
+
+    // Render Services in Custom Builder
+    const servicesCardsContainer = document.getElementById('services-cards');
+    if (servicesCardsContainer) {
+        servicesCardsContainer.innerHTML = '';
+        servicesCatalog.forEach(srv => {
+            const card = document.createElement('div');
+            card.className = 'feature-card';
+            card.setAttribute('data-service-id', srv.id);
+            card.setAttribute('role', 'checkbox');
+            card.setAttribute('aria-checked', 'false');
+            card.setAttribute('tabindex', '0');
+
+            card.innerHTML = `
+                <div>
+                    <div class="feature-header">
+                        <span class="feature-name">${srv.name}</span>
+                        <div class="custom-checkbox"></div>
+                    </div>
+                    <div class="feature-desc">${srv.desc}</div>
+                </div>
+                <span class="infra-tag" style="color: #ffffff; background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.15);">+$${srv.priceMin}–$${srv.priceMax} approx</span>
+            `;
+            servicesCardsContainer.appendChild(card);
+        });
+    }
+}
+
+// 6. EVENT BINDING FOR CARDS & BUILDER
+function setupPricingInteractions() {
+    // Select Plan buttons -> Pre-populates Custom Builder & Scrolls down
+    document.querySelectorAll('[data-select-plan]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const planName = btn.getAttribute('data-select-plan');
+            const pkg = devPackages.find(p => p.name === planName);
+            if (!pkg) return;
+
+            // Set size radio
+            const sizeRadio = document.querySelector(`input[name="website-size"][value*="${pkg.pages.split(' ')[0]}"]`) ||
+                              document.querySelector(`input[name="website-size"][value="${pkg.pages}"]`);
+            if (sizeRadio) sizeRadio.checked = true;
+
+            // Set animation radio
+            const animRadio = document.querySelector(`input[name="animation-tier"][value="${pkg.animTier}"]`);
+            if (animRadio) animRadio.checked = true;
+
+            // Update state
+            pricingState.selectedPlan = pkg.name;
+            pricingState.baseMinPrice = pkg.minPrice;
+            pricingState.baseMaxPrice = pkg.maxPrice;
+
+            updateCustomSummary();
+
+            // Smooth scroll to builder
+            const builder = document.getElementById('custom-builder');
+            if (builder) builder.scrollIntoView({ behavior: 'smooth' });
+        });
     });
-})();
+
+    // Direct Inquiry for plan
+    document.querySelectorAll('[data-inquire-plan]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const planName = btn.getAttribute('data-inquire-plan');
+            const pkg = devPackages.find(p => p.name === planName);
+            openEmailInquiry({
+                subject: `Website Inquiry: ${planName} ($${pkg ? pkg.price : ''})`,
+                body: `Hello DigiFront Door,\n\nI would like to inquire about the ${planName} package (${pkg ? pkg.price : ''}).\n\nClient Name:\nEmail:\nCompany:\nProject Concept:\n\nPlease let me know the next steps!\n\nBest regards,`
+            });
+        });
+    });
+
+    // Inquire Care plan
+    document.querySelectorAll('[data-inquire-care]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const careName = btn.getAttribute('data-inquire-care');
+            const pkg = carePackages.find(p => p.name === careName);
+            openEmailInquiry({
+                subject: `Maintenance Plan Inquiry: ${careName} (${pkg ? pkg.price : ''}/mo)`,
+                body: `Hello DigiFront Door,\n\nI am interested in your ${careName} monthly maintenance package (${pkg ? pkg.price : ''}/month).\n\nExisting or New Website URL:\nOwner Name:\nSpecific Maintenance Needs:\n\nThank you!`
+            });
+        });
+    });
+
+    // Add-on toggles
+    document.querySelectorAll('[data-addon-id]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const id = btn.getAttribute('data-addon-id');
+            if (pricingState.activeAddons.has(id)) {
+                pricingState.activeAddons.delete(id);
+                btn.classList.remove('added');
+                btn.textContent = '+ Add to Quote';
+            } else {
+                pricingState.activeAddons.add(id);
+                btn.classList.add('added');
+                btn.textContent = '✓ Added to Quote';
+            }
+            updateCustomSummary();
+        });
+    });
+
+    // Feature card toggles
+    document.querySelectorAll('.feature-card[data-feature-id]').forEach(card => {
+        const toggle = () => {
+            const featId = card.getAttribute('data-feature-id');
+            const feat = featuresCatalog.find(f => f.id === featId);
+            if (!feat) return;
+            feat.checked = !feat.checked;
+            if (feat.checked) {
+                card.classList.add('selected');
+                card.setAttribute('aria-checked', 'true');
+            } else {
+                card.classList.remove('selected');
+                card.setAttribute('aria-checked', 'false');
+            }
+            updateCustomSummary();
+        };
+        card.addEventListener('click', toggle);
+        card.addEventListener('keydown', e => { if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); toggle(); } });
+    });
+
+    // Service card toggles
+    document.querySelectorAll('.feature-card[data-service-id]').forEach(card => {
+        const toggle = () => {
+            const isSelected = card.classList.contains('selected');
+            if (!isSelected) {
+                card.classList.add('selected');
+                card.setAttribute('aria-checked', 'true');
+            } else {
+                card.classList.remove('selected');
+                card.setAttribute('aria-checked', 'false');
+            }
+            updateCustomSummary();
+        };
+        card.addEventListener('click', toggle);
+        card.addEventListener('keydown', e => { if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); toggle(); } });
+    });
+
+    // Animation radio listener for custom text field toggle
+    document.querySelectorAll('input[name="animation-tier"]').forEach(radio => {
+        radio.addEventListener('change', () => {
+            const customGroup = document.getElementById('custom-animation-group');
+            if (customGroup) {
+                customGroup.style.display = radio.value.startsWith('Custom') ? 'block' : 'none';
+            }
+            updateCustomSummary();
+        });
+    });
+
+    // Input listeners for dynamic summary
+    ['client-name', 'client-email', 'brand-name', 'business-industry', 'website-purpose'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.addEventListener('input', updateCustomSummary);
+    });
+
+    document.querySelectorAll('input[name="website-size"], input[name="design-style"], input[name="budget-pref"], input[name="timeline-pref"]').forEach(input => {
+        input.addEventListener('change', updateCustomSummary);
+    });
+
+    // Reset button
+    document.getElementById('btn-reset-form')?.addEventListener('click', () => {
+        if (confirm('Reset custom website specifications to defaults?')) {
+            document.getElementById('custom-project-form').reset();
+            featuresCatalog.forEach(f => {
+                f.checked = (f.id === 'feat-responsive' || f.id === 'feat-contact-form' || f.id === 'feat-seo');
+            });
+            document.querySelectorAll('.feature-card[data-feature-id]').forEach(card => {
+                const featId = card.getAttribute('data-feature-id');
+                const feat = featuresCatalog.find(f => f.id === featId);
+                if (feat && feat.checked) {
+                    card.classList.add('selected');
+                    card.setAttribute('aria-checked', 'true');
+                } else {
+                    card.classList.remove('selected');
+                    card.setAttribute('aria-checked', 'false');
+                }
+            });
+            document.querySelectorAll('.feature-card[data-service-id]').forEach(card => {
+                card.classList.remove('selected');
+                card.setAttribute('aria-checked', 'false');
+            });
+            pricingState.activeAddons.clear();
+            document.querySelectorAll('.addon-toggle-btn').forEach(btn => {
+                btn.classList.remove('added');
+                btn.textContent = '+ Add to Quote';
+            });
+            updateCustomSummary();
+        }
+    });
+
+    // Edit button (scrolls back to step 1)
+    document.getElementById('btn-edit-form')?.addEventListener('click', () => {
+        document.getElementById('step-details')?.scrollIntoView({ behavior: 'smooth' });
+        document.getElementById('client-name')?.focus();
+    });
+
+    // Form Submission
+    const form = document.getElementById('custom-project-form');
+    if (form) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            handleFormSubmit();
+        });
+    }
+}
+
+// 7. DYNAMIC SUMMARY & TRANSPARENT ESTIMATION LOGIC
+function updateCustomSummary() {
+    const name = document.getElementById('client-name')?.value.trim();
+    const email = document.getElementById('client-email')?.value.trim();
+    const brand = document.getElementById('brand-name')?.value.trim();
+    const purpose = document.getElementById('website-purpose')?.value || 'Business website';
+    const sizeRadio = document.querySelector('input[name="website-size"]:checked');
+    const size = sizeRadio ? sizeRadio.value : '2–5 pages';
+    const styleRadio = document.querySelector('input[name="design-style"]:checked');
+    const style = styleRadio ? styleRadio.value : 'Dark and cinematic';
+    const animRadio = document.querySelector('input[name="animation-tier"]:checked');
+    const anim = animRadio ? animRadio.value.split(':')[0] : 'Standard';
+    const budgetRadio = document.querySelector('input[name="budget-pref"]:checked');
+    const budget = budgetRadio ? budgetRadio.value : '$300–$700';
+    const timelineRadio = document.querySelector('input[name="timeline-pref"]:checked');
+    const timeline = timelineRadio ? timelineRadio.value : 'Within 3–4 weeks';
+
+    // Selected Features
+    const selectedFeatures = featuresCatalog.filter(f => f.checked).map(f => f.name);
+    const selectedServices = [];
+    document.querySelectorAll('.feature-card[data-service-id].selected').forEach(card => {
+        const srvId = card.getAttribute('data-service-id');
+        const srv = servicesCatalog.find(s => s.id === srvId);
+        if (srv) selectedServices.push(srv.name);
+    });
+
+    // Combine with active standalone addons
+    pricingState.activeAddons.forEach(addonId => {
+        const item = addonsList.find(a => a.id === addonId);
+        if (item && !selectedServices.includes(item.name)) {
+            selectedServices.push(item.name);
+        }
+    });
+
+    // Update Summary Card elements
+    const sumClient = document.getElementById('sum-client');
+    if (sumClient) {
+        if (name || email) {
+            sumClient.textContent = `${name || 'Client'} (${email || 'No email entered'}) · ${brand ? brand + ' · ' : ''}${purpose}`;
+        } else {
+            sumClient.textContent = `Please enter your name & email above · ${purpose}`;
+        }
+    }
+
+    const sumScope = document.getElementById('sum-scope');
+    if (sumScope) sumScope.textContent = `${size} · ${style}`;
+
+    const sumAnim = document.getElementById('sum-animation');
+    if (sumAnim) sumAnim.textContent = `${anim} tier`;
+
+    const sumBudget = document.getElementById('sum-budget');
+    if (sumBudget) sumBudget.textContent = `${budget} · ${timeline}`;
+
+    const sumFeatures = document.getElementById('sum-features');
+    if (sumFeatures) {
+        const totalItems = [...selectedFeatures, ...selectedServices];
+        sumFeatures.textContent = totalItems.length ? totalItems.join(', ') : 'None selected yet';
+    }
+
+    // Transparent Price Estimation Calculation
+    let baseMin = 350;
+    let baseMax = 799;
+
+    if (size === 'One-page website') { baseMin = 149; baseMax = 299; }
+    else if (size === '2–5 pages') { baseMin = 350; baseMax = 799; }
+    else if (size === '6–10 pages') { baseMin = 800; baseMax = 1799; }
+    else if (size === '10+ pages') { baseMin = 2000; baseMax = 5000; }
+    else if (size.includes('Not sure')) { baseMin = 350; baseMax = 799; }
+
+    // Animation adjustment
+    if (anim.includes('Basic') && baseMin > 149) { baseMin = Math.round(baseMin * 0.85); baseMax = Math.round(baseMax * 0.85); }
+    else if (anim.includes('Advanced')) { baseMin = Math.max(baseMin, 800); baseMax = Math.max(baseMax, 1799); }
+    else if (anim.includes('Custom')) { baseMin = Math.max(baseMin, 2000); baseMax = Math.max(baseMax, 5000); }
+
+    // Add selected services to min/max
+    document.querySelectorAll('.feature-card[data-service-id].selected').forEach(card => {
+        const srvId = card.getAttribute('data-service-id');
+        const srv = servicesCatalog.find(s => s.id === srvId);
+        if (srv) {
+            baseMin += srv.priceMin;
+            baseMax += srv.priceMax;
+        }
+    });
+
+    // Add standalone add-ons
+    pricingState.activeAddons.forEach(addonId => {
+        const a = addonsList.find(x => x.id === addonId);
+        if (a) {
+            baseMin += a.min;
+            baseMax += a.max;
+        }
+    });
+
+    const sumPriceDisplay = document.getElementById('sum-price-display');
+    if (sumPriceDisplay) {
+        if (size === '10+ pages' || anim.includes('Custom') || budget === 'Custom quote required') {
+            sumPriceDisplay.innerHTML = `Custom Quote<small>Detailed scope required</small>`;
+        } else {
+            sumPriceDisplay.innerHTML = `$${baseMin.toLocaleString()} – $${baseMax.toLocaleString()}<small>USD (Estimated Range)</small>`;
+        }
+    }
+}
+
+// 8. VALIDATION & CUSTOM PROJECT SUBMISSION
+function handleFormSubmit() {
+    const nameInput = document.getElementById('client-name');
+    const emailInput = document.getElementById('client-email');
+    const nameError = document.getElementById('name-error');
+    const emailError = document.getElementById('email-error');
+
+    let isValid = true;
+
+    // Validate Name
+    if (!nameInput.value.trim()) {
+        nameInput.classList.add('input-error');
+        if (nameError) nameError.classList.add('visible');
+        isValid = false;
+    } else {
+        nameInput.classList.remove('input-error');
+        if (nameError) nameError.classList.remove('visible');
+    }
+
+    // Validate Email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailInput.value.trim() || !emailRegex.test(emailInput.value.trim())) {
+        emailInput.classList.add('input-error');
+        if (emailError) emailError.classList.add('visible');
+        isValid = false;
+    } else {
+        emailInput.classList.remove('input-error');
+        if (emailError) emailError.classList.remove('visible');
+    }
+
+    if (!isValid) {
+        nameInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+    }
+
+    // Collect all data
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
+    const brand = document.getElementById('brand-name')?.value.trim() || 'N/A';
+    const industry = document.getElementById('business-industry')?.value.trim() || 'N/A';
+    const purpose = document.getElementById('website-purpose')?.value || 'Business website';
+    const description = document.getElementById('project-description')?.value.trim() || 'No description provided';
+    const audience = document.getElementById('target-audience')?.value.trim() || 'N/A';
+    const country = document.getElementById('target-country')?.value.trim() || 'N/A';
+    const delivery = document.getElementById('desired-delivery')?.value.trim() || 'Flexible';
+    const existingSite = document.getElementById('existing-site')?.value.trim() || 'None';
+
+    const size = document.querySelector('input[name="website-size"]:checked')?.value || '2–5 pages';
+    const style = document.querySelector('input[name="design-style"]:checked')?.value || 'Dark and cinematic';
+    const references = document.getElementById('reference-urls')?.value.trim() || 'None provided';
+    const designNotes = document.getElementById('design-notes')?.value.trim() || 'None';
+
+    const animTier = document.querySelector('input[name="animation-tier"]:checked')?.value || 'Standard';
+    const customAnimNotes = document.getElementById('custom-animation-text')?.value.trim();
+
+    // Features
+    const selectedFeatures = featuresCatalog.filter(f => f.checked).map(f => {
+        return f.infra ? `${f.name} [Requires ${f.infraNote}]` : f.name;
+    });
+    const customFeatures = document.getElementById('custom-features-text')?.value.trim();
+    if (customFeatures) selectedFeatures.push(`Custom: ${customFeatures}`);
+
+    // Services
+    const selectedServices = [];
+    document.querySelectorAll('.feature-card[data-service-id].selected').forEach(card => {
+        const srvId = card.getAttribute('data-service-id');
+        const srv = servicesCatalog.find(s => s.id === srvId);
+        if (srv) selectedServices.push(srv.name);
+    });
+    pricingState.activeAddons.forEach(addonId => {
+        const item = addonsList.find(a => a.id === addonId);
+        if (item && !selectedServices.includes(item.name)) selectedServices.push(item.name);
+    });
+
+    const budget = document.querySelector('input[name="budget-pref"]:checked')?.value || '$300–$700';
+    const timeline = document.querySelector('input[name="timeline-pref"]:checked')?.value || 'Within 3–4 weeks';
+    const specialReq = document.getElementById('special-requirements')?.value.trim() || 'None';
+
+    const estDisplay = document.getElementById('sum-price-display')?.innerText.replace(/\n/g, ' ') || 'Calculated on request';
+
+    // Construct readable project brief
+    const subject = `Custom Website Project Inquiry - ${brand !== 'N/A' ? brand : name}`;
+    const body = `Hello DigiFront Door Team,
+
+I have customized a project specification on your website and would like to request a formal quote.
+
+==================================================
+1. CLIENT & BUSINESS DETAILS
+==================================================
+• Name: ${name}
+• Email: ${email}
+• Business / Brand Name: ${brand}
+• Industry: ${industry}
+• Target Audience: ${audience}
+• Target Country / Market: ${country}
+• Existing Website: ${existingSite}
+
+==================================================
+2. PROJECT SCOPE & PURPOSE
+==================================================
+• Primary Purpose: ${purpose}
+• Website Size: ${size}
+• Desired Delivery Target: ${delivery}
+• Project Description:
+  ${description}
+
+==================================================
+3. DESIGN & ANIMATION PREFERENCES
+==================================================
+• Visual Style: ${style}
+• Reference Websites: ${references}
+• Design / Branding Notes: ${designNotes}
+• Animation Tier: ${animTier}
+${customAnimNotes ? `• Custom Animation Notes: ${customAnimNotes}\n` : ''}
+==================================================
+4. REQUIRED FEATURES & INTEGRATIONS
+==================================================
+${selectedFeatures.length ? selectedFeatures.map(f => `• ${f}`).join('\n') : '• Standard essentials only'}
+
+==================================================
+5. ADDITIONAL SERVICES
+==================================================
+${selectedServices.length ? selectedServices.map(s => `• ${s}`).join('\n') : '• None selected'}
+
+==================================================
+6. BUDGET, TIMELINE & ESTIMATE
+==================================================
+• Budget Preference: ${budget}
+• Target Timeline: ${timeline}
+• Indicative Website Estimate: ${estDisplay}
+(Note: Estimate is transparent & indicative; final quote agreed upon brief confirmation. Domain, hosting, and third-party APIs billed separately.)
+
+==================================================
+7. SPECIAL REQUIREMENTS & NOTES
+==================================================
+${specialReq}
+
+Looking forward to discussing the project and receiving your proposal!
+
+Best regards,
+${name}
+${email}`;
+
+    // Trigger Gmail open and show modal
+    openEmailInquiry({ subject, body });
+}
+
+// 9. INITIALIZE
+document.addEventListener('DOMContentLoaded', () => {
+    renderPricingSection();
+    setupPricingInteractions();
+    updateCustomSummary();
+});
 </script>
 </body>
 </html>
