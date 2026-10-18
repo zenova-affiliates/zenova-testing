@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DigiFront Door — Bespoke Web Development & Motion Design</title>
-<meta name="description" content="DigiFront Door crafts high-performance bespoke websites with fluid kinetic motion, transparent pricing tiers, and a dynamic project cost planner.">
-<meta property="og:title" content="DigiFront Door — Bespoke Web Development">
-<meta property="og:description" content="Crafting bespoke websites with fluid kinetic motion and interactive architecture.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>DigiFront Door — Bespoke Websites & Kinetic Interaction Design</title>
+<meta name="description" content="DigiFront Door crafts high-end websites, interactive digital front doors, and kinetic web experiences with fluid animations and conversion-focused architecture.">
+<meta property="og:title" content="DigiFront Door — Bespoke Websites & Kinetic Interaction Design">
+<meta property="og:description" content="Transform your brand with bespoke web experiences, fluid physics animations, and conversion-focused web architecture.">
 <meta property="og:type" content="website">
 
 <style>
@@ -63,7 +63,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     pointer-events: none;
 }
 
-/* 2. HERO CONTENT SECTION */
+/* 2. MAIN HERO SECTION */
 .hero-content {
     position: relative;
     z-index: 2;
@@ -71,36 +71,38 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding-top: clamp(40px, 8vh, 80px);
+    padding-top: clamp(4vh, 7vh, 9vh);
+    padding-left: 20px;
+    padding-right: 20px;
     width: 95%;
     max-width: 1100px;
     margin: 0 auto;
-    pointer-events: auto;
 }
 
 .hero-badge {
     display: inline-flex;
     align-items: center;
     gap: 0.6rem;
-    padding: 0.45rem 1.1rem;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--border-light);
+    font-family: 'General Sans', sans-serif;
+    font-size: clamp(0.75rem, 2vw, 0.85rem);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--neon-green);
+    background: rgba(57, 255, 20, 0.08);
+    border: 1px solid rgba(57, 255, 20, 0.25);
+    padding: 0.35rem 1rem;
     border-radius: 9999px;
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.85);
     margin-bottom: 1.5rem;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    letter-spacing: 0.02em;
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.1);
 }
 
 .hero-title {
     font-family: 'Playfair Display', Georgia, serif;
-    font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+    font-size: clamp(2rem, 5.2vw, 3.4rem);
     font-weight: 400;
-    color: var(--text-white);
+    color: #ffffff;
     line-height: 1.15;
-    margin-bottom: 2.2rem;
+    margin-bottom: clamp(1.4rem, 3vh, 2.2rem);
     letter-spacing: -0.015em;
     text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
 }
@@ -109,61 +111,66 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     display: inline-block;
     overflow: hidden;
     vertical-align: bottom;
+    padding-bottom: 0.15em;
+    margin-bottom: -0.15em;
 }
 
 .hero-title .word-inner {
     display: inline-block;
     opacity: 0;
     transform: translateY(105%);
-    animation: hero-word-reveal 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    filter: blur(20px);
+    animation: word-reveal-mask 1.3s cubic-bezier(0.05, 0.9, 0.1, 1) forwards;
 }
 
-@keyframes hero-word-reveal {
-    0% { opacity: 0; transform: translateY(105%); }
-    100% { opacity: 1; transform: translateY(0); }
+@keyframes word-reveal-mask {
+    0% { opacity: 0; transform: translateY(105%); filter: blur(20px); }
+    30% { opacity: 1; }
+    100% { opacity: 1; transform: translateY(0); filter: blur(0); }
 }
 
 .hero-btn {
     font-family: 'Outfit', sans-serif;
-    font-size: 1.1rem;
+    font-size: clamp(1rem, 2vw, 1.1rem);
     font-weight: 500;
     letter-spacing: 0.02em;
-    color: var(--text-white);
+    color: #ffffff;
     background-color: #000000;
-    border: 1px solid var(--border-light);
-    padding: 1.15rem 2.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    padding: clamp(1rem, 2vh, 1.3rem) clamp(1.8rem, 4vw, 2.6rem);
     border-radius: 9999px;
     display: inline-flex;
     align-items: center;
     gap: 0.9rem;
     cursor: pointer;
-    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
     outline: none;
     text-decoration: none;
+    min-height: 48px;
 }
 
 .hero-btn:hover {
-    background-color: var(--text-white);
+    background-color: #ffffff;
     color: #000000;
-    border-color: var(--text-white);
+    border-color: #ffffff;
     transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(255, 255, 255, 0.15);
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.3);
 }
 
 .hero-btn:active {
     transform: translateY(0);
 }
 
-/* Pulsing Green Dot */
 .blinking-dot {
-    width: 9px;
-    height: 9px;
+    width: 10px;
+    height: 10px;
     background-color: var(--neon-green);
     border-radius: 50%;
     position: relative;
     display: inline-block;
     animation: pulse-glow 2s infinite ease-in-out;
+    flex: none;
 }
 
 .blinking-dot::after {
@@ -185,18 +192,20 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     100% { transform: scale(2.3); opacity: 0; }
 }
 
-/* 3. CENTER / BOTTOM FOOTER BLOCK */
+/* 3. CENTER FOOTER CONTAINER */
 .footer-container {
     position: fixed;
     top: 50vh;
     left: 20px;
     right: 20px;
     width: calc(100vw - 40px);
+    max-width: 1300px;
+    margin: 0 auto;
     transform: translateY(-50%);
     z-index: 3;
     display: flex;
     flex-direction: column;
-    pointer-events: none;
+    pointer-events: auto;
 }
 
 .footer-top {
@@ -205,29 +214,26 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     align-items: flex-end;
     width: 100%;
     padding: 0 5px;
-    pointer-events: auto;
 }
 
 .footer-title {
     font-family: 'General Sans', -apple-system, sans-serif;
-    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
     font-weight: 400;
-    color: var(--text-white);
+    color: #ffffff;
     letter-spacing: -0.015em;
     margin: 0;
-    padding: 0;
-    line-height: 1;
 }
 
 .footer-title.quote {
-    color: var(--text-subtle);
-    font-size: clamp(0.95rem, 1.8vw, 1.3rem);
+    text-transform: none;
 }
 
 .footer-divider {
     border: none;
-    border-top: 1px solid var(--border-light);
-    margin: 15px 0 12px 0;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin: clamp(1rem, 2vh, 1.6rem) 0;
     width: 100%;
 }
 
@@ -237,76 +243,150 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     align-items: center;
     width: 100%;
     padding: 0 5px;
-    pointer-events: auto;
+    gap: 1rem;
 }
 
 .footer-socials {
     display: flex;
-    gap: 18px;
+    gap: 1.25rem;
     align-items: center;
+    flex: 1;
 }
 
 .social-icon {
-    color: var(--text-white);
-    display: flex;
+    color: rgba(255, 255, 255, 0.55);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s;
     text-decoration: none;
+    min-width: 44px;
+    min-height: 44px;
+    border-radius: 50%;
 }
 
 .social-icon:hover {
-    opacity: 0.7;
+    color: #ffffff;
     transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .footer-links {
     display: flex;
-    gap: 30px;
+    gap: clamp(1rem, 2.2vw, 2.4rem);
+    justify-content: center;
     align-items: center;
+    flex: 2;
+    flex-wrap: wrap;
 }
 
 .footer-link {
-    font-family: 'General Sans', -apple-system, sans-serif;
-    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(0.85rem, 1.5vw, 0.95rem);
     font-weight: 400;
-    color: var(--text-white);
+    color: #ffffff;
     text-decoration: none;
-    letter-spacing: -0.01em;
-    transition: color 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s;
-    position: relative;
-    cursor: pointer;
+    letter-spacing: 0.03em;
+    transition: opacity 0.3s ease, transform 0.3s ease, color 0.3s ease;
     background: none;
     border: none;
-    padding: 0;
+    cursor: pointer;
+    padding: 0.5rem 0.2rem;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
 }
 
 .footer-link:hover {
-    opacity: 0.7;
     color: var(--neon-green);
-}
-
-.footer-link::after {
-    content: '';
-    position: absolute;
-    bottom: -3px;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background: var(--neon-green);
-    transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.footer-link:hover::after {
-    width: 100%;
+    transform: translateY(-1px);
 }
 
 .footer-copyright {
-    font-family: 'General Sans', -apple-system, sans-serif;
-    font-size: 0.85rem;
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(0.8rem, 1.4vw, 0.95rem);
     font-weight: 400;
     color: var(--text-subtle);
-    letter-spacing: -0.01em;
+    text-align: right;
+    flex: 1;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+}
+
+/* MOBILE NAV TOGGLE (HAMBURGER) */
+.mobile-nav-toggle {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 60;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    padding: 12px;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.hamburger-line {
+    width: 22px;
+    height: 2px;
+    background-color: #ffffff;
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.mobile-nav-toggle.open .hamburger-line:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+}
+.mobile-nav-toggle.open .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+.mobile-nav-toggle.open .hamburger-line:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+}
+
+.mobile-menu-drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 59;
+    background: rgba(5, 5, 5, 0.96);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    padding: 85px 24px 35px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transform: translateY(-105%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+.mobile-menu-drawer.open {
+    transform: translateY(0);
+}
+
+.mobile-drawer-link {
+    font-family: 'General Sans', sans-serif;
+    font-size: 1.25rem;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.mobile-drawer-link:hover, .mobile-drawer-link:active {
+    color: var(--neon-green);
 }
 
 /* 4. GIANT "DigiFront Door" WORDMARK */
@@ -400,60 +480,63 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     pointer-events: none;
     padding: 0.75rem 1.5rem;
     background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
     border-radius: 9999px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
+    transform: translate(-50%, -50%) scale(0);
     opacity: 0;
-    transform: translate(-50%, -50%) scale(0.8);
-    transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    white-space: nowrap;
+    will-change: transform, opacity;
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                background 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.glass-cursor-card.visible {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-}
+.glass-cursor-card.active { opacity: 1; }
 
 .cursor-card-text {
-    font-family: 'General Sans', sans-serif;
-    font-size: 0.95rem;
+    font-family: 'General Sans', -apple-system, sans-serif;
+    font-size: 0.85rem;
     font-weight: 500;
+    letter-spacing: 0.06em;
     color: var(--neon-green);
-    letter-spacing: -0.01em;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-shadow: 0 0 8px rgba(57, 255, 20, 0.45);
 }
 
 .cursor-card-text .text-white {
     color: #ffffff;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
 }
 
-.cursor-dot {
+.cursor-ring-outline {
     position: fixed;
     top: 0;
     left: 0;
-    width: 8px;
-    height: 8px;
-    background-color: var(--neon-green);
+    width: 48px;
+    height: 48px;
+    border: 1.5px solid rgba(255, 255, 255, 0.45);
     border-radius: 50%;
     z-index: 99998;
     pointer-events: none;
-    transform: translate(-50%, -50%);
-    transition: width 0.3s, height 0.3s, background-color 0.3s;
-    box-shadow: 0 0 10px var(--neon-glow);
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    will-change: transform, opacity;
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
 }
 
-.cursor-dot.hovered {
-    width: 24px;
-    height: 24px;
-    background-color: rgba(57, 255, 20, 0.2);
-    border: 1px solid var(--neon-green);
+.cursor-ring-outline.active { opacity: 1; }
+.cursor-ring-outline.expanded { border-color: rgba(255, 255, 255, 0.15); }
+
+@media (pointer: coarse), (hover: none) {
+    .glass-cursor-card, .cursor-ring-outline {
+        display: none !important;
+    }
 }
 
-/* 7. FULLSCREEN MODAL OVERLAYS */
+/* 7. GLASSMORPHIC OVERLAYS (Pricing, Portfolio, FAQ, About, Features) */
 .pricing-overlay {
     position: fixed;
     inset: 0;
@@ -488,196 +571,202 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    border: 1px solid var(--border-light);
-    background: rgba(0, 0, 0, 0.6);
-    color: var(--text-white);
-    font-size: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: #000000;
+    color: #ffffff;
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 55;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    z-index: 55;
-    outline: none;
 }
 
-.pricing-close:hover {
-    background: var(--text-white);
+.pricing-close:hover, .pricing-close:focus-visible {
+    background: #ffffff;
     color: #000000;
-    transform: rotate(90deg);
 }
 
 .pricing-title {
     font-family: 'Playfair Display', Georgia, serif;
-    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-size: clamp(2.2rem, 5vw, 3rem);
     font-weight: 400;
+    color: #ffffff;
+    letter-spacing: -0.015em;
+    line-height: 1.15;
     text-align: center;
     margin-bottom: 0.8rem;
-    letter-spacing: -0.015em;
 }
 
 .pricing-sub {
     font-family: 'Outfit', sans-serif;
+    font-size: clamp(0.95rem, 2vw, 1.05rem);
     color: var(--text-muted);
-    font-size: 1.05rem;
     text-align: center;
-    max-width: 680px;
-    margin: 0 auto 3rem;
-    line-height: 1.6;
+    margin: 0 auto clamp(2rem, 4vh, 3rem);
+    max-width: 720px;
+    line-height: 1.5;
 }
 
 .pricing-group {
-    margin-bottom: 3.5rem;
+    margin-bottom: clamp(3rem, 6vh, 4.5rem);
 }
 
 .group-title {
-    font-family: 'General Sans', sans-serif;
-    font-size: 1.3rem;
+    font-family: 'General Sans', -apple-system, sans-serif;
+    font-size: clamp(1.2rem, 2.5vw, 1.4rem);
     font-weight: 500;
-    color: var(--neon-green);
-    margin-bottom: 0.5rem;
-    letter-spacing: -0.01em;
+    color: #ffffff;
+    letter-spacing: -0.015em;
+    margin-bottom: 0.4rem;
 }
 
 .group-note {
+    font-family: 'Outfit', sans-serif;
     font-size: 0.95rem;
-    color: var(--text-muted);
-    margin-bottom: 1.5rem;
-    line-height: 1.5;
+    color: var(--text-subtle);
+    margin-bottom: 1.4rem;
+    line-height: 1.45;
 }
 
 .group-rule {
     border: none;
-    border-top: 1px solid var(--border-subtle);
-    margin: 1rem 0 2rem;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 0 0 1.6rem;
 }
 
-/* Pricing Grids */
+/* PRICING GRID & CARDS */
 .pricing-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.25rem;
 }
 
 .plan {
-    background: var(--glass-bg);
+    position: relative;
     border: 1px solid var(--border-light);
-    border-radius: 16px;
-    padding: 2rem 1.8rem;
+    border-radius: 24px;
+    padding: 1.8rem;
     display: flex;
     flex-direction: column;
-    position: relative;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    gap: 1rem;
+    min-width: 0;
+    background: var(--glass-bg);
+    transition: border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .plan:hover {
-    border-color: rgba(255, 255, 255, 0.4);
-    transform: translateY(-4px);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+    border-color: rgba(255, 255, 255, 0.45);
+    transform: translateY(-3px);
 }
 
 .plan.featured {
     border-color: var(--neon-green);
-    background: linear-gradient(180deg, rgba(57, 255, 20, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
     box-shadow: 0 0 30px rgba(57, 255, 20, 0.15);
 }
 
 .plan-badge {
     position: absolute;
     top: -12px;
-    right: 20px;
+    left: 1.8rem;
     background: var(--neon-green);
     color: #000000;
-    font-size: 0.75rem;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.8rem;
     font-weight: 600;
-    padding: 0.3rem 0.8rem;
+    padding: 0.25rem 0.8rem;
     border-radius: 9999px;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
 }
 
 .plan-level {
+    font-family: 'Outfit', sans-serif;
     font-size: 0.85rem;
     color: var(--text-subtle);
-    margin-bottom: 0.4rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.02em;
 }
 
 .plan-name {
     font-family: 'General Sans', sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: 500;
-    margin-bottom: 1rem;
+    color: #ffffff;
     letter-spacing: -0.015em;
 }
 
 .plan-price {
-    font-family: 'General Sans', sans-serif;
-    font-size: 2.1rem;
-    font-weight: 600;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.9rem;
     color: #ffffff;
-    margin-bottom: 1.6rem;
-    letter-spacing: -0.02em;
-    display: flex;
-    align-items: baseline;
-    gap: 0.4rem;
+    line-height: 1.15;
+    overflow-wrap: anywhere;
 }
 
 .plan-price small {
+    font-family: 'Outfit', sans-serif;
     font-size: 0.95rem;
-    color: var(--text-muted);
-    font-weight: 400;
+    color: var(--text-subtle);
 }
 
 .plan ul {
     list-style: none;
-    margin-bottom: 2rem;
-    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    padding-top: 0.4rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 
-.plan ul li {
-    font-size: 0.95rem;
-    color: var(--text-muted);
-    margin-bottom: 0.75rem;
-    padding-left: 1.4rem;
+.plan li {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.92rem;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.82);
+    padding-left: 1.1rem;
     position: relative;
-    line-height: 1.5;
 }
 
-.plan ul li::before {
-    content: '✓';
+.plan li::before {
+    content: '';
     position: absolute;
     left: 0;
-    color: var(--neon-green);
-    font-size: 0.95rem;
+    top: 0.55em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--neon-green);
 }
 
 .plan-btn-group {
+    margin-top: auto;
+    padding-top: 1rem;
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
-    margin-top: auto;
+    gap: 0.5rem;
 }
 
 .plan-btn {
-    width: 100%;
-    padding: 0.95rem 1.4rem;
-    border-radius: 9999px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.9rem;
     font-weight: 500;
-    font-size: 0.95rem;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    text-align: center;
-    border: 1px solid var(--border-light);
-    background: #000000;
+    letter-spacing: 0.02em;
     color: #ffffff;
-    display: inline-flex;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.75rem 1.25rem;
+    border-radius: 9999px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    outline: none;
+    display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+    min-height: 44px;
 }
 
 .plan-btn:hover {
@@ -687,292 +776,301 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     transform: translateY(-2px);
 }
 
-.plan-btn.primary {
-    background: var(--text-white);
+.plan.featured .plan-btn.primary {
+    background: var(--neon-green);
     color: #000000;
-    border-color: var(--text-white);
+    border-color: var(--neon-green);
+    font-weight: 600;
 }
 
-.plan-btn.primary:hover {
-    background: var(--neon-green);
-    border-color: var(--neon-green);
-    box-shadow: 0 4px 20px var(--neon-glow);
+.plan.featured .plan-btn.primary:hover {
+    background: #ffffff;
+    color: #000000;
+    border-color: #ffffff;
 }
 
 .plan-btn.secondary {
     background: transparent;
-    border-color: var(--border-light);
-    color: var(--text-white);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: var(--text-muted);
+    font-size: 0.84rem;
 }
 
 .plan-btn.secondary:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: var(--neon-green);
+    border-color: rgba(255, 255, 255, 0.4);
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
 }
 
-/* Optional Add-ons List */
+/* ADDONS */
 .addons {
     list-style: none;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .addons li {
-    background: var(--glass-bg);
-    border: 1px solid var(--border-subtle);
-    border-radius: 12px;
-    padding: 1.1rem 1.4rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: border-color 0.3s;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    padding: 1rem 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    font-family: 'Outfit', sans-serif;
+    font-size: 1rem;
+    color: #ffffff;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .addons li:hover {
-    border-color: var(--border-light);
+    padding-left: 0.8rem;
+    background: rgba(255, 255, 255, 0.015);
 }
 
 .addon-info {
     display: flex;
-    flex-direction: column;
-}
-
-.addon-info span {
-    font-size: 0.95rem;
-    color: var(--text-white);
+    align-items: center;
+    gap: 0.85rem;
 }
 
 .addon-price-group {
     display: flex;
     align-items: center;
-    gap: 0.8rem;
+    gap: 1rem;
 }
 
-.addon-price {
-    font-size: 0.95rem;
+.addons li span.addon-price {
     color: var(--neon-green);
     font-weight: 500;
     white-space: nowrap;
 }
 
 .addon-toggle-btn {
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid var(--border-light);
-    color: #ffffff;
-    font-size: 0.8rem;
-    padding: 0.35rem 0.75rem;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.82rem;
+    padding: 0.45rem 1rem;
     border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.04);
+    color: #ffffff;
     cursor: pointer;
-    transition: all 0.25s;
-    outline: none;
+    transition: all 0.25s ease;
+    min-height: 38px;
 }
 
 .addon-toggle-btn:hover {
-    background: var(--text-white);
-    color: #000000;
+    border-color: var(--neon-green);
+    color: var(--neon-green);
 }
 
 .addon-toggle-btn.added {
-    background: var(--neon-green);
-    color: #000000;
+    background: rgba(57, 255, 20, 0.15);
     border-color: var(--neon-green);
+    color: var(--neon-green);
+    font-weight: 500;
 }
 
-/* Pricing Notes */
+/* PRICING NOTES */
 .pricing-notes {
+    border: 1px solid var(--border-light);
+    border-radius: 24px;
+    padding: clamp(1.5rem, 3vw, 2.2rem);
     background: var(--glass-bg);
-    border: 1px solid var(--border-subtle);
-    border-radius: 16px;
-    padding: 1.8rem 2rem;
-    margin-bottom: 3.5rem;
+    margin-bottom: clamp(3rem, 5vh, 4.5rem);
 }
 
 .pricing-notes ul {
     list-style: none;
-    margin-bottom: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    margin: 1rem 0 1.8rem;
 }
 
-.pricing-notes ul li {
-    font-size: 0.92rem;
-    color: var(--text-muted);
-    margin-bottom: 0.6rem;
-    padding-left: 1.2rem;
-    position: relative;
+.pricing-notes li {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.95rem;
     line-height: 1.5;
+    color: rgba(255, 255, 255, 0.7);
+    padding-left: 1.1rem;
+    position: relative;
 }
 
-.pricing-notes ul li::before {
-    content: '•';
+.pricing-notes li::before {
+    content: '';
     position: absolute;
     left: 0;
-    color: var(--neon-green);
+    top: 0.6em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.45);
 }
 
 .pricing-cta {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: #ffffff;
+    background: #000000;
+    border: 1px solid var(--border-light);
+    padding: 1.15rem 2.2rem;
+    border-radius: 9999px;
     display: inline-flex;
     align-items: center;
-    gap: 0.8rem;
-    background: #000000;
-    color: #ffffff;
-    border: 1px solid var(--border-light);
-    padding: 1.1rem 2.2rem;
-    border-radius: 9999px;
-    font-size: 1rem;
-    font-weight: 500;
+    gap: 0.9rem;
     text-decoration: none;
     cursor: pointer;
-    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    outline: none;
+    min-height: 48px;
 }
 
-.pricing-cta:hover {
+.pricing-cta:hover, .pricing-cta:focus-visible {
     background: #ffffff;
     color: #000000;
     border-color: #ffffff;
     transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(255, 255, 255, 0.15);
 }
 
-/* 8. CUSTOM WEBSITE ORDER PLANNER & PRICE ESTIMATOR */
+/* 8. CUSTOM WEBSITE ORDER PLANNER & ESTIMATOR */
 .custom-builder-container {
-    background: var(--glass-bg);
     border: 1px solid var(--border-light);
-    border-radius: 20px;
-    padding: clamp(20px, 4vw, 40px);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    margin-bottom: 2rem;
+    border-radius: 24px;
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    background: rgba(255, 255, 255, 0.02);
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
 }
 
 .builder-step {
-    margin-bottom: 2.8rem;
-    padding-bottom: 2.4rem;
-    border-bottom: 1px solid var(--border-subtle);
+    margin-bottom: clamp(2rem, 4vh, 3rem);
+    padding-bottom: clamp(1.8rem, 3.5vh, 2.5rem);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.builder-step:last-child {
+.builder-step:last-of-type {
     border-bottom: none;
-    margin-bottom: 0;
+    margin-bottom: 1.5rem;
     padding-bottom: 0;
 }
 
 .step-heading {
     display: flex;
-    align-items: center;
-    gap: 0.9rem;
-    margin-bottom: 0.6rem;
+    align-items: baseline;
+    gap: 0.8rem;
+    margin-bottom: 0.5rem;
 }
 
 .step-number {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background: rgba(57, 255, 20, 0.15);
-    color: var(--neon-green);
-    border: 1px solid var(--neon-green);
-    font-size: 0.85rem;
+    font-family: 'General Sans', sans-serif;
+    font-size: 0.82rem;
     font-weight: 600;
-    letter-spacing: -0.01em;
+    color: var(--neon-green);
+    background: rgba(57, 255, 20, 0.12);
+    border: 1px solid rgba(57, 255, 20, 0.3);
+    padding: 0.2rem 0.6rem;
+    border-radius: 9999px;
+    letter-spacing: 0.05em;
 }
 
 .step-title {
     font-family: 'General Sans', sans-serif;
-    font-size: 1.25rem;
+    font-size: clamp(1.15rem, 2.5vw, 1.3rem);
     font-weight: 500;
     color: #ffffff;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.015em;
 }
 
 .step-description {
     font-size: 0.92rem;
     color: var(--text-muted);
-    margin-bottom: 1.4rem;
-    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
 }
 
-/* Form Controls & Inputs */
-.form-grid-2 {
+.form-row {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 18px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 1.25rem;
 }
 
 .form-group {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.45rem;
+    margin-bottom: 1.25rem;
 }
 
 .form-label {
+    font-family: 'General Sans', sans-serif;
     font-size: 0.9rem;
     font-weight: 500;
-    color: rgba(255, 255, 255, 0.85);
+    color: rgba(255, 255, 255, 0.9);
+    letter-spacing: -0.01em;
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    gap: 0.35rem;
 }
 
-.form-label .required-star {
-    color: #ff4d4d;
-}
-
-.text-input, .select-input, .textarea-input {
-    width: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    border: 1px solid var(--border-light);
-    border-radius: 12px;
-    padding: 0.95rem 1.2rem;
-    color: #ffffff;
+.form-label .req {
+    color: var(--neon-green);
     font-size: 0.95rem;
+}
+
+.form-input, .form-select, .form-textarea {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.95rem;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 14px;
+    padding: 0.9rem 1.15rem;
     outline: none;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    width: 100%;
 }
 
-.text-input:focus, .select-input:focus, .textarea-input:focus {
+.form-input:focus, .form-select:focus, .form-textarea:focus {
     border-color: var(--neon-green);
-    box-shadow: 0 0 15px rgba(57, 255, 20, 0.25);
-    background: rgba(0, 0, 0, 0.85);
+    background: rgba(255, 255, 255, 0.07);
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.2);
 }
 
-.text-input.input-error, .textarea-input.input-error {
-    border-color: #ff4d4d;
-    box-shadow: 0 0 10px rgba(255, 77, 77, 0.3);
+.form-input.input-error {
+    border-color: #ff4757;
+    box-shadow: 0 0 15px rgba(255, 71, 87, 0.25);
 }
 
-.input-error-msg {
-    font-size: 0.8rem;
-    color: #ff6b6b;
+.error-msg {
+    color: #ff4757;
+    font-size: 0.82rem;
     margin-top: 0.2rem;
     display: none;
 }
+.error-msg.visible { display: block; }
 
-.input-error-msg.visible {
-    display: block;
+.form-select option {
+    background-color: #111111;
+    color: #ffffff;
 }
 
-.textarea-input {
-    resize: vertical;
-    min-height: 100px;
-    line-height: 1.5;
-}
-
-/* Chip Radio & Checkbox Selectors */
+/* CHOICE CHIPS */
 .chips-grid {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 0.75rem;
 }
 
 .chip-item {
-    position: relative;
     cursor: pointer;
-    user-select: none;
+    position: relative;
 }
 
-.chip-item input {
+.chip-item input[type="radio"],
+.chip-item input[type="checkbox"] {
     position: absolute;
     opacity: 0;
     pointer-events: none;
@@ -981,75 +1079,88 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .chip-label {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.4rem;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid var(--border-light);
+    gap: 0.6rem;
+    padding: 0.75rem 1.35rem;
     border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.03);
+    color: rgba(255, 255, 255, 0.85);
+    font-family: 'Outfit', sans-serif;
     font-size: 0.92rem;
-    color: rgba(255, 255, 255, 0.8);
+    font-weight: 400;
+    cursor: pointer;
+    user-select: none;
     transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    min-height: 44px;
 }
 
 .chip-item:hover .chip-label {
     border-color: rgba(255, 255, 255, 0.4);
-    color: #ffffff;
+    background: rgba(255, 255, 255, 0.06);
+    transform: translateY(-1px);
 }
 
 .chip-item input:checked + .chip-label {
-    background: var(--text-white);
-    color: #000000;
-    border-color: var(--text-white);
+    border-color: var(--neon-green);
+    background: rgba(57, 255, 20, 0.12);
+    color: #ffffff;
     font-weight: 500;
-    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 16px rgba(57, 255, 20, 0.2);
 }
 
-.chip-item input:focus-visible + .chip-label {
-    outline: 2px solid var(--neon-green);
-    outline-offset: 2px;
+.chip-item input:checked + .chip-label::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--neon-green);
+    box-shadow: 0 0 6px var(--neon-green);
 }
 
-/* Required Features Cards Grid */
-.features-checkbox-grid {
+/* FEATURE & SERVICE CARDS (MULTI-SELECT) */
+.interactive-cards-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 14px;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 0.9rem;
 }
 
 .feature-card {
-    background: rgba(0, 0, 0, 0.4);
-    border: 1px solid var(--border-subtle);
-    border-radius: 14px;
-    padding: 1.1rem 1.2rem;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 16px;
+    padding: 1.1rem;
+    background: rgba(255, 255, 255, 0.02);
     cursor: pointer;
     transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 0.6rem;
+    min-height: 90px;
 }
 
 .feature-card:hover {
-    border-color: var(--border-light);
-    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0.05);
     transform: translateY(-2px);
 }
 
 .feature-card.selected {
     border-color: var(--neon-green);
-    background: rgba(57, 255, 20, 0.06);
-    box-shadow: 0 4px 20px rgba(57, 255, 20, 0.1);
+    background: rgba(57, 255, 20, 0.08);
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.15);
 }
 
 .feature-header {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     gap: 0.5rem;
+    margin-bottom: 0.4rem;
 }
 
 .feature-name {
-    font-size: 0.95rem;
+    font-family: 'General Sans', sans-serif;
+    font-size: 0.98rem;
     font-weight: 500;
     color: #ffffff;
 }
@@ -1057,14 +1168,13 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .custom-checkbox {
     width: 20px;
     height: 20px;
-    border-radius: 6px;
-    border: 1px solid var(--border-light);
-    background: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.2s;
-    flex-shrink: 0;
+    flex: none;
+    transition: all 0.2s ease;
 }
 
 .feature-card.selected .custom-checkbox {
@@ -1072,320 +1182,382 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     border-color: var(--neon-green);
 }
 
-.custom-checkbox::after {
+.feature-card.selected .custom-checkbox::after {
     content: '✓';
     color: #000000;
     font-size: 0.8rem;
-    font-weight: 700;
-    opacity: 0;
-    transform: scale(0.5);
-    transition: all 0.2s;
-}
-
-.feature-card.selected .custom-checkbox::after {
-    opacity: 1;
-    transform: scale(1);
+    font-weight: 800;
 }
 
 .feature-desc {
-    font-size: 0.82rem;
-    color: var(--text-muted);
-    line-height: 1.4;
+    font-size: 0.84rem;
+    color: rgba(255, 255, 255, 0.55);
+    line-height: 1.35;
 }
 
 .infra-tag {
+    display: inline-block;
+    margin-top: 0.6rem;
     font-size: 0.72rem;
-    color: var(--text-subtle);
-    border-top: 1px dashed rgba(255, 255, 255, 0.1);
-    padding-top: 0.4rem;
-    margin-top: 0.3rem;
-    display: block;
+    font-family: 'Outfit', sans-serif;
+    color: var(--neon-green);
+    background: rgba(57, 255, 20, 0.12);
+    border: 1px solid rgba(57, 255, 20, 0.25);
+    padding: 0.18rem 0.55rem;
+    border-radius: 9999px;
+    letter-spacing: 0.02em;
 }
 
-/* Project Summary & Dynamic Cost Box */
+/* DYNAMIC SUMMARY & PRICE ESTIMATOR CARD */
 .summary-container {
-    background: rgba(0, 0, 0, 0.7);
-    border: 1px solid var(--border-light);
-    border-radius: 18px;
-    padding: 1.8rem 2rem;
+    border: 1px solid rgba(57, 255, 20, 0.45);
+    border-radius: 24px;
+    padding: clamp(1.5rem, 3vw, 2.2rem);
+    background: rgba(57, 255, 20, 0.03);
+    box-shadow: 0 0 35px rgba(57, 255, 20, 0.08);
     margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.summary-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    padding-bottom: 1.2rem;
 }
 
 .summary-title {
     font-family: 'General Sans', sans-serif;
-    font-size: 1.25rem;
+    font-size: clamp(1.2rem, 2.5vw, 1.4rem);
     font-weight: 500;
     color: #ffffff;
-    margin-bottom: 1.2rem;
-    letter-spacing: -0.01em;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
 }
 
-.summary-details-grid {
+.summary-actions {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.btn-text-action {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.88rem;
+    cursor: pointer;
+    padding: 0.4rem 0.6rem;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.btn-text-action:hover {
+    color: var(--neon-green);
+}
+
+.summary-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 14px;
-    margin-bottom: 1.8rem;
-    padding-bottom: 1.6rem;
-    border-bottom: 1px solid var(--border-subtle);
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+}
+
+.summary-item {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 1rem;
 }
 
 .summary-item-label {
-    font-size: 0.8rem;
-    color: var(--text-subtle);
+    font-family: 'General Sans', sans-serif;
+    font-size: 0.78rem;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 0.25rem;
+    letter-spacing: 0.06em;
+    color: var(--text-subtle);
+    margin-bottom: 0.35rem;
 }
 
-.summary-item-val {
-    font-size: 0.95rem;
+.summary-item-value {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.98rem;
     color: #ffffff;
     font-weight: 500;
+    line-height: 1.4;
+    word-break: break-word;
+}
+
+.summary-item-value.accent {
+    color: var(--neon-green);
 }
 
 .summary-estimate-box {
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    padding-top: 1.5rem;
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
     gap: 1.5rem;
-    background: rgba(57, 255, 20, 0.05);
-    border: 1px solid rgba(57, 255, 20, 0.25);
-    border-radius: 14px;
-    padding: 1.4rem 1.6rem;
 }
 
 .estimate-label-wrap h4 {
     font-family: 'General Sans', sans-serif;
     font-size: 1.15rem;
+    font-weight: 500;
     color: #ffffff;
-    margin-bottom: 0.3rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
 }
 
 .estimate-label-wrap p {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    max-width: 540px;
-    line-height: 1.4;
+    font-size: 0.86rem;
+    color: var(--text-subtle);
+    max-width: 520px;
+    margin-top: 0.35rem;
+    line-height: 1.45;
 }
 
 .estimate-price-display {
-    font-family: 'General Sans', sans-serif;
-    font-size: 2.2rem;
-    font-weight: 600;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
     color: var(--neon-green);
-    letter-spacing: -0.02em;
+    text-shadow: 0 0 15px rgba(57, 255, 20, 0.3);
     text-align: right;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+    white-space: nowrap;
 }
 
 .estimate-price-display small {
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.65);
-    font-weight: 400;
-    letter-spacing: 0;
+    display: block;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    letter-spacing: 0.02em;
 }
 
 .summary-cta-wrap {
     display: flex;
-    flex-wrap: wrap;
+    justify-content: flex-end;
     align-items: center;
-    justify-content: space-between;
     gap: 1rem;
-    margin-top: 1.8rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
 }
 
-.reset-btn {
-    background: none;
-    border: none;
-    color: var(--text-subtle);
-    font-size: 0.9rem;
-    cursor: pointer;
-    text-decoration: underline;
-    transition: color 0.25s;
-    padding: 0.5rem;
-}
-
-.reset-btn:hover {
-    color: #ffffff;
-}
-
-/* 9. PORTFOLIO DEMO CARDS & TABS */
+/* 9. PORTFOLIO SHOWCASE SECTION */
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 24px;
-    margin-bottom: 3rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.8rem;
+    margin-top: 1.5rem;
 }
 
 .portfolio-card {
-    background: var(--glass-bg);
     border: 1px solid var(--border-light);
-    border-radius: 16px;
-    overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    border-radius: 24px;
+    padding: clamp(1.2rem, 2.5vw, 1.8rem);
+    background: var(--glass-bg);
     display: flex;
     flex-direction: column;
+    gap: 1.2rem;
+    transition: border-color 0.3s ease, transform 0.3s ease;
 }
 
 .portfolio-card:hover {
-    border-color: rgba(255, 255, 255, 0.4);
-    transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+    border-color: rgba(255, 255, 255, 0.45);
+    transform: translateY(-3px);
 }
 
-.portfolio-preview {
-    width: 100%;
-    height: 220px;
-    background-size: cover;
-    background-position: center;
+.portfolio-mockup-frame {
     position: relative;
-    border-bottom: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: #0d0d0d;
+    height: 240px;
+    display: flex;
+    flex-direction: column;
+}
+
+.mockup-top-bar {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mockup-dots {
+    display: flex;
+    gap: 6px;
+}
+
+.mockup-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.mockup-view-toggle {
+    display: flex;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 9999px;
+    padding: 2px;
+}
+
+.view-btn {
+    font-size: 0.72rem;
+    font-family: 'General Sans', sans-serif;
+    color: var(--text-muted);
+    background: none;
+    border: none;
+    padding: 3px 8px;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.view-btn.active {
+    color: #000000;
+    background: var(--neon-green);
+    font-weight: 600;
+}
+
+.mockup-display-canvas {
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 20px;
+    background: radial-gradient(circle at 50% 50%, rgba(30, 45, 35, 0.3) 0%, #060606 80%);
+    text-align: center;
+    transition: all 0.3s ease;
 }
 
-.portfolio-preview::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.7) 100%);
-}
-
-.portfolio-tag {
-    position: absolute;
-    top: 14px;
-    left: 14px;
-    z-index: 2;
-    background: rgba(0, 0, 0, 0.7);
-    border: 1px solid var(--border-light);
-    color: var(--neon-green);
-    font-size: 0.75rem;
-    padding: 0.3rem 0.75rem;
-    border-radius: 9999px;
-    backdrop-filter: blur(8px);
-}
-
-.portfolio-details {
-    padding: 1.5rem 1.6rem;
+.canvas-preview-inner {
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
+    align-items: center;
+    gap: 0.6rem;
 }
 
-.portfolio-name {
-    font-family: 'General Sans', sans-serif;
-    font-size: 1.35rem;
-    font-weight: 500;
+.canvas-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
     color: #ffffff;
-    margin-bottom: 0.4rem;
-    letter-spacing: -0.01em;
 }
 
-.portfolio-type {
-    font-size: 0.85rem;
-    color: var(--text-subtle);
-    margin-bottom: 0.8rem;
+.canvas-sub {
+    font-size: 0.8rem;
+    color: var(--neon-green);
+    letter-spacing: 0.05em;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
-}
-
-.portfolio-desc {
-    font-size: 0.92rem;
-    color: var(--text-muted);
-    line-height: 1.5;
-    margin-bottom: 1.4rem;
-    flex-grow: 1;
 }
 
 .portfolio-meta {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.85rem;
-    color: var(--text-subtle);
-    border-top: 1px solid var(--border-subtle);
-    padding-top: 1rem;
-}
-
-.portfolio-actions {
-    display: flex;
+    flex-direction: column;
     gap: 0.6rem;
-    margin-top: 1.2rem;
 }
 
-.portfolio-btn {
-    flex: 1;
-    padding: 0.75rem 1rem;
-    border-radius: 9999px;
-    font-size: 0.88rem;
+.portfolio-type-tag {
+    font-size: 0.75rem;
+    font-family: 'General Sans', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--neon-green);
+}
+
+.portfolio-card-title {
+    font-family: 'General Sans', sans-serif;
+    font-size: 1.3rem;
     font-weight: 500;
-    cursor: pointer;
-    text-align: center;
-    border: 1px solid var(--border-light);
-    background: #000000;
     color: #ffffff;
-    transition: all 0.25s;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.4rem;
+    letter-spacing: -0.01em;
 }
 
-.portfolio-btn:hover {
-    background: #ffffff;
-    color: #000000;
-    border-color: #ffffff;
+.portfolio-card-desc {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    line-height: 1.45;
 }
 
-/* 10. INTERACTIVE ACCORDIONS / FAQ */
-.faq-list {
+.tech-tags-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-top: 0.4rem;
+}
+
+.tech-tag {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.2rem 0.6rem;
+    border-radius: 9999px;
+}
+
+/* 10. FAQ ACCORDION SECTION */
+.faq-accordion {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 1rem;
+    margin-top: 1.5rem;
 }
 
 .faq-item {
+    border: 1px solid var(--border-light);
+    border-radius: 18px;
     background: var(--glass-bg);
-    border: 1px solid var(--border-subtle);
-    border-radius: 14px;
     overflow: hidden;
-    transition: border-color 0.3s;
+    transition: border-color 0.3s ease;
 }
 
 .faq-item:hover {
-    border-color: var(--border-light);
+    border-color: rgba(255, 255, 255, 0.35);
+}
+
+.faq-item.active {
+    border-color: rgba(57, 255, 20, 0.5);
+    background: rgba(57, 255, 20, 0.02);
 }
 
 .faq-question {
     width: 100%;
-    padding: 1.3rem 1.6rem;
+    text-align: left;
     background: none;
     border: none;
+    padding: 1.4rem 1.6rem;
     color: #ffffff;
     font-family: 'General Sans', sans-serif;
-    font-size: 1.05rem;
+    font-size: clamp(1rem, 2vw, 1.15rem);
     font-weight: 500;
-    text-align: left;
     display: flex;
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
-    outline: none;
-    letter-spacing: -0.01em;
+    gap: 1rem;
+    min-height: 52px;
 }
 
 .faq-icon {
     font-size: 1.3rem;
+    line-height: 1;
     color: var(--neon-green);
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    flex: none;
 }
 
 .faq-item.active .faq-icon {
@@ -1395,23 +1567,22 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .faq-answer {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), padding 0.3s;
+    transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), padding 0.3s ease;
     padding: 0 1.6rem;
-    color: var(--text-muted);
     font-size: 0.95rem;
     line-height: 1.6;
+    color: rgba(255, 255, 255, 0.75);
 }
 
 .faq-item.active .faq-answer {
-    padding: 0 1.6rem 1.4rem;
-    max-height: 400px;
+    padding-bottom: 1.4rem;
 }
 
-/* 11. SUBTLE SCROLL-TRIGGERED ANIMATIONS */
+/* 11. SCROLL ANIMATION CLASSES (INTERSECTION OBSERVER) */
 .scroll-reveal {
     opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(20px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: opacity, transform;
 }
 
@@ -1420,162 +1591,184 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     transform: translateY(0);
 }
 
-/* Fallback when JS is disabled */
+/* Fallback if JS is disabled */
 .no-js .scroll-reveal {
     opacity: 1 !important;
     transform: none !important;
 }
 
-.no-js .footer-logo-text .letter-inner {
-    opacity: 0.95 !important;
-    transform: none !important;
-    filter: none !important;
-}
-
-.no-js .hero-title .word-inner {
-    opacity: 1 !important;
-    transform: none !important;
-}
-
-/* Mobile Hamburger Menu */
-.mobile-nav-toggle {
-    display: none;
+/* 12. EMAIL DRAFT / FALLBACK MODAL */
+.email-modal-overlay {
     position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 60;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: rgba(0, 0, 0, 0.7);
-    border: 1px solid var(--border-light);
-    color: #ffffff;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    backdrop-filter: blur(10px);
-}
-
-.hamburger-line {
-    display: block;
-    width: 18px;
-    height: 2px;
-    background: #ffffff;
-    margin: 3px 0;
-    transition: all 0.3s;
-}
-
-.mobile-menu-drawer {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.96);
-    z-index: 59;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.35s ease;
-}
-
-.mobile-menu-drawer.open {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.mobile-drawer-link {
-    font-family: 'General Sans', sans-serif;
-    font-size: 1.5rem;
-    color: #ffffff;
-    text-decoration: none;
-    letter-spacing: -0.01em;
+    inset: 0;
+    z-index: 100000;
+    background: rgba(0, 0, 0, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     display: flex;
     align-items: center;
-    gap: 0.8rem;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s;
 }
 
-.mobile-drawer-link span {
+.email-modal-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.email-modal-card {
+    background: #090909;
+    border: 1px solid rgba(57, 255, 20, 0.4);
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(57, 255, 20, 0.15);
+    border-radius: 24px;
+    max-width: 680px;
+    width: 100%;
+    padding: clamp(1.5rem, 3vw, 2.2rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1.3rem;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.email-modal-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(1.6rem, 3.5vw, 2rem);
+    color: #ffffff;
+    line-height: 1.2;
+}
+
+.email-modal-notice {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.5;
+}
+
+.email-modal-notice strong {
     color: var(--neon-green);
-    font-size: 1.2rem;
 }
 
-/* 12. RESPONSIVE QUERIES */
-@media (max-width: 900px) {
-    .glass-cursor-card, .cursor-dot {
-        display: none !important;
-    }
-    
+.email-draft-preview {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 14px;
+    padding: 1rem 1.2rem;
+    font-family: monospace;
+    font-size: 0.86rem;
+    color: rgba(255, 255, 255, 0.85);
+    white-space: pre-wrap;
+    max-height: 220px;
+    overflow-y: auto;
+    line-height: 1.45;
+}
+
+.email-modal-buttons {
+    display: flex;
+    gap: 0.85rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.btn-primary-action {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #000000;
+    background: var(--neon-green);
+    border: 1px solid var(--neon-green);
+    padding: 0.85rem 1.6rem;
+    border-radius: 9999px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.25s ease;
+    min-height: 44px;
+}
+
+.btn-primary-action:hover {
+    background: #ffffff;
+    border-color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.btn-secondary-action {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.85rem 1.6rem;
+    border-radius: 9999px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.25s ease;
+    min-height: 44px;
+}
+
+.btn-secondary-action:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+/* 13. RESPONSIVE BREAKPOINTS (320px, 360px, 390px, 430px, 768px, 1024px, 1440px) */
+@media (max-width: 1100px) {
+    .pricing-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .portfolio-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+    .mobile-nav-toggle { display: flex; }
+    .footer-links { display: none; }
     .footer-container {
         top: auto;
-        bottom: clamp(100px, 18vh, 140px);
+        bottom: clamp(75px, 14vh, 95px);
         transform: none;
+        width: calc(100vw - 32px);
+        left: 16px;
+        right: 16px;
     }
-
     .footer-top {
         flex-direction: column;
         align-items: flex-start;
-        gap: 0.4rem;
+        gap: 0.25rem;
     }
-
     .footer-bottom {
-        flex-direction: column-reverse;
-        align-items: flex-start;
-        gap: 1.2rem;
-    }
-
-    .footer-links {
         flex-wrap: wrap;
-        gap: 16px 24px;
-        width: 100%;
+        gap: 0.8rem;
     }
-
-    .mobile-nav-toggle {
-        display: flex;
+    .footer-copyright {
+        text-align: left;
+        flex: 100%;
+        margin-top: 0.2rem;
     }
-
-    .mobile-menu-drawer {
-        display: flex;
-    }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .summary-grid { grid-template-columns: 1fr; }
+    .summary-estimate-box { flex-direction: column; align-items: flex-start; }
+    .estimate-price-display { text-align: left; }
+    .pricing-cta { width: 100%; justify-content: center; }
 }
 
-@media (max-width: 600px) {
-    .hero-content {
-        padding-top: 40px;
-        width: 92%;
-    }
-
-    .hero-title {
-        font-size: 2.2rem;
-        line-height: 1.2;
-    }
-
-    .hero-btn {
-        width: 100%;
-        justify-content: center;
-    }
-
-    .pricing-overlay {
-        padding-left: 14px;
-        padding-right: 14px;
-    }
-
-    .custom-builder-container, .pricing-notes, .summary-container {
-        padding: 1.25rem;
-    }
-
-    .chip-label {
-        width: 100%;
-        justify-content: center;
-    }
-
-    .interactive-cards-grid {
-        grid-template-columns: 1fr;
-    }
+@media (max-width: 480px) {
+    .hero-content { padding-top: 4vh; }
+    .hero-title { font-size: 2.1rem; }
+    .hero-btn { width: 100%; justify-content: center; }
+    .pricing-overlay { padding-left: 14px; padding-right: 14px; }
+    .custom-builder-container, .pricing-notes, .summary-container { padding: 1.25rem; }
+    .chip-label { width: 100%; justify-content: center; }
+    .interactive-cards-grid { grid-template-columns: 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1585,10 +1778,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
     }
-    .scroll-reveal {
-        opacity: 1 !important;
-        transform: none !important;
-    }
+    .scroll-reveal { opacity: 1 !important; transform: none !important; }
 }
 </style>
 </head>
@@ -1650,9 +1840,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
             <a href="#about" class="footer-link">About</a>
             <a href="#features" class="footer-link">Features</a>
             <a href="#portfolio" class="footer-link">Portfolio</a>
-            <a href="#pricing" class="footer-link">Pricing</a>
+            <a href="#pricing" class="footer-link">Pricing & Planner</a>
             <a href="#faq" class="footer-link">FAQ</a>
-            <a href="mailto:digifrontdoor7@gmail.com" class="footer-link" style="color: var(--neon-green);" aria-label="Send direct email to DigiFront Door">Contact Me</a>
+            <a href="#contact" class="footer-link">Contact</a>
         </nav>
 
         <div class="footer-copyright">
@@ -1668,7 +1858,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 <!-- BACKGROUND FLOWER VIDEO -->
 <div class="video-container">
-    <video autoplay muted loop playsinline preload="auto" id="bg-video" src="https://api.getlayers.ai/storage/v1/object/public/public/assets/loopstack-f8c64439bf/flower.mp4">
+    <video autoplay muted loop playsinline webkit-playsinline x5-playsinline preload="auto" id="bg-video">
+        <source src="flower.mp4" type="video/mp4">
         <source src="https://api.getlayers.ai/storage/v1/object/public/public/assets/loopstack-f8c64439bf/flower.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
@@ -1731,29 +1922,29 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
                             <span class="step-number">STEP 1</span>
                             <h4 class="step-title">Customer Information</h4>
                         </div>
-                        <p class="step-description">Enter your name and email so we know who to prepare the proposal for.</p>
+                        <p class="step-description">We will address your proposal and project brief to these contact details.</p>
 
-                        <div class="form-grid-2">
+                        <div class="form-row">
                             <div class="form-group">
-                                <label class="form-label" for="client-name">Your Full Name <span class="required-star">*</span></label>
-                                <input type="text" id="client-name" class="text-input" placeholder="e.g. Alex Morgan" required autocomplete="name">
-                                <span class="input-error-msg" id="name-error">Please enter your name.</span>
+                                <label class="form-label" for="client-name">Your Full Name <span class="req">*</span></label>
+                                <input type="text" id="client-name" class="form-input" placeholder="e.g. Alex Morgan" required autocomplete="name">
+                                <span class="error-msg" id="name-error">Please provide your name.</span>
                             </div>
-
                             <div class="form-group">
-                                <label class="form-label" for="client-email">Business Email <span class="required-star">*</span></label>
-                                <input type="email" id="client-email" class="text-input" placeholder="e.g. alex@company.com" required autocomplete="email">
-                                <span class="input-error-msg" id="email-error">Please enter a valid email address.</span>
+                                <label class="form-label" for="client-email">Email Address <span class="req">*</span></label>
+                                <input type="email" id="client-email" class="form-input" placeholder="e.g. alex@company.com" required autocomplete="email">
+                                <span class="error-msg" id="email-error">Please enter a valid email address.</span>
                             </div>
+                        </div>
 
+                        <div class="form-row">
                             <div class="form-group">
-                                <label class="form-label" for="brand-name">Brand / Business Name</label>
-                                <input type="text" id="brand-name" class="text-input" placeholder="e.g. Vertex Studio" autocomplete="organization">
+                                <label class="form-label" for="brand-name">Business / Brand Name</label>
+                                <input type="text" id="brand-name" class="form-input" placeholder="e.g. Studio Vertex">
                             </div>
-
                             <div class="form-group">
-                                <label class="form-label" for="reference-url">Style or Reference Website URL</label>
-                                <input type="url" id="reference-url" class="text-input" placeholder="https://example.com or Dribbble/Figma link">
+                                <label class="form-label" for="reference-url">Preferred Style / Reference Website URL</label>
+                                <input type="url" id="reference-url" class="form-input" placeholder="https://example.com or awwwards inspiration">
                             </div>
                         </div>
                     </div>
@@ -1764,7 +1955,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
                             <span class="step-number">STEP 2</span>
                             <h4 class="step-title">Website Type</h4>
                         </div>
-                        <p class="step-description">Select the primary purpose and architecture of your upcoming website.</p>
+                        <p class="step-description">Select the primary purpose of your website project.</p>
 
                         <div class="chips-grid" id="website-type-chips">
                             <label class="chip-item">
@@ -1845,7 +2036,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
                             </label>
                             <label class="chip-item">
                                 <input type="radio" name="animation-level" value="Cinematic" data-anim-cost="450">
-                                <span class="chip-label">Cinematic (Bespoke 3D, WebGL & kinetic canvas)</span>
+                                <span class="chip-label">Cinematic (3D, WebGL, immersive transitions)</span>
                             </label>
                         </div>
                     </div>
@@ -1854,23 +2045,25 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
                     <div class="builder-step" id="step-features">
                         <div class="step-heading">
                             <span class="step-number">STEP 5</span>
-                            <h4 class="step-title">Required Features & Integrations</h4>
+                            <h4 class="step-title">Required Features (Select All That Apply)</h4>
                         </div>
-                        <p class="step-description">Toggle each required feature. Features needing external APIs, services, or server infrastructure are noted.</p>
+                        <p class="step-description">Select all functional capabilities your project requires.</p>
 
-                        <div class="features-checkbox-grid" id="required-features-grid"></div>
+                        <div class="interactive-cards-grid" id="required-features-grid">
+                            <!-- Populated dynamically via JS -->
+                        </div>
                     </div>
 
-                    <!-- STEP 6: Target Budget & Timeline -->
-                    <div class="builder-step" id="step-budget">
+                    <!-- STEP 6: Budget & Timeline -->
+                    <div class="builder-step" id="step-budget-timeline">
                         <div class="step-heading">
                             <span class="step-number">STEP 6</span>
-                            <h4 class="step-title">Budget Range & Timeline</h4>
+                            <h4 class="step-title">Budget Range & Desired Timeline</h4>
                         </div>
-                        <p class="step-description">Specify your target investment and delivery horizon.</p>
+                        <p class="step-description">Guide our proposal alignment (preferences, not a binding contract).</p>
 
                         <div class="form-group">
-                            <label class="form-label">Estimated Budget Range (USD)</label>
+                            <label class="form-label">Budget Preference (USD)</label>
                             <div class="chips-grid">
                                 <label class="chip-item">
                                     <input type="radio" name="budget-range" value="Under $200">
@@ -1915,45 +2108,59 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
                                     <span class="chip-label">Within 2–4 weeks</span>
                                 </label>
                                 <label class="chip-item">
-                                    <input type="radio" name="delivery-timeline" value="Flexible timeline">
-                                    <span class="chip-label">Flexible timeline</span>
+                                    <input type="radio" name="delivery-timeline" value="Flexible">
+                                    <span class="chip-label">Flexible</span>
                                 </label>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="form-group" style="margin-top: 1.5rem;">
-                            <label class="form-label" for="additional-requirements">Additional Project Notes or Requirements</label>
-                            <textarea id="additional-requirements" class="textarea-input" placeholder="Tell us more about specific brand goals, existing domains/hosting, required deadlines, or creative inspirations..."></textarea>
+                    <!-- STEP 7: Additional Requirements -->
+                    <div class="builder-step" id="step-additional">
+                        <div class="step-heading">
+                            <span class="step-number">STEP 7</span>
+                            <h4 class="step-title">Additional Project Requirements</h4>
+                        </div>
+                        <p class="step-description">Share any special features, APIs, CRM tools, or unique ideas.</p>
+
+                        <div class="form-group">
+                            <textarea id="additional-requirements" class="form-textarea" rows="3" placeholder="Describe any unique workflows, brand assets, or specific goals..."></textarea>
                         </div>
                     </div>
 
-                    <!-- STEP 7: Live Summary & Action -->
+                    <!-- DYNAMIC ESTIMATE & SUMMARY -->
                     <div class="summary-container" id="project-summary-card">
-                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-                            <h4 class="summary-title" style="margin-bottom: 0;">Live Project Summary</h4>
-                            <button type="button" class="reset-btn" id="btn-reset-planner">↺ Reset to Defaults</button>
+                        <div class="summary-header">
+                            <div class="summary-title">
+                                <span>Estimated Project Specification</span>
+                                <span class="blinking-dot"></span>
+                            </div>
+                            <div class="summary-actions">
+                                <button type="button" class="btn-text-action" id="btn-edit-form">Edit Choices</button>
+                                <button type="button" class="btn-text-action" id="btn-reset-form">Reset Form</button>
+                            </div>
                         </div>
 
-                        <div class="summary-details-grid">
-                            <div>
-                                <div class="summary-item-label">Client & Brand</div>
-                                <div class="summary-item-val" id="sum-client">Please enter your name & email above</div>
+                        <div class="summary-grid">
+                            <div class="summary-item">
+                                <div class="summary-item-label">Client & Type</div>
+                                <div class="summary-item-value" id="sum-client">Please enter your name & email above</div>
                             </div>
-                            <div>
-                                <div class="summary-item-label">Architecture & Scope</div>
-                                <div class="summary-item-val" id="sum-scope">2–5 pages · Business website</div>
+                            <div class="summary-item">
+                                <div class="summary-item-label">Scope & Pages</div>
+                                <div class="summary-item-value" id="sum-scope">2–5 pages · Business website</div>
                             </div>
-                            <div>
-                                <div class="summary-item-label">Motion Tier</div>
-                                <div class="summary-item-val" id="sum-anim">Advanced animations</div>
+                            <div class="summary-item">
+                                <div class="summary-item-label">Animation Tier</div>
+                                <div class="summary-item-value accent" id="sum-anim">Advanced animations</div>
                             </div>
-                            <div>
-                                <div class="summary-item-label">Budget & Delivery</div>
-                                <div class="summary-item-val" id="sum-budget">$500–$1,000 · Within 2–4 weeks</div>
+                            <div class="summary-item">
+                                <div class="summary-item-label">Budget & Target Timeline</div>
+                                <div class="summary-item-value" id="sum-budget">$500–$1,000 · Within 2–4 weeks</div>
                             </div>
-                            <div style="grid-column: 1 / -1;">
-                                <div class="summary-item-label">Included Features</div>
-                                <div class="summary-item-val" id="sum-features" style="font-weight: 400; color: var(--text-muted); font-size: 0.9rem;">Contact form, SEO setup, Website speed optimization</div>
+                            <div class="summary-item" style="grid-column: 1 / -1;">
+                                <div class="summary-item-label">Selected Features</div>
+                                <div class="summary-item-value" id="sum-features">Contact form, SEO setup, Website speed optimization</div>
                             </div>
                         </div>
 
@@ -1989,168 +2196,234 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
         <h2 class="pricing-title scroll-reveal">Concept Portfolio Showcase</h2>
         <p class="pricing-sub scroll-reveal">Explore live demonstrations of our motion design, interaction architecture, and high-performance engineering concepts.</p>
 
-        <div class="portfolio-grid">
-            <!-- Project 1: Xerena -->
-            <article class="portfolio-card scroll-reveal">
-                <div class="portfolio-preview" style="background-image: url('xerena.png'); background-color: #0b0f19;">
-                    <span class="portfolio-tag">Interactive Audio / Visual</span>
-                </div>
-                <div class="portfolio-details">
-                    <h3 class="portfolio-name">Xerena Concept</h3>
-                    <div class="portfolio-type">Dark Minimalist Web Experience</div>
-                    <p class="portfolio-desc">High-contrast aesthetic featuring custom WebGL flower visuals, fluid audio playback mechanics, and zero layout shift typography.</p>
+        <section class="pricing-group">
+            <div class="portfolio-grid" id="portfolio-cards-container">
+                <!-- Concept Card 1 -->
+                <article class="portfolio-card scroll-reveal">
+                    <div class="portfolio-mockup-frame">
+                        <div class="mockup-top-bar">
+                            <div class="mockup-dots"><span class="mockup-dot"></span><span class="mockup-dot"></span><span class="mockup-dot"></span></div>
+                            <div class="mockup-view-toggle">
+                                <button type="button" class="view-btn active" data-mockup="c1" data-view="desktop">Desktop</button>
+                                <button type="button" class="view-btn" data-mockup="c1" data-view="mobile">Mobile</button>
+                            </div>
+                        </div>
+                        <div class="mockup-display-canvas" id="canvas-c1">
+                            <div class="canvas-preview-inner">
+                                <span class="canvas-sub">Interactive Concept</span>
+                                <h4 class="canvas-title">Kinetic Agency Front Door</h4>
+                                <span style="font-size: 0.8rem; color: rgba(255,255,255,0.6);">LERP Physics & Typography Reveal</span>
+                            </div>
+                        </div>
+                    </div>
                     <div class="portfolio-meta">
-                        <span>Speed Index: 98/100</span>
-                        <span>Kinetic Typography</span>
+                        <span class="portfolio-type-tag">Design & Motion Concept</span>
+                        <h3 class="portfolio-card-title">Kinetic Agency Front Door</h3>
+                        <p class="portfolio-card-desc">High-impact brand entrance featuring LERP cursor tracking, word-mask typography reveals, and hardware-accelerated ambient video canvas.</p>
+                        <div class="tech-tags-list">
+                            <span class="tech-tag">HTML5 / CSS3</span>
+                            <span class="tech-tag">LERP Physics</span>
+                            <span class="tech-tag">Hardware GPU</span>
+                            <span class="tech-tag">Fluid Motion</span>
+                        </div>
                     </div>
-                    <div class="portfolio-actions">
-                        <button type="button" class="portfolio-btn" data-preview-proj="Xerena"><span>Explore Concept</span> →</button>
-                        <button type="button" class="portfolio-btn" data-inquire-proj="Xerena">Inquire Similar</button>
-                    </div>
-                </div>
-            </article>
+                    <button type="button" class="plan-btn primary" data-prefill-style="Kinetic Agency Front Door">Inquire About This Style</button>
+                </article>
 
-            <!-- Project 2: Endo Tech -->
-            <article class="portfolio-card scroll-reveal">
-                <div class="portfolio-preview" style="background-image: url('endo-tech.png'); background-color: #121824;">
-                    <span class="portfolio-tag">Next-Gen SaaS & FinTech</span>
-                </div>
-                <div class="portfolio-details">
-                    <h3 class="portfolio-name">Endo Tech Platform</h3>
-                    <div class="portfolio-type">High-Performance Dashboard Concept</div>
-                    <p class="portfolio-desc">Engineered for real-time financial tracking with smooth micro-interactions, responsive charts, and instant page transitions.</p>
+                <!-- Concept Card 2 -->
+                <article class="portfolio-card scroll-reveal">
+                    <div class="portfolio-mockup-frame">
+                        <div class="mockup-top-bar">
+                            <div class="mockup-dots"><span class="mockup-dot"></span><span class="mockup-dot"></span><span class="mockup-dot"></span></div>
+                            <div class="mockup-view-toggle">
+                                <button type="button" class="view-btn active" data-mockup="c2" data-view="desktop">Desktop</button>
+                                <button type="button" class="view-btn" data-mockup="c2" data-view="mobile">Mobile</button>
+                            </div>
+                        </div>
+                        <div class="mockup-display-canvas" id="canvas-c2">
+                            <div class="canvas-preview-inner">
+                                <span class="canvas-sub">Architectural Concept</span>
+                                <h4 class="canvas-title">Minimalist Studio Portfolio</h4>
+                                <span style="font-size: 0.8rem; color: rgba(255,255,255,0.6);">Editorial Layouts & Viewport Reveals</span>
+                            </div>
+                        </div>
+                    </div>
                     <div class="portfolio-meta">
-                        <span>LCP: 0.8s</span>
-                        <span>Adaptive Dark Theme</span>
+                        <span class="portfolio-type-tag">Design & Motion Concept</span>
+                        <h3 class="portfolio-card-title">Minimalist Architecture Portfolio</h3>
+                        <p class="portfolio-card-desc">Monochromatic editorial layout designed for architects and design studios, emphasizing typography hierarchy, smooth viewport reveals, and fluid media grids.</p>
+                        <div class="tech-tags-list">
+                            <span class="tech-tag">Semantic HTML5</span>
+                            <span class="tech-tag">CSS Grid</span>
+                            <span class="tech-tag">IntersectionObserver</span>
+                            <span class="tech-tag">Sub-Second Load</span>
+                        </div>
                     </div>
-                    <div class="portfolio-actions">
-                        <button type="button" class="portfolio-btn" data-preview-proj="Endo Tech"><span>Explore Concept</span> →</button>
-                        <button type="button" class="portfolio-btn" data-inquire-proj="Endo Tech">Inquire Similar</button>
-                    </div>
-                </div>
-            </article>
+                    <button type="button" class="plan-btn primary" data-prefill-style="Minimalist Architecture Portfolio">Inquire About This Style</button>
+                </article>
 
-            <!-- Project 3: 3D Kinetic Canvas -->
-            <article class="portfolio-card scroll-reveal">
-                <div class="portfolio-preview" style="background-image: url('logo.jpg'); background-color: #050505;">
-                    <span class="portfolio-tag">Creative Direction & 3D</span>
-                </div>
-                <div class="portfolio-details">
-                    <h3 class="portfolio-name">DigiFront Door Kinetic Identity</h3>
-                    <div class="portfolio-type">Brand Front Door Experience</div>
-                    <p class="portfolio-desc">Our flagship showcase demonstrating responsive lerp mouse followers, hardware-accelerated video background textures, and animated SVG masking.</p>
+                <!-- Concept Card 3 -->
+                <article class="portfolio-card scroll-reveal">
+                    <div class="portfolio-mockup-frame">
+                        <div class="mockup-top-bar">
+                            <div class="mockup-dots"><span class="mockup-dot"></span><span class="mockup-dot"></span><span class="mockup-dot"></span></div>
+                            <div class="mockup-view-toggle">
+                                <button type="button" class="view-btn active" data-mockup="c3" data-view="desktop">Desktop</button>
+                                <button type="button" class="view-btn" data-mockup="c3" data-view="mobile">Mobile</button>
+                            </div>
+                        </div>
+                        <div class="mockup-display-canvas" id="canvas-c3">
+                            <div class="canvas-preview-inner">
+                                <span class="canvas-sub">Ecommerce Concept</span>
+                                <h4 class="canvas-title">Direct-to-Consumer Storefront</h4>
+                                <span style="font-size: 0.8rem; color: rgba(255,255,255,0.6);">WhatsApp Checkout Funnel</span>
+                            </div>
+                        </div>
+                    </div>
                     <div class="portfolio-meta">
-                        <span>Performance: 60 FPS</span>
-                        <span>Cinematic Motion</span>
+                        <span class="portfolio-type-tag">Design & Motion Concept</span>
+                        <h3 class="portfolio-card-title">Boutique Luxury Storefront</h3>
+                        <p class="portfolio-card-desc">High-conversion product showcase with sticky quick-action drawers, variant chips, and direct WhatsApp order routing without complex backend bloat.</p>
+                        <div class="tech-tags-list">
+                            <span class="tech-tag">WhatsApp API</span>
+                            <span class="tech-tag">Client-Side Cart</span>
+                            <span class="tech-tag">Responsive Mobile</span>
+                            <span class="tech-tag">Zero Bloat</span>
+                        </div>
                     </div>
-                    <div class="portfolio-actions">
-                        <button type="button" class="portfolio-btn" data-preview-proj="DigiFront Door"><span>View Mechanics</span> →</button>
-                        <button type="button" class="portfolio-btn" data-inquire-proj="DigiFront Door">Inquire Similar</button>
-                    </div>
-                </div>
-            </article>
-        </div>
+                    <button type="button" class="plan-btn primary" data-prefill-style="Boutique Luxury Storefront">Inquire About This Style</button>
+                </article>
 
-        <div style="text-align: center; margin-top: 2rem;">
-            <a href="#custom-builder" class="pricing-cta"><span>Plan Your Bespoke Website</span><span class="blinking-dot"></span></a>
-        </div>
+                <!-- Concept Card 4 -->
+                <article class="portfolio-card scroll-reveal">
+                    <div class="portfolio-mockup-frame">
+                        <div class="mockup-top-bar">
+                            <div class="mockup-dots"><span class="mockup-dot"></span><span class="mockup-dot"></span><span class="mockup-dot"></span></div>
+                            <div class="mockup-view-toggle">
+                                <button type="button" class="view-btn active" data-mockup="c4" data-view="desktop">Desktop</button>
+                                <button type="button" class="view-btn" data-mockup="c4" data-view="mobile">Mobile</button>
+                            </div>
+                        </div>
+                        <div class="mockup-display-canvas" id="canvas-c4">
+                            <div class="canvas-preview-inner">
+                                <span class="canvas-sub">SaaS Concept</span>
+                                <h4 class="canvas-title">Interactive Pricing Matrix</h4>
+                                <span style="font-size: 0.8rem; color: rgba(255,255,255,0.6);">Dynamic State & Pre-filled Gmail Routing</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-meta">
+                        <span class="portfolio-type-tag">Design & Motion Concept</span>
+                        <h3 class="portfolio-card-title">SaaS Showcase & Pricing Architecture</h3>
+                        <p class="portfolio-card-desc">Conversion-oriented landing with interactive live price estimators, customizable feature checklists, and one-click Gmail brief formulation.</p>
+                        <div class="tech-tags-list">
+                            <span class="tech-tag">Vanilla JS State</span>
+                            <span class="tech-tag">Gmail URL Builder</span>
+                            <span class="tech-tag">Accessible Modals</span>
+                            <span class="tech-tag">Clipboard API</span>
+                        </div>
+                    </div>
+                    <button type="button" class="plan-btn primary" data-prefill-style="SaaS Showcase & Pricing Architecture">Inquire About This Style</button>
+                </article>
+            </div>
+        </section>
     </div>
 </div>
 
-<!-- 3. FAQ OVERLAY -->
+<!-- 3. FAQ SECTION OVERLAY -->
 <div class="pricing-overlay" id="faq" role="dialog" aria-modal="true" aria-label="Frequently Asked Questions" aria-hidden="true">
     <button class="pricing-close" id="faq-close" aria-label="Close FAQ overlay">&times;</button>
     <div class="pricing-inner">
         <h2 class="pricing-title scroll-reveal">Frequently Asked Questions</h2>
-        <p class="pricing-sub scroll-reveal">Straight answers about our development workflow, technologies, hosting, maintenance, and delivery timelines.</p>
+        <p class="pricing-sub scroll-reveal">Clear answers regarding our website development process, pricing, maintenance, and animations.</p>
 
         <section class="pricing-group">
-            <div class="faq-list">
+            <div class="faq-accordion" id="faq-list">
                 <!-- Question 1 -->
                 <div class="faq-item scroll-reveal">
                     <button type="button" class="faq-question" aria-expanded="false">
-                        <span>What is your typical project delivery timeline?</span>
+                        <span>How does the website development process work?</span>
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Most single-page starter websites are completed within 3 to 5 business days. Multi-page business platforms typically take 5 to 7 business days, while advanced animated experiences with custom interactions take 7 to 14 business days. We provide a milestone schedule before kickoff.</p>
+                        <p>We follow a focused, four-step approach: 1) Brief & Alignment (we discuss your brand, audience, and requirements), 2) Concept & Wireframing (establishing visual direction and kinetic motion style), 3) Bespoke Engineering (clean, accessible code with hardware-accelerated animations), and 4) Testing & Launch (cross-device audits, speed optimization, and deployment to GitHub Pages or your custom domain).</p>
                     </div>
                 </div>
 
                 <!-- Question 2 -->
                 <div class="faq-item scroll-reveal">
                     <button type="button" class="faq-question" aria-expanded="false">
-                        <span>Are domains, web hosting, and paid APIs included in the price?</span>
+                        <span>How much does a custom website cost?</span>
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Our prices cover bespoke design, coding, animation, and responsive engineering. Third-party infrastructure costs—such as your custom domain name (e.g., via Namecheap), web hosting/cloud deployment (e.g., GitHub Pages, Cloudflare, Vercel, AWS), or paid third-party API keys (e.g., OpenAI, Stripe, Calendly)—are owned directly by you and billed separately.</p>
+                        <p>Our packages start at $149–$299 for Starter websites, $350–$799 for Professional websites with interactive animations, $800–$1,799 for Advanced animations and parallax, and $2,000+ for Elite 3D/WebGL experiences. You can use our interactive Custom Website Planner below to calculate an instant indicative estimate based on your exact page count and feature requirements.</p>
                     </div>
                 </div>
 
                 <!-- Question 3 -->
                 <div class="faq-item scroll-reveal">
                     <button type="button" class="faq-question" aria-expanded="false">
-                        <span>How do revisions and feedback rounds work?</span>
+                        <span>Can I choose my own design and visual style?</span>
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Each development package includes dedicated revision cycles (2 rounds for Starter & Basic, 3 rounds for Professional, and 4 rounds for Premium). Revisions include layout adjustments, typography tuning, content updates, and animation pacing. Structural scope expansions outside the initial brief are quoted transparently.</p>
+                        <p>Yes. Every website is built custom to your brand guidelines. You can specify whether you prefer dark & cinematic, minimal & clean, premium luxury, corporate, or experimental styles. You can also provide reference URLs or existing brand assets during the planning step.</p>
                     </div>
                 </div>
 
                 <!-- Question 4 -->
                 <div class="faq-item scroll-reveal">
                     <button type="button" class="faq-question" aria-expanded="false">
-                        <span>Will my website perform well on mobile devices and slower connections?</span>
+                        <span>Can you add custom animations and interactive effects?</span>
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Every website we engineer is built mobile-first with high-performance CSS and lightweight vanilla JavaScript. We optimize all visual assets, use modern video codecs with fallback posters, and ensure 90+ Google PageSpeed benchmarks so your visitors experience frictionless interaction.</p>
+                        <p>Absolutely. We specialize in fluid kinetic interactions, including LERP cursor physics, scroll-triggered text reveals, custom SVG animations, WebGL 3D effects, and smooth page transitions—all tuned to run at 60–120 FPS without sacrificing loading speed.</p>
                     </div>
                 </div>
 
                 <!-- Question 5 -->
                 <div class="faq-item scroll-reveal">
                     <button type="button" class="faq-question" aria-expanded="false">
-                        <span>Can I update my website content after it goes live?</span>
+                        <span>How long does a website take to complete?</span>
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Yes. Depending on your preference, we can build your site on a headless CMS (such as Sanity, Strapi, or Decap) or supply clean, well-annotated source code. We also offer monthly Website Care Plans starting at $15/month for continuous content updates, backups, and maintenance.</p>
+                        <p>A typical 1-page landing or Starter website takes 5–7 business days. Professional websites (5–8 pages) take 10–14 days. Complex websites with advanced animations or custom integrations typically take 2–4 weeks. We align on a firm delivery schedule before beginning development.</p>
                     </div>
                 </div>
 
                 <!-- Question 6 -->
                 <div class="faq-item scroll-reveal">
                     <button type="button" class="faq-question" aria-expanded="false">
-                        <span>What is your payment structure?</span>
+                        <span>Do you provide ongoing website maintenance?</span>
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Our standard arrangement is a 50% deposit upon project agreement and design sign-off, with the remaining 50% due upon final deployment to your live domain. Alternative milestone payments are available for enterprise and cinematic tiers.</p>
+                        <p>Yes, we offer dedicated monthly care plans starting at $19/month (Basic Care) up to $199+/month (Elite Care). Maintenance covers uptime monitoring, compatibility checks across browser updates, minor content/layout tweaks, and technical support. Maintenance is billed separately from one-time development fees.</p>
                     </div>
                 </div>
 
                 <!-- Question 7 -->
                 <div class="faq-item scroll-reveal">
                     <button type="button" class="faq-question" aria-expanded="false">
-                        <span>What happens if I need emergency maintenance or bug fixes?</span>
+                        <span>Are hosting and domain charges included?</span>
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Clients subscribed to our Standard, Priority, or Elite Care plans receive guaranteed response times from 4 to 24 hours. For non-care clients, on-demand maintenance is billed at our transparent standard hourly rate.</p>
+                        <p>Domain registration and third-party hosting fees are paid directly by the client to ensure you have 100% ownership of your digital assets. We provide full setup and DNS routing assistance. For static sites, free high-speed hosting on GitHub Pages or Cloudflare Pages is available with zero monthly hosting fees.</p>
                     </div>
                 </div>
 
                 <!-- Question 8 -->
                 <div class="faq-item scroll-reveal">
                     <button type="button" class="faq-question" aria-expanded="false">
-                        <span>Do you provide SEO and Google indexing support?</span>
+                        <span>Can I request changes after delivery?</span>
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Yes. All packages include semantic HTML5 markup, meta titles, descriptions, Open Graph preview tags for social platforms, schema.org structured data, and an auto-generated sitemap ready for Google Search Console submission.</p>
+                        <p>Yes. All our development packages include dedicated revision rounds (2 to 4 rounds depending on your tier) during development to refine typography, animations, and layouts. After launch, additional revisions can be handled under our monthly maintenance plans or as separate project add-ons.</p>
                     </div>
                 </div>
 
@@ -2178,83 +2451,112 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
         <section class="pricing-group">
             <h3 class="group-title scroll-reveal">The Philosophy</h3>
-            <p class="group-note scroll-reveal" style="font-size: 1.05rem; line-height: 1.8; color: rgba(255, 255, 255, 0.85);">
-                In an era dominated by cookie-cutter website builders and sluggish templates, your brand deserves a front door that commands genuine attention. At DigiFront Door, we view every web interface as an interactive installation: balanced in typography, tactile through kinetic feedback, and engineered with millisecond efficiency.
-            </p>
-
+            <p class="group-note scroll-reveal">In an era of generic website builders, your digital front door is the first and most defining touchpoint of your brand.</p>
             <hr class="group-rule">
-
-            <div class="pricing-grid">
-                <div class="plan scroll-reveal">
-                    <h4 class="plan-name">Bespoke Design</h4>
-                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">No bloated page builders or rigid templates. Each layout is engineered specifically for your brand voice, typography, and target conversion goals.</p>
-                </div>
-                <div class="plan scroll-reveal">
+            <div class="pricing-grid" style="grid-template-columns: repeat(3, 1fr);">
+                <article class="plan scroll-reveal">
+                    <h4 class="plan-name">Bespoke Engineering</h4>
+                    <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.5;">Every website is hand-crafted with clean, semantic markup, zero unnecessary bulk, and tailored micro-interactions designed to highlight your value proposition.</p>
+                </article>
+                <article class="plan scroll-reveal">
                     <h4 class="plan-name">Kinetic Fluidity</h4>
-                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">Smooth lerp cursor movements, scroll-linked parallax, kinetic typographic reveals, and hardware-accelerated animations that delight without lagging.</p>
-                </div>
-                <div class="plan scroll-reveal">
-                    <h4 class="plan-name">Transparent Value</h4>
-                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">Direct developer communication, honest starting prices, clear revision limits, and transparent monthly maintenance options with zero hidden fees.</p>
-                </div>
+                    <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.5;">Physics-based cursor effects, smooth LERP easing, scroll-triggered reveals, and WebGL elements that feel alive without slowing down load times.</p>
+                </article>
+                <article class="plan scroll-reveal">
+                    <h4 class="plan-name">Transparent Partnership</h4>
+                    <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.5;">No unexpected hidden costs. Clear animation tier pricing, transparent maintenance plans, and direct communication addressed to digifrontdoor7@gmail.com.</p>
+                </article>
             </div>
+        </section>
 
-            <div style="text-align: center; margin-top: 3.5rem;">
-                <a href="mailto:digifrontdoor7@gmail.com" class="pricing-cta"><span>Contact DigiFront Door Directly</span><span class="blinking-dot"></span></a>
+        <section class="pricing-notes scroll-reveal">
+            <h3 class="group-title">Ready to build your front door?</h3>
+            <p style="margin: 0.8rem 0 1.5rem; color: rgba(255,255,255,0.7); line-height: 1.5;">Whether you need an expressive single-page landing or a full cinematic brand experience, we are ready to bring your vision to life.</p>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <a href="#pricing" class="pricing-cta" id="about-to-pricing"><span>Explore Pricing & Custom Planner</span><span class="blinking-dot"></span></a>
+                <a href="mailto:digifrontdoor7@gmail.com" class="plan-btn" style="padding: 1.15rem 2.2rem; font-size: 1rem;">Contact via Email</a>
             </div>
         </section>
     </div>
 </div>
 
-<!-- 5. FEATURES / CAPABILITIES OVERLAY -->
-<div class="pricing-overlay" id="features" role="dialog" aria-modal="true" aria-label="Capabilities and Features" aria-hidden="true">
+<!-- 5. FEATURES OVERLAY -->
+<div class="pricing-overlay" id="features" role="dialog" aria-modal="true" aria-label="Features and Capabilities" aria-hidden="true">
     <button class="pricing-close" id="features-close" aria-label="Close features overlay">&times;</button>
     <div class="pricing-inner">
-        <h2 class="pricing-title scroll-reveal">Capabilities & Engineering Standards</h2>
-        <p class="pricing-sub scroll-reveal">Every DigiFront Door project adheres to rigorous design, performance, and accessibility standards.</p>
+        <h2 class="pricing-title scroll-reveal">Capabilities & Features</h2>
+        <p class="pricing-sub scroll-reveal">Where high-performance engineering meets visual distinction. Built from the ground up for modern businesses.</p>
 
-        <div class="pricing-grid">
-            <div class="plan scroll-reveal">
-                <div class="plan-level">Architecture</div>
-                <h4 class="plan-name">Performance Optimization</h4>
-                <ul>
-                    <li>Zero unnecessary framework bloat</li>
-                    <li>Sub-second Largest Contentful Paint (LCP)</li>
-                    <li>Automatic asset compression and caching</li>
-                    <li>Responsive vector typography and SVGs</li>
-                </ul>
+        <section class="pricing-group">
+            <h3 class="group-title scroll-reveal">Core Disciplines</h3>
+            <p class="group-note scroll-reveal">Our full-spectrum capability suite covers design, motion, engineering, and continuous care.</p>
+            <hr class="group-rule">
+            <div class="pricing-grid" style="grid-template-columns: repeat(3, 1fr);">
+                <article class="plan scroll-reveal">
+                    <h4 class="plan-name">Fluid Motion Architecture</h4>
+                    <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.5;">Subtle hover physics, scroll-linked storytelling, reveal masks with blur transitions, and responsive mobile adaptations.</p>
+                </article>
+                <article class="plan scroll-reveal">
+                    <h4 class="plan-name">High-Converting Funnels</h4>
+                    <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.5;">Strategic information architecture, interactive inquiry builders, direct WhatsApp/booking triggers, and clean lead capture.</p>
+                </article>
+                <article class="plan scroll-reveal">
+                    <h4 class="plan-name">Modern Tech Stack</h4>
+                    <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.5;">Lightweight JavaScript, hardware-accelerated CSS3 transforms, pristine SVG assets, and ultra-fast static hosting compatibility.</p>
+                </article>
+                <article class="plan scroll-reveal">
+                    <h4 class="plan-name">SEO & Technical Health</h4>
+                    <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.5;">Semantic markup, Open Graph social cards, structured data, optimized media delivery, and sub-second initial load speeds.</p>
+                </article>
+                <article class="plan scroll-reveal">
+                    <h4 class="plan-name">Third-Party Ecosystem</h4>
+                    <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.5;">Clear guidance and integration for payment gateways, calendar booking, WhatsApp APIs, AI chatbots, and newsletter platforms.</p>
+                </article>
+                <article class="plan scroll-reveal">
+                    <h4 class="plan-name">Reliable Maintenance</h4>
+                    <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.5;">Ongoing uptime monitoring, security audits, routine content updates, and animation compatibility testing across browser releases.</p>
+                </article>
             </div>
-            <div class="plan scroll-reveal">
-                <div class="plan-level">Interaction</div>
-                <h4 class="plan-name">Kinetic Motion Design</h4>
-                <ul>
-                    <li>Scroll-triggered viewport reveal animations</li>
-                    <li>Fluid LERP cursor trackers on desktop</li>
-                    <li>Micro-interactions on buttons, hovers & chips</li>
-                    <li>Reduced-motion accessibility support</li>
-                </ul>
-            </div>
-            <div class="plan scroll-reveal">
-                <div class="plan-level">Conversion</div>
-                <h4 class="plan-name">Direct Business Integrations</h4>
-                <ul>
-                    <li>WhatsApp one-tap direct chat integration</li>
-                    <li>Validated email inquiry routing via Gmail</li>
-                    <li>Stripe / PayPal e-commerce checkout integration</li>
-                    <li>Interactive project cost estimator</li>
-                </ul>
-            </div>
-        </div>
+        </section>
 
-        <div style="text-align: center; margin-top: 3rem;">
-            <a href="#custom-builder" class="pricing-cta"><span>Customize Your Requirements</span><span class="blinking-dot"></span></a>
+        <section class="pricing-notes scroll-reveal">
+            <h3 class="group-title">Experience the difference</h3>
+            <p style="margin: 0.8rem 0 1.5rem; color: rgba(255,255,255,0.7); line-height: 1.5;">Check out our transparent packages or create your personalized specification with our custom builder.</p>
+            <a href="#pricing" class="pricing-cta" id="features-to-pricing"><span>View Packages & Custom Builder</span><span class="blinking-dot"></span></a>
+        </section>
+    </div>
+</div>
+
+<!-- EMAIL COMPOSE CONFIRMATION & FALLBACK MODAL -->
+<div class="email-modal-overlay" id="email-fallback-modal" role="dialog" aria-modal="true" aria-label="Email Draft Prepared" aria-hidden="true">
+    <div class="email-modal-card">
+        <button class="pricing-close" id="modal-fallback-close" aria-label="Close modal" style="position: absolute; top: 16px; right: 16px;">&times;</button>
+        <h3 class="email-modal-title">Your Project Brief is Ready</h3>
+        <p class="email-modal-notice">
+            A compose window addressed to <strong>digifrontdoor7@gmail.com</strong> has been initiated.<br>
+            <strong>Note:</strong> Please review your brief and click <strong>Send</strong> inside your email client to deliver your request.
+        </p>
+
+        <div class="email-draft-preview" id="email-draft-text" tabindex="0"></div>
+
+        <div class="email-modal-buttons">
+            <a href="#" id="modal-open-gmail-btn" target="_blank" rel="noopener noreferrer" class="btn-primary-action">
+                <span>Open in Gmail</span>
+                <span class="blinking-dot" style="background:#000;"></span>
+            </a>
+            <a href="#" id="modal-open-mailto-btn" class="btn-secondary-action">
+                <span>Default Email App (mailto)</span>
+            </a>
+            <button type="button" id="modal-copy-btn" class="btn-secondary-action">
+                <span id="copy-btn-label">Copy Project Details</span>
+            </button>
         </div>
     </div>
 </div>
 
-<!-- 6. FLOATING CURSOR ELEMENTS (DESKTOP) -->
-<div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
-<div class="glass-cursor-card" id="glass-cursor" aria-hidden="true">
+<!-- CURSOR ELEMENTS -->
+<div id="cursor-ring" class="cursor-ring-outline"></div>
+<div id="glass-card" class="glass-cursor-card">
     <span class="cursor-card-text"><span class="text-white">Say</span> Hello!</span>
 </div>
 
@@ -2262,57 +2564,68 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 // CONFIGURATION & CONSTANTS
 const CONTACT_EMAIL = 'digifrontdoor7@gmail.com';
 
-// 1. VIDEO PLAYBACK & ROBUST INITIALIZATION
+// 1. BULLETPROOF VIDEO PLAYBACK INITIALIZATION
 (function initVideo() {
     const v = document.getElementById('bg-video');
     const container = document.querySelector('.video-container');
     if (!v) return;
 
-    // Enforce muted and playsinline to satisfy browser autoplay policies
+    // Strict attributes required by modern mobile WebKit & Chromium autoplay policies
     v.muted = true;
     v.defaultMuted = true;
+    v.playsInline = true;
     v.setAttribute('muted', '');
     v.setAttribute('playsinline', '');
+    v.setAttribute('webkit-playsinline', '');
+    v.setAttribute('x5-playsinline', '');
 
     // Respect reduced-motion preferences
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         v.pause();
         return;
     }
 
-    const tryPlay = () => {
+    const startPlayback = () => {
         const p = v.play();
-        if (p && typeof p.catch === 'function') {
-            p.catch(() => {
-                // Initial autoplay suspended; will start upon first user interaction
+        if (p && typeof p.then === 'function') {
+            p.then(() => {
+                v.style.opacity = '1';
+            }).catch(() => {
+                // Autoplay blocked by browser policy until user gesture
             });
         }
     };
 
-    if (v.readyState >= 2) {
-        tryPlay();
-    } else {
-        v.addEventListener('loadeddata', tryPlay, { once: true });
-        v.addEventListener('canplay', tryPlay, { once: true });
-    }
+    // Immediate playback attempt on load
+    startPlayback();
 
-    // Passive user gesture listener fallback for strict mobile browser policies
-    const gestureEvents = ['click', 'touchstart', 'scroll', 'keydown'];
-    const onGesture = () => {
-        tryPlay();
-        gestureEvents.forEach(evt => document.removeEventListener(evt, onGesture));
+    // Secondary attempts on standard media readiness events
+    v.addEventListener('loadedmetadata', startPlayback, { once: true });
+    v.addEventListener('canplay', startPlayback, { once: true });
+    v.addEventListener('canplaythrough', startPlayback, { once: true });
+
+    // Fallback: trigger playback on the very first user interaction anywhere
+    const gestureEvents = ['click', 'touchstart', 'touchend', 'pointerdown', 'scroll', 'wheel', 'keydown'];
+    const handleFirstGesture = () => {
+        startPlayback();
+        gestureEvents.forEach(evt => window.removeEventListener(evt, handleFirstGesture, { passive: true }));
+        gestureEvents.forEach(evt => document.removeEventListener(evt, handleFirstGesture, { passive: true }));
     };
-    gestureEvents.forEach(evt => document.addEventListener(evt, onGesture, { passive: true }));
+    gestureEvents.forEach(evt => window.addEventListener(evt, handleFirstGesture, { passive: true, once: true }));
+    gestureEvents.forEach(evt => document.addEventListener(evt, handleFirstGesture, { passive: true, once: true }));
 
-    // Fallback background only on fatal source loading failure
+    // Fallback between local and remote source if local asset is missing
+    const remoteUrl = 'https://api.getlayers.ai/storage/v1/object/public/public/assets/loopstack-f8c64439bf/flower.mp4';
     v.addEventListener('error', () => {
-        if (v.error && v.networkState === HTMLMediaElement.NETWORK_NO_SOURCE) {
-            v.style.display = 'none';
-            if (container) {
-                container.style.background = 'radial-gradient(circle at 50% 80%, rgba(20, 45, 30, 0.6) 0%, rgba(0, 0, 0, 1) 80%)';
-            }
+        if (!v.dataset.retriedRemote) {
+            v.dataset.retriedRemote = 'true';
+            v.src = remoteUrl;
+            v.load();
+            startPlayback();
+        } else if (container) {
+            container.style.background = 'radial-gradient(circle at 50% 80%, rgba(20, 45, 30, 0.6) 0%, rgba(0, 0, 0, 1) 80%)';
         }
-    });
+    }, true);
 })();
 
 // 2. HERO & LOGO WORDMARK LETTER-REVEAL ANIMATIONS
@@ -2342,194 +2655,266 @@ document.addEventListener('DOMContentLoaded', () => {
         heroTitle.innerHTML = '';
         let wordIndex = 0;
         parts.forEach(part => {
-            if (!part) return;
-            if (part.toLowerCase().startsWith('<br')) {
+            if (part.trim() === '') {
+                heroTitle.appendChild(document.createTextNode(' '));
+            } else if (part.toLowerCase().startsWith('<br')) {
                 heroTitle.appendChild(document.createElement('br'));
-            } else if (/^\s+$/.test(part)) {
-                heroTitle.appendChild(document.createTextNode(part));
             } else {
                 const wrapper = document.createElement('span');
                 wrapper.className = 'word-wrapper';
                 const inner = document.createElement('span');
-                inner.textContent = part;
                 inner.className = 'word-inner';
-                inner.style.animationDelay = `${0.3 + (wordIndex * 0.12)}s`;
+                inner.textContent = part;
+                inner.style.animationDelay = `${wordIndex * 0.09}s`;
+                wordIndex++;
                 wrapper.appendChild(inner);
                 heroTitle.appendChild(wrapper);
-                wordIndex++;
             }
         });
     }
-});
 
-// 3. DESKTOP SMOOTH LERP CURSOR
-(function initLerpCursor() {
-    if (window.innerWidth <= 900) return;
+    // Custom Cursor LERP physics (desktop only)
+    const glassCard = document.getElementById('glass-card');
+    const cursorRing = document.getElementById('cursor-ring');
+    const isCoarse = window.matchMedia('(pointer: coarse)').matches;
 
-    const cursorDot = document.getElementById('cursor-dot');
-    const glassCard = document.getElementById('glass-cursor');
-    if (!cursorDot || !glassCard) return;
+    if (glassCard && cursorRing && !isCoarse) {
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+        let cardX = mouseX, cardY = mouseY;
+        let ringX = mouseX, ringY = mouseY;
+        let isFirstMove = true;
+        let scale = 0;
+        let targetScale = 0;
+        let isHoveringInteractive = false;
 
-    let mouseX = window.innerWidth / 2;
-    let mouseY = window.innerHeight / 2;
-    let currentX = mouseX;
-    let currentY = mouseY;
-    let isMoving = false;
-    let hideTimer = null;
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            if (isFirstMove) {
+                cardX = mouseX; cardY = mouseY;
+                ringX = mouseX; ringY = mouseY;
+                isFirstMove = false;
+                glassCard.classList.add('active');
+                cursorRing.classList.add('active');
+            }
+            if (!isHoveringInteractive) targetScale = 1;
+        });
 
-    window.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
+        document.addEventListener('mouseleave', () => { targetScale = 0; });
+        document.addEventListener('mouseenter', () => { if (!isHoveringInteractive) targetScale = 1; });
 
-        if (!isMoving) {
-            glassCard.classList.add('visible');
-            isMoving = true;
-        }
-
-        clearTimeout(hideTimer);
-        hideTimer = setTimeout(() => {
-            glassCard.classList.remove('visible');
-            isMoving = false;
-        }, 3000);
-    }, { passive: true });
-
-    document.addEventListener('mouseleave', () => {
-        glassCard.classList.remove('visible');
-        cursorDot.style.opacity = '0';
-    });
-
-    document.addEventListener('mouseenter', () => {
-        cursorDot.style.opacity = '1';
-    });
-
-    // LERP Render Loop
-    function renderCursor() {
-        currentX += (mouseX - currentX) * 0.14;
-        currentY += (mouseY - currentY) * 0.14;
-
-        cursorDot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
-        glassCard.style.transform = `translate3d(${currentX + 24}px, ${currentY + 24}px, 0)`;
-
-        requestAnimationFrame(renderCursor);
-    }
-    requestAnimationFrame(renderCursor);
-
-    // Interactive element hover states
-    const interactiveSelectors = '.hero-btn, .pricing-cta, .plan-btn, .pricing-close, .mobile-nav-toggle';
-    document.addEventListener('mouseover', (e) => {
-        if (e.target.closest(interactiveSelectors)) {
-            cursorDot.classList.add('hovered');
-        }
-    });
-    document.addEventListener('mouseout', (e) => {
-        if (e.target.closest(interactiveSelectors)) {
-            cursorDot.classList.remove('hovered');
-        }
-    });
-})();
-
-// 4. OVERLAYS MANAGER & SCROLL REVEAL OBSERVER
-const Overlays = {
-    active: null,
-    scrollPositions: {},
-
-    open(id) {
-        const overlay = document.getElementById(id);
-        if (!overlay) return;
-
-        // If another overlay is open, close it first
-        if (this.active && this.active !== overlay) {
-            this.close(this.active.id);
-        }
-
-        this.scrollPositions[id] = window.scrollY;
-        overlay.classList.add('open');
-        overlay.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
-        this.active = overlay;
-
-        // Trigger reveal animations inside overlay
-        setTimeout(() => {
-            overlay.querySelectorAll('.scroll-reveal').forEach(el => {
-                el.classList.add('revealed');
+        const interactiveSelectors = '.hero-btn, .pricing-cta, .plan-btn, .pricing-close, .mobile-nav-toggle';
+        document.querySelectorAll(interactiveSelectors).forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                isHoveringInteractive = true;
+                targetScale = 0;
+                cursorRing.classList.add('expanded');
             });
-        }, 100);
+            el.addEventListener('mouseleave', () => {
+                isHoveringInteractive = false;
+                targetScale = 1;
+                cursorRing.classList.remove('expanded');
+            });
+        });
 
-        // Trap focus into overlay
-        const focusable = overlay.querySelector('button, [href], input, select, textarea');
-        if (focusable) focusable.focus();
-    },
+        const updatePhysics = () => {
+            cardX += (mouseX - cardX) * 0.08;
+            cardY += (mouseY - cardY) * 0.08;
+            ringX = mouseX;
+            ringY = mouseY;
+            scale += (targetScale - scale) * 0.15;
+            const currentRingScale = cursorRing.classList.contains('expanded') ? 1.6 * scale : scale;
 
-    close(id) {
-        const overlay = document.getElementById(id);
-        if (!overlay) return;
-
-        overlay.classList.remove('open');
-        overlay.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
-        this.active = null;
-
-        // Restore scroll position
-        if (typeof this.scrollPositions[id] === 'number') {
-            window.scrollTo({ top: this.scrollPositions[id], behavior: 'instant' });
-        }
-    }
-};
-
-// Global link handler for #overlays
-document.addEventListener('click', (e) => {
-    const anchor = e.target.closest('a[href^="#"]');
-    if (!anchor) return;
-
-    const href = anchor.getAttribute('href');
-    const targetId = href.replace('#', '');
-    const overlay = document.getElementById(targetId);
-
-    if (overlay && overlay.classList.contains('pricing-overlay')) {
-        e.preventDefault();
-        Overlays.open(targetId);
-        // Close mobile drawer if open
-        document.getElementById('mobile-menu-drawer')?.classList.remove('open');
-        document.getElementById('mobile-nav-toggle')?.setAttribute('aria-expanded', 'false');
+            glassCard.style.transform = `translate3d(${cardX}px, ${cardY}px, 0) translate(-50%, -50%) scale(${scale})`;
+            cursorRing.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%) scale(${currentRingScale})`;
+            requestAnimationFrame(updatePhysics);
+        };
+        updatePhysics();
     }
 });
 
-// Close buttons for overlays
-document.querySelectorAll('.pricing-close').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        const overlay = btn.closest('.pricing-overlay');
-        if (overlay) Overlays.close(overlay.id);
-    });
-});
-
-// ESC key to close active overlay
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && Overlays.active) {
-        Overlays.close(Overlays.active.id);
-    }
-});
-
-// Scroll Reveal Intersection Observer
-const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('revealed');
-        }
-    });
-}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-
-document.querySelectorAll('.scroll-reveal').forEach(el => revealObserver.observe(el));
-
-// Mobile Nav Toggle
-const mobileToggle = document.getElementById('mobile-nav-toggle');
-const mobileDrawer = document.getElementById('mobile-menu-drawer');
-if (mobileToggle && mobileDrawer) {
-    mobileToggle.addEventListener('click', () => {
-        const isOpen = mobileDrawer.classList.toggle('open');
-        mobileToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-        document.body.style.overflow = isOpen ? 'hidden' : '';
-    });
+// 3. GMAIL & MAILTO INTEGRATION
+function buildGmailComposeUrl(to, subject, body) {
+    return `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(to)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }
+
+function buildMailtoUrl(to, subject, body) {
+    return `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
+function openEmailInquiry({ subject, body }) {
+    const gmailUrl = buildGmailComposeUrl(CONTACT_EMAIL, subject, body);
+    const mailtoUrl = buildMailtoUrl(CONTACT_EMAIL, subject, body);
+
+    const modal = document.getElementById('email-fallback-modal');
+    const previewEl = document.getElementById('email-draft-text');
+    const openGmailBtn = document.getElementById('modal-open-gmail-btn');
+    const openMailtoBtn = document.getElementById('modal-open-mailto-btn');
+    const copyBtn = document.getElementById('modal-copy-btn');
+    const copyLabel = document.getElementById('copy-btn-label');
+
+    if (previewEl) {
+        previewEl.textContent = `To: ${CONTACT_EMAIL}\nSubject: ${subject}\n\n${body}`;
+    }
+    if (openGmailBtn) openGmailBtn.href = gmailUrl;
+    if (openMailtoBtn) openMailtoBtn.href = mailtoUrl;
+
+    if (modal) {
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+    }
+
+    try {
+        window.open(gmailUrl, '_blank');
+    } catch (e) {}
+
+    if (copyBtn && copyLabel) {
+        copyBtn.onclick = () => {
+            const fullText = `To: ${CONTACT_EMAIL}\nSubject: ${subject}\n\n${body}`;
+            navigator.clipboard.writeText(fullText).then(() => {
+                copyLabel.textContent = 'Project Details Copied! ✓';
+                setTimeout(() => { copyLabel.textContent = 'Copy Project Details'; }, 3000);
+            }).catch(() => {
+                copyLabel.textContent = 'Select and copy text below';
+            });
+        };
+    }
+}
+
+document.getElementById('modal-fallback-close')?.addEventListener('click', () => {
+    const modal = document.getElementById('email-fallback-modal');
+    if (modal) {
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden', 'true');
+    }
+});
+
+// 4. OVERLAYS NAVIGATION & MOBILE MENU
+(function initOverlays() {
+    const pricingOverlay = document.getElementById('pricing');
+    const portfolioOverlay = document.getElementById('portfolio');
+    const faqOverlay = document.getElementById('faq');
+    const aboutOverlay = document.getElementById('about');
+    const featuresOverlay = document.getElementById('features');
+    const allOverlays = [pricingOverlay, portfolioOverlay, faqOverlay, aboutOverlay, featuresOverlay];
+
+    const mobileToggle = document.getElementById('mobile-nav-toggle');
+    const mobileDrawer = document.getElementById('mobile-menu-drawer');
+
+    const toggleMobileMenu = (forceClose = false) => {
+        if (!mobileToggle || !mobileDrawer) return;
+        const shouldOpen = forceClose ? false : !mobileDrawer.classList.contains('open');
+        mobileDrawer.classList.toggle('open', shouldOpen);
+        mobileToggle.classList.toggle('open', shouldOpen);
+        mobileToggle.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+    };
+
+    if (mobileToggle) {
+        mobileToggle.addEventListener('click', () => toggleMobileMenu());
+    }
+
+    const openOverlay = (overlay) => {
+        allOverlays.forEach(o => {
+            if (o && o !== overlay) {
+                o.classList.remove('open');
+                o.setAttribute('aria-hidden', 'true');
+            }
+        });
+        if (overlay) {
+            overlay.classList.add('open');
+            overlay.setAttribute('aria-hidden', 'false');
+            overlay.scrollTop = 0;
+            initScrollAnimations(overlay);
+        }
+        toggleMobileMenu(true);
+    };
+
+    const closeAllOverlays = () => {
+        allOverlays.forEach(o => {
+            if (o) {
+                o.classList.remove('open');
+                o.setAttribute('aria-hidden', 'true');
+            }
+        });
+        toggleMobileMenu(true);
+        if (location.hash && location.hash !== '#') {
+            history.replaceState(null, '', location.pathname + location.search);
+        }
+    };
+
+    // Close buttons
+    ['pricing-close', 'portfolio-close', 'faq-close', 'about-close', 'features-close'].forEach(id => {
+        document.getElementById(id)?.addEventListener('click', closeAllOverlays);
+    });
+
+    // Escape Key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            const emailModal = document.getElementById('email-fallback-modal');
+            if (emailModal && emailModal.classList.contains('open')) {
+                emailModal.classList.remove('open');
+                emailModal.setAttribute('aria-hidden', 'true');
+                return;
+            }
+            closeAllOverlays();
+        }
+    });
+
+    // Nav Links (Desktop & Mobile)
+    const mapHashToOverlay = {
+        '#pricing': pricingOverlay,
+        '#portfolio': portfolioOverlay,
+        '#faq': faqOverlay,
+        '#about': aboutOverlay,
+        '#features': featuresOverlay
+    };
+
+    Object.entries(mapHashToOverlay).forEach(([hash, overlay]) => {
+        document.querySelectorAll(`a[href="${hash}"]`).forEach(a => {
+            a.addEventListener('click', e => {
+                e.preventDefault();
+                openOverlay(overlay);
+            });
+        });
+    });
+
+    document.querySelectorAll('a[href="#contact"]').forEach(a => {
+        a.addEventListener('click', e => {
+            e.preventDefault();
+            toggleMobileMenu(true);
+            openEmailInquiry({
+                subject: 'Website Development Inquiry - DigiFront Door',
+                body: `Hello DigiFront Door Team,\n\nI would like to discuss a website development project.\n\nMy Name:\nCompany / Brand:\nProject Type:\nTarget Budget:\n\nPlease let me know how we can proceed.\n\nBest regards,`
+            });
+        });
+    });
+
+    // Hero CTA button
+    document.getElementById('hero-cta-btn')?.addEventListener('click', () => {
+        openOverlay(pricingOverlay);
+        setTimeout(() => {
+            document.getElementById('custom-builder')?.scrollIntoView({ behavior: 'smooth' });
+        }, 150);
+    });
+
+    document.getElementById('about-to-pricing')?.addEventListener('click', e => {
+        e.preventDefault(); openOverlay(pricingOverlay);
+    });
+    document.getElementById('features-to-pricing')?.addEventListener('click', e => {
+        e.preventDefault(); openOverlay(pricingOverlay);
+    });
+
+    document.getElementById('pricing-cta')?.addEventListener('click', (e) => {
+        e.preventDefault();
+        const builder = document.getElementById('custom-builder');
+        if (builder) builder.scrollIntoView({ behavior: 'smooth' });
+    });
+
+    if (location.hash && mapHashToOverlay[location.hash]) {
+        openOverlay(mapHashToOverlay[location.hash]);
+    }
+})();
 
 // 5. PRICING & CUSTOM PLAN CONFIGURATION
 const PRICING_CONFIG = {
@@ -2792,7 +3177,7 @@ function renderPricingSection() {
         carePackages.forEach(pkg => {
             const card = document.createElement('article');
             card.className = 'plan scroll-reveal';
-            card.innerHTML += `
+            card.innerHTML = `
                 <h4 class="plan-name">${pkg.name}</h4>
                 <div class="plan-price">${pkg.price}<small> / month</small></div>
                 <ul>${pkg.items.map(item => `<li>${item}</li>`).join('')}</ul>
@@ -2901,115 +3286,162 @@ function setupInteractions() {
     });
 
     // Addon toggles
-    document.addEventListener('click', (e) => {
-        const btn = e.target.closest('.addon-toggle-btn');
-        if (!btn) return;
-
-        const id = btn.getAttribute('data-addon-id');
-        if (selectedAddons.has(id)) {
-            selectedAddons.delete(id);
-            btn.classList.remove('added');
-            btn.textContent = '+ Add to Quote';
-        } else {
-            selectedAddons.add(id);
-            btn.classList.add('added');
-            btn.textContent = '✓ Added to Quote';
-        }
-        updatePriceEstimator();
+    document.querySelectorAll('[data-addon-id]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const id = btn.getAttribute('data-addon-id');
+            if (selectedAddons.has(id)) {
+                selectedAddons.delete(id);
+                btn.classList.remove('added');
+                btn.textContent = '+ Add to Quote';
+            } else {
+                selectedAddons.add(id);
+                btn.classList.add('added');
+                btn.textContent = '✓ Added to Quote';
+            }
+            updatePriceEstimator();
+        });
     });
 
-    // Feature card selection
-    document.addEventListener('click', (e) => {
-        const card = e.target.closest('.feature-card');
-        if (!card) return;
-
-        const featId = card.getAttribute('data-feat-id');
-        const feat = requiredFeaturesCatalog.find(f => f.id === featId);
-        if (feat) {
+    // Required features toggle
+    document.querySelectorAll('.feature-card[data-feat-id]').forEach(card => {
+        const toggle = () => {
+            const featId = card.getAttribute('data-feat-id');
+            const feat = requiredFeaturesCatalog.find(f => f.id === featId);
+            if (!feat) return;
             feat.checked = !feat.checked;
             card.classList.toggle('selected', feat.checked);
             card.setAttribute('aria-checked', feat.checked ? 'true' : 'false');
             updatePriceEstimator();
-        }
+        };
+        card.addEventListener('click', toggle);
+        card.addEventListener('keydown', e => {
+            if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); toggle(); }
+        });
     });
 
-    // Feature card accessibility via Enter/Space
-    document.addEventListener('keydown', (e) => {
-        if ((e.key === ' ' || e.key === 'Enter') && e.target.classList.contains('feature-card')) {
-            e.preventDefault();
-            e.target.click();
-        }
-    });
-
-    // FAQ Accordion toggles
-    document.querySelectorAll('.faq-question').forEach(q => {
-        q.addEventListener('click', () => {
-            const item = q.closest('.faq-item');
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const item = btn.closest('.faq-item');
+            const answer = item.querySelector('.faq-answer');
             const isOpen = item.classList.contains('active');
 
-            // Close siblings
-            document.querySelectorAll('.faq-item').forEach(other => {
+            // Close other items
+            document.querySelectorAll('.faq-item.active').forEach(other => {
                 if (other !== item) {
                     other.classList.remove('active');
-                    other.querySelector('.faq-question')?.setAttribute('aria-expanded', 'false');
+                    other.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+                    other.querySelector('.faq-answer').style.maxHeight = null;
                 }
             });
 
-            item.classList.toggle('active', !isOpen);
-            q.setAttribute('aria-expanded', !isOpen ? 'true' : 'false');
+            if (!isOpen) {
+                item.classList.add('active');
+                btn.setAttribute('aria-expanded', 'true');
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+            } else {
+                item.classList.remove('active');
+                btn.setAttribute('aria-expanded', 'false');
+                answer.style.maxHeight = null;
+            }
         });
     });
 
-    // Portfolio Direct Inquiries
-    document.querySelectorAll('[data-inquire-proj]').forEach(btn => {
+    // Portfolio preview switcher (desktop vs mobile)
+    document.querySelectorAll('.view-btn').forEach(btn => {
         btn.addEventListener('click', () => {
-            const proj = btn.getAttribute('data-inquire-proj');
-            openEmailInquiry({
-                subject: `Project Inquiry Inspired by ${proj}`,
-                body: `Hello DigiFront Door Team,\n\nI reviewed your "${proj}" concept and would like to build a similar experience for my brand.\n\nMy Brand Name:\nTarget Delivery:\nProject Scope Notes:\n\nLooking forward to your estimate!`
+            const mockup = btn.getAttribute('data-mockup');
+            const view = btn.getAttribute('data-view');
+            const parent = btn.closest('.mockup-view-toggle');
+            parent.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const canvas = document.getElementById(`canvas-${mockup}`);
+            if (canvas) {
+                if (view === 'mobile') {
+                    canvas.style.maxWidth = '210px';
+                    canvas.style.margin = '0 auto';
+                    canvas.style.border = '2px solid rgba(255,255,255,0.2)';
+                    canvas.style.borderRadius = '24px';
+                } else {
+                    canvas.style.maxWidth = '100%';
+                    canvas.style.margin = '0';
+                    canvas.style.border = 'none';
+                    canvas.style.borderRadius = '0';
+                }
+            }
+        });
+    });
+
+    // Portfolio "Inquire About This Style"
+    document.querySelectorAll('[data-prefill-style]').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const styleName = btn.getAttribute('data-prefill-style');
+            const refInput = document.getElementById('reference-url');
+            if (refInput) refInput.value = `Inspiration Style: ${styleName}`;
+
+            const pricingOverlay = document.getElementById('pricing');
+            const portfolioOverlay = document.getElementById('portfolio');
+            if (portfolioOverlay) {
+                portfolioOverlay.classList.remove('open');
+                portfolioOverlay.setAttribute('aria-hidden', 'true');
+            }
+            if (pricingOverlay) {
+                pricingOverlay.classList.add('open');
+                pricingOverlay.setAttribute('aria-hidden', 'false');
+            }
+            document.getElementById('custom-builder')?.scrollIntoView({ behavior: 'smooth' });
+            updatePriceEstimator();
+        });
+    });
+
+    // Live form inputs listener
+    ['client-name', 'client-email', 'brand-name', 'reference-url'].forEach(id => {
+        document.getElementById(id)?.addEventListener('input', updatePriceEstimator);
+    });
+
+    document.querySelectorAll('input[name="website-type"], input[name="page-count"], input[name="animation-level"], input[name="budget-range"], input[name="delivery-timeline"]').forEach(el => {
+        el.addEventListener('change', updatePriceEstimator);
+    });
+
+    // Reset Form button
+    document.getElementById('btn-reset-form')?.addEventListener('click', () => {
+        if (confirm('Reset custom website order planner to defaults?')) {
+            document.getElementById('custom-project-form').reset();
+            requiredFeaturesCatalog.forEach(f => {
+                f.checked = (f.id === 'f-contact-form' || f.id === 'f-seo' || f.id === 'f-speed');
             });
-        });
+            document.querySelectorAll('.feature-card[data-feat-id]').forEach(card => {
+                const featId = card.getAttribute('data-feat-id');
+                const feat = requiredFeaturesCatalog.find(f => f.id === featId);
+                if (feat) {
+                    card.classList.toggle('selected', feat.checked);
+                    card.setAttribute('aria-checked', feat.checked ? 'true' : 'false');
+                }
+            });
+            selectedAddons.clear();
+            document.querySelectorAll('.addon-toggle-btn').forEach(btn => {
+                btn.classList.remove('added');
+                btn.textContent = '+ Add to Quote';
+            });
+            updatePriceEstimator();
+        }
     });
 
-    document.querySelectorAll('[data-preview-proj]').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const proj = btn.getAttribute('data-preview-proj');
-            alert(`Demo preview for "${proj}" is running live in the background texture of this page.`);
-        });
+    // Edit choices button
+    document.getElementById('btn-edit-form')?.addEventListener('click', () => {
+        document.getElementById('step-contact')?.scrollIntoView({ behavior: 'smooth' });
+        document.getElementById('client-name')?.focus();
     });
 
-    // Live form inputs trigger summary calculation
-    const plannerForm = document.getElementById('custom-project-form');
-    if (plannerForm) {
-        plannerForm.addEventListener('input', updatePriceEstimator);
-        plannerForm.addEventListener('change', updatePriceEstimator);
-        plannerForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            handlePlannerSubmit();
-        });
-    }
-
-    // Reset Planner
-    document.getElementById('btn-reset-planner')?.addEventListener('click', () => {
-        plannerForm.reset();
-        selectedAddons.clear();
-        document.querySelectorAll('.addon-toggle-btn').forEach(btn => {
-            btn.classList.remove('added');
-            btn.textContent = '+ Add to Quote';
-        });
-        requiredFeaturesCatalog.forEach(f => {
-            f.checked = (f.id === 'f-contact-form' || f.id === 'f-seo' || f.id === 'f-speed');
-        });
-        document.querySelectorAll('.feature-card').forEach(card => {
-            const id = card.getAttribute('data-feat-id');
-            const feat = requiredFeaturesCatalog.find(f => f.id === id);
-            card.classList.toggle('selected', feat ? feat.checked : false);
-        });
-        updatePriceEstimator();
+    // Form Submission
+    document.getElementById('custom-project-form')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        handlePlannerSubmit();
     });
 }
 
-// 8. DYNAMIC PRICE & SUMMARY CALCULATOR
+// 8. DYNAMIC PRICE ESTIMATOR CALCULATION
 function updatePriceEstimator() {
     const name = document.getElementById('client-name')?.value.trim();
     const email = document.getElementById('client-email')?.value.trim();
@@ -3147,7 +3579,7 @@ function handlePlannerSubmit() {
         return f.infra ? `${f.name} (Note: ${f.note})` : f.name;
     });
 
-    const estText = document.getElementById('sum-price-display')?.innerText.replace(/\n/g, ' ') || '$129 – $175 USD';
+    const estText = document.getElementById('sum-price-display')?.innerText.replace(/\n/g, ' ') || '$450 – $890 USD';
 
     const subject = `New Website Project Inquiry - ${brand !== 'N/A' ? brand : name}`;
     const body = `Hello DigiFront Door Team,
@@ -3177,45 +3609,58 @@ I have customized a project specification on your website and would like to requ
 ${selectedFeatures.length ? selectedFeatures.map(f => `• ${f}`).join('\n') : '• Essential standard features only'}
 
 ==================================================
-4. INDICATIVE ESTIMATE
-==================================================
-• Estimated Development Cost: ${estText}
-• Note: Indicative estimate only. Final cost confirmed upon detailed specification review.
-
-==================================================
-5. ADDITIONAL REQUIREMENTS
+4. ADDITIONAL REQUIREMENTS
 ==================================================
 ${additional}
 
 ==================================================
-Looking forward to discussing this project and receiving your formal proposal!
+5. ESTIMATED INVESTMENT
+==================================================
+• Estimated Development Cost: ${estText}
+• Optional Maintenance Care: From $19–$99/month (optional)
+(Note: Amount is an estimate. Domains, hosting, and paid APIs billed separately.)
+
+Looking forward to speaking with you!
 
 Best regards,
-${name}`;
+${name}
+${email}`;
 
     openEmailInquiry({ subject, body });
 }
 
-// 10. GMAIL & MAILTO DISPATCHER
-function openEmailInquiry({ subject, body }) {
-    const encSubject = encodeURIComponent(subject);
-    const encBody = encodeURIComponent(body);
-
-    const gmailWebUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(CONTACT_EMAIL)}&su=${encSubject}&body=${encBody}`;
-    const mailtoUrl = `mailto:${CONTACT_EMAIL}?subject=${encSubject}&body=${encBody}`;
-
-    const newWindow = window.open(gmailWebUrl, '_blank', 'noopener,noreferrer');
-
-    if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
-        window.location.href = mailtoUrl;
+// 10. SCROLL ANIMATIONS OBSERVER
+function initScrollAnimations(rootElement = document) {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        rootElement.querySelectorAll('.scroll-reveal').forEach(el => el.classList.add('revealed'));
+        return;
     }
+
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                obs.unobserve(entry.target);
+            }
+        });
+    }, {
+        root: rootElement === document ? null : rootElement,
+        threshold: 0.1,
+        rootMargin: '0px 0px -40px 0px'
+    });
+
+    rootElement.querySelectorAll('.scroll-reveal:not(.revealed)').forEach((el, index) => {
+        el.style.transitionDelay = `${(index % 4) * 0.08}s`;
+        observer.observe(el);
+    });
 }
 
-// INITIALIZATION
+// 11. INITIALIZE ALL COMPONENTS
 document.addEventListener('DOMContentLoaded', () => {
     renderPricingSection();
     setupInteractions();
     updatePriceEstimator();
+    initScrollAnimations();
 });
 </script>
 </body>
