@@ -456,7 +456,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     width: 100vw;
     height: 90vh;
     overflow: hidden;
-    z-index: -1;
+    z-index: 0;
+    pointer-events: none;
     background: radial-gradient(circle at 50% 80%, rgba(20, 45, 30, 0.45) 0%, rgba(0, 0, 0, 1) 75%);
 }
 
@@ -466,6 +467,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     object-fit: cover;
     display: block;
     transform: translateY(0%);
+    opacity: 1;
     transition: opacity 0.6s ease;
 }
 
@@ -1810,11 +1812,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     </div>
 
     <h1 class="hero-title">Crafting Bespoke Websites <br> with Fluid Kinetic Motion</h1>
-
-    <button class="hero-btn scroll-reveal" id="hero-cta-btn" aria-label="Request a custom website quote">
-        <span class="btn-text">Request a Quote</span>
-        <span class="blinking-dot"></span>
-    </button>
 </main>
 
 <!-- CENTER FOOTER BLOCK -->
@@ -1861,7 +1858,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 <!-- BACKGROUND FLOWER VIDEO -->
 <div class="video-container">
-    <video autoplay muted loop playsinline preload="auto" id="bg-video">
+    <video autoplay muted loop playsinline preload="auto" id="bg-video" src="https://api.getlayers.ai/storage/v1/object/public/public/assets/loopstack-f8c64439bf/flower.mp4">
         <source src="https://api.getlayers.ai/storage/v1/object/public/public/assets/loopstack-f8c64439bf/flower.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
@@ -2168,13 +2165,13 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
                         <div class="summary-estimate-box">
                             <div class="estimate-label-wrap">
-                                <h4>Indicative Development Cost: <span id="est-delivery-badge" style="color: var(--neon-green); font-size: 0.95rem; font-weight: 400; margin-left: 0.5rem;">(Est. Delivery: 10–14 days)</span></h4>
+                                <h4>Indicative Development Cost: <span id="est-delivery-badge" style="color: var(--neon-green); font-size: 0.95rem; font-weight: 400; margin-left: 0.5rem;">(Est. Delivery: 5–7 business days)</span></h4>
                                 <p>Configurable estimate based on standard options. Final quote confirmed after reviewing project brief. Third-party domains, hosting, and paid APIs billed separately.</p>
-                                <p style="color: rgba(255,255,255,0.8); margin-top: 0.4rem;"><strong>Optional Ongoing Maintenance:</strong> From $19–$99/month (shown separately, optional).</p>
+                                <p style="color: rgba(255,255,255,0.8); margin-top: 0.4rem;"><strong>Optional Ongoing Maintenance:</strong> From $15–$79/month (shown separately, optional).</p>
                             </div>
                             <div class="estimate-price-display" id="sum-price-display">
-                                $450 – $890
-                                <small>USD (Estimated Range)</small>
+                                $129 – $175
+                                <small>USD (Estimated Starting Range)</small>
                             </div>
                         </div>
 
@@ -2436,7 +2433,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>You can click 'Request a Quote' on the hero section or use our Custom Website Project Builder below. Simply select your website type, page count, animation level, and required features, and the system will generate a pre-filled project brief ready to send directly to <strong>digifrontdoor7@gmail.com</strong>.</p>
+                        <p>You can use our Custom Website Project Builder in the Pricing section or choose any of our transparent development packages above. Simply select your website type, page count, animation level, and required features, and the system will generate a pre-filled project brief ready to send directly to <strong>digifrontdoor7@gmail.com</strong>.</p>
                     </div>
                 </div>
             </div>
@@ -2566,30 +2563,57 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 // CONFIGURATION & CONSTANTS
 const CONTACT_EMAIL = 'digifrontdoor7@gmail.com';
 
-// 1. VIDEO PLAYBACK & ERROR FALLBACK
+// 1. VIDEO PLAYBACK & ROBUST INITIALIZATION
 (function initVideo() {
     const v = document.getElementById('bg-video');
     const container = document.querySelector('.video-container');
     if (!v) return;
+
+    // Enforce muted and playsinline to satisfy browser autoplay policies
     v.muted = true;
+    v.defaultMuted = true;
+    v.setAttribute('muted', '');
+    v.setAttribute('playsinline', '');
+
+    // Respect reduced-motion preferences
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        v.pause();
+        return;
+    }
 
     const tryPlay = () => {
         const p = v.play();
-        if (p && p.catch) p.catch(() => {});
+        if (p && typeof p.catch === 'function') {
+            p.catch(() => {
+                // Initial autoplay suspended; will start upon first user interaction
+            });
+        }
     };
-    tryPlay();
-    v.addEventListener('canplay', tryPlay);
 
+    if (v.readyState >= 2) {
+        tryPlay();
+    } else {
+        v.addEventListener('loadeddata', tryPlay, { once: true });
+        v.addEventListener('canplay', tryPlay, { once: true });
+    }
+
+    // Passive user gesture listener fallback for strict mobile browser policies
+    const gestureEvents = ['click', 'touchstart', 'scroll', 'keydown'];
+    const onGesture = () => {
+        tryPlay();
+        gestureEvents.forEach(evt => document.removeEventListener(evt, onGesture));
+    };
+    gestureEvents.forEach(evt => document.addEventListener(evt, onGesture, { passive: true }));
+
+    // Fallback background only on fatal source loading failure
     v.addEventListener('error', () => {
-        v.style.opacity = '0';
-        if (container) {
-            container.style.background = 'radial-gradient(circle at 50% 80%, rgba(20, 45, 30, 0.6) 0%, rgba(0, 0, 0, 1) 80%)';
+        if (v.error && v.networkState === HTMLMediaElement.NETWORK_NO_SOURCE) {
+            v.style.display = 'none';
+            if (container) {
+                container.style.background = 'radial-gradient(circle at 50% 80%, rgba(20, 45, 30, 0.6) 0%, rgba(0, 0, 0, 1) 80%)';
+            }
         }
     });
-
-    ['click', 'touchstart', 'mousemove', 'keydown'].forEach(ev =>
-        document.addEventListener(ev, tryPlay, { once: true, passive: true })
-    );
 })();
 
 // 2. HERO & LOGO WORDMARK LETTER-REVEAL ANIMATIONS
@@ -2884,34 +2908,34 @@ document.getElementById('modal-fallback-close')?.addEventListener('click', () =>
 const PRICING_CONFIG = {
     contactEmail: CONTACT_EMAIL,
     baseCostByType: {
-        'Business website': 450,
-        'Portfolio website': 390,
-        'Landing page': 290,
-        'Ecommerce website': 750,
-        'Restaurant website': 420,
-        'Agency website': 550,
-        'Other': 400
+        'Landing page': 69,
+        'Business website': 129,
+        'Portfolio website': 129,
+        'Restaurant website': 129,
+        'Agency website': 249,
+        'Ecommerce website': 349,
+        'Other': 129
     },
-    costPerPage: 75,
+    costPerPage: 30,
     animationCosts: {
         'Basic': 0,
-        'Advanced': 180,
-        'Cinematic': 490
+        'Advanced': 75,
+        'Cinematic': 180
     },
     featureCosts: {
-        'Contact form': 30,
-        'WhatsApp integration': 40,
-        'Chatbot': 150,
-        'Appointment booking': 140,
-        'Ecommerce functionality': 350,
-        'Payment integration': 180,
-        'Image gallery': 50,
-        'Blog': 90,
-        'Newsletter signup': 45,
-        'Social media integration': 30,
-        'SEO setup': 60,
-        'Website speed optimization': 80,
-        'Custom interactive features': 200
+        'Contact form': 0,
+        'WhatsApp integration': 15,
+        'Chatbot': 60,
+        'Appointment booking': 45,
+        'Ecommerce functionality': 120,
+        'Payment integration': 60,
+        'Image gallery': 25,
+        'Blog': 35,
+        'Newsletter signup': 20,
+        'Social media integration': 10,
+        'SEO setup': 25,
+        'Website speed optimization': 30,
+        'Custom interactive features': 60
     }
 };
 
@@ -2919,69 +2943,172 @@ const devPackages = [
     {
         level: 'Basic animation',
         name: 'Starter Website',
-        price: '$149–$299',
-        minPrice: 149,
-        maxPrice: 299,
-        pages: '1 page (Single-page)',
+        price: '$69',
+        minPrice: 69,
+        maxPrice: 69,
+        pages: '1–3 pages',
+        pageRadioValue: '1 page (Single-page)',
+        typeValue: 'Landing page',
+        animTier: 'Basic',
+        delivery: '3–5 business days',
+        revisions: '2 revision rounds',
+        items: [
+            '1–3 pages (Clean, responsive layout)',
+            'Smooth hover states & subtle transitions',
+            'Essential contact inquiry form & social links',
+            'Mobile & tablet optimization',
+            'Fast page load performance',
+            '2 revision rounds included',
+            'Starting price (custom features quoted separately)'
+        ]
+    },
+    {
+        level: 'Business Standard',
+        name: 'Basic Business Website',
+        price: '$129',
+        minPrice: 129,
+        maxPrice: 129,
+        pages: '3–5 pages',
+        pageRadioValue: '2–5 pages',
+        typeValue: 'Business website',
         animTier: 'Basic',
         delivery: '5–7 business days',
         revisions: '2 revision rounds',
-        items: ['3–5 pages', 'Smooth scrolling and hover effects', 'Basic fade-in animations', 'Responsive mobile-friendly design', 'Contact form and WhatsApp button', 'Basic SEO setup', '2 revision rounds included']
+        items: [
+            '3–5 custom responsive pages',
+            'Direct WhatsApp click-to-chat integration',
+            'Validated contact inquiry form',
+            'Clean entrance animations & section fades',
+            'Basic on-page SEO meta setup',
+            '2 revision rounds included',
+            'Starting price (custom scope quoted separately)'
+        ]
     },
     {
-        level: 'Moderate animation',
+        level: 'Interactive Motion',
         name: 'Professional Website',
-        price: '$350–$799',
-        minPrice: 350,
-        maxPrice: 799,
+        price: '$249',
+        minPrice: 249,
+        maxPrice: 249,
         featured: true,
-        pages: '2–5 pages',
+        pages: '5–8 pages',
+        pageRadioValue: '2–5 pages',
+        typeValue: 'Business website',
+        animTier: 'Advanced',
+        delivery: '7–10 business days',
+        revisions: '3 revision rounds',
+        items: [
+            '5–8 bespoke responsive pages',
+            'Scroll-triggered reveal animations & counters',
+            'Interactive cards, tabs, and galleries',
+            'Custom brand typography & dark/light aesthetic',
+            'Complete mobile & speed optimization',
+            'Basic SEO & search indexing readiness',
+            '3 revision rounds included',
+            'Starting price (extended features quoted separately)'
+        ]
+    },
+    {
+        level: 'Cinematic Motion',
+        name: 'Premium Animated Website',
+        price: '$449',
+        minPrice: 449,
+        maxPrice: 449,
+        pages: '6–10 pages',
+        pageRadioValue: '6–10 pages',
+        typeValue: 'Agency website',
         animTier: 'Advanced',
         delivery: '10–14 business days',
-        revisions: '3 revision rounds',
-        items: ['5–8 pages', 'Scroll-triggered reveal animations', 'Animated text, counters, and cards', 'Custom branding', 'Responsive layouts', 'Basic SEO optimization', '3 revision rounds included']
+        revisions: '4 revision rounds',
+        items: [
+            '6–10 high-impact custom pages',
+            'Advanced kinetic typography & fluid parallax',
+            'Bespoke interactive UI menus & transitions',
+            'Custom kinetic sequence design',
+            'High-performance asset tuning (90+ mobile score)',
+            '4 revision rounds included',
+            'Starting price (specialized animations quoted separately)'
+        ]
     },
     {
-        level: 'Advanced animation',
-        name: 'Premium Website',
-        price: '$800–$1,799',
-        minPrice: 800,
-        maxPrice: 1799,
-        pages: '6–10 pages',
+        level: 'Online Store & Catalog',
+        name: 'Ecommerce Website',
+        price: 'Starting at $349',
+        minPrice: 349,
+        maxPrice: 349,
+        pages: 'Custom Catalog / Storefront',
+        pageRadioValue: '2–5 pages',
+        typeValue: 'Ecommerce website',
         animTier: 'Advanced',
         delivery: '2–3 weeks',
-        revisions: '4 revision rounds',
-        items: ['6–10 pages', 'Cinematic transitions and parallax effects', 'Interactive galleries and menus', 'Custom animation sequences', 'Advanced visual effects', 'Performance optimization', '4 revision rounds included']
-    },
-    {
-        level: 'Cinematic / 3D animation',
-        name: 'Elite Website',
-        price: '$2,000–$5,000+',
-        minPrice: 2000,
-        maxPrice: 5000,
-        pages: '10+ pages (Enterprise)',
-        animTier: 'Cinematic',
-        delivery: '3–5 weeks',
-        revisions: 'Comprehensive revision rounds',
-        items: ['Custom 3D and WebGL experiences', 'Immersive scrolling interactions', 'Complex animations and transitions', 'Interactive storytelling', 'Advanced visual effects', 'Performance tuning for demanding visuals']
+        revisions: '3 revision rounds',
+        items: [
+            'Product catalog setup & item detail pages',
+            'Shopping cart & WhatsApp / online checkout',
+            'Payment gateway integration (Stripe, PayPal, etc.)',
+            'Inventory / order inquiry management setup',
+            'Mobile-first responsive checkout experience',
+            '3 revision rounds included',
+            'Starting price (large catalogs & custom APIs quoted separately)'
+        ]
     }
 ];
 
 const carePackages = [
-    { name: 'Basic Care', price: '$19', items: ['Website uptime checks', 'Backups where supported', 'Minor technical fixes', 'Basic website health checks'] },
-    { name: 'Standard Care', price: '$49', items: ['Everything in Basic Care', 'Small content updates', 'Broken-link checks', 'Monthly performance review', 'Minor layout fixes'] },
-    { name: 'Premium Care', price: '$99', items: ['Everything in Standard Care', 'More frequent updates', 'Animation and browser compatibility checks', 'Priority technical support', 'Regular performance optimization'] },
-    { name: 'Elite Care', price: '$199+', items: ['Advanced troubleshooting', 'Custom technical support', 'Complex animation diagnostics', 'Priority assistance', 'Scheduled optimization'] }
+    {
+        name: 'Basic Care',
+        price: '$15',
+        items: [
+            'Website uptime monitoring',
+            'Cloud backups where supported',
+            'Basic security & health checks',
+            'Minor text/link fixes',
+            'Affordable monthly maintenance'
+        ]
+    },
+    {
+        name: 'Standard Care',
+        price: '$39',
+        items: [
+            'Everything in Basic Care',
+            'Content & image updates (up to 2 hrs/mo)',
+            'Broken-link & mobile compatibility checks',
+            'Monthly performance review',
+            'Priority email response'
+        ]
+    },
+    {
+        name: 'Priority Care',
+        price: '$79',
+        items: [
+            'Everything in Standard Care',
+            'Animation & interactive feature checkups',
+            'Emergency bug fixes & uptime priority',
+            'Quarterly SEO audit & speed tune-up',
+            'Direct developer contact'
+        ]
+    },
+    {
+        name: 'Elite Care',
+        price: '$149+',
+        items: [
+            'Advanced troubleshooting & dedicated developer hours',
+            'Custom technical support & integrations',
+            'Complex animation & WebGL diagnostics',
+            '24/7 priority emergency response',
+            'Continuous performance & conversion optimization'
+        ]
+    }
 ];
 
 const addonsList = [
-    { id: 'addon-std-page', name: 'Additional standard page', price: '$30–$75', min: 30, max: 75 },
-    { id: 'addon-anim-page', name: 'Additional animated page', price: '$75–$150', min: 75, max: 150 },
-    { id: 'addon-hero', name: 'Advanced hero animation', price: '$100–$250', min: 100, max: 250 },
-    { id: 'addon-3d', name: 'Custom 3D section', price: '$250–$800+', min: 250, max: 800 },
-    { id: 'addon-booking', name: 'Booking system integration', price: '$150–$500', min: 150, max: 500 },
-    { id: 'addon-social-auto', name: 'WhatsApp / Instagram automation setup', price: '$100–$400', min: 100, max: 400 },
-    { id: 'addon-ecom', name: 'E-commerce functionality', price: '$400–$1,500+', min: 400, max: 1500 }
+    { id: 'addon-std-page', name: 'Additional standard page', price: '$20–$40', min: 20, max: 40 },
+    { id: 'addon-anim-page', name: 'Additional animated page', price: '$40–$75', min: 40, max: 75 },
+    { id: 'addon-hero', name: 'Advanced hero animation', price: '$50–$120', min: 50, max: 120 },
+    { id: 'addon-3d', name: 'Custom 3D section', price: '$150–$350+', min: 150, max: 350 },
+    { id: 'addon-booking', name: 'Booking system integration', price: '$60–$150', min: 60, max: 150 },
+    { id: 'addon-social-auto', name: 'WhatsApp / Social automation setup', price: '$40–$120', min: 40, max: 120 },
+    { id: 'addon-ecom', name: 'E-commerce functionality', price: '$150–$450+', min: 150, max: 450 }
 ];
 
 const requiredFeaturesCatalog = [
@@ -3104,7 +3231,13 @@ function setupInteractions() {
             const pkg = devPackages.find(p => p.name === planName);
             if (!pkg) return;
 
-            const pageRadio = document.querySelector(`input[name="page-count"][value="${pkg.pages}"]`);
+            if (pkg.typeValue) {
+                const typeRadio = document.querySelector(`input[name="website-type"][value="${pkg.typeValue}"]`);
+                if (typeRadio) typeRadio.checked = true;
+            }
+
+            const targetPage = pkg.pageRadioValue || pkg.pages;
+            const pageRadio = document.querySelector(`input[name="page-count"][value="${targetPage}"]`);
             if (pageRadio) pageRadio.checked = true;
 
             const animRadio = document.querySelector(`input[name="animation-level"][value="${pkg.animTier}"]`);
@@ -3333,21 +3466,35 @@ function updatePriceEstimator() {
         sumFeatures.textContent = selectedFeatures.length ? selectedFeatures.map(f => f.name).join(', ') : 'None selected';
     }
 
-    // Configurable Pricing Formula
-    let base = PRICING_CONFIG.baseCostByType[type] || 450;
+    // Configurable Pricing Formula aligned with affordable starting rates ($69, $129, $249, $449, $349)
+    let base = PRICING_CONFIG.baseCostByType[type] || 129;
 
-    let pageMultiplier = 350;
-    let estDays = '10–14 days';
-    if (pages.includes('1 page')) { pageMultiplier = 149; estDays = '5–7 business days'; }
-    else if (pages.includes('2–5 pages')) { pageMultiplier = 390; estDays = '10–14 business days'; }
-    else if (pages.includes('6–10 pages')) { pageMultiplier = 750; estDays = '2–3 weeks'; }
-    else if (pages.includes('10+ pages')) { pageMultiplier = 1800; estDays = '3–5 weeks'; }
+    let pageMultiplier = 129;
+    let estDays = '5–7 business days';
+    if (pages.includes('1 page')) {
+        pageMultiplier = (type === 'Landing page') ? 69 : 89;
+        estDays = '3–5 business days';
+    } else if (pages.includes('2–5 pages')) {
+        pageMultiplier = Math.max(base, 129);
+        estDays = '5–7 business days';
+    } else if (pages.includes('6–10 pages')) {
+        pageMultiplier = Math.max(base + 100, 249);
+        estDays = '7–10 business days';
+    } else if (pages.includes('10+ pages')) {
+        pageMultiplier = Math.max(base + 280, 449);
+        estDays = '2–3 weeks';
+    }
+
+    if (type === 'Ecommerce website' && pageMultiplier < 349) {
+        pageMultiplier = 349;
+        estDays = '2–3 weeks';
+    }
 
     let animExtra = PRICING_CONFIG.animationCosts[anim] || 0;
 
     let featuresExtra = 0;
     selectedFeatures.forEach(f => {
-        featuresExtra += (PRICING_CONFIG.featureCosts[f.name] || 50);
+        featuresExtra += (PRICING_CONFIG.featureCosts[f.name] || 25);
     });
 
     let addonsExtra = 0;
@@ -3357,7 +3504,7 @@ function updatePriceEstimator() {
     });
 
     let calculatedMin = pageMultiplier + animExtra + featuresExtra + addonsExtra;
-    let calculatedMax = Math.round(calculatedMin * 1.45);
+    let calculatedMax = Math.round(calculatedMin * 1.35);
 
     const priceDisplay = document.getElementById('sum-price-display');
     const deliveryBadge = document.getElementById('est-delivery-badge');
@@ -3367,7 +3514,7 @@ function updatePriceEstimator() {
         if (pages.includes('10+ pages') || budget === 'Custom quote required') {
             priceDisplay.innerHTML = `Custom Quote<small>Detailed scope required</small>`;
         } else {
-            priceDisplay.innerHTML = `$${calculatedMin.toLocaleString()} – $${calculatedMax.toLocaleString()}<small>USD (Estimated Range)</small>`;
+            priceDisplay.innerHTML = `$${calculatedMin.toLocaleString()} – $${calculatedMax.toLocaleString()}<small>USD (Estimated Starting Range)</small>`;
         }
     }
 }
