@@ -3,12 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>DigiFront Door — Bespoke Websites & Kinetic Interaction Design</title>
-<meta name="description" content="DigiFront Door crafts high-end websites, interactive digital front doors, and kinetic web experiences with fluid animations and conversion-focused architecture.">
-<meta property="og:title" content="DigiFront Door — Bespoke Websites & Kinetic Interaction Design">
-<meta property="og:description" content="Transform your brand with bespoke web experiences, fluid physics animations, and conversion-focused web architecture.">
-<meta property="og:type" content="website">
-
+<title>DigiFront Door</title>
+<meta name="description" content="DigiFront Door crafts bespoke websites with fluid kinetic motion, custom interaction architecture, and conversion-focused engineering.">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 @import url('https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap');
@@ -32,26 +28,16 @@
     --text-subtle: rgba(255, 255, 255, 0.45);
 }
 
-html, body {
-    width: 100%;
-    min-height: 100vh;
+body {
     background-color: var(--bg-black);
     color: var(--text-white);
     font-family: 'Outfit', sans-serif;
+    min-height: 100vh;
     overflow-x: hidden;
     position: relative;
 }
 
-/* Ensure default accessibility */
-a, button, input, select, textarea {
-    font-family: inherit;
-}
-a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
-    outline: 2px solid var(--neon-green);
-    outline-offset: 3px;
-}
-
-/* 1. TOP GRADIENT OVERLAY */
+/* 1. TOP GRADIENT (LOOPSTACK ORIGINAL) */
 #top-gradient {
     position: fixed;
     top: -30vh;
@@ -63,7 +49,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     pointer-events: none;
 }
 
-/* 2. MAIN HERO SECTION */
+/* 2. HERO SECTION (LOOPSTACK ORIGINAL DESIGN) */
 .hero-content {
     position: relative;
     z-index: 2;
@@ -71,73 +57,32 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding-top: clamp(4vh, 7vh, 9vh);
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-top: 6vh;
     width: 95%;
     max-width: 1100px;
     margin: 0 auto;
 }
 
-.hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    font-family: 'General Sans', sans-serif;
-    font-size: clamp(0.75rem, 2vw, 0.85rem);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--neon-green);
-    background: rgba(57, 255, 20, 0.08);
-    border: 1px solid rgba(57, 255, 20, 0.25);
-    padding: 0.35rem 1rem;
-    border-radius: 9999px;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 0 20px rgba(57, 255, 20, 0.1);
-}
-
 .hero-title {
     font-family: 'Playfair Display', Georgia, serif;
-    font-size: clamp(2rem, 5.2vw, 3.4rem);
+    font-size: 2.8rem;
     font-weight: 400;
     color: #ffffff;
     line-height: 1.15;
-    margin-bottom: clamp(1.4rem, 3vh, 2.2rem);
+    margin-bottom: 2.2rem;
     letter-spacing: -0.015em;
     text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
 }
 
-.hero-title .word-wrapper {
-    display: inline-block;
-    overflow: hidden;
-    vertical-align: bottom;
-    padding-bottom: 0.15em;
-    margin-bottom: -0.15em;
-}
-
-.hero-title .word-inner {
-    display: inline-block;
-    opacity: 0;
-    transform: translateY(105%);
-    filter: blur(20px);
-    animation: word-reveal-mask 1.3s cubic-bezier(0.05, 0.9, 0.1, 1) forwards;
-}
-
-@keyframes word-reveal-mask {
-    0% { opacity: 0; transform: translateY(105%); filter: blur(20px); }
-    30% { opacity: 1; }
-    100% { opacity: 1; transform: translateY(0); filter: blur(0); }
-}
-
 .hero-btn {
     font-family: 'Outfit', sans-serif;
-    font-size: clamp(1rem, 2vw, 1.1rem);
+    font-size: 1.1rem;
     font-weight: 500;
     letter-spacing: 0.02em;
     color: #ffffff;
     background-color: #000000;
     border: 1px solid rgba(255, 255, 255, 0.18);
-    padding: clamp(1rem, 2vh, 1.3rem) clamp(1.8rem, 4vw, 2.6rem);
+    padding: 1.3rem 2.5rem;
     border-radius: 9999px;
     display: inline-flex;
     align-items: center;
@@ -147,7 +92,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
     outline: none;
     text-decoration: none;
-    min-height: 48px;
 }
 
 .hero-btn:hover {
@@ -170,7 +114,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     position: relative;
     display: inline-block;
     animation: pulse-glow 2s infinite ease-in-out;
-    flex: none;
 }
 
 .blinking-dot::after {
@@ -183,29 +126,34 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 }
 
 @keyframes pulse-glow {
-    0%, 100% { opacity: 0.5; transform: scale(0.85); box-shadow: 0 0 4px rgba(57, 255, 20, 0.3); }
-    50% { opacity: 1; transform: scale(1.1); box-shadow: 0 0 12px rgba(57, 255, 20, 0.9); }
+    0%, 100% {
+        opacity: 0.5;
+        transform: scale(0.85);
+        box-shadow: 0 0 4px rgba(57, 255, 20, 0.3);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+        box-shadow: 0 0 12px rgba(57, 255, 20, 0.9);
+    }
 }
 
 @keyframes wave-expand {
-    0% { transform: scale(0.6); opacity: 0.9; }
+    0%   { transform: scale(0.6); opacity: 0.9; }
     100% { transform: scale(2.3); opacity: 0; }
 }
 
-/* 3. CENTER FOOTER CONTAINER */
+/* 3. CENTER FOOTER (LOOPSTACK ORIGINAL DESIGN) */
 .footer-container {
     position: fixed;
     top: 50vh;
     left: 20px;
     right: 20px;
     width: calc(100vw - 40px);
-    max-width: 1300px;
-    margin: 0 auto;
     transform: translateY(-50%);
     z-index: 3;
     display: flex;
     flex-direction: column;
-    pointer-events: auto;
 }
 
 .footer-top {
@@ -218,7 +166,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 .footer-title {
     font-family: 'General Sans', -apple-system, sans-serif;
-    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    font-size: 1.4rem;
     font-weight: 400;
     color: #ffffff;
     letter-spacing: -0.015em;
@@ -233,7 +181,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     border: none;
     height: 1px;
     background-color: rgba(255, 255, 255, 0.2);
-    margin: clamp(1rem, 2vh, 1.6rem) 0;
+    margin: 1.6rem 0;
     width: 100%;
 }
 
@@ -243,7 +191,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     align-items: center;
     width: 100%;
     padding: 0 5px;
-    gap: 1rem;
 }
 
 .footer-socials {
@@ -260,20 +207,16 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    min-width: 44px;
-    min-height: 44px;
-    border-radius: 50%;
 }
 
 .social-icon:hover {
     color: #ffffff;
     transform: translateY(-2px);
-    background: rgba(255, 255, 255, 0.05);
 }
 
 .footer-links {
     display: flex;
-    gap: clamp(1rem, 2.2vw, 2.4rem);
+    gap: 2.2rem;
     justify-content: center;
     align-items: center;
     flex: 2;
@@ -282,38 +225,201 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 .footer-link {
     font-family: 'Outfit', sans-serif;
-    font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+    font-size: 0.95rem;
     font-weight: 400;
     color: #ffffff;
     text-decoration: none;
     letter-spacing: 0.03em;
     transition: opacity 0.3s ease, transform 0.3s ease, color 0.3s ease;
-    background: none;
-    border: none;
     cursor: pointer;
-    padding: 0.5rem 0.2rem;
-    min-height: 44px;
-    display: inline-flex;
-    align-items: center;
 }
 
 .footer-link:hover {
+    opacity: 0.85;
     color: var(--neon-green);
     transform: translateY(-1px);
 }
 
 .footer-copyright {
     font-family: 'Outfit', sans-serif;
-    font-size: clamp(0.8rem, 1.4vw, 0.95rem);
+    font-size: 0.95rem;
     font-weight: 400;
-    color: var(--text-subtle);
+    color: rgba(255, 255, 255, 0.45);
     text-align: right;
     flex: 1;
     letter-spacing: 0.02em;
     white-space: nowrap;
 }
 
-/* MOBILE NAV TOGGLE (HAMBURGER) */
+/* 4. GIANT WORDMARK (RENAMED TO DIGIFRONT DOOR) */
+.footer-logo-wrap {
+    position: fixed;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+    margin: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.footer-logo-text {
+    font-family: 'General Sans', -apple-system, sans-serif;
+    font-size: clamp(3rem, 13.5vw, 14.5vw);
+    font-weight: 400;
+    color: #ffffff;
+    letter-spacing: -0.03em;
+    margin-right: -0.03em;
+    transform: translateX(-10px);
+    line-height: 0.8;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    text-align: center;
+    width: 100%;
+    pointer-events: none;
+    opacity: 0.95;
+    text-shadow: none;
+    white-space: nowrap;
+}
+
+/* 5. BACKGROUND VIDEO (LOOPSTACK ORIGINAL) */
+.video-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 90vh;
+    overflow: hidden;
+    z-index: -1;
+    background: radial-gradient(circle at 50% 80%, rgba(20, 45, 30, 0.45) 0%, rgba(0, 0, 0, 1) 75%);
+}
+
+#bg-video {
+    width: 100%;
+    height: 110%;
+    object-fit: cover;
+    display: block;
+    transform: translateY(0%);
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+/* 6. CUSTOM LERP CURSOR (LOOPSTACK ORIGINAL) */
+.glass-cursor-card {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+    pointer-events: none;
+    padding: 0.75rem 1.5rem;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 9999px;
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    will-change: transform, opacity;
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                background 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-cursor-card.active { opacity: 1; }
+
+.cursor-card-text {
+    font-family: 'General Sans', -apple-system, sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--neon-green);
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-shadow: 0 0 8px rgba(57, 255, 20, 0.45);
+}
+
+.cursor-card-text .text-white {
+    color: #ffffff;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+}
+
+.cursor-ring-outline {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 48px;
+    height: 48px;
+    border: 1.5px solid rgba(255, 255, 255, 0.45);
+    border-radius: 50%;
+    z-index: 99998;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    will-change: transform, opacity;
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.4s ease;
+}
+
+.cursor-ring-outline.active { opacity: 1; }
+.cursor-ring-outline.expanded {
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* REVEAL: HEADLINE WORDS */
+.hero-title .word-wrapper {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+    padding-bottom: 0.15em;
+    margin-bottom: -0.15em;
+}
+
+.hero-title .word-inner {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(105%);
+    filter: blur(20px);
+    animation: word-reveal-mask 1.3s cubic-bezier(0.05, 0.9, 0.1, 1) forwards;
+}
+
+@keyframes word-reveal-mask {
+    0%   { opacity: 0; transform: translateY(105%); filter: blur(20px); }
+    30%  { opacity: 1; }
+    100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+/* REVEAL: WORDMARK LETTERS */
+.footer-logo-text .letter-wrapper {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: bottom;
+    line-height: 0.8;
+}
+
+.footer-logo-text .letter-inner {
+    display: inline-block;
+    opacity: 0;
+    transform: translateX(-105%);
+    filter: blur(20px);
+    animation: letter-reveal-mask 1.2s cubic-bezier(0.05, 0.9, 0.1, 1) forwards;
+}
+
+@keyframes letter-reveal-mask {
+    0%   { opacity: 0; transform: translateX(-105%); filter: blur(20px); }
+    25%  { opacity: 1; }
+    100% { opacity: 0.95; transform: translateX(0); filter: blur(0); }
+}
+
+/* MOBILE NAV HAMBURGER & DRAWER */
 .mobile-nav-toggle {
     display: none;
     position: fixed;
@@ -358,7 +464,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     left: 0;
     right: 0;
     z-index: 59;
-    background: rgba(5, 5, 5, 0.96);
+    background: rgba(5, 5, 5, 0.97);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     padding: 85px 24px 35px;
@@ -370,6 +476,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
 }
+
 .mobile-menu-drawer.open {
     transform: translateY(0);
 }
@@ -385,165 +492,19 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     justify-content: space-between;
     align-items: center;
 }
+
 .mobile-drawer-link:hover, .mobile-drawer-link:active {
     color: var(--neon-green);
 }
 
-/* 4. GIANT "DigiFront Door" WORDMARK */
-.footer-logo-wrap {
-    position: fixed;
-    bottom: clamp(10px, 3vh, 20px);
-    left: 0;
-    right: 0;
-    width: 100%;
-    padding: 0 20px;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 3;
-    margin: 0;
-    pointer-events: none;
-    overflow: hidden;
-}
-
-.footer-logo-text {
-    font-family: 'General Sans', -apple-system, sans-serif;
-    font-size: clamp(3.2rem, 13vw, 14vw);
-    font-weight: 400;
-    color: #ffffff;
-    letter-spacing: -0.03em;
-    margin-right: -0.03em;
-    transform: translateX(-10px);
-    line-height: 0.8;
-    margin-top: 0;
-    margin-bottom: 0;
-    margin-left: 0;
-    text-align: center;
-    width: 100%;
-    pointer-events: none;
-    opacity: 0.95;
-    text-shadow: none;
-    white-space: nowrap;
-}
-
-.footer-logo-text .letter-wrapper {
-    display: inline-block;
-    overflow: hidden;
-    vertical-align: bottom;
-    line-height: 0.8;
-}
-
-.footer-logo-text .letter-inner {
-    display: inline-block;
-    opacity: 0;
-    transform: translateX(-105%);
-    filter: blur(20px);
-    animation: letter-reveal-mask 1.2s cubic-bezier(0.05, 0.9, 0.1, 1) forwards;
-}
-
-@keyframes letter-reveal-mask {
-    0% { opacity: 0; transform: translateX(-105%); filter: blur(20px); }
-    25% { opacity: 1; }
-    100% { opacity: 0.95; transform: translateX(0); filter: blur(0); }
-}
-
-/* 5. BACKGROUND VIDEO WITH ROBUST FALLBACK */
-.video-container {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100vw;
-    height: 90vh;
-    overflow: hidden;
-    z-index: 0;
-    pointer-events: none;
-    background: radial-gradient(circle at 50% 80%, rgba(20, 45, 30, 0.45) 0%, rgba(0, 0, 0, 1) 75%);
-}
-
-#bg-video {
-    width: 100%;
-    height: 110%;
-    object-fit: cover;
-    display: block;
-    transform: translateY(0%);
-    opacity: 1;
-    transition: opacity 0.6s ease;
-}
-
-/* 6. DESKTOP CUSTOM LERP CURSOR */
-.glass-cursor-card {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 99999;
-    pointer-events: none;
-    padding: 0.75rem 1.5rem;
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 9999px;
-    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
-    transform: translate(-50%, -50%) scale(0);
-    opacity: 0;
-    will-change: transform, opacity;
-    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                background 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-                border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.glass-cursor-card.active { opacity: 1; }
-
-.cursor-card-text {
-    font-family: 'General Sans', -apple-system, sans-serif;
-    font-size: 0.85rem;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    color: var(--neon-green);
-    text-transform: uppercase;
-    white-space: nowrap;
-    text-shadow: 0 0 8px rgba(57, 255, 20, 0.45);
-}
-
-.cursor-card-text .text-white {
-    color: #ffffff;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
-}
-
-.cursor-ring-outline {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 48px;
-    height: 48px;
-    border: 1.5px solid rgba(255, 255, 255, 0.45);
-    border-radius: 50%;
-    z-index: 99998;
-    pointer-events: none;
-    transform: translate(-50%, -50%) scale(0);
-    opacity: 0;
-    will-change: transform, opacity;
-    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease;
-}
-
-.cursor-ring-outline.active { opacity: 1; }
-.cursor-ring-outline.expanded { border-color: rgba(255, 255, 255, 0.15); }
-
-@media (pointer: coarse), (hover: none) {
-    .glass-cursor-card, .cursor-ring-outline {
-        display: none !important;
-    }
-}
-
-/* 7. GLASSMORPHIC OVERLAYS (Pricing, Portfolio, FAQ, About, Features) */
+/* 7. GLASSMORPHIC OVERLAYS (ABOUT, FEATURES, PORTFOLIO, PRICING, FAQ) */
 .pricing-overlay {
     position: fixed;
     inset: 0;
     z-index: 50;
     background: rgba(0, 0, 0, 0.95);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     overflow-y: auto;
     overflow-x: hidden;
     padding: clamp(60px, 9vh, 90px) 20px 8vh;
@@ -584,7 +545,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     justify-content: center;
 }
 
-.pricing-close:hover, .pricing-close:focus-visible {
+.pricing-close:hover {
     background: #ffffff;
     color: #000000;
 }
@@ -701,7 +662,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     font-size: 1.9rem;
     color: #ffffff;
     line-height: 1.15;
-    overflow-wrap: anywhere;
 }
 
 .plan-price small {
@@ -765,7 +725,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
     min-height: 44px;
 }
 
@@ -819,7 +778,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     font-family: 'Outfit', sans-serif;
     font-size: 1rem;
     color: #ffffff;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.3s ease;
 }
 
 .addons li:hover {
@@ -927,7 +886,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     min-height: 48px;
 }
 
-.pricing-cta:hover, .pricing-cta:focus-visible {
+.pricing-cta:hover {
     background: #ffffff;
     color: #000000;
     border-color: #ffffff;
@@ -1020,7 +979,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     font-size: 0.95rem;
 }
 
-.form-input, .form-select, .form-textarea {
+.form-input, .form-textarea {
     font-family: 'Outfit', sans-serif;
     font-size: 0.95rem;
     color: #ffffff;
@@ -1033,7 +992,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     width: 100%;
 }
 
-.form-input:focus, .form-select:focus, .form-textarea:focus {
+.form-input:focus, .form-textarea:focus {
     border-color: var(--neon-green);
     background: rgba(255, 255, 255, 0.07);
     box-shadow: 0 0 20px rgba(57, 255, 20, 0.2);
@@ -1052,12 +1011,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 }
 .error-msg.visible { display: block; }
 
-.form-select option {
-    background-color: #111111;
-    color: #ffffff;
-}
-
-/* CHOICE CHIPS */
+/* CHIPS */
 .chips-grid {
     display: flex;
     flex-wrap: wrap;
@@ -1069,8 +1023,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     position: relative;
 }
 
-.chip-item input[type="radio"],
-.chip-item input[type="checkbox"] {
+.chip-item input[type="radio"] {
     position: absolute;
     opacity: 0;
     pointer-events: none;
@@ -1117,7 +1070,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     box-shadow: 0 0 6px var(--neon-green);
 }
 
-/* FEATURE & SERVICE CARDS (MULTI-SELECT) */
+/* INTERACTIVE FEATURE CARDS */
 .interactive-cards-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -1208,7 +1161,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     letter-spacing: 0.02em;
 }
 
-/* DYNAMIC SUMMARY & PRICE ESTIMATOR CARD */
+/* SUMMARY & ESTIMATOR */
 .summary-container {
     border: 1px solid rgba(57, 255, 20, 0.45);
     border-radius: 24px;
@@ -1354,7 +1307,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     margin-top: 0.5rem;
 }
 
-/* 9. PORTFOLIO SHOWCASE SECTION */
+/* 9. PORTFOLIO SHOWCASE */
 .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1509,7 +1462,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     border-radius: 9999px;
 }
 
-/* 10. FAQ ACCORDION SECTION */
+/* 10. FAQ ACCORDION */
 .faq-accordion {
     display: flex;
     flex-direction: column;
@@ -1578,26 +1531,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     padding-bottom: 1.4rem;
 }
 
-/* 11. SCROLL ANIMATION CLASSES (INTERSECTION OBSERVER) */
-.scroll-reveal {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    will-change: opacity, transform;
-}
-
-.scroll-reveal.revealed {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Fallback if JS is disabled */
-.no-js .scroll-reveal {
-    opacity: 1 !important;
-    transform: none !important;
-}
-
-/* 12. EMAIL DRAFT / FALLBACK MODAL */
+/* 11. EMAIL MODAL */
 .email-modal-overlay {
     position: fixed;
     inset: 0;
@@ -1722,7 +1656,20 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     transform: translateY(-2px);
 }
 
-/* 13. RESPONSIVE BREAKPOINTS (320px, 360px, 390px, 430px, 768px, 1024px, 1440px) */
+/* 12. SCROLL REVEAL UTILITY */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+.scroll-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 13. RESPONSIVE BREAKPOINTS */
 @media (max-width: 1100px) {
     .pricing-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .portfolio-grid { grid-template-columns: 1fr; }
@@ -1771,20 +1718,16 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     .interactive-cards-grid { grid-template-columns: 1fr; }
 }
 
-@media (prefers-reduced-motion: reduce) {
-    *, ::before, ::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
+@media (pointer: coarse), (hover: none) {
+    .glass-cursor-card, .cursor-ring-outline {
+        display: none !important;
     }
-    .scroll-reveal { opacity: 1 !important; transform: none !important; }
 }
 </style>
 </head>
-<body class="no-js">
-<script>document.body.classList.remove('no-js');</script>
+<body>
 
+<!-- TOP GRADIENT -->
 <img src="https://api.getlayers.ai/storage/v1/object/public/public/assets/loopstack-f8c64439bf/black_gradient.svg" alt="Top Gradient" id="top-gradient">
 
 <!-- MOBILE HAMBURGER BUTTON -->
@@ -1804,17 +1747,16 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     <a href="mailto:digifrontdoor7@gmail.com" class="mobile-drawer-link" style="color: var(--neon-green);">Contact (digifrontdoor7@gmail.com) <span>✉</span></a>
 </nav>
 
-<!-- MAIN HERO SECTION -->
+<!-- HERO SECTION (LOOPSTACK DESIGN) -->
 <main class="hero-content">
-    <div class="hero-badge scroll-reveal">
-        <span class="blinking-dot" style="width: 7px; height: 7px;"></span>
-        <span>Bespoke Web Development & Motion Design</span>
-    </div>
-
-    <h1 class="hero-title">Crafting Bespoke Websites <br> with Fluid Kinetic Motion</h1>
+    <h1 class="hero-title">Apply Now to be part <br> of the closed beta</h1>
+    <button class="hero-btn" id="hero-btn">
+        <span class="btn-text">Book a demo</span>
+        <span class="blinking-dot"></span>
+    </button>
 </main>
 
-<!-- CENTER FOOTER BLOCK -->
+<!-- FOOTER (LOOPSTACK DESIGN) -->
 <footer class="footer-container">
     <div class="footer-top">
         <h2 class="footer-title">Stay in Touch</h2>
@@ -1825,18 +1767,18 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
     <div class="footer-bottom">
         <div class="footer-socials">
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=digifrontdoor7%40gmail.com&su=LinkedIn%20Connect%20Inquiry" target="_blank" rel="noopener noreferrer" aria-label="Connect via LinkedIn email" class="social-icon">
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=digifrontdoor7%40gmail.com&su=LinkedIn%20Connect%20Inquiry" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="social-icon">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
             </a>
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=digifrontdoor7%40gmail.com&su=X%20Twitter%20Connect%20Inquiry" target="_blank" rel="noopener noreferrer" aria-label="Connect via X email" class="social-icon">
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=digifrontdoor7%40gmail.com&su=X%20Twitter%20Connect%20Inquiry" target="_blank" rel="noopener noreferrer" aria-label="X" class="social-icon">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733 -16z"></path><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path></svg>
             </a>
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=digifrontdoor7%40gmail.com&su=Instagram%20Connect%20Inquiry" target="_blank" rel="noopener noreferrer" aria-label="Connect via Instagram email" class="social-icon">
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=digifrontdoor7%40gmail.com&su=Instagram%20Connect%20Inquiry" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-icon">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
             </a>
         </div>
 
-        <nav class="footer-links" aria-label="Primary site navigation">
+        <nav class="footer-links" aria-label="Site navigation">
             <a href="#about" class="footer-link">About</a>
             <a href="#features" class="footer-link">Features</a>
             <a href="#portfolio" class="footer-link">Portfolio</a>
@@ -1851,12 +1793,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     </div>
 </footer>
 
-<!-- GIANT WORDMARK -->
+<!-- GIANT WORDMARK RENAMED TO DIGIFRONT DOOR -->
 <div class="footer-logo-wrap">
     <h2 class="footer-logo-text">DigiFront Door</h2>
 </div>
 
-<!-- BACKGROUND FLOWER VIDEO -->
+<!-- BACKGROUND FLOWER VIDEO (LOOPSTACK ORIGINAL) -->
 <div class="video-container">
     <video autoplay muted loop playsinline webkit-playsinline x5-playsinline preload="auto" id="bg-video">
         <source src="flower.mp4" type="video/mp4">
@@ -1865,7 +1807,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     </video>
 </div>
 
-<!-- 1. PRICING & CUSTOM PLAN OVERLAY -->
+<!-- 1. PRICING & CUSTOM PLANNER OVERLAY -->
 <div class="pricing-overlay" id="pricing" role="dialog" aria-modal="true" aria-label="Pricing and Custom Plan Builder" aria-hidden="true">
     <button class="pricing-close" id="pricing-close" aria-label="Close overlay">&times;</button>
     <div class="pricing-inner">
@@ -1873,32 +1815,32 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
         <p class="pricing-sub scroll-reveal">Transparent website packages priced by animation complexity, optional monthly maintenance plans, or build your completely custom project scope below. All prices in USD.</p>
 
         <!-- Development Packages -->
-        <section class="pricing-group scroll-reveal" aria-labelledby="dev-title">
-            <h3 class="group-title" id="dev-title">Website Development Packages</h3>
+        <section class="pricing-group scroll-reveal">
+            <h3 class="group-title">Website Development Packages</h3>
             <p class="group-note">Choose the level of animation and interaction your project needs. Click "Customize Plan" to load any tier into the custom planner below.</p>
             <hr class="group-rule">
             <div class="pricing-grid" id="dev-grid"></div>
         </section>
 
         <!-- Maintenance Plans -->
-        <section class="pricing-group scroll-reveal" aria-labelledby="care-title">
-            <h3 class="group-title" id="care-title">Website Maintenance Plans</h3>
+        <section class="pricing-group scroll-reveal">
+            <h3 class="group-title">Website Maintenance Plans</h3>
             <p class="group-note">Monthly coverage depends on agreed service scope. Billed separately from one-time development packages.</p>
             <hr class="group-rule">
             <div class="pricing-grid" id="care-grid"></div>
         </section>
 
         <!-- Optional Add-ons -->
-        <section class="pricing-group scroll-reveal" aria-labelledby="addon-title">
-            <h3 class="group-title" id="addon-title">Optional Add-ons</h3>
+        <section class="pricing-group scroll-reveal">
+            <h3 class="group-title">Optional Add-ons</h3>
             <p class="group-note">Click "+ Add to Quote" to seamlessly incorporate extra features into your project calculation.</p>
             <hr class="group-rule">
             <ul class="addons" id="addon-list"></ul>
         </section>
 
         <!-- Important Notes -->
-        <section class="pricing-notes scroll-reveal" aria-labelledby="notes-title">
-            <h3 class="group-title" id="notes-title">Important Pricing Notes</h3>
+        <section class="pricing-notes scroll-reveal">
+            <h3 class="group-title">Important Pricing Notes</h3>
             <ul>
                 <li>Final quotes depend on project complexity, functionality, page count, and technical specifications.</li>
                 <li>Domain registration, hosting, premium plugins, paid APIs, and third-party subscriptions are billed separately unless explicitly included.</li>
@@ -1909,14 +1851,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
         </section>
 
         <!-- CUSTOM WEBSITE ORDER PLANNER -->
-        <section class="pricing-group scroll-reveal" id="custom-builder" aria-labelledby="custom-title">
-            <h3 class="group-title" id="custom-title">Custom Website Order Planner & Price Estimator</h3>
+        <section class="pricing-group scroll-reveal" id="custom-builder">
+            <h3 class="group-title">Custom Website Order Planner & Price Estimator</h3>
             <p class="group-note">Select your exact project requirements. The dynamic price estimator will update instantly. Submit to open a pre-filled brief in Gmail.</p>
             <hr class="group-rule">
 
             <div class="custom-builder-container">
                 <form id="custom-project-form" novalidate>
-                    <!-- STEP 1: Client & Contact -->
+                    <!-- STEP 1: Contact -->
                     <div class="builder-step" id="step-contact">
                         <div class="step-heading">
                             <span class="step-number">STEP 1</span>
@@ -1989,7 +1931,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
                         </div>
                     </div>
 
-                    <!-- STEP 3: Number of Pages -->
+                    <!-- STEP 3: Pages -->
                     <div class="builder-step" id="step-pages">
                         <div class="step-heading">
                             <span class="step-number">STEP 3</span>
@@ -1999,19 +1941,19 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
                         <div class="chips-grid" id="pages-chips">
                             <label class="chip-item">
-                                <input type="radio" name="page-count" value="1 page (Single-page)" data-pages="1">
+                                <input type="radio" name="page-count" value="1 page (Single-page)">
                                 <span class="chip-label">1 page (Single-page)</span>
                             </label>
                             <label class="chip-item">
-                                <input type="radio" name="page-count" value="2–5 pages" data-pages="4" checked>
+                                <input type="radio" name="page-count" value="2–5 pages" checked>
                                 <span class="chip-label">2–5 pages (Standard)</span>
                             </label>
                             <label class="chip-item">
-                                <input type="radio" name="page-count" value="6–10 pages" data-pages="8">
+                                <input type="radio" name="page-count" value="6–10 pages">
                                 <span class="chip-label">6–10 pages (Expanded)</span>
                             </label>
                             <label class="chip-item">
-                                <input type="radio" name="page-count" value="10+ pages (Enterprise)" data-pages="12">
+                                <input type="radio" name="page-count" value="10+ pages (Enterprise)">
                                 <span class="chip-label">10+ pages (Enterprise)</span>
                             </label>
                         </div>
@@ -2027,15 +1969,15 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
                         <div class="chips-grid" id="anim-chips">
                             <label class="chip-item">
-                                <input type="radio" name="animation-level" value="Basic" data-anim-cost="0">
+                                <input type="radio" name="animation-level" value="Basic">
                                 <span class="chip-label">Basic (Hovers & subtle transitions)</span>
                             </label>
                             <label class="chip-item">
-                                <input type="radio" name="animation-level" value="Advanced" data-anim-cost="150" checked>
+                                <input type="radio" name="animation-level" value="Advanced" checked>
                                 <span class="chip-label">Advanced (Scroll reveals, parallax, LERP)</span>
                             </label>
                             <label class="chip-item">
-                                <input type="radio" name="animation-level" value="Cinematic" data-anim-cost="450">
+                                <input type="radio" name="animation-level" value="Cinematic">
                                 <span class="chip-label">Cinematic (3D, WebGL, immersive transitions)</span>
                             </label>
                         </div>
@@ -2049,9 +1991,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
                         </div>
                         <p class="step-description">Select all functional capabilities your project requires.</p>
 
-                        <div class="interactive-cards-grid" id="required-features-grid">
-                            <!-- Populated dynamically via JS -->
-                        </div>
+                        <div class="interactive-cards-grid" id="required-features-grid"></div>
                     </div>
 
                     <!-- STEP 6: Budget & Timeline -->
@@ -2330,7 +2270,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     </div>
 </div>
 
-<!-- 3. FAQ SECTION OVERLAY -->
+<!-- 3. FAQ ACCORDION OVERLAY -->
 <div class="pricing-overlay" id="faq" role="dialog" aria-modal="true" aria-label="Frequently Asked Questions" aria-hidden="true">
     <button class="pricing-close" id="faq-close" aria-label="Close FAQ overlay">&times;</button>
     <div class="pricing-inner">
@@ -2339,102 +2279,83 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
         <section class="pricing-group">
             <div class="faq-accordion" id="faq-list">
-                <!-- Question 1 -->
                 <div class="faq-item scroll-reveal">
                     <button type="button" class="faq-question" aria-expanded="false">
                         <span>How does the website development process work?</span>
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>We follow a focused, four-step approach: 1) Brief & Alignment (we discuss your brand, audience, and requirements), 2) Concept & Wireframing (establishing visual direction and kinetic motion style), 3) Bespoke Engineering (clean, accessible code with hardware-accelerated animations), and 4) Testing & Launch (cross-device audits, speed optimization, and deployment to GitHub Pages or your custom domain).</p>
+                        <p>We follow a focused, four-step approach: 1) Brief & Alignment, 2) Concept & Wireframing, 3) Bespoke Engineering, and 4) Testing & Launch on your domain or GitHub Pages with zero server hassle.</p>
                     </div>
                 </div>
 
-                <!-- Question 2 -->
                 <div class="faq-item scroll-reveal">
                     <button type="button" class="faq-question" aria-expanded="false">
                         <span>How much does a custom website cost?</span>
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Our packages start at $149–$299 for Starter websites, $350–$799 for Professional websites with interactive animations, $800–$1,799 for Advanced animations and parallax, and $2,000+ for Elite 3D/WebGL experiences. You can use our interactive Custom Website Planner below to calculate an instant indicative estimate based on your exact page count and feature requirements.</p>
+                        <p>Our packages start at $69 for single landing pages, $129 for standard business websites, $249 for interactive motion sites, up to $349–$449+ for ecommerce and cinematic animations. You can also configure custom quotes in our interactive planner.</p>
                     </div>
                 </div>
 
-                <!-- Question 3 -->
                 <div class="faq-item scroll-reveal">
                     <button type="button" class="faq-question" aria-expanded="false">
                         <span>Can I choose my own design and visual style?</span>
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Yes. Every website is built custom to your brand guidelines. You can specify whether you prefer dark & cinematic, minimal & clean, premium luxury, corporate, or experimental styles. You can also provide reference URLs or existing brand assets during the planning step.</p>
+                        <p>Yes. Every website is built custom to your brand guidelines. You can specify whether you prefer dark & cinematic, minimal & clean, luxury, corporate, or experimental styles.</p>
                     </div>
                 </div>
 
-                <!-- Question 4 -->
                 <div class="faq-item scroll-reveal">
                     <button type="button" class="faq-question" aria-expanded="false">
                         <span>Can you add custom animations and interactive effects?</span>
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Absolutely. We specialize in fluid kinetic interactions, including LERP cursor physics, scroll-triggered text reveals, custom SVG animations, WebGL 3D effects, and smooth page transitions—all tuned to run at 60–120 FPS without sacrificing loading speed.</p>
+                        <p>Absolutely. We specialize in fluid kinetic interactions, including LERP cursor physics, scroll-triggered text reveals, custom SVG animations, WebGL 3D effects, and smooth page transitions tuned for 60–120 FPS performance.</p>
                     </div>
                 </div>
 
-                <!-- Question 5 -->
                 <div class="faq-item scroll-reveal">
                     <button type="button" class="faq-question" aria-expanded="false">
                         <span>How long does a website take to complete?</span>
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>A typical 1-page landing or Starter website takes 5–7 business days. Professional websites (5–8 pages) take 10–14 days. Complex websites with advanced animations or custom integrations typically take 2–4 weeks. We align on a firm delivery schedule before beginning development.</p>
+                        <p>A typical 1-page landing takes 3–5 business days. Standard business websites (3–5 pages) take 5–7 days. Expanded websites with advanced animations typically take 1–3 weeks.</p>
                     </div>
                 </div>
 
-                <!-- Question 6 -->
                 <div class="faq-item scroll-reveal">
                     <button type="button" class="faq-question" aria-expanded="false">
                         <span>Do you provide ongoing website maintenance?</span>
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Yes, we offer dedicated monthly care plans starting at $19/month (Basic Care) up to $199+/month (Elite Care). Maintenance covers uptime monitoring, compatibility checks across browser updates, minor content/layout tweaks, and technical support. Maintenance is billed separately from one-time development fees.</p>
+                        <p>Yes, we offer dedicated monthly care plans starting at $15/month (Basic Care) up to $149+/month (Elite Care). Maintenance is billed separately from one-time development fees.</p>
                     </div>
                 </div>
 
-                <!-- Question 7 -->
                 <div class="faq-item scroll-reveal">
                     <button type="button" class="faq-question" aria-expanded="false">
                         <span>Are hosting and domain charges included?</span>
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Domain registration and third-party hosting fees are paid directly by the client to ensure you have 100% ownership of your digital assets. We provide full setup and DNS routing assistance. For static sites, free high-speed hosting on GitHub Pages or Cloudflare Pages is available with zero monthly hosting fees.</p>
+                        <p>Domain registration and third-party hosting fees are paid directly by the client to ensure 100% ownership of your digital assets. We provide full DNS setup assistance. Free high-speed hosting on GitHub Pages or Cloudflare Pages is also available.</p>
                     </div>
                 </div>
 
-                <!-- Question 8 -->
-                <div class="faq-item scroll-reveal">
-                    <button type="button" class="faq-question" aria-expanded="false">
-                        <span>Can I request changes after delivery?</span>
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Yes. All our development packages include dedicated revision rounds (2 to 4 rounds depending on your tier) during development to refine typography, animations, and layouts. After launch, additional revisions can be handled under our monthly maintenance plans or as separate project add-ons.</p>
-                    </div>
-                </div>
-
-                <!-- Question 9 -->
                 <div class="faq-item scroll-reveal">
                     <button type="button" class="faq-question" aria-expanded="false">
                         <span>How can I request a custom quote?</span>
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>You can use our Custom Website Project Builder in the Pricing section or choose any of our transparent development packages above. Simply select your website type, page count, animation level, and required features, and the system will generate a pre-filled project brief ready to send directly to <strong>digifrontdoor7@gmail.com</strong>.</p>
+                        <p>You can use our Custom Website Project Builder in the Pricing section or click "Customize Plan" on any package. It generates a pre-filled brief ready to send directly to <strong>digifrontdoor7@gmail.com</strong>.</p>
                     </div>
                 </div>
             </div>
@@ -2453,7 +2374,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
             <h3 class="group-title scroll-reveal">The Philosophy</h3>
             <p class="group-note scroll-reveal">In an era of generic website builders, your digital front door is the first and most defining touchpoint of your brand.</p>
             <hr class="group-rule">
-            <div class="pricing-grid" style="grid-template-columns: repeat(3, 1fr);">
+            <div class="pricing-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
                 <article class="plan scroll-reveal">
                     <h4 class="plan-name">Bespoke Engineering</h4>
                     <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.5;">Every website is hand-crafted with clean, semantic markup, zero unnecessary bulk, and tailored micro-interactions designed to highlight your value proposition.</p>
@@ -2491,7 +2412,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
             <h3 class="group-title scroll-reveal">Core Disciplines</h3>
             <p class="group-note scroll-reveal">Our full-spectrum capability suite covers design, motion, engineering, and continuous care.</p>
             <hr class="group-rule">
-            <div class="pricing-grid" style="grid-template-columns: repeat(3, 1fr);">
+            <div class="pricing-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
                 <article class="plan scroll-reveal">
                     <h4 class="plan-name">Fluid Motion Architecture</h4>
                     <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.5;">Subtle hover physics, scroll-linked storytelling, reveal masks with blur transitions, and responsive mobile adaptations.</p>
@@ -2527,7 +2448,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     </div>
 </div>
 
-<!-- EMAIL COMPOSE CONFIRMATION & FALLBACK MODAL -->
+<!-- 6. EMAIL COMPOSE & FALLBACK MODAL -->
 <div class="email-modal-overlay" id="email-fallback-modal" role="dialog" aria-modal="true" aria-label="Email Draft Prepared" aria-hidden="true">
     <div class="email-modal-card">
         <button class="pricing-close" id="modal-fallback-close" aria-label="Close modal" style="position: absolute; top: 16px; right: 16px;">&times;</button>
@@ -2554,23 +2475,20 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     </div>
 </div>
 
-<!-- CURSOR ELEMENTS -->
+<!-- CURSOR RING & GLASS CARD -->
 <div id="cursor-ring" class="cursor-ring-outline"></div>
 <div id="glass-card" class="glass-cursor-card">
     <span class="cursor-card-text"><span class="text-white">Say</span> Hello!</span>
 </div>
 
 <script>
-// CONFIGURATION & CONSTANTS
 const CONTACT_EMAIL = 'digifrontdoor7@gmail.com';
 
-// 1. BULLETPROOF VIDEO PLAYBACK INITIALIZATION
+/* 1. BULLETPROOF VIDEO PLAYBACK */
 (function initVideo() {
     const v = document.getElementById('bg-video');
-    const container = document.querySelector('.video-container');
     if (!v) return;
 
-    // Strict attributes required by modern mobile WebKit & Chromium autoplay policies
     v.muted = true;
     v.defaultMuted = true;
     v.playsInline = true;
@@ -2579,58 +2497,26 @@ const CONTACT_EMAIL = 'digifrontdoor7@gmail.com';
     v.setAttribute('webkit-playsinline', '');
     v.setAttribute('x5-playsinline', '');
 
-    // Respect reduced-motion preferences
-    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        v.pause();
-        return;
-    }
-
     const startPlayback = () => {
         const p = v.play();
         if (p && typeof p.then === 'function') {
-            p.then(() => {
-                v.style.opacity = '1';
-            }).catch(() => {
-                // Autoplay blocked by browser policy until user gesture
-            });
+            p.then(() => { v.style.opacity = '1'; }).catch(() => {});
         }
     };
-
-    // Immediate playback attempt on load
     startPlayback();
-
-    // Secondary attempts on standard media readiness events
-    v.addEventListener('loadedmetadata', startPlayback, { once: true });
     v.addEventListener('canplay', startPlayback, { once: true });
-    v.addEventListener('canplaythrough', startPlayback, { once: true });
 
-    // Fallback: trigger playback on the very first user interaction anywhere
-    const gestureEvents = ['click', 'touchstart', 'touchend', 'pointerdown', 'scroll', 'wheel', 'keydown'];
+    const gestureEvents = ['click', 'touchstart', 'pointerdown'];
     const handleFirstGesture = () => {
         startPlayback();
-        gestureEvents.forEach(evt => window.removeEventListener(evt, handleFirstGesture, { passive: true }));
-        gestureEvents.forEach(evt => document.removeEventListener(evt, handleFirstGesture, { passive: true }));
+        gestureEvents.forEach(evt => window.removeEventListener(evt, handleFirstGesture));
     };
-    gestureEvents.forEach(evt => window.addEventListener(evt, handleFirstGesture, { passive: true, once: true }));
-    gestureEvents.forEach(evt => document.addEventListener(evt, handleFirstGesture, { passive: true, once: true }));
-
-    // Fallback between local and remote source if local asset is missing
-    const remoteUrl = 'https://api.getlayers.ai/storage/v1/object/public/public/assets/loopstack-f8c64439bf/flower.mp4';
-    v.addEventListener('error', () => {
-        if (!v.dataset.retriedRemote) {
-            v.dataset.retriedRemote = 'true';
-            v.src = remoteUrl;
-            v.load();
-            startPlayback();
-        } else if (container) {
-            container.style.background = 'radial-gradient(circle at 50% 80%, rgba(20, 45, 30, 0.6) 0%, rgba(0, 0, 0, 1) 80%)';
-        }
-    }, true);
+    gestureEvents.forEach(evt => window.addEventListener(evt, handleFirstGesture, { once: true }));
 })();
 
-// 2. HERO & LOGO WORDMARK LETTER-REVEAL ANIMATIONS
+/* 2. REVEAL ANIMATIONS (WORDMARK & TITLE) + LERP CURSOR */
 document.addEventListener('DOMContentLoaded', () => {
-    // Footer Wordmark "DigiFront Door"
+    // Wordmark text animation for "DigiFront Door"
     const logoText = document.querySelector('.footer-logo-text');
     if (logoText) {
         const text = logoText.textContent.trim();
@@ -2665,7 +2551,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const inner = document.createElement('span');
                 inner.className = 'word-inner';
                 inner.textContent = part;
-                inner.style.animationDelay = `${wordIndex * 0.09}s`;
+                inner.style.animationDelay = `${wordIndex * 0.1}s`;
                 wordIndex++;
                 wrapper.appendChild(inner);
                 heroTitle.appendChild(wrapper);
@@ -2673,19 +2559,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Custom Cursor LERP physics (desktop only)
+    // Cursor LERP physics
     const glassCard = document.getElementById('glass-card');
     const cursorRing = document.getElementById('cursor-ring');
     const isCoarse = window.matchMedia('(pointer: coarse)').matches;
 
     if (glassCard && cursorRing && !isCoarse) {
-        let mouseX = window.innerWidth / 2;
-        let mouseY = window.innerHeight / 2;
+        let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
         let cardX = mouseX, cardY = mouseY;
         let ringX = mouseX, ringY = mouseY;
         let isFirstMove = true;
-        let scale = 0;
-        let targetScale = 0;
+        let scale = 0, targetScale = 0;
         let isHoveringInteractive = false;
 
         document.addEventListener('mousemove', (e) => {
@@ -2734,7 +2618,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// 3. GMAIL & MAILTO INTEGRATION
+/* 3. EMAIL COMPOSE & GMAIL URL HELPERS */
 function buildGmailComposeUrl(to, subject, body) {
     return `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(to)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }
@@ -2754,9 +2638,7 @@ function openEmailInquiry({ subject, body }) {
     const copyBtn = document.getElementById('modal-copy-btn');
     const copyLabel = document.getElementById('copy-btn-label');
 
-    if (previewEl) {
-        previewEl.textContent = `To: ${CONTACT_EMAIL}\nSubject: ${subject}\n\n${body}`;
-    }
+    if (previewEl) previewEl.textContent = `To: ${CONTACT_EMAIL}\nSubject: ${subject}\n\n${body}`;
     if (openGmailBtn) openGmailBtn.href = gmailUrl;
     if (openMailtoBtn) openMailtoBtn.href = mailtoUrl;
 
@@ -2765,9 +2647,7 @@ function openEmailInquiry({ subject, body }) {
         modal.setAttribute('aria-hidden', 'false');
     }
 
-    try {
-        window.open(gmailUrl, '_blank');
-    } catch (e) {}
+    try { window.open(gmailUrl, '_blank'); } catch (e) {}
 
     if (copyBtn && copyLabel) {
         copyBtn.onclick = () => {
@@ -2790,7 +2670,7 @@ document.getElementById('modal-fallback-close')?.addEventListener('click', () =>
     }
 });
 
-// 4. OVERLAYS NAVIGATION & MOBILE MENU
+/* 4. OVERLAYS NAVIGATION & HASH ROUTING */
 (function initOverlays() {
     const pricingOverlay = document.getElementById('pricing');
     const portfolioOverlay = document.getElementById('portfolio');
@@ -2810,9 +2690,7 @@ document.getElementById('modal-fallback-close')?.addEventListener('click', () =>
         mobileToggle.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
     };
 
-    if (mobileToggle) {
-        mobileToggle.addEventListener('click', () => toggleMobileMenu());
-    }
+    if (mobileToggle) mobileToggle.addEventListener('click', () => toggleMobileMenu());
 
     const openOverlay = (overlay) => {
         allOverlays.forEach(o => {
@@ -2843,12 +2721,10 @@ document.getElementById('modal-fallback-close')?.addEventListener('click', () =>
         }
     };
 
-    // Close buttons
     ['pricing-close', 'portfolio-close', 'faq-close', 'about-close', 'features-close'].forEach(id => {
         document.getElementById(id)?.addEventListener('click', closeAllOverlays);
     });
 
-    // Escape Key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             const emailModal = document.getElementById('email-fallback-modal');
@@ -2861,7 +2737,6 @@ document.getElementById('modal-fallback-close')?.addEventListener('click', () =>
         }
     });
 
-    // Nav Links (Desktop & Mobile)
     const mapHashToOverlay = {
         '#pricing': pricingOverlay,
         '#portfolio': portfolioOverlay,
@@ -2890,8 +2765,8 @@ document.getElementById('modal-fallback-close')?.addEventListener('click', () =>
         });
     });
 
-    // Hero CTA button
-    document.getElementById('hero-cta-btn')?.addEventListener('click', () => {
+    // Book a demo hero button opens pricing/custom builder
+    document.getElementById('hero-btn')?.addEventListener('click', () => {
         openOverlay(pricingOverlay);
         setTimeout(() => {
             document.getElementById('custom-builder')?.scrollIntoView({ behavior: 'smooth' });
@@ -2904,11 +2779,9 @@ document.getElementById('modal-fallback-close')?.addEventListener('click', () =>
     document.getElementById('features-to-pricing')?.addEventListener('click', e => {
         e.preventDefault(); openOverlay(pricingOverlay);
     });
-
-    document.getElementById('pricing-cta')?.addEventListener('click', (e) => {
+    document.getElementById('pricing-cta')?.addEventListener('click', e => {
         e.preventDefault();
-        const builder = document.getElementById('custom-builder');
-        if (builder) builder.scrollIntoView({ behavior: 'smooth' });
+        document.getElementById('custom-builder')?.scrollIntoView({ behavior: 'smooth' });
     });
 
     if (location.hash && mapHashToOverlay[location.hash]) {
@@ -2916,9 +2789,8 @@ document.getElementById('modal-fallback-close')?.addEventListener('click', () =>
     }
 })();
 
-// 5. PRICING & CUSTOM PLAN CONFIGURATION
+/* 5. PRICING & PLANNER DATA */
 const PRICING_CONFIG = {
-    contactEmail: CONTACT_EMAIL,
     baseCostByType: {
         'Landing page': 69,
         'Business website': 129,
@@ -2928,7 +2800,6 @@ const PRICING_CONFIG = {
         'Ecommerce website': 349,
         'Other': 129
     },
-    costPerPage: 30,
     animationCosts: {
         'Basic': 0,
         'Advanced': 75,
@@ -2956,112 +2827,79 @@ const devPackages = [
         level: 'Basic animation',
         name: 'Starter Website',
         price: '$69',
-        minPrice: 69,
-        maxPrice: 69,
-        pages: '1–3 pages',
         pageRadioValue: '1 page (Single-page)',
         typeValue: 'Landing page',
         animTier: 'Basic',
-        delivery: '3–5 business days',
-        revisions: '2 revision rounds',
         items: [
             '1–3 pages (Clean, responsive layout)',
             'Smooth hover states & subtle transitions',
             'Essential contact inquiry form & social links',
             'Mobile & tablet optimization',
             'Fast page load performance',
-            '2 revision rounds included',
-            'Starting price (custom features quoted separately)'
+            '2 revision rounds included'
         ]
     },
     {
         level: 'Business Standard',
         name: 'Basic Business Website',
         price: '$129',
-        minPrice: 129,
-        maxPrice: 129,
-        pages: '3–5 pages',
         pageRadioValue: '2–5 pages',
         typeValue: 'Business website',
         animTier: 'Basic',
-        delivery: '5–7 business days',
-        revisions: '2 revision rounds',
         items: [
             '3–5 custom responsive pages',
             'Direct WhatsApp click-to-chat integration',
             'Validated contact inquiry form',
             'Clean entrance animations & section fades',
             'Basic on-page SEO meta setup',
-            '2 revision rounds included',
-            'Starting price (custom scope quoted separately)'
+            '2 revision rounds included'
         ]
     },
     {
         level: 'Interactive Motion',
         name: 'Professional Website',
         price: '$249',
-        minPrice: 249,
-        maxPrice: 249,
         featured: true,
-        pages: '5–8 pages',
         pageRadioValue: '2–5 pages',
         typeValue: 'Business website',
         animTier: 'Advanced',
-        delivery: '7–10 business days',
-        revisions: '3 revision rounds',
         items: [
             '5–8 bespoke responsive pages',
             'Scroll-triggered reveal animations & counters',
             'Interactive cards, tabs, and galleries',
-            'Custom brand typography & dark/light aesthetic',
+            'Custom brand typography & aesthetic',
             'Complete mobile & speed optimization',
-            'Basic SEO & search indexing readiness',
-            '3 revision rounds included',
-            'Starting price (extended features quoted separately)'
+            'Basic SEO readiness · 3 revision rounds'
         ]
     },
     {
         level: 'Cinematic Motion',
         name: 'Premium Animated Website',
         price: '$449',
-        minPrice: 449,
-        maxPrice: 449,
-        pages: '6–10 pages',
         pageRadioValue: '6–10 pages',
         typeValue: 'Agency website',
         animTier: 'Advanced',
-        delivery: '10–14 business days',
-        revisions: '4 revision rounds',
         items: [
             '6–10 high-impact custom pages',
             'Advanced kinetic typography & fluid parallax',
             'Bespoke interactive UI menus & transitions',
-            'Custom kinetic sequence design',
             'High-performance asset tuning (90+ mobile score)',
-            '4 revision rounds included',
-            'Starting price (specialized animations quoted separately)'
+            '4 revision rounds included'
         ]
     },
     {
         level: 'Online Store & Catalog',
         name: 'Ecommerce Website',
         price: 'Starting at $349',
-        minPrice: 349,
-        maxPrice: 349,
-        pages: 'Custom Catalog / Storefront',
         pageRadioValue: '2–5 pages',
         typeValue: 'Ecommerce website',
         animTier: 'Advanced',
-        delivery: '2–3 weeks',
-        revisions: '3 revision rounds',
         items: [
             'Product catalog setup & item detail pages',
             'Shopping cart & WhatsApp / online checkout',
-            'Payment gateway integration (Stripe, PayPal, etc.)',
-            'Inventory / order inquiry management setup',
+            'Payment gateway integration (Stripe, PayPal)',
             'Mobile-first responsive checkout experience',
-            '3 revision rounds included',
-            'Starting price (large catalogs & custom APIs quoted separately)'
+            '3 revision rounds included'
         ]
     }
 ];
@@ -3104,23 +2942,23 @@ const carePackages = [
         name: 'Elite Care',
         price: '$149+',
         items: [
-            'Advanced troubleshooting & dedicated developer hours',
+            'Advanced troubleshooting & dedicated hours',
             'Custom technical support & integrations',
             'Complex animation & WebGL diagnostics',
             '24/7 priority emergency response',
-            'Continuous performance & conversion optimization'
+            'Continuous speed & conversion optimization'
         ]
     }
 ];
 
 const addonsList = [
-    { id: 'addon-std-page', name: 'Additional standard page', price: '$20–$40', min: 20, max: 40 },
-    { id: 'addon-anim-page', name: 'Additional animated page', price: '$40–$75', min: 40, max: 75 },
-    { id: 'addon-hero', name: 'Advanced hero animation', price: '$50–$120', min: 50, max: 120 },
-    { id: 'addon-3d', name: 'Custom 3D section', price: '$150–$350+', min: 150, max: 350 },
-    { id: 'addon-booking', name: 'Booking system integration', price: '$60–$150', min: 60, max: 150 },
-    { id: 'addon-social-auto', name: 'WhatsApp / Social automation setup', price: '$40–$120', min: 40, max: 120 },
-    { id: 'addon-ecom', name: 'E-commerce functionality', price: '$150–$450+', min: 150, max: 450 }
+    { id: 'addon-std-page', name: 'Additional standard page', price: '$20–$40', min: 20 },
+    { id: 'addon-anim-page', name: 'Additional animated page', price: '$40–$75', min: 40 },
+    { id: 'addon-hero', name: 'Advanced hero animation', price: '$50–$120', min: 50 },
+    { id: 'addon-3d', name: 'Custom 3D section', price: '$150–$350+', min: 150 },
+    { id: 'addon-booking', name: 'Booking system integration', price: '$60–$150', min: 60 },
+    { id: 'addon-social-auto', name: 'WhatsApp / Social automation setup', price: '$40–$120', min: 40 },
+    { id: 'addon-ecom', name: 'E-commerce functionality', price: '$150–$450+', min: 150 }
 ];
 
 const requiredFeaturesCatalog = [
@@ -3141,7 +2979,7 @@ const requiredFeaturesCatalog = [
 
 const selectedAddons = new Set();
 
-// 6. RENDER PRICING CARDS & PLANNER
+/* 6. RENDER PRICING & FEATURES */
 function renderPricingSection() {
     const devGrid = document.getElementById('dev-grid');
     const careGrid = document.getElementById('care-grid');
@@ -3218,7 +3056,6 @@ function renderPricingSection() {
             card.setAttribute('tabindex', '0');
 
             let badgeHtml = feat.infra ? `<span class="infra-tag">⚡ ${feat.note}</span>` : '';
-
             card.innerHTML = `
                 <div>
                     <div class="feature-header">
@@ -3234,9 +3071,9 @@ function renderPricingSection() {
     }
 }
 
-// 7. INTERACTIVE ACCORDIONS, PORTFOLIO & ESTIMATOR
+/* 7. INTERACTION LISTENERS & PLANNER SETUP */
 function setupInteractions() {
-    // Plan card selection -> Pre-populates planner
+    // Customize plan buttons
     document.querySelectorAll('[data-select-plan]').forEach(btn => {
         btn.addEventListener('click', () => {
             const planName = btn.getAttribute('data-select-plan');
@@ -3247,28 +3084,27 @@ function setupInteractions() {
                 const typeRadio = document.querySelector(`input[name="website-type"][value="${pkg.typeValue}"]`);
                 if (typeRadio) typeRadio.checked = true;
             }
-
-            const targetPage = pkg.pageRadioValue || pkg.pages;
-            const pageRadio = document.querySelector(`input[name="page-count"][value="${targetPage}"]`);
-            if (pageRadio) pageRadio.checked = true;
-
-            const animRadio = document.querySelector(`input[name="animation-level"][value="${pkg.animTier}"]`);
-            if (animRadio) animRadio.checked = true;
-
+            if (pkg.pageRadioValue) {
+                const pageRadio = document.querySelector(`input[name="page-count"][value="${pkg.pageRadioValue}"]`);
+                if (pageRadio) pageRadio.checked = true;
+            }
+            if (pkg.animTier) {
+                const animRadio = document.querySelector(`input[name="animation-level"][value="${pkg.animTier}"]`);
+                if (animRadio) animRadio.checked = true;
+            }
             updatePriceEstimator();
-
             document.getElementById('custom-builder')?.scrollIntoView({ behavior: 'smooth' });
         });
     });
 
-    // Direct plan inquiry
+    // Inquire directly buttons
     document.querySelectorAll('[data-inquire-plan]').forEach(btn => {
         btn.addEventListener('click', () => {
             const planName = btn.getAttribute('data-inquire-plan');
             const pkg = devPackages.find(p => p.name === planName);
             openEmailInquiry({
                 subject: `Website Inquiry: ${planName} (${pkg ? pkg.price : ''})`,
-                body: `Hello DigiFront Door Team,\n\nI would like to inquire about your ${planName} package (${pkg ? pkg.price : ''}).\n\nClient Name:\nEmail:\nCompany:\nBrief Project Overview:\n\nLooking forward to speaking with you!\n\nBest regards,`
+                body: `Hello DigiFront Door Team,\n\nI would like to inquire about your ${planName} package (${pkg ? pkg.price : ''}).\n\nClient Name:\nEmail:\nCompany:\nBrief Project Overview:\n\nBest regards,`
             });
         });
     });
@@ -3280,7 +3116,7 @@ function setupInteractions() {
             const pkg = carePackages.find(p => p.name === careName);
             openEmailInquiry({
                 subject: `Maintenance Care Inquiry: ${careName} (${pkg ? pkg.price : ''}/mo)`,
-                body: `Hello DigiFront Door Team,\n\nI would like to discuss your ${careName} maintenance plan (${pkg ? pkg.price : ''}/month) for my website.\n\nWebsite URL:\nOwner Name:\nSpecific Needs:\n\nThank you!`
+                body: `Hello DigiFront Door Team,\n\nI would like to discuss your ${careName} maintenance plan (${pkg ? pkg.price : ''}/month).\n\nWebsite URL:\nOwner Name:\nSpecific Needs:\n\nThank you!`
             });
         });
     });
@@ -3302,7 +3138,7 @@ function setupInteractions() {
         });
     });
 
-    // Required features toggle
+    // Feature toggles
     document.querySelectorAll('.feature-card[data-feat-id]').forEach(card => {
         const toggle = () => {
             const featId = card.getAttribute('data-feat-id');
@@ -3326,7 +3162,6 @@ function setupInteractions() {
             const answer = item.querySelector('.faq-answer');
             const isOpen = item.classList.contains('active');
 
-            // Close other items
             document.querySelectorAll('.faq-item.active').forEach(other => {
                 if (other !== item) {
                     other.classList.remove('active');
@@ -3347,7 +3182,7 @@ function setupInteractions() {
         });
     });
 
-    // Portfolio preview switcher (desktop vs mobile)
+    // Portfolio preview switchers
     document.querySelectorAll('.view-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             const mockup = btn.getAttribute('data-mockup');
@@ -3373,29 +3208,21 @@ function setupInteractions() {
         });
     });
 
-    // Portfolio "Inquire About This Style"
+    // Style prefill from portfolio
     document.querySelectorAll('[data-prefill-style]').forEach(btn => {
         btn.addEventListener('click', () => {
             const styleName = btn.getAttribute('data-prefill-style');
             const refInput = document.getElementById('reference-url');
             if (refInput) refInput.value = `Inspiration Style: ${styleName}`;
 
-            const pricingOverlay = document.getElementById('pricing');
-            const portfolioOverlay = document.getElementById('portfolio');
-            if (portfolioOverlay) {
-                portfolioOverlay.classList.remove('open');
-                portfolioOverlay.setAttribute('aria-hidden', 'true');
-            }
-            if (pricingOverlay) {
-                pricingOverlay.classList.add('open');
-                pricingOverlay.setAttribute('aria-hidden', 'false');
-            }
+            document.getElementById('portfolio')?.classList.remove('open');
+            document.getElementById('pricing')?.classList.add('open');
             document.getElementById('custom-builder')?.scrollIntoView({ behavior: 'smooth' });
             updatePriceEstimator();
         });
     });
 
-    // Live form inputs listener
+    // Input listeners for dynamic update
     ['client-name', 'client-email', 'brand-name', 'reference-url'].forEach(id => {
         document.getElementById(id)?.addEventListener('input', updatePriceEstimator);
     });
@@ -3434,14 +3261,14 @@ function setupInteractions() {
         document.getElementById('client-name')?.focus();
     });
 
-    // Form Submission
+    // Form Submit
     document.getElementById('custom-project-form')?.addEventListener('submit', (e) => {
         e.preventDefault();
         handlePlannerSubmit();
     });
 }
 
-// 8. DYNAMIC PRICE ESTIMATOR CALCULATION
+/* 8. ESTIMATOR CALCULATION */
 function updatePriceEstimator() {
     const name = document.getElementById('client-name')?.value.trim();
     const email = document.getElementById('client-email')?.value.trim();
@@ -3454,14 +3281,11 @@ function updatePriceEstimator() {
 
     const selectedFeatures = requiredFeaturesCatalog.filter(f => f.checked);
 
-    // Update Summary Card
     const sumClient = document.getElementById('sum-client');
     if (sumClient) {
-        if (name || email) {
-            sumClient.textContent = `${name || 'Client'} (${email || 'No email'}) · ${brand ? brand + ' · ' : ''}${type}`;
-        } else {
-            sumClient.textContent = `Please enter your name & email above · ${type}`;
-        }
+        sumClient.textContent = (name || email) 
+            ? `${name || 'Client'} (${email || 'No email'}) · ${brand ? brand + ' · ' : ''}${type}`
+            : `Please enter your name & email above · ${type}`;
     }
 
     const sumScope = document.getElementById('sum-scope');
@@ -3478,11 +3302,10 @@ function updatePriceEstimator() {
         sumFeatures.textContent = selectedFeatures.length ? selectedFeatures.map(f => f.name).join(', ') : 'None selected';
     }
 
-    // Configurable Pricing Formula aligned with affordable starting rates ($69, $129, $249, $449, $349)
     let base = PRICING_CONFIG.baseCostByType[type] || 129;
-
     let pageMultiplier = 129;
     let estDays = '5–7 business days';
+
     if (pages.includes('1 page')) {
         pageMultiplier = (type === 'Landing page') ? 69 : 89;
         estDays = '3–5 business days';
@@ -3503,7 +3326,6 @@ function updatePriceEstimator() {
     }
 
     let animExtra = PRICING_CONFIG.animationCosts[anim] || 0;
-
     let featuresExtra = 0;
     selectedFeatures.forEach(f => {
         featuresExtra += (PRICING_CONFIG.featureCosts[f.name] || 25);
@@ -3531,7 +3353,7 @@ function updatePriceEstimator() {
     }
 }
 
-// 9. PLANNER SUBMISSION & VALIDATION
+/* 9. SUBMISSION & VALIDATION */
 function handlePlannerSubmit() {
     const nameInput = document.getElementById('client-name');
     const emailInput = document.getElementById('client-email');
@@ -3539,7 +3361,6 @@ function handlePlannerSubmit() {
     const emailError = document.getElementById('email-error');
 
     let isValid = true;
-
     if (!nameInput.value.trim()) {
         nameInput.classList.add('input-error');
         if (nameError) nameError.classList.add('visible');
@@ -3580,7 +3401,6 @@ function handlePlannerSubmit() {
     });
 
     const estText = document.getElementById('sum-price-display')?.innerText.replace(/\n/g, ' ') || '$450 – $890 USD';
-
     const subject = `New Website Project Inquiry - ${brand !== 'N/A' ? brand : name}`;
     const body = `Hello DigiFront Door Team,
 
@@ -3617,8 +3437,7 @@ ${additional}
 5. ESTIMATED INVESTMENT
 ==================================================
 • Estimated Development Cost: ${estText}
-• Optional Maintenance Care: From $19–$99/month (optional)
-(Note: Amount is an estimate. Domains, hosting, and paid APIs billed separately.)
+• Optional Maintenance Care: From $15–$79/month (optional)
 
 Looking forward to speaking with you!
 
@@ -3629,13 +3448,8 @@ ${email}`;
     openEmailInquiry({ subject, body });
 }
 
-// 10. SCROLL ANIMATIONS OBSERVER
+/* 10. SCROLL REVEAL OBSERVER */
 function initScrollAnimations(rootElement = document) {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        rootElement.querySelectorAll('.scroll-reveal').forEach(el => el.classList.add('revealed'));
-        return;
-    }
-
     const observer = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -3645,8 +3459,7 @@ function initScrollAnimations(rootElement = document) {
         });
     }, {
         root: rootElement === document ? null : rootElement,
-        threshold: 0.1,
-        rootMargin: '0px 0px -40px 0px'
+        threshold: 0.1
     });
 
     rootElement.querySelectorAll('.scroll-reveal:not(.revealed)').forEach((el, index) => {
@@ -3655,7 +3468,6 @@ function initScrollAnimations(rootElement = document) {
     });
 }
 
-// 11. INITIALIZE ALL COMPONENTS
 document.addEventListener('DOMContentLoaded', () => {
     renderPricingSection();
     setupInteractions();
